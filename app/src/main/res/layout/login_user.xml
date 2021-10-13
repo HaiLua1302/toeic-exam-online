@@ -8,8 +8,9 @@
 
     <ImageView
         android:id="@+id/imageView3"
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         android:src="@drawable/login_icon" />
 
     <TextView
@@ -17,10 +18,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Toeic Exam"
-        android:layout_marginTop="-30dp"
+        android:layout_marginTop="10dp"
         android:layout_gravity="center"
         android:textColor="#03DAC5"
-        android:textSize="18sp"
+        android:textSize="20dp"
         android:textStyle="bold" />
     <EditText
         android:id="@+id/edt_phone"
