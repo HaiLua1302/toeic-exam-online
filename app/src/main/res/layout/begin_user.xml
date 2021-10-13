@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroud_khoidong"
+    android:orientation="vertical">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="403dp"
+        android:layout_height="371dp"
+        android:src="@drawable/teacher" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="204dp"
+        android:layout_height="172dp"
+        android:layout_marginLeft="-220dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/logo_toeic" />
+</LinearLayout>
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text='Bắt đầu chinh phục Toeic với
+        "TOIEC EXAM" nhé !'
+        android:textAlignment="center"
+        android:textColor="#2B5991"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/btn_batdau"
+        android:layout_width="284dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="150dp"
+        android:text="BẮT ĐẦU"
+        android:background="@drawable/mybutton"
+        android:textColor="#6C9A7E"
+        android:textColorLink="#FFFFFF"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
+</LinearLayout>
