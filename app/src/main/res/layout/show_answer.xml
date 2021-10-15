@@ -7,8 +7,10 @@
     android:orientation="vertical">
 
     <ListView
-        android:id="@+id/lst_exam"
+        android:id="@+id/lst_show_answer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/exam_list_user"/>
+        android:layout_margin="20dp"
+        tools:listitem="@layout/show_list_answer"
+        android:background="@drawable/mybutton"/>
 </LinearLayout>
