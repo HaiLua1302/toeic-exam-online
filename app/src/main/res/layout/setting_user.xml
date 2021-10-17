@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_app"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/infor_user"
+        android:layout_margin="10dp"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/img_avata_user"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/a1"/>
+        <TextView
+            android:id="@+id/txt_name_user"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="30dp"
+            android:textColor="#EEF1EE"
+            android:textStyle="bold"
+            android:text="Xin chào ! Hai Lúa"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_language"
+        style="@style/edt_setting"
+        android:drawableLeft="@mipmap/ic_phone_foreground"
+        android:text="Ngôn ngữ ứng dụng"/>
+    <Button
+        android:id="@+id/btn_tutorial"
+        style="@style/edt_setting"
+        android:drawableLeft="@mipmap/ic_phone_foreground"
+        android:text="Hướng dẫn sử dụng"/>
+    <Button
+        android:id="@+id/btn_theme"
+        style="@style/edt_setting"
+        android:drawableLeft="@mipmap/ic_phone_foreground"
+        android:text="Giao diện"/>
+    <Button
+        android:id="@+id/btn_rule"
+        style="@style/edt_setting"
+        android:drawableLeft="@mipmap/ic_phone_foreground"
+        android:text="Điều khoản ứng dụng"/>
+    <Button
+        android:id="@+id/btn_achievement"
+        style="@style/edt_setting"
+        android:drawableLeft="@mipmap/ic_phone_foreground"
+        android:text="Thành tích"/>
+    <Button
+        android:id="@+id/btn_feedback"
+        style="@style/edt_setting"
+        android:drawableLeft="@mipmap/ic_phone_foreground"
+        android:text="Phản hồi"/>
+    <Button
+        android:id="@+id/btn_version"
+        style="@style/edt_setting"
+        android:drawableLeft="@mipmap/ic_phone_foreground"
+        android:text="Phiên bản v1.0"/>
+
+</LinearLayout>
