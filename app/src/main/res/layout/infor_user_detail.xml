@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/img_avata_user_detail"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round_edt"
+        android:padding="10dp"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/a1" />
+
+    <Button
+        android:id="@+id/btn_get_image"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/bnt_answer"
+        android:drawableLeft="@drawable/ic_baseline_image_search_24"
+        android:text="Thay đổi ảnh" />
+
+    <TextView
+        android:id="@+id/txt_name_user_detail"
+        style="@style/user_detail"
+        android:text="Tên : Hai Lúa" />
+    <TextView
+        android:id="@+id/txt_name_user_DoB"
+        style="@style/user_detail"
+        android:text="Năm sinh : 1997" />
+    <TextView
+        android:id="@+id/txt_name_user_numP"
+        style="@style/user_detail"
+        android:text="Số ĐT: 0123456789" />
+    <TextView
+        android:id="@+id/txt_name_user_email"
+        style="@style/user_detail"
+        android:text="Email : Hailua.it@gmail.com" />
+
+    <Button
+        android:id="@+id/btn_edit_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/mybtn2"
+        android:textColor="#FFF"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:text="Sửa" />
+
+    <Button
+        android:id="@+id/btn_logout_user"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/mybtn2"
+        android:text="Đăng Xuất"
+        android:textColor="#FFF"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+</LinearLayout>
