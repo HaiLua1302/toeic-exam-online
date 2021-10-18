@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "635218613543",
+    "firebase_url": "https://toeic-exam-dab96-default-rtdb.firebaseio.com",
+    "project_id": "toeic-exam-dab96",
+    "storage_bucket": "toeic-exam-dab96.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635218613543:android:1a0c0ce338a626e0a84502",
+        "android_client_info": {
+          "package_name": "com.example.user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "635218613543-u862nc02not40ud75gsfgal321eov3f3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.user",
+            "certificate_hash": "f06803e95142dd22726ed44a4b107de9e8e13074"
+          }
+        },
+        {
+          "client_id": "635218613543-0skk3nl2fg01qhl65ateiaecs0bf743b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnZF5BK4FUnyud8wB6FrGjT9yTF5nErbw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635218613543-0skk3nl2fg01qhl65ateiaecs0bf743b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
