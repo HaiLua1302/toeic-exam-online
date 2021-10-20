@@ -31,7 +31,7 @@
     <Button
         android:id="@+id/btn_language"
         style="@style/edt_setting"
-        android:drawableLeft="@mipmap/ic_phone_foreground"
+        android:drawableLeft="@mipmap/ic_ngonngu_foreground"
         android:text="Ngôn ngữ ứng dụng"/>
     <Button
         android:id="@+id/btn_tutorial"
