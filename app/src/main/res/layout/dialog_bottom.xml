@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@drawable/dialog_bg">
+
+    <TextView
+        android:id="@+id/choosetxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Choose suitable a way to contact us"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="17dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp">
+
+            <Button
+                style="@style/dialog_bottom"
+                android:background="@drawable/dialog_bg"
+                android:drawableLeft="@android:drawable/ic_dialog_email"
+                android:text="Email"
+                />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp">
+
+
+            <Button
+                style="@style/dialog_bottom"
+                android:background="@drawable/dialog_bg"
+                android:drawableLeft="@android:drawable/ic_menu_help"
+                android:drawablePadding="6dp"
+                android:text="Messenger" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

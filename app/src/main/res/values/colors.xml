@@ -3,5 +3,6 @@
     <color name="colorPrimary">#50C3CA</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-
+    <color name="white">#FFFFFFFF</color>
+    <color name="dialog_text">#37966f</color>
 </resources>
