@@ -15,7 +15,7 @@ public class setting_user extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.setting_user);
         //Rule
         Button rule = findViewById(R.id.btn_rule);
         rule.setOnClickListener(new View.OnClickListener() {
@@ -36,13 +36,13 @@ public class setting_user extends AppCompatActivity {
         });
 
         //Feedback
-//        Button feedback = findViewById(R.id.btn_feedback);
-//        feedback.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(setting_user.this, tutorial_user.class);
-//                startActivity(intent);
-//            }
-//        });
+        Button feedback = findViewById(R.id.btn_feedback);
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(setting_user.this, feedback_user.class);
+                startActivity(intent);
+            }
+        });
     }
 }

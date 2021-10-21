@@ -10,6 +10,9 @@ import android.widget.Button;
 
 import com.example.user.ui.login.Begin_user;
 import com.example.user.ui.login.Login_user;
+import com.example.user.ui.setting.achievement_user;
+import com.example.user.ui.setting.feedback_user;
+import com.example.user.ui.setting.setting_user;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,16 +21,32 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-        setContentView(R.layout.begin_user);
+        setContentView(R.layout.setting_user);
 
-        Button btn_login = findViewById(R.id.btn_batdau);
-
-        btn_login.setOnClickListener(new View.OnClickListener() {
+//        Button btn_login = findViewById(R.id.btn_batdau);
+//
+//        btn_login.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, Login_user.class);
+//                startActivity(intent);
+//
+//            }
+//        });
+        Button achie = findViewById(R.id.btn_achievement);
+        achie.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Login_user.class);
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, achievement_user.class);
                 startActivity(intent);
-
+            }
+        });
+        Button feedback = findViewById(R.id.btn_feedback);
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, feedback_user.class);
+                startActivity(intent);
             }
         });
     }
