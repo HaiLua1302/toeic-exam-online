@@ -40,18 +40,18 @@
         android:inputType="textPersonName"/>
 
     <EditText
-        android:id="@+id/edt_phone_reg"
+        android:id="@+id/edt_email_reg"
         android:background="@drawable/rounded_edittext"
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:paddingLeft="-30dp"
         android:textSize="20dp"
-        android:drawableLeft="@mipmap/ic_phone_foreground"
-        android:hint="Nhập số điện thoại"
+        android:drawableLeft="@mipmap/ic_email_foreground"
+        android:hint="Nhập email"
         android:layout_gravity="center"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/edt_pass_reg"
