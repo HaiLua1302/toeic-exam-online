@@ -11,4 +11,72 @@
         <item name="android:textColor">#3498db</item>
         <item name="android:background">@drawable/hyperlink_underline</item>
     </style>
+
+    <style name="Btnbatdau">
+        <item name="android:textColor">#F9FDFE</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:background">@drawable/mybtn2</item>
+    </style>
+
+    <style name="txtMaDe">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="txtdapan">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="txt_desc">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="mybtn2">
+        <item name="android:textColor">#f8f9fb</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+    <style name="edt_setting">
+        <item name="android:background">@drawable/round_edt</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:paddingLeft">-20dp</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:paddingRight">50dp</item>
+        <item name="android:focusable">false</item>
+        <item name="android:gravity">center</item>
+        <item name="android:ems">10</item>
+    </style>
+
+    <style name="user_detail">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:textSize">22dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

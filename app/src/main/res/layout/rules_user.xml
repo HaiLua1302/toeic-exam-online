@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/round_edt"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_rule"
+            style="@style/txtMaDe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Chính sách bảo mật thông tin cá nhân"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="@drawable/mybutton"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_rules_detail"
+            style="@style/txtMaDe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Beginning on March 7, the ------- inspections will be conducted between
+the hours of 9 a.m. and 5 p.m. for all suites located on floors 9 to 18. The remaining floors will
+be visited during the same hours on the week of March 14. Accordingly, the workers will need
+to ------- all units in the bui"/>
+    </LinearLayout>
+</LinearLayout>

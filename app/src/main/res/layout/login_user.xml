@@ -2,14 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center"
+    android:background="@drawable/background_app"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <ImageView
         android:id="@+id/imageView3"
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         android:src="@drawable/login_icon" />
 
     <TextView
@@ -17,23 +20,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Toeic Exam"
-        android:layout_marginTop="-30dp"
+        android:layout_marginTop="10dp"
         android:layout_gravity="center"
         android:textColor="#03DAC5"
-        android:textSize="18sp"
+        android:textSize="20dp"
         android:textStyle="bold" />
     <EditText
-        android:id="@+id/edt_phone"
+        android:id="@+id/edt_email"
         android:background="@drawable/rounded_edittext"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:textSize="20dp"
-        android:drawableLeft="@mipmap/ic_pass_foreground"
-        android:hint="Nhập số điện thoại"
-        android:inputType="phone"
+        android:drawableLeft="@mipmap/ic_phone_foreground"
+        android:hint="Nhập email"
+        android:layout_gravity="center"
+        android:inputType="textEmailAddress"
         android:paddingLeft="-30dip"
-        android:layout_gravity="center"/>
+        />
 
     <EditText
         android:id="@+id/edt_pass_login"
