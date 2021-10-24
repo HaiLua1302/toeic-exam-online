@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.user.R;
 
@@ -21,6 +22,7 @@ public class rule_user extends AppCompatActivity {
         rule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(rule_user.this, "rule user test", Toast.LENGTH_SHORT).show();
             }
         });
     }

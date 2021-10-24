@@ -20,7 +20,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:background="@drawable/mybutton">
 
         <LinearLayout
             android:id="@+id/layoutFbackEmail"
@@ -51,17 +52,12 @@
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp">
 
-
             <Button
                 style="@style/dialog_bottom"
                 android:background="@drawable/dialog_bg"
                 android:drawableLeft="@android:drawable/ic_menu_help"
                 android:drawablePadding="6dp"
                 android:text="Messenger" />
-
-
         </LinearLayout>
-
-
     </LinearLayout>
 </LinearLayout>

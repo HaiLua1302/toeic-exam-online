@@ -30,7 +30,6 @@ public class feedback_user extends AppCompatActivity {
             }
         });
     }
-
     public void showDialog() {
 
         Dialog dialog = new Dialog(this);
@@ -43,15 +42,15 @@ public class feedback_user extends AppCompatActivity {
         layoutFbackEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.dismiss();
                 Toast.makeText(feedback_user.this, "Email is Clicked", Toast.LENGTH_LONG).show();
+                dialog.dismiss();
             }
         });
         layoutFbackMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.dismiss();
                 Toast.makeText(feedback_user.this, "Mail is Clicked", Toast.LENGTH_LONG).show();
+                dialog.dismiss();
             }
         });
 

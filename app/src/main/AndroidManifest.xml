@@ -21,7 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.setting.tutorial_user" />
         <activity android:name=".ui.setting.achievement_user" />
+        <activity android:name=".ui.setting.feedback_user" />
+        <activity android:name=".ui.setting.changelayout_user" />
     </application>
 
 </manifest>
