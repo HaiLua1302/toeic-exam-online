@@ -81,5 +81,30 @@ to ------- all units in the building." />
 the hours of 9 a.m. and 5 p.m. for all suites located on floors 9 to 18. The remaining floors will
 be visited during the same hours on the week of March 14. Accordingly, the workers will need
 to ------- all units in the building." />
-    </LinearLayout>
+
+
+                <!--     Button Skip       -->
+<!--        <LinearLayout android:layout_height="wrap_content"-->
+<!--            android:layout_width="match_parent" android:id="@+id/footer_tutorial"-->
+<!--            android:paddingTop="2dp">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/textView1"-->
+<!--                android:layout_width="314dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text=" " />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btn_skip"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:background="@drawable/mybtn2"-->
+<!--                android:text="Skip"-->
+<!--                android:textColor="#FFF"-->
+<!--                android:textSize="15dp"-->
+<!--                android:textStyle="bold" />-->
+<!--        </LinearLayout>-->
+
 </LinearLayout>

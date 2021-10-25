@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,11 +22,18 @@ public class Forgot_pass_user extends AppCompatActivity {
     private Button userPass;
 
     private FirebaseAuth mAuth;
+
+
+import com.example.user.R;
+
+public class Forgot_pass_user extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.set_pass_again);
         getSupportActionBar().setTitle("Đặt lại mật khẩu");
+
 
         userMail = findViewById(R.id.edt_email_otp);
         userPass = findViewById(R.id.btnGui);

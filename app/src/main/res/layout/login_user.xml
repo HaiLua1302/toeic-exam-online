@@ -33,9 +33,15 @@
         android:layout_marginTop="16dp"
         android:textSize="20dp"
         android:drawableLeft="@mipmap/ic_phone_foreground"
+
         android:hint="Nhập email"
         android:layout_gravity="center"
         android:inputType="textEmailAddress"
+
+        android:hint="Nhập số điện thoại"
+        android:layout_gravity="center"
+        android:inputType="phone"
+
         android:paddingLeft="-30dip"
         />
 
