@@ -82,6 +82,7 @@ the hours of 9 a.m. and 5 p.m. for all suites located on floors 9 to 18. The rem
 be visited during the same hours on the week of March 14. Accordingly, the workers will need
 to ------- all units in the building." />
 
+
                 <!--     Button Skip       -->
 <!--        <LinearLayout android:layout_height="wrap_content"-->
 <!--            android:layout_width="match_parent" android:id="@+id/footer_tutorial"-->
@@ -105,5 +106,5 @@ to ------- all units in the building." />
 <!--                android:textSize="15dp"-->
 <!--                android:textStyle="bold" />-->
 <!--        </LinearLayout>-->
-    </LinearLayout>
+
 </LinearLayout>
