@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.user.ui.login.Begin_user;
 import com.example.user.ui.login.Login_user;
@@ -14,6 +15,8 @@ import com.example.user.ui.setting.achievement_user;
 import com.example.user.ui.setting.changelanguage_user;
 import com.example.user.ui.setting.changelayout_user;
 import com.example.user.ui.setting.feedback_user;
+import com.example.user.ui.setting.information_user;
+import com.example.user.ui.setting.rule_user;
 import com.example.user.ui.setting.setting_user;
 import com.example.user.ui.setting.tutorial_user;
 
@@ -68,12 +71,20 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Button changelanguage = findViewById(R.id.btn_language);
-        changelanguage.setOnClickListener(new View.OnClickListener() {
+        Button changeLanguage = findViewById(R.id.btn_language);
+        changeLanguage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, changelanguage_user.class);
-                startActivity(intent);
+                startActivity(new Intent(MainActivity.this, changelanguage_user.class));
+                finish();
+            }
+        });
+        Button rule = findViewById(R.id.btn_rule);
+        rule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, rule_user.class));
+                finish();
             }
         });
     }

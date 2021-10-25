@@ -50,8 +50,5 @@
             android:buttonTint="@color/colorPrimary"
             android:text="VietNamese"
             android:textSize="18sp" />
-
-
-
     </RadioGroup>
 </LinearLayout>
