@@ -79,6 +79,7 @@
         <item name="android:textSize">22dp</item>
         <item name="android:textStyle">bold</item>
     </style>
+
         <!--style for dialog bottom-->
     <style name="dialog_bottom">
         <item name = "android:layout_width">wrap_content</item>
@@ -95,4 +96,5 @@
         <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
         <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
     </style>
+
 </resources>
