@@ -24,10 +24,6 @@ public class Forgot_pass_user extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
 
-import com.example.user.R;
-
-public class Forgot_pass_user extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

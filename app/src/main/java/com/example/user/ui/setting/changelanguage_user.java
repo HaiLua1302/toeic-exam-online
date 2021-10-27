@@ -34,7 +34,6 @@ public class changelanguage_user extends AppCompatActivity {
         language.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                show();
             }
         });
     }
@@ -45,21 +44,4 @@ public class changelanguage_user extends AppCompatActivity {
 //        CheckBox eng = alert.findViewById(R.id.btn_language);
 //    }
 
-    public void show() {
-        Dialog dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_changelanguage);
-
-        RadioGroup rdGr = findViewById(R.id.groupLanguage);
-        RadioButton rdBtnLanguageE = findViewById(R.id.radioLanguageE);
-        RadioButton rdBtnLanguageV = findViewById(R.id.radioLanguageV);
-        if (rdGr == null) {
-            Toast.makeText(changelanguage_user.this, "null", Toast.LENGTH_SHORT).show();
-        } else {
-        }
-            dialog.show();
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-            dialog.getWindow().setGravity(Gravity.CENTER);
-    }
 }

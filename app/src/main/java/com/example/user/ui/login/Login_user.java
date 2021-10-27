@@ -24,6 +24,7 @@ import com.example.user.MainActivity;
 import com.example.user.R;
 import com.example.user.ui.home.Main_home;
 
+import com.example.user.ui.setting.setting_user;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -31,13 +32,11 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Login_user extends AppCompatActivity {
     private Button editLogin;
-    private EditText editEmail,editPass;
+    private EditText editEmail, editPass;
 
-import com.google.firebase.auth.FirebaseAuth;
-
-public class Login_user extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,36 +88,32 @@ public class Login_user extends AppCompatActivity {
             }
         });
     }
+
     private void login() {
-        String email,pass;
-        email=editEmail.getText().toString();
-        pass=editPass.getText().toString();
-        if(TextUtils.isEmpty(email)){
-            Toast.makeText(this,"Vui long nhập email !",Toast.LENGTH_SHORT).show();
+        String email, pass;
+        email = editEmail.getText().toString();
+        pass = editPass.getText().toString();
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(this, "Vui long nhập email !", Toast.LENGTH_SHORT).show();
             return;
         }
-        if(TextUtils.isEmpty(pass)){
-            Toast.makeText(this,"Vui lòng nhập password !",Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(pass)) {
+            Toast.makeText(this, "Vui lòng nhập password !", Toast.LENGTH_SHORT).show();
             return;
         }
-        mAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(getApplicationContext(),"Đăng nhập thành công !",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Login_user.this, Main_home.class);
+                if (task.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "Đăng nhập thành công !", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Login_user.this, setting_user.class); //change here
                     startActivity(intent);
-                }else {
-                    Toast.makeText(getApplicationContext(),"Đăng nhập thất bại ! ", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Đăng nhập thất bại ! ", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
 
-            }
-        });
-
-
     }
-
 }

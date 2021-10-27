@@ -106,5 +106,5 @@ to ------- all units in the building." />
 <!--                android:textSize="15dp"-->
 <!--                android:textStyle="bold" />-->
 <!--        </LinearLayout>-->
-
+    </LinearLayout>
 </LinearLayout>

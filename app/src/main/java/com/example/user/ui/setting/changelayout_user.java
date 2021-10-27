@@ -27,85 +27,18 @@ import androidx.appcompat.app.AppCompatDelegate;
 import static com.example.user.R.color.cardview_dark_background;
 
 public class changelayout_user extends AppCompatActivity {
-    public String selected;
-    private int checkedItem;
-    private String CHECKEDITEM ="checked_item";
-    private  SharedPreferences sharedPreferences;
-    private  SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_user);
-        sharedPreferences = this.getSharedPreferences("themes",Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
-        switch (getCheckedItem()){
-            case 0:
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-                break;
-            case 1:
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                break;
-        }
-        setCheckedItem(checkedItem);
+
         Button theme = findViewById(R.id.btn_theme);
         theme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog();
             }
         });
-    }
-
-
-
-
-
-    public void showDialog(){
-        final String[] themes = this.getResources().getStringArray(R.array.theme);
-        AlertDialog.Builder builder =new AlertDialog.Builder(changelayout_user.this);
-        builder.setTitle("Choose language");
-        builder.setSingleChoiceItems(themes, 0, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                selected = themes[i];
-                checkedItem = i;
-                Toast.makeText(changelayout_user.this,"clicked"+selected,Toast.LENGTH_LONG).show();
-            }
-        });
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if(selected == null){
-                    selected = themes[i];
-                    checkedItem = i;
-                }else{
-                    switch (selected){
-                        case "Default":
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-                            break;
-                        case "Dark":
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                            break;
-                    }
-                    setCheckedItem(checkedItem);
-                }
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        });
-
-        builder.show();
-    }
-    private int getCheckedItem(){
-        return sharedPreferences.getInt(CHECKEDITEM,0);
-    }
-    private void setCheckedItem(int i){
-        editor.putInt(CHECKEDITEM,i);
-        editor.apply();
     }
     public void show() {
         Dialog dialog = new Dialog(this);

@@ -10,13 +10,6 @@ public class cls_user_info {
     private String mail_user;
     private String avata_user;
 
-    public int id_user;
-    public String name_user;
-    public int dob_user;
-    public int numberP_user;
-    public String pass_user;
-    public String mail_user;
-    public String avata_user;
 
     public cls_user_info() {
         super();

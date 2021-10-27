@@ -37,11 +37,6 @@
         android:hint="Nhập email"
         android:layout_gravity="center"
         android:inputType="textEmailAddress"
-
-        android:hint="Nhập số điện thoại"
-        android:layout_gravity="center"
-        android:inputType="phone"
-
         android:paddingLeft="-30dip"
         />
 
