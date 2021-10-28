@@ -9,8 +9,8 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Paint;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Process;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -30,7 +30,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.FirebaseDatabase;
+
+import okhttp3.Cache;
 
 public class Register_user extends AppCompatActivity {
 
@@ -222,32 +225,48 @@ public class Register_user extends AppCompatActivity {
             ckb_rules.requestFocus();
             return;
         }
+
         process_loading.setVisibility(View.VISIBLE);
-        mAuth.createUserWithEmailAndPassword(emailUser, passUser).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.fetchSignInMethodsForEmail(emailUser).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    cls_user_info clsUserInfo = new cls_user_info(1, userName, 1998, 0123123, passUser, emailUser, "a");
-                    FirebaseDatabase.getInstance().getReference("user").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                            .setValue(userName).addOnCompleteListener(new OnCompleteListener<Void>() {
+            public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+                boolean check = !task.getResult().getSignInMethods().isEmpty();
+                if(check){
+                    process_loading.setVisibility(View.INVISIBLE);
+                    Toast.makeText(Register_user.this, "Email đã tồn tại!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                else {
+                    mAuth.createUserWithEmailAndPassword(emailUser, passUser).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onComplete(@NonNull Task<Void> task) {
+                        public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                process_loading.setVisibility(View.INVISIBLE);
-                                Toast.makeText(Register_user.this, "Đăng ký thành công!", Toast.LENGTH_LONG).show();
-                                ViewDialog alert = new ViewDialog();
-                                alert.showDialog(Register_user.this, "Đăng kí thành công!");
+                                cls_user_info clsUserInfo = new cls_user_info(1, userName,0, 0, passUser, emailUser,"");
+                                FirebaseDatabase.getInstance().getReference("user").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                        .setValue(userName).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            process_loading.setVisibility(View.INVISIBLE);
+                                            Toast.makeText(Register_user.this, "Đăng ký thành công!", Toast.LENGTH_LONG).show();
+                                            ViewDialog alert = new ViewDialog();
+                                            alert.showDialog(Register_user.this, "Đăng kí thành công!");
+                                        } else {
+                                            process_loading.setVisibility(View.INVISIBLE);
+                                            Toast.makeText(Register_user.this, "Đăng ký thất bại! Vui lòng thử lại !", Toast.LENGTH_LONG).show();
+                                        }
+                                    }
+                                });
                             } else {
                                 process_loading.setVisibility(View.INVISIBLE);
-                                Toast.makeText(Register_user.this, "Đăng ký thất bại! Vui lòng thử lại", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Register_user.this, "Đăng ký thất bại! Vui lòng kiểm tra lại !", Toast.LENGTH_LONG).show();
                             }
                         }
                     });
-                } else {
-                    process_loading.setVisibility(View.INVISIBLE);
-                    Toast.makeText(Register_user.this, "Đăng ký thất bại! Vui lòng kiểm tra lại Email", Toast.LENGTH_LONG).show();
                 }
             }
         });
+
+
     }
 }

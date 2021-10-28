@@ -4,12 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.user.R;
@@ -18,8 +21,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Forgot_pass_user extends AppCompatActivity {
-    private EditText userMail;
-    private Button userPass;
+    public EditText user_Mail;
+    public ProgressBar process_loading;
+    private Button btn_sendRequest;
     private FirebaseAuth mAuth;
 
     @Override
@@ -29,20 +33,24 @@ public class Forgot_pass_user extends AppCompatActivity {
         getSupportActionBar().setTitle("Đặt lại mật khẩu");
 
 
-        userMail = findViewById(R.id.edt_email_otp);
-        userPass = findViewById(R.id.btnGui);
-
+        user_Mail = findViewById(R.id.edt_email_otp);
+        btn_sendRequest = findViewById(R.id.btnGui);
+        process_loading = findViewById(R.id.progressBar_loading_repair_pass);
+        process_loading.setVisibility(View.INVISIBLE);
         mAuth = FirebaseAuth.getInstance();
 
-        userPass.setOnClickListener(new View.OnClickListener() {
+        btn_sendRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mAuth.sendPasswordResetEmail(userMail.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                process_loading.setVisibility(View.VISIBLE);
+                mAuth.sendPasswordResetEmail(user_Mail.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(Forgot_pass_user.this,
-                                    "Mật khẩu gửi đến email của bạn !",Toast.LENGTH_LONG).show();
+                            process_loading.setVisibility(View.INVISIBLE);
+                            Toast.makeText(Forgot_pass_user.this,"Truy cập Email của bạn để đổi mật khẩu !",Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(Forgot_pass_user.this, Login_user.class);
+                            startActivity(intent);
                         }else {
                             Toast.makeText(Forgot_pass_user.this,task.getException().getMessage(),Toast.LENGTH_LONG).show();
                         }
@@ -71,5 +79,21 @@ public class Forgot_pass_user extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    //check send request mail
+    public void send_request(){
+        String email = user_Mail.getText().toString().trim();
+        if (email.isEmpty()) {
+            user_Mail.setError("Email không được để trống!");
+            user_Mail.requestFocus();
+            return;
+        }
+
+        else if (!email.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")) {
+            user_Mail.setError("Email không hợp lệ!");
+            user_Mail.requestFocus();
+            return;
+        }
     }
 }
