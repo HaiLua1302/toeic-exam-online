@@ -17,7 +17,7 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hãy nhập SDT đăng ký tài khoản \n để được đặt lại mật khẩu"
+        android:text="Hãy nhập Email đăng ký tài khoản \n để được đặt lại mật khẩu"
         android:layout_marginTop="5dp"
         android:textAlignment="center"
         android:textColor="#7B7B7D"
@@ -41,9 +41,6 @@
 
         android:hint="Nhập email"
         android:inputType="textEmailAddress"
-
-        android:hint="Nhập số điện thoại"
-        android:inputType="phone"
 
         android:paddingLeft="-30dip"
         android:layout_gravity="center" />

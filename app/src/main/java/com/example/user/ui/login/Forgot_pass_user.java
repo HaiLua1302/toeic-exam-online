@@ -20,13 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Forgot_pass_user extends AppCompatActivity {
     private EditText userMail;
     private Button userPass;
-
     private FirebaseAuth mAuth;
-
-
-import com.example.user.R;
-
-public class Forgot_pass_user extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
