@@ -26,13 +26,22 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txt_rules_detail"
+            android:id="@+id/txt_rules_detail_copyright"
             style="@style/txtMaDe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Beginning on March 7, the ------- inspections will be conducted between
-the hours of 9 a.m. and 5 p.m. for all suites located on floors 9 to 18. The remaining floors will
-be visited during the same hours on the week of March 14. Accordingly, the workers will need
-to ------- all units in the bui"/>
+            android:text="@string/copyright_info"/>
+        <TextView
+            android:id="@+id/txt_rules_detail_privacy"
+            style="@style/txtMaDe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy"/>
+        <TextView
+            android:id="@+id/txt_rules_detail_contact"
+            style="@style/txtMaDe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/contact_info"/>
     </LinearLayout>
 </LinearLayout>

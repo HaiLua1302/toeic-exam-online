@@ -1,10 +1,13 @@
 package com.example.user.ui.setting;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.example.user.R;
 import com.github.mikephil.charting.charts.BarChart;
@@ -22,9 +25,15 @@ public class achievement_user extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Achievement");
+
+        //customsize
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_24);
+
+        // showing the back button in action bar
+        actionBar.setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.achievement_user);
-
-
         mBarChart = (BarChart) findViewById(R.id.btn_achievement);
 
         ArrayList<BarEntry> visitor = new ArrayList<>();
@@ -59,5 +68,13 @@ public class achievement_user extends AppCompatActivity {
         mBarChart.getDescription().setText("Toeic Achievement Weekly");
         mBarChart.animateY(2000);
 
+    }
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

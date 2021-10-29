@@ -131,7 +131,10 @@ public class Register_user extends AppCompatActivity {
         String emailUser = email_user.getText().toString().trim();
         String passUser = pass_user.getText().toString().trim();
         String passAgainUser = check_pass_again.getText().toString().trim();
-
+        String dobUser = "";
+        String phoneUser = "";
+        String avaUser = "";
+        String idUser = "";
         if (userName.isEmpty())
         {
             user_name.setError("Tên người dùng không được để trống!");
@@ -167,9 +170,9 @@ public class Register_user extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    cls_user_info clsUserInfo = new cls_user_info(1,userName,1998,0123123,passUser,emailUser,"a");
-                    FirebaseDatabase.getInstance().getReference("user").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                            .setValue(userName).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    cls_user_info clsUserInfo = new cls_user_info(idUser,userName,dobUser,phoneUser,passUser,emailUser,avaUser);
+                    FirebaseDatabase.getInstance().getReference("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .setValue(clsUserInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){

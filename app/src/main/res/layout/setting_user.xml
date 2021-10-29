@@ -13,7 +13,7 @@
         android:background="@drawable/infor_user"
         android:layout_margin="10dp"
         android:gravity="center">
-        <ImageButton
+        <ImageView
             android:id="@+id/img_avata_user"
             android:layout_width="110dp"
             android:layout_height="110dp"
@@ -26,44 +26,43 @@
             android:gravity="center"
             android:textSize="30dp"
             android:textColor="#EEF1EE"
-            android:textStyle="bold"
-            android:text="Xin chào ! Hai Lúa"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <Button
         android:id="@+id/btn_language"
         style="@style/edt_setting"
         android:drawableLeft="@mipmap/ic_ngonngu_foreground"
-        android:text="Ngôn ngữ ứng dụng"/>
+        android:text="@string/langauge"/>
     <Button
         android:id="@+id/btn_tutorial"
         style="@style/edt_setting"
         android:drawableLeft="@mipmap/ic_phone_foreground"
-        android:text="Hướng dẫn sử dụng"/>
+        android:text="@string/tutorial"/>
     <Button
         android:id="@+id/btn_theme"
         style="@style/edt_setting"
         android:drawableLeft="@mipmap/ic_phone_foreground"
-        android:text="Giao diện"/>
+        android:text="@string/layout"/>
     <Button
         android:id="@+id/btn_rule"
         style="@style/edt_setting"
         android:drawableLeft="@mipmap/ic_phone_foreground"
-        android:text="Điều khoản ứng dụng"/>
+        android:text="@string/rules"/>
     <Button
         android:id="@+id/btn_achievement"
         style="@style/edt_setting"
         android:drawableLeft="@mipmap/ic_phone_foreground"
-        android:text="Thành tích"/>
+        android:text="@string/achievement"/>
     <Button
         android:id="@+id/btn_feedback"
         style="@style/edt_setting"
         android:drawableLeft="@mipmap/ic_phone_foreground"
-        android:text="Phản hồi"/>
+        android:text="@string/feedback"/>
     <Button
         android:id="@+id/btn_version"
         style="@style/edt_setting"
         android:drawableLeft="@mipmap/ic_phone_foreground"
-        android:text="Phiên bản v1.0"/>
+        android:text="@string/version"/>
 
 </LinearLayout>

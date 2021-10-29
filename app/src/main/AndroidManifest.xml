@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    //permission for pick an image library
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -34,6 +36,8 @@
         <activity android:name=".ui.setting.rule_user" />
         <activity android:name=".ui.setting.achievement_user" />
         <activity android:name=".ui.setting.feedback_user" />
+        <activity android:name=".ui.setting.information_user"/>
+        <activity android:name=".ui.setting.update_information_user"/>
 
     </application>
 

@@ -3,8 +3,34 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="langauge">NGÔN NGỮ ỨNG DỤNG</string>
+    <string name="tutorial">HƯỚNG DẪN SỬ DỤNG</string>
+    <string name="layout">GIAO DIỆN</string>
+    <string name="rules">ĐIỀU KHOẢN ỨNG DỤNG</string>
+    <string name="achievement">THÀNH TÍCH</string>
+    <string name="feedback">PHẢN HỒI</string>
+    <string name="version">PHIÊN BẢN V1.0</string>
+
+
+    //for user detail
+    <string name="nullInfoDOB">Nam sinh:</string>
+    <string name="nullInfoPhone">Phone:</string>
+    <string name="nameUser">Ten:</string>
+    <string name="emailUser">Email:</string>
+    <string name="changeImage">Thay đổi ảnh</string>
+    <string name="update">Sửa</string>
+    <string name="logout">Đăng xuất</string>
+    <string name="copyright_info"></string>
+
+    //for rules
+    <string name="privacy_policy"></string>
+    <string name="contact_info"></string>
+
+    //fore themes
     <string-array name="theme">
         <item>Default</item>
         <item>Dark</item>
     </string-array>
+
+
 </resources>

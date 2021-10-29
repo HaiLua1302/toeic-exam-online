@@ -24,15 +24,20 @@ import com.example.user.ui.setting.information_user;
 import com.example.user.ui.setting.rule_user;
 import com.example.user.ui.setting.setting_user;
 import com.example.user.ui.setting.tutorial_user;
+import com.example.user.ui.setting.update_information_user;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
 
         setContentView(R.layout.begin_user);
 
@@ -41,56 +46,17 @@ public class MainActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Login_user.class);
-                startActivity(intent);
+                isLogged();
             }
         });
-//        setContentView(R.layout.setting_user);
-//        Button achie = findViewById(R.id.btn_achievement);
-//        achie.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, achievement_user.class);
-//                startActivity(intent);
-//            }
-//        });
-//        Button feedback = findViewById(R.id.btn_feedback);
-//        feedback.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, feedback_user.class);
-//                startActivity(intent);
-//            }
-//        });
-//        Button tutorial = findViewById(R.id.btn_tutorial);
-//        tutorial.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, tutorial_user.class);
-//                startActivity(intent);
-//            }
-//        });
-//        Button changelayout = findViewById(R.id.btn_theme);
-//        changelayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, changelayout_user.class);
-//                startActivity(intent);
-//            }
-//        });
-//        Button changeLanguage = findViewById(R.id.btn_language);
-//        changeLanguage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(MainActivity.this, changelanguage_user.class));
-//            }
-//        });
-//        Button rule = findViewById(R.id.btn_rule);
-//        rule.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(MainActivity.this, rule_user.class));
-//            }
-//        });
+    }
+    private void isLogged(){
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user == null){
+            startActivity(new Intent(MainActivity.this, Login_user.class));
+        }
+        else{
+            startActivity(new Intent(MainActivity.this, setting_user.class));
+        }
     }
 }
