@@ -31,6 +31,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.SignInMethodQueryResult;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import okhttp3.Cache;
@@ -42,12 +43,25 @@ public class Register_user extends AppCompatActivity {
     public Button register;
     public CheckBox ckb_rules;
     public ProgressBar process_loading;
-
+    //our database reference object
+    DatabaseReference databases_user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_user);
         getSupportActionBar().setTitle("Đăng ký tài khoản");
+
+        //getting the reference of artists node
+        databases_user = FirebaseDatabase.getInstance().getReference("User");
+
+        // calling the action bar
+        ActionBar actionBar = getSupportActionBar();
+
+        // Customize the back button
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_24);
+
+        // showing the back button in action bar
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -92,14 +106,7 @@ public class Register_user extends AppCompatActivity {
             }
         });
 
-        // calling the action bar
-        ActionBar actionBar = getSupportActionBar();
 
-        // Customize the back button
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_24);
-
-        // showing the back button in action bar
-        actionBar.setDisplayHomeAsUpEnabled(true);
 
         //event btn register
         register = findViewById(R.id.btn_reg);
@@ -177,7 +184,7 @@ public class Register_user extends AppCompatActivity {
         String emailUser = email_user.getText().toString().trim();
         String passUser = pass_user.getText().toString().trim();
         String passAgainUser = check_pass_again.getText().toString().trim();
-
+        String idUser = databases_user.push().getKey();
 
         if (userName.isEmpty()) {
             user_name.setError("Tên người dùng không được để trống!");
@@ -241,9 +248,9 @@ public class Register_user extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                cls_user_info clsUserInfo = new cls_user_info(1, userName,0, 0, passUser, emailUser,"");
-                                FirebaseDatabase.getInstance().getReference("user").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                        .setValue(userName).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+                                cls_user_info clsUserInfo = new cls_user_info(idUser, userName,0, 0, passUser, emailUser,"");
+                                databases_user.child(idUser).setValue(clsUserInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {

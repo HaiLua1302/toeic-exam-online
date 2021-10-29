@@ -12,13 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.home.Main_home"></activity>
+        <activity android:name=".ui.admin.add_ques_p1"></activity>
+        <activity android:name=".ui.exam.exam_part_1" />
+        <activity android:name=".ui.home.Main_home" />
         <activity android:name=".ui.login.Register_user" />
         <activity android:name=".ui.login.Begin_user" />
         <activity android:name=".ui.login.Forgot_pass_user" />
-        <activity android:name=".ui.login.Login_user" />
-
-        <!-- activity for setting -->
+        <activity android:name=".ui.login.Login_user" /> <!-- activity for setting -->
         <activity android:name=".ui.setting.Changelanguage_user" />
         <activity android:name=".ui.setting.Tutorial_user" />
         <activity android:name=".ui.setting.Changelayout_user" />

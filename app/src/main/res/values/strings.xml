@@ -17,4 +17,9 @@
         Các khách hàng sẽ tự chịu trách nhiệm về bảo mật và lưu giữ mọi hoạt động sử dụng dịch vụ y tế dưới tên đăng ký, mật khẩu của mình.
         Ngoài ra, khách hàng có trách nhiệm thông báo kịp thời về App về những hành vi sử dụng trái phép, lạm dụng, vi phạm bảo mật,
         lưu giữ tên đăng ký và mật khẩu của bên thứ ba để có biện pháp giải quyết phù hợp.</string>
+
+    //navagation bar bottom
+    <string name="title_exam">Exam</string>
+    <string name="title_home_bar">home</string>
+    <string name="title_setting">setting</string>
 </resources>

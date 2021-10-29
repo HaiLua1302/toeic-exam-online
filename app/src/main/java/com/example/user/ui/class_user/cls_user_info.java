@@ -2,7 +2,7 @@ package com.example.user.ui.class_user;
 
 public class cls_user_info {
 
-    private int id_user;
+    private String id_user;
     private String name_user;
     private int dob_user;
     private int numberP_user;
@@ -15,7 +15,7 @@ public class cls_user_info {
         super();
     }
 
-    public cls_user_info(int id_user, String name_user, int dob_user, int numberP_user, String pass_user, String mail_user, String avata_user) {
+    public cls_user_info(String id_user, String name_user, int dob_user, int numberP_user, String pass_user, String mail_user, String avata_user) {
         this.id_user = id_user;
         this.name_user = name_user;
         this.dob_user = dob_user;
@@ -25,11 +25,11 @@ public class cls_user_info {
         this.avata_user = avata_user;
     }
 
-    public int getId_user() {
+    public String getId_user() {
         return id_user;
     }
 
-    public void setId_user(int id_user) {
+    public void setId_user(String id_user) {
         this.id_user = id_user;
     }
 
