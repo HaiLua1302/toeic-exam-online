@@ -34,6 +34,7 @@ import org.xml.sax.Parser;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -53,7 +54,7 @@ public class add_ques_p1 extends AppCompatActivity {
     ImageView img_quest_p1;
 
 
-    //a list to store all the artist from firebase database
+    //a list to store all the Question from firebase database
     List<cls_part_1> clsQues_p1;
 
     //our database reference object
@@ -170,6 +171,9 @@ public class add_ques_p1 extends AppCompatActivity {
         if(filePath_IMG != null)
         {
             final ProgressDialog progressDialog = new ProgressDialog(this);
+            final ProgressDialog wait = new ProgressDialog(this);
+            wait.setTitle("Waiting...");
+
             progressDialog.setTitle("Uploading Image...");
             progressDialog.show();
 
@@ -178,44 +182,57 @@ public class add_ques_p1 extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            String url_IMG = String.valueOf(ref_IMG.getDownloadUrl()) ;
-                            progressDialog.dismiss();
+                            ref_IMG.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    String url_IMG = uri.toString();
+                                    progressDialog.dismiss();
+                                    wait.show();
+                                    //add audio
+                                    if(filePath_AUD != null) {
+                                        wait.dismiss();
+                                        progressDialog.setTitle("Uploading Audio...");
+                                        progressDialog.show();
+                                        StorageReference ref_AUD = storageReference.child("audio_exam/" + ID_Quest);
+                                        ref_AUD.putFile(filePath_AUD)
+                                                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                    @Override
+                                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                        //creating an question Object
+                                                        ref_AUD.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                                            @Override
+                                                            public void onSuccess(Uri uri_AUD) {
+                                                                String url_AUD = uri_AUD.toString();
 
-                            if(filePath_AUD != null) {
-                                progressDialog.setTitle("Uploading Audio...");
-                                progressDialog.show();
+                                                                cls_part_1 quest = new cls_part_1(ID_Quest, result_quest, url_IMG,url_AUD,"");
+                                                                //Saving the question
+                                                                databaseQuest_p1.child(ID_Quest).setValue(quest);
+                                                                progressDialog.dismiss();
+                                                                Toast.makeText(add_ques_p1.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        });
 
-                                StorageReference ref_AUD = storageReference.child("audio_exam/" + ID_Quest);
-                                ref_AUD.putFile(filePath_AUD)
-                                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                            @Override
-                                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                                //creating an question Object
-                                                String url_AUD = String.valueOf(ref_AUD.getDownloadUrl()) ;
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        progressDialog.dismiss();
+                                                        Toast.makeText(add_ques_p1.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                    }
+                                                })
+                                                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                                                    @Override
+                                                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                                                        double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
+                                                                .getTotalByteCount());
+                                                        progressDialog.setMessage("Uploaded " + (int) progress + "%");
+                                                    }
+                                                });
+                                    }
+                                }
+                            });
 
-                                                cls_part_1 quest = new cls_part_1(ID_Quest, result_quest, url_IMG,"","");
-                                                //Saving the question
-                                                databaseQuest_p1.child(ID_Quest).setValue(quest);
-                                                progressDialog.dismiss();
-                                                Toast.makeText(add_ques_p1.this, "Uploaded", Toast.LENGTH_SHORT).show();
-                                            }
-                                        })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                progressDialog.dismiss();
-                                                Toast.makeText(add_ques_p1.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                            }
-                                        })
-                                        .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                                            @Override
-                                            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                                                double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
-                                                        .getTotalByteCount());
-                                                progressDialog.setMessage("Uploaded " + (int) progress + "%");
-                                            }
-                                        });
-                            }
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -238,8 +255,7 @@ public class add_ques_p1 extends AppCompatActivity {
     };
 
     /*
-     * This method is saving a new artist to the
-     * Firebase Realtime Database
+     gettime current
      * */
     private String getTime(){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault());

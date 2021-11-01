@@ -8,6 +8,10 @@ public class cls_part_1 {
     String url_Audio;
     String note;
 
+    public cls_part_1() {
+
+    }
+
     public cls_part_1(String id_ques_1, String result, String url_IMG, String url_Audio, String note) {
         this.id_ques_1 = id_ques_1;
         this.result = result;

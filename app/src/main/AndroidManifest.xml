@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.admin.add_ques_p1"></activity>
+        <activity android:name=".ui.exam.slide_exam_p1"></activity>
+        <activity android:name=".ui.admin.add_ques_p1" />
         <activity android:name=".ui.exam.exam_part_1" />
         <activity android:name=".ui.home.Main_home" />
         <activity android:name=".ui.login.Register_user" />

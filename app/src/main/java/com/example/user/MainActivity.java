@@ -12,6 +12,8 @@ import android.widget.Button;
 import com.example.user.ui.admin.add_ques_p1;
 import com.example.user.ui.class_exam.cls_part_1;
 
+import com.example.user.ui.exam.exam_part_1;
+import com.example.user.ui.login.Login_user;
 import com.example.user.ui.login.Register_user;
 import com.google.firebase.database.DatabaseReference;
 
@@ -38,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, add_ques_p1.class);
+                Intent intent = new Intent(MainActivity.this, Login_user.class);
                 startActivity(intent);
             }
         });
