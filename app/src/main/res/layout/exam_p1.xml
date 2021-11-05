@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_app"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.exam.ScreenSlidePageFragment_P1">
+
 <ScrollView
     android:id="@+id/content_exam_1"
     android:layout_width="match_parent"
@@ -18,58 +20,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center"
-  >
+        android:gravity="center">
 
         <TextView
-            android:id="@+id/txt_NumPage"
+            android:id="@+id/txt_NumQuestion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Câu 1"
             style="@style/txt_desc"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/mybutton"
-            android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/img_play_1"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
-
-            <TextView
-                android:id="@+id/txt_time_play_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="1:03"
-                android:textSize="18dp" />
-
-            <SeekBar
-                android:id="@+id/skbar_audio_1"
-                android:layout_width="200dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_weight="1" />
-
-            <ImageView
-                android:id="@+id/img_replay_1"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/ic_baseline_replay_24" />
-        </LinearLayout>
 
         <ImageView
             android:id="@+id/img_p1"
@@ -80,7 +41,7 @@
             android:background="@drawable/mybutton"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:src="@drawable/re" />
+            android:src="@drawable/re"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,6 +56,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_weight="1"
                 android:background="@drawable/bnt_answer"
+                android:focusableInTouchMode="true"
                 android:text="A"
                 android:textSize="20dp" />
 
@@ -135,4 +97,4 @@
 </ScrollView>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

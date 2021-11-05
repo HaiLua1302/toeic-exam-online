@@ -11,7 +11,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txt_exam_1"
+            android:id="@+id/txt_nameExam"
             style="@style/txtMaDe"
             android:text="Đề 1" />
 
@@ -19,6 +19,9 @@
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/dashed_underline"
+            android:layout_marginRight="5dp"
+            android:paddingBottom="5dp"
             android:gravity="center"
             style="@style/txtMaDe"
             android:text="Thời gian : 120 phút | Câu hỏi : 200" />

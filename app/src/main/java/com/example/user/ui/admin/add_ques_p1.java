@@ -69,7 +69,7 @@ public class add_ques_p1 extends AppCompatActivity {
         setContentView(R.layout.admin_add_part_1);
 
         //getting the reference of question part 1 node
-        databaseQuest_p1 = FirebaseDatabase.getInstance().getReference("Ques_P1");
+        databaseQuest_p1 = FirebaseDatabase.getInstance().getReference().child("Ques_P1");
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
@@ -171,8 +171,7 @@ public class add_ques_p1 extends AppCompatActivity {
         if(filePath_IMG != null)
         {
             final ProgressDialog progressDialog = new ProgressDialog(this);
-            final ProgressDialog wait = new ProgressDialog(this);
-            wait.setTitle("Waiting...");
+            final ProgressDialog progressDialog_audio = new ProgressDialog(this);
 
             progressDialog.setTitle("Uploading Image...");
             progressDialog.show();
@@ -187,12 +186,10 @@ public class add_ques_p1 extends AppCompatActivity {
                                 public void onSuccess(Uri uri) {
                                     String url_IMG = uri.toString();
                                     progressDialog.dismiss();
-                                    wait.show();
                                     //add audio
                                     if(filePath_AUD != null) {
-                                        wait.dismiss();
-                                        progressDialog.setTitle("Uploading Audio...");
-                                        progressDialog.show();
+                                        progressDialog_audio.setTitle("Uploading Audio...");
+                                        progressDialog_audio.show();
                                         StorageReference ref_AUD = storageReference.child("audio_exam/" + ID_Quest);
                                         ref_AUD.putFile(filePath_AUD)
                                                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -204,14 +201,13 @@ public class add_ques_p1 extends AppCompatActivity {
                                                             public void onSuccess(Uri uri_AUD) {
                                                                 String url_AUD = uri_AUD.toString();
 
-                                                                cls_part_1 quest = new cls_part_1(ID_Quest, result_quest, url_IMG,url_AUD,"");
+                                                               //cls_part_1 quest = new cls_part_1("",ID_Quest, result_quest, url_IMG,url_AUD,"");
                                                                 //Saving the question
-                                                                databaseQuest_p1.child(ID_Quest).setValue(quest);
-                                                                progressDialog.dismiss();
+                                                               // databaseQuest_p1.child(ID_Quest).setValue(quest);
+                                                                progressDialog_audio.dismiss();
                                                                 Toast.makeText(add_ques_p1.this, "Uploaded", Toast.LENGTH_SHORT).show();
                                                             }
                                                         });
-
                                                     }
                                                 })
                                                 .addOnFailureListener(new OnFailureListener() {
@@ -230,6 +226,8 @@ public class add_ques_p1 extends AppCompatActivity {
                                                     }
                                                 });
                                     }
+                                   // else {cls_part_1 quest = new cls_part_1("",ID_Quest, result_quest, url_IMG,"","");
+                                   // databaseQuest_p1.child(ID_Quest).setValue(quest);}
                                 }
                             });
 

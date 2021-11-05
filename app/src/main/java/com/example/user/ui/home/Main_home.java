@@ -1,26 +1,24 @@
 package com.example.user.ui.home;
 
-import androidx.appcompat.app.ActionBar;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.user.MainActivity;
 import com.example.user.R;
-import com.example.user.ui.exam.exam_part_1;
-import com.example.user.ui.setting.Achievement_user;
-import com.example.user.ui.setting.Changelanguage_user;
-import com.example.user.ui.setting.Changelayout_user;
-import com.example.user.ui.setting.Feedback_user;
-import com.example.user.ui.setting.Rule_user;
-import com.example.user.ui.setting.Tutorial_user;
+import com.example.user.ui.exam.Exam_P1_Activity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Main_home extends AppCompatActivity {
+@SuppressWarnings("ALL")
+public class Main_home extends AppCompatActivity implements BottomNavigationView.OnNavigationItemReselectedListener{
 
     public Button exam_1;
+    private BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +29,39 @@ public class Main_home extends AppCompatActivity {
         exam_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Main_home.this, exam_part_1.class);
+                Intent intent = new Intent(Main_home.this, Exam_P1_Activity.class);
                 startActivity(intent);
             }
         });
+
+        bottomNavigationView = findViewById(R.id.navigation_bottom);
+        /*bottomNavigationView.setOnNavigationItemSelectedListener((BottomNavigationView.OnNavigationItemSelectedListener) Main_home.this);
+        bottomNavigationView.setSelectedItemId(R.id.home_bar);*/
+
+    }
+
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.exam_bar:
+
+            case R.id.home:
+                Intent intent = new Intent(Main_home.this, Main_home.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.setting_bar:
+        }
+        return false;
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
+    @Override
+    public void onNavigationItemReselected(@NonNull MenuItem item) {
+
     }
 }

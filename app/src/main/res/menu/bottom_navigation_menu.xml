@@ -4,11 +4,15 @@
     <item
         android:id="@+id/exam_bar"
         android:icon="@drawable/ic_baseline_play_arrow_24"
-        android:title="@string/title_exam" />
+        android:title="@string/title_exam"
+        android:state_checked="false"/>
 
     <item
         android:id="@+id/home_bar"
+        android:checkable="false"
+        android:checked="true"
         android:icon="@drawable/ic_baseline_home_24"
+        android:state_checked="true"
         android:title="@string/title_home" />
 
     <item
