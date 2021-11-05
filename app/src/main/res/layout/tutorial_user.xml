@@ -20,7 +20,7 @@
             android:textColor="#FFF"
             android:textStyle="bold"
             android:textSize="18dp"
-            android:text="Bước 1" />
+            android:text="@string/step_1" />
 
         <Button
             android:id="@+id/btn_step_2"
@@ -33,7 +33,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:textSize="18dp"
-            android:text="Bước 2" />
+            android:text="@string/step_2" />
 
         <Button
             android:id="@+id/btn_step_3"
@@ -44,7 +44,7 @@
             android:textColor="#FFF"
             android:textStyle="bold"
             android:textSize="18dp"
-            android:text="Bước 3" />
+            android:text="@string/step_3" />
     </LinearLayout>
 
     <LinearLayout

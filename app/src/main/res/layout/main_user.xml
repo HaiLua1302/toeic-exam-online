@@ -13,7 +13,7 @@
         android:textStyle="bold"
         android:textSize="16dp"
         android:layout_marginLeft="5dp"
-        android:text="Nghe Hiểu" />
+        android:text="@string/listening_practice" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,7 +46,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Mô tả hình ảnh" />
+                    android:text="@string/photographs" />
             </LinearLayout>
 
             <LinearLayout
@@ -69,7 +69,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="50dp"
                     android:gravity="center"
-                    android:text="Hỏi và Đáp" />
+                    android:text="@string/question_response" />
             </LinearLayout>
 
         </LinearLayout>
@@ -99,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Đoạn hội thoại" />
+                    android:text="@string/conversations" />
             </LinearLayout>
 
             <LinearLayout
@@ -122,7 +122,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="50dp"
                     android:gravity="center"
-                    android:text="Bài nói chuyện ngắn" />
+                    android:text="@string/short_talks" />
             </LinearLayout>
 
         </LinearLayout>
@@ -136,7 +136,7 @@
         android:textStyle="bold"
         android:textSize="16dp"
         android:layout_marginLeft="5dp"
-        android:text="Đọc Hiểu" />
+        android:text="@string/reading_practice" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -168,7 +168,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Điền vào câu" />
+                    android:text="@string/incomplete_sentences" />
             </LinearLayout>
 
             <LinearLayout
@@ -191,7 +191,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="50dp"
                     android:gravity="center"
-                    android:text="Điền vào đoạn văn" />
+                    android:text="@string/text_completion" />
             </LinearLayout>
 
         </LinearLayout>
@@ -210,7 +210,7 @@
 
                 <Button
                     android:id="@+id/btn_part_7"
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="90dp"
                     android:background="@drawable/mybutton"
                     android:drawableStart="@mipmap/ic_part7_foreground"
@@ -221,7 +221,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Đọc hiểu đoặn văn" />
+                    android:text="@string/reading_comprehension" />
             </LinearLayout>
 
         </LinearLayout>
@@ -235,7 +235,7 @@
         android:layout_marginLeft="5dp"
         android:textStyle="bold"
         android:textSize="16dp"
-        android:text="Exam" />
+        android:text="@string/exam_preparation" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -267,7 +267,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Luyện đề" />
+                    android:text="@string/exam" />
             </LinearLayout>
 
         </LinearLayout>

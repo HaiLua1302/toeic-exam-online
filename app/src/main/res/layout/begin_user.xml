@@ -42,7 +42,7 @@
         android:layout_width="284dp"
         android:layout_height="59dp"
         android:layout_marginTop="150dp"
-        android:text="BẮT ĐẦU"
+        android:text="@string/btn_start"
         android:background="@drawable/mybutton"
         android:textColor="#6C9A7E"
         android:textColorLink="#FFFFFF"

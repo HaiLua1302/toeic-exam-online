@@ -34,7 +34,7 @@
         android:paddingLeft="-30dp"
         android:textSize="20dp"
         android:drawableLeft="@mipmap/ic_user_foreground"
-        android:hint="Nhập tên người dùng"
+        android:hint="@string/user_name"
         android:layout_gravity="center"
         android:ems="10"
         android:inputType="textPersonName"/>
@@ -48,7 +48,7 @@
         android:paddingLeft="-30dp"
         android:textSize="20dp"
         android:drawableLeft="@mipmap/ic_email_foreground"
-        android:hint="Nhập email"
+        android:hint="@string/email"
         android:layout_gravity="center"
         android:ems="10"
         android:inputType="textEmailAddress" />
@@ -62,7 +62,7 @@
         android:paddingLeft="-30dp"
         android:textSize="20dp"
         android:drawableLeft="@mipmap/ic_pass_foreground"
-        android:hint="Nhập mật khẩu"
+        android:hint="@string/password"
         android:layout_gravity="center"
         android:ems="10"
         android:inputType="textPassword" />
@@ -76,7 +76,7 @@
         android:paddingLeft="-30dp"
         android:textSize="20dp"
         android:drawableLeft="@mipmap/ic_pass_foreground"
-        android:hint="Nhập lại mật khẩu"
+        android:hint="@string/enter_password"
         android:layout_gravity="center"
         android:ems="10"
         android:inputType="textPassword" />
@@ -95,7 +95,7 @@
             android:layout_marginRight="25dp"
             android:layout_weight="1"
             android:paddingLeft="10dp"
-            android:text="Đồng ý với Điều khoản chính sách bảo mật của chúng tôi."
+            android:text="@string/agree_to_our_policy_terms"
             android:textColor="#EB3F6F"
             android:textStyle="italic" />
 
@@ -108,7 +108,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:background="@drawable/mybutton"
-        android:text="Đăng Ký"
+        android:text="@string/register"
         android:textColor="@color/colorAccent"
         android:textSize="24sp" />
 
@@ -125,7 +125,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Bạn đã có tâì khoản ?" />
+            android:text="@string/already_have_an_account" />
 
         <TextView
             android:id="@+id/txt_login"
@@ -135,7 +135,7 @@
             style="@style/Hyperlink"
             android:layout_weight="1"
             android:textStyle="bold"
-            android:text="ĐĂNG NHẬP" />
+            android:text="@string/login" />
     </LinearLayout>
 
     <TextView
@@ -146,5 +146,5 @@
         android:gravity="center"
         style="@style/Hyperlink"
         android:textStyle="bold"
-        android:text="Bỏ Qua" />
+        android:text="@string/skip" />
 </LinearLayout>

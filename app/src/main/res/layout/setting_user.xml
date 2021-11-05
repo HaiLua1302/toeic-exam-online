@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_app"
     android:orientation="vertical"
     android:id="@+id/layoutSetting">
+    <!--    android:background="@drawable/background_app"-->
 
 
     <LinearLayout
@@ -33,7 +33,7 @@
         android:id="@+id/btn_language"
         style="@style/edt_setting"
         android:drawableLeft="@mipmap/ic_ngonngu_foreground"
-        android:text="@string/langauge"/>
+        android:text="@string/language"/>
     <Button
         android:id="@+id/btn_tutorial"
         style="@style/edt_setting"

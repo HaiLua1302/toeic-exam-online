@@ -18,6 +18,7 @@ import com.example.user.ui.class_user.cls_user_info;
 import com.example.user.ui.login.Login_user;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,7 +31,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import androidx.annotation.NonNull;
@@ -54,6 +57,7 @@ public class information_user extends AppCompatActivity {
     private int PICK_IMAGE_REQUEST = 22;
     private FirebaseStorage storage;
     private StorageReference storageReference;
+    List<cls_user_info> clsUser;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,6 +86,7 @@ public class information_user extends AppCompatActivity {
 
         //get information of user
 
+        clsUser = new ArrayList<>();
         userInfo = FirebaseAuth.getInstance().getCurrentUser();
         userID = userInfo.getUid();
 //        if(dOB == null) {
@@ -131,7 +136,7 @@ public class information_user extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 updateUser();
-                uploadProFileImage();
+                //uploadProFileImage();
             }
         });
         //change image
@@ -163,29 +168,53 @@ public class information_user extends AppCompatActivity {
 
     //update infor user
     private void updateUser() {
+        if (filePath != null) {
+            StorageReference fileRef = storageReference.child(userID);
+            uploadTask = fileRef.putFile(filePath);
+            uploadTask.continueWithTask(new Continuation() {
+                @Override
+                public Object then(@NonNull Task task) throws Exception {
+                    return fileRef.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener() {
+                @Override
+                public void onComplete(@NonNull Task task) {
+                    if(task.isSuccessful()){
 
-        String nameUserUpdate = name.getText().toString();
-        String dobUserUpdate = dOB.getText().toString();
-        String phoneUserUpdate = phone.getText().toString();
-        //String emailUserUpdate = email.getText().toString();
-        Map<String, Object> map = new HashMap<>();
-        map.put("id_user", userID);
-        map.put("name_user", nameUserUpdate);
-        map.put("dob_user", dobUserUpdate);
-        map.put("numberP_user", phoneUserUpdate);
-        reference = FirebaseDatabase.getInstance().getReference("User").child(userID);
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                reference.updateChildren(map);
-                Toast.makeText(information_user.this, "Updated", Toast.LENGTH_LONG).show();
-            }
+                        String nameUserUpdate = name.getText().toString();
+                        String dobUserUpdate = dOB.getText().toString();
+                        String phoneUserUpdate = phone.getText().toString();
+                        Uri downloadUri = (Uri) task.getResult();
+                        myUri = downloadUri.toString();
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(information_user.this, "Error", Toast.LENGTH_LONG).show();
-            }
-        });
+                        HashMap<String, Object> map = new HashMap<>();
+                        map.put("avata_user",myUri);
+                        map.put("id_user", userID);
+                        map.put("name_user", nameUserUpdate);
+                        map.put("dob_user", dobUserUpdate);
+                        map.put("numberP_user", phoneUserUpdate);
+                        reference = FirebaseDatabase.getInstance().getReference("User").child(userID);
+                        reference.updateChildren(map);
+
+                    }
+                }
+            });
+        }
+        if(filePath == null){
+            String nameUserUpdate = name.getText().toString();
+            String dobUserUpdate = dOB.getText().toString();
+            String phoneUserUpdate = phone.getText().toString();
+            //String emailUserUpdate = email.getText().toString();
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("id_user", userID);
+            map.put("name_user", nameUserUpdate);
+            map.put("dob_user", dobUserUpdate);
+            map.put("numberP_user", phoneUserUpdate);
+            reference = FirebaseDatabase.getInstance().getReference("User").child(userID);
+            reference.updateChildren(map);
+        }else{
+            Toast.makeText(information_user.this,"error",Toast.LENGTH_LONG).show();
+        }
     }
 
     private void selectImage() {

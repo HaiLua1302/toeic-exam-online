@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         style="@style/txt_desc"
-        android:text="Đăng nhập thành công!" />
+        android:text="@string/login_successfully" />
 
     <Button
         android:id="@+id/btn_okie"
@@ -21,7 +21,7 @@
         android:layout_gravity="center"
         android:layout_weight="1"
         android:background="@drawable/mybtn2"
-        android:text="Okie"
+        android:text="@string/btn_ok"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
         android:textColor="#FFF" />

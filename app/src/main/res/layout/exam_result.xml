@@ -97,7 +97,7 @@
             android:layout_weight="1"
             android:background="@drawable/mybtn2"
             style="@style/mybtn2"
-            android:text="Hiển thị đáp án" />
+            android:text="@string/btn_show_answer" />
 
         <Button
             android:id="@+id/btn_continue"
@@ -108,6 +108,6 @@
             android:layout_marginLeft="20dp"
             android:background="@drawable/mybtn2"
             style="@style/mybtn2"
-            android:text="Tiếp tục" />
+            android:text="@string/btn_continue" />
     </LinearLayout>
 </LinearLayout>

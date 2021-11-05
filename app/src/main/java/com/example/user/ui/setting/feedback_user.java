@@ -39,19 +39,11 @@ public class feedback_user extends AppCompatActivity {
         dialog.setContentView(R.layout.dialog_bottom);
 
         LinearLayout layoutFbackEmail = dialog.findViewById(R.id.layoutFbackEmail);
-        LinearLayout layoutFbackMail = dialog.findViewById(R.id.layoutFbackMail);
 
         layoutFbackEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(feedback_user.this, "Email is Clicked", Toast.LENGTH_LONG).show();
-                dialog.dismiss();
-            }
-        });
-        layoutFbackMail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(feedback_user.this, "Mail is Clicked", Toast.LENGTH_LONG).show();
                 dialog.dismiss();
             }
         });

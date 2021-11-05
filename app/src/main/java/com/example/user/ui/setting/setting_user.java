@@ -1,20 +1,28 @@
 package com.example.user.ui.setting;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -37,6 +45,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,20 +54,23 @@ import androidx.appcompat.app.AppCompatDelegate;
 public class setting_user extends AppCompatActivity {
     public String selected;
     private int checkedItem;
+    private int REQUEST_CODE = 1;
     private String CHECKEDITEM = "checked_item";
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
-
+    private double VERSION = 1.0;
     private FirebaseUser userInfo;
     private DatabaseReference reference;
     private String userID;
+
+    Context context;
+    Resources resources;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         getSupportActionBar().setTitle("Setting");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_user);
-
         //display name user on settings screen
         TextView nameUser = findViewById(R.id.txt_name_user);
         ImageView imageUser = findViewById(R.id.img_avata_user);
@@ -89,18 +101,19 @@ public class setting_user extends AppCompatActivity {
                 Toast.makeText(setting_user.this,"error", Toast.LENGTH_LONG).show();
             }
         });
-//        reference.child(userID).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DataSnapshot> task) {
-//                if (!task.isSuccessful()) {
-//                    Log.e("firebase", "Error getting data", task.getException());
-//                }
-//                else {
-//                    nameUser.setText("Xin chao!"+task.getResult().getValue());
-//                }
-//            }
-//        });
 
+        if(LocaleHelper.getLanguage(setting_user.this).equalsIgnoreCase("en"))
+        {
+            context = LocaleHelper.setLocale(setting_user.this,"en");
+            resources =context.getResources();
+            setTitle(resources.getString(R.string.app_name));
+            checkedItem = 0;
+        }else if(LocaleHelper.getLanguage(setting_user.this).equalsIgnoreCase("vi")){
+            context = LocaleHelper.setLocale(setting_user.this,"hi");
+            resources =context.getResources();
+            setTitle(resources.getString(R.string.app_name));
+            checkedItem =1;
+        }
         //change themes
         sharedPreferences = this.getSharedPreferences("themes", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -137,8 +150,7 @@ public class setting_user extends AppCompatActivity {
         feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(setting_user.this, feedback_user.class);
-                startActivity(intent);
+                showDialogSMS();
             }
         });
 
@@ -153,7 +165,7 @@ public class setting_user extends AppCompatActivity {
         language.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showChangeLanguage();
+                changeLanguage();
             }
         });
         //navigation to screen user detail
@@ -163,6 +175,13 @@ public class setting_user extends AppCompatActivity {
                 startActivity(new Intent(setting_user.this, information_user.class));
             }
         });
+        Button version = findViewById(R.id.btn_version);
+        version.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(setting_user.this,"V "+VERSION,Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 
@@ -170,12 +189,12 @@ public class setting_user extends AppCompatActivity {
         final String[] themes = this.getResources().getStringArray(R.array.theme);
         AlertDialog.Builder builder = new AlertDialog.Builder(setting_user.this);
         builder.setTitle("Choose Layout");
-        builder.setSingleChoiceItems(themes, 0, new DialogInterface.OnClickListener() {
+        builder.setSingleChoiceItems(R.array.theme, getCheckedItem(), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 selected = themes[i];
                 checkedItem = i;
-                Toast.makeText(setting_user.this, "clicked" + selected, Toast.LENGTH_LONG).show();
+                Toast.makeText(setting_user.this, "clicked " + selected, Toast.LENGTH_LONG).show();
             }
         });
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -234,5 +253,87 @@ public class setting_user extends AppCompatActivity {
         dialog.getWindow().setGravity(Gravity.CENTER);
     }
 
+    private void changeLanguage(){
+        String[] languages = this.getResources().getStringArray(R.array.language);
+        AlertDialog.Builder builder = new AlertDialog.Builder(setting_user.this);
+        builder.setTitle("Choose Language");
+        builder.setSingleChoiceItems(languages, checkedItem, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if(languages[i].equals("English")){
+                    context = LocaleHelper.setLocale(setting_user.this,"en");
+                    resources = context.getResources();
+                    checkedItem = 0;
+                    Toast.makeText(setting_user.this,"clicked",Toast.LENGTH_LONG).show();
+                }
+                if(languages[i].equals("Vietnamese")){
+                    context = LocaleHelper.setLocale(setting_user.this,"vi");
+                    resources = context.getResources();
+                    checkedItem = 1;
+                    Toast.makeText(setting_user.this,"clicked",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
 
+        builder.show();
+    }
+
+    public void showDialogSMS() {
+
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_bottom);
+
+        Button btn_sms = dialog.findViewById(R.id.btn_sms);
+        LinearLayout layoutFbackEmail = dialog.findViewById(R.id.layoutFbackEmail);
+
+        btn_sms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(setting_user.this, "Email is Clicked", Toast.LENGTH_LONG).show();
+                sendSMS("","0334385803","test");
+            }
+        });
+
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private boolean checkPermission(String permission) {
+        boolean ok = false;
+        int check = checkSelfPermission(permission);
+        if(check == PackageManager.PERMISSION_GRANTED){
+            ok = true;
+        }
+        return ok;
+    }
+    public static void sendSMS(String status, String phoneNumber, String message) {
+        SmsManager sms = SmsManager.getDefault();
+        sms.sendTextMessage(phoneNumber, null, message, null, null);
+    }
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        if(requestCode == REQUEST_CODE) {
+            if (permissions.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                showDialogSMS();
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 }
