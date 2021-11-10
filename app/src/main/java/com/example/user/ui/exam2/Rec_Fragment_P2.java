@@ -1,4 +1,4 @@
-package com.example.user.ui.exam;
+package com.example.user.ui.exam2;
 
 import android.os.Bundle;
 
@@ -12,10 +12,10 @@ import com.example.user.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ScreenSlidePageFragment_P1#newInstance} factory method to
+ * Use the {@link Rec_Fragment_P2#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ScreenSlidePageFragment_P1 extends Fragment {
+public class Rec_Fragment_P2 extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class ScreenSlidePageFragment_P1 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ScreenSlidePageFragment_P1() {
+    public Rec_Fragment_P2() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class ScreenSlidePageFragment_P1 extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ScreenSlidePageFragment_P1.
+     * @return A new instance of fragment Rec_Fragment_P2.
      */
     // TODO: Rename and change types and number of parameters
-    public static ScreenSlidePageFragment_P1 newInstance(String param1, String param2) {
-        ScreenSlidePageFragment_P1 fragment = new ScreenSlidePageFragment_P1();
+    public static Rec_Fragment_P2 newInstance(String param1, String param2) {
+        Rec_Fragment_P2 fragment = new Rec_Fragment_P2();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,7 +61,6 @@ public class ScreenSlidePageFragment_P1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.exam_p1, container, false);
-        return rootView;
+        return inflater.inflate(R.layout.fragment_rec_p2, container, false);
     }
 }

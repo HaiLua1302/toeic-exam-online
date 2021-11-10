@@ -13,13 +13,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.exam.Desc_exam_p1"></activity>
+        <activity android:name=".ui.exam.ResultP1Activity"></activity>
+        <activity android:name=".ui.exam2.screen_switch_2" />
+        <activity android:name=".ui.exam2.Tutorial_P2_Activity" />
+        <activity android:name=".ui.exam.Desc_exam_p1" />
         <activity android:name=".ui.exam.screen_switch" />
         <activity android:name=".ui.exam.Tutorial_P1_Activity" />
         <activity android:name=".ui.exam.Activity_Rec_List_P1" />
         <activity android:name=".ui.exam.slide_exam_p1" />
         <activity android:name=".ui.admin.add_ques_p1" />
-        <activity android:name=".ui.exam.Exam_P1_Activity" />
         <activity android:name=".ui.home.Main_home" />
         <activity android:name=".ui.login.Register_user" />
         <activity android:name=".ui.login.Begin_user" />

@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.user.R;
-import com.example.user.ui.exam.Exam_P1_Activity;
+import com.example.user.ui.exam.Tutorial_P1_Activity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 @SuppressWarnings("ALL")
@@ -29,7 +29,7 @@ public class Main_home extends AppCompatActivity implements BottomNavigationView
         exam_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Main_home.this, Exam_P1_Activity.class);
+                Intent intent = new Intent(Main_home.this, Tutorial_P1_Activity.class);
                 startActivity(intent);
             }
         });

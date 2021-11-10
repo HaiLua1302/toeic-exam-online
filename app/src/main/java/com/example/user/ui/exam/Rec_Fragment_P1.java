@@ -85,6 +85,7 @@ public class Rec_Fragment_P1 extends Fragment {
 
         return view;
     }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -96,4 +97,5 @@ public class Rec_Fragment_P1 extends Fragment {
         super.onStop();
         adapterExamListP1.stopListening();
     }
+
 }
