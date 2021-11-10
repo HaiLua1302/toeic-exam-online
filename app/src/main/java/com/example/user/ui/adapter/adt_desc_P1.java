@@ -20,14 +20,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
 import com.example.user.ui.class_exam.cls_part_1;
+import com.example.user.ui.class_user.cls_achievement;
 import com.example.user.ui.exam.Desc_Fragment_P1;
 import com.example.user.ui.exam.ResultP1Activity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class adt_desc_P1 extends FirebaseRecyclerAdapter<cls_part_1, adt_desc_P1.exam_ques_p1_holder> {
     private OnNextQuestionListener onNextQuestionListener;
@@ -60,6 +68,8 @@ public class adt_desc_P1 extends FirebaseRecyclerAdapter<cls_part_1, adt_desc_P1
         Button A1Holder,B1Holder,C1Holder,D1Holder,SubmitHolder;
         int currentPosUp = 1;
         int correct = 0;
+        SimpleDateFormat getTime = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+        String timeCurrent = getTime.format(new Date());
 
 
         public exam_ques_p1_holder(@NonNull View itemView) {
@@ -102,7 +112,8 @@ public class adt_desc_P1 extends FirebaseRecyclerAdapter<cls_part_1, adt_desc_P1
                         // set hinh nen thanh mau xanh la
                         A1Holder.setBackgroundResource(R.drawable.chosse_answer);
                         //cong 1 diem dung
-                        correctAnswer();
+//                        correctAnswer();
+                        correct++;
                     }
                     else
                     {
@@ -138,7 +149,8 @@ public class adt_desc_P1 extends FirebaseRecyclerAdapter<cls_part_1, adt_desc_P1
                     if (B1Holder.getText().toString().equals(model.getResult())) {
                         B1Holder.setBackgroundResource(R.drawable.chosse_answer);
                         //cong 1 diem dung
-                        correctAnswer();
+//                        correctAnswer();
+                        correct++;
                     }
                     else
                     {
@@ -175,7 +187,8 @@ public class adt_desc_P1 extends FirebaseRecyclerAdapter<cls_part_1, adt_desc_P1
                 public void onClick(View v) {
                     if (C1Holder.getText().toString().equals(model.getResult())) {
                         C1Holder.setBackgroundResource(R.drawable.chosse_answer);
-                        correctAnswer();
+//                        correctAnswer();
+                        correct++;
                     }
                     else
                     {
@@ -211,7 +224,9 @@ public class adt_desc_P1 extends FirebaseRecyclerAdapter<cls_part_1, adt_desc_P1
                 public void onClick(View v) {
                     if (D1Holder.getText().toString().equals(model.getResult())) {
                         D1Holder.setBackgroundResource(R.drawable.chosse_answer);
-                        correctAnswer();}
+//                        correctAnswer();
+                        correct++;
+                    }
 
                     else
                     {
@@ -248,8 +263,13 @@ public class adt_desc_P1 extends FirebaseRecyclerAdapter<cls_part_1, adt_desc_P1
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(),ResultP1Activity.class);
                     intent.putExtra("TotalQuestion",getItemCount());
-                    intent.putExtra("CorrectQuestion",correctAnswer());
+                    intent.putExtra("CorrectQuestion",correct);
                     v.getContext().startActivity(intent);
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    String userID = user.getUid();
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Achievement").child(userID+"/Part1");
+                    cls_achievement cls_achievement = new cls_achievement(correct,timeCurrent);
+                    ref.setValue(cls_achievement);
                 }
             });
 

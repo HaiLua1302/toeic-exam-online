@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.user.R;
 import com.example.user.ui.exam.Tutorial_P1_Activity;
@@ -24,6 +25,7 @@ public class Main_home extends AppCompatActivity implements BottomNavigationView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_user);
         getSupportActionBar().setTitle("TOEIC EXAM");
+
 
         exam_1 = findViewById(R.id.btn_part_1);
         exam_1.setOnClickListener(new View.OnClickListener() {

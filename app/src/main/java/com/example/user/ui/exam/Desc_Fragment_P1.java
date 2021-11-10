@@ -1,14 +1,19 @@
 package com.example.user.ui.exam;
 
+import android.annotation.SuppressLint;
+import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -24,7 +29,6 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,9 +48,14 @@ public class Desc_Fragment_P1 extends Fragment {
     private String mParam2;
     private DatabaseReference getData_Exam;
     private Button prevQues_P1,nextQues_P1;
+    private MediaPlayer mediaPlayer;
+    private SeekBar seekBarPlayer;
+    private ImageView imageViewPlayPause;
+    private TextView txtCurrentTime , txtTotalTime;
+    private Handler handler = new Handler();
+
     String id_exam,url_audio;
     int pos;
-    //private ViewPager viewPager_P1;
     private adt_desc_P1 adapterExamP1;
     RecyclerView Rec_Decs_P1;
     //private IFirebaseLoadDone iFirebaseLoadDone;
@@ -62,14 +71,6 @@ public class Desc_Fragment_P1 extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Desc_Fragment_P1.
-     */
     // TODO: Rename and change types and number of parameters
     public static Desc_Fragment_P1 newInstance(String param1, String param2) {
         Desc_Fragment_P1 fragment = new Desc_Fragment_P1();
@@ -89,19 +90,22 @@ public class Desc_Fragment_P1 extends Fragment {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_desc_p1, container, false);
-        ImageView img_pausePlayHolder;
-        SeekBar seekBarAudioHolder;
-        TextView txtCountDownHolder, txtTotal_timeHolder,url_audioHolder;
-        MediaPlayer mediaPlayer = new MediaPlayer();
 
-        img_pausePlayHolder = view.findViewById(R.id.img_play_1);
-        clsPart_p1 = new ArrayList<>();
-        //adapterExamP1 = new test();
+        imageViewPlayPause = view.findViewById(R.id.img_play_1);
+        seekBarPlayer = view.findViewById(R.id.playerSeekBar1);
+        txtCurrentTime = view.findViewById(R.id.txtCurrentTime1);
+        txtTotalTime = view.findViewById(R.id.txtTimeTotal1);
+
+        seekBarPlayer.setMax(100);
+        mediaPlayer = new MediaPlayer();
+
+//        clsPart_p1 = new ArrayList<>();
 
         Rec_Decs_P1 = view.findViewById(R.id.Rec_Question_P1);
         Rec_Decs_P1.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
@@ -138,6 +142,7 @@ public class Desc_Fragment_P1 extends Fragment {
             }
         };
         snapHelper.attachToRecyclerView(Rec_Decs_P1);
+
         // Instantiate a ViewPager and a PagerAdapter.
         // init event
         FirebaseRecyclerOptions<cls_part_1> options =
@@ -145,47 +150,75 @@ public class Desc_Fragment_P1 extends Fragment {
                         .setQuery(FirebaseDatabase.getInstance().getReference("Cauhoi_Ques1").child(id_exam), cls_part_1.class)
                         .build();
 
-
         adapterExamP1 = new adt_desc_P1(options);
-
         adapterExamP1.setOnNextQuestionListener(currentQuestion -> {
             Rec_Decs_P1.smoothScrollToPosition(currentQuestion + 1);
         });
-       //adapterExamP1.notifyDataSetChanged();
+
         Rec_Decs_P1.setAdapter(adapterExamP1);
-        /*Rec_Decs_P1.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
 
-            }
-        });*/
-        //viewPager_P1.setAdapter(adapterExamP1);
-
-        /*img_pausePlayHolder.setOnClickListener(new View.OnClickListener() {
+        imageViewPlayPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(mediaPlayer.isPlaying()){
+                    handler.removeCallbacks(runnable);
                     mediaPlayer.pause();
-                    String url = url_audio; // your URL here
-
-                    mediaPlayer.setAudioAttributes(
-                            new AudioAttributes.Builder()
-                                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                                    .setUsage(AudioAttributes.USAGE_MEDIA)
-                                    .build()
-                    );
-                    img_pausePlayHolder.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+                    imageViewPlayPause.setImageResource(R.drawable.ic_baseline_play_arrow_24);
                 }else {
                     mediaPlayer.start();
-                    img_pausePlayHolder.setImageResource(R.drawable.ic_baseline_pause_24);
+                    imageViewPlayPause.setImageResource(R.drawable.ic_baseline_pause_24);
+                    updateSeekbar();
                 }
             }
-        });*/
+        });
+        prepareMediaPlayer();
+        seekBarPlayer.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                SeekBar seekBar = (SeekBar) v;
+                int playPostion = (mediaPlayer.getDuration()/100)*seekBar.getProgress();
+                mediaPlayer.seekTo(playPostion);
+                txtCurrentTime.setText(milliSecondsToTimer(mediaPlayer.getCurrentPosition()));
+                return false;
+            }
+        });
+        mediaPlayer.setOnBufferingUpdateListener(new MediaPlayer.OnBufferingUpdateListener() {
+            @Override
+            public void onBufferingUpdate(MediaPlayer mp, int percent) {
+                seekBarPlayer.setSecondaryProgress(percent);
+            }
+        });
 
+
+//        Toast.makeText(getContext(),url_audio,Toast.LENGTH_LONG).show();
         return  view;
     }
 
+    private void prepareMediaPlayer(){
+        try{
+            mediaPlayer.setDataSource(url_audio);
+            mediaPlayer.prepare();
+            txtTotalTime.setText(milliSecondsToTimer(mediaPlayer.getDuration()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            updateSeekbar();
+            long currentDuration = mediaPlayer.getCurrentPosition();
+            txtCurrentTime.setText(milliSecondsToTimer(currentDuration));
+        }
+    };
+
+    private void updateSeekbar(){
+        if(mediaPlayer.isPlaying()){
+            seekBarPlayer.setProgress((int)(((float)mediaPlayer.getCurrentPosition() / mediaPlayer.getDuration()) * 100));
+            handler.postDelayed(runnable,1000);
+        }
+    }
 
     private String milliSecondsToTimer(long milliSecons){
         String timeString = "";

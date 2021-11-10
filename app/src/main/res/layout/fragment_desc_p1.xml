@@ -32,7 +32,7 @@
                 android:src="@drawable/ic_baseline_play_arrow_24" />
 
             <TextView
-                android:id="@+id/txt_time_play_1"
+                android:id="@+id/txtCurrentTime1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -41,14 +41,14 @@
                 android:textSize="18dp" />
 
             <SeekBar
-                android:id="@+id/skbar_audio_1"
+                android:id="@+id/playerSeekBar1"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/txt_time_total_1"
+                android:id="@+id/txtTimeTotal1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -66,33 +66,6 @@
             android:layout_height="match_parent"
             android:layout_marginTop="10dp" />
 
-        <!--<LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_gravity="center">
-
-            <Button
-                android:id="@+id/btn_Prev_P1"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/mybutton"
-                android:layout_weight="1"
-                android:layout_marginRight="20dp"
-                android:textColor="#009688"
-                android:textSize="30dp"
-                android:text="<" />
-
-            <Button
-                android:id="@+id/btn_Next_P1"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/mybutton"
-                android:layout_weight="1"
-                android:textSize="30dp"
-                android:textColor="#009688"
-
-                android:text=">" />
-        </LinearLayout>-->
     </LinearLayout>
 
 

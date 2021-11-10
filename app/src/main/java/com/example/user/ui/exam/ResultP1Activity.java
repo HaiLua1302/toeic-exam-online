@@ -32,12 +32,12 @@ public class ResultP1Activity extends AppCompatActivity {
             CorrectQuestion = bundle.getInt("CorrectQuestion");
 
         }
-        int percentResult = (CorrectQuestion / TotalQuestion)*100;
+        float percentResult = ((CorrectQuestion / TotalQuestion)*100);
 
         txtResultExam.setText("Kết quả : "+ String.valueOf(CorrectQuestion)+ " / "+String.valueOf(TotalQuestion));
         txtPercent.setText(String.valueOf(percentResult)+" % ");
 
         progressBarPercent.setMax(100);
-        progressBarPercent.setProgress(percentResult);
+        progressBarPercent.setProgress((int) percentResult);
     }
 }

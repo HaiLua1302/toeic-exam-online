@@ -24,15 +24,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.R;
+import com.example.user.ui.class_user.cls_achievement;
 import com.example.user.ui.class_user.cls_user_info;
 import com.example.user.ui.home.Main_home;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import okhttp3.Cache;
 
@@ -45,6 +51,7 @@ public class Register_user extends AppCompatActivity {
     public ProgressBar process_loading;
     //our database reference object
     DatabaseReference databases_user;
+    DatabaseReference databases_user1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -184,7 +191,9 @@ public class Register_user extends AppCompatActivity {
         String emailUser = email_user.getText().toString().trim();
         String passUser = pass_user.getText().toString().trim();
         String passAgainUser = check_pass_again.getText().toString().trim();
-        String idUser = databases_user.push().getKey();
+//        String idUser = databases_user.push().getKey();
+        SimpleDateFormat getTime = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+        String timeCurrent = getTime.format(new Date());
 
         if (userName.isEmpty()) {
             user_name.setError("Tên người dùng không được để trống!");
@@ -248,14 +257,30 @@ public class Register_user extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                String iduser = user.getUid();
 
-                                cls_user_info clsUserInfo = new cls_user_info(idUser, userName,0, 0, passUser, emailUser,"");
-                                databases_user.child(idUser).setValue(clsUserInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                cls_user_info clsUserInfo = new cls_user_info(iduser, userName,0, 0, passUser, emailUser,"");
+
+
+
+                                databases_user.child(iduser).setValue(clsUserInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
                                             process_loading.setVisibility(View.INVISIBLE);
                                             Toast.makeText(Register_user.this, "Đăng ký thành công!", Toast.LENGTH_LONG).show();
+                                            databases_user1 = FirebaseDatabase.getInstance().getReference("Achievement");
+                                            cls_achievement cls_achievement = new cls_achievement(0,timeCurrent);
+                                            databases_user1.child(iduser +"/Part1").setValue(cls_achievement);
+                                            databases_user1.child(iduser +"/Part2").setValue(cls_achievement);
+                                            databases_user1.child(iduser +"/Part3").setValue(cls_achievement);
+                                            databases_user1.child(iduser +"/Part4").setValue(cls_achievement);
+                                            databases_user1.child(iduser +"/Part5").setValue(cls_achievement);
+                                            databases_user1.child(iduser +"/Part6").setValue(cls_achievement);
+                                            databases_user1.child(iduser +"/Part7").setValue(cls_achievement);
+                                            databases_user1.child(iduser +"/Exam").setValue(cls_achievement);
+
                                             ViewDialog alert = new ViewDialog();
                                             alert.showDialog(Register_user.this, "Đăng kí thành công!");
                                         } else {
