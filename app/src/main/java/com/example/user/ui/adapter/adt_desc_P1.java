@@ -38,6 +38,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class adt_desc_P1 extends FirebaseRecyclerAdapter<cls_part_1, adt_desc_P1.exam_ques_p1_holder> {
+    //click chuyen cau hoi callback
     private OnNextQuestionListener onNextQuestionListener;
 
     public adt_desc_P1(@NonNull FirebaseRecyclerOptions options) {
@@ -102,6 +103,13 @@ public class adt_desc_P1 extends FirebaseRecyclerAdapter<cls_part_1, adt_desc_P1
             return correct;
         }
 
+        private void setEnableButton(){
+            A1Holder.setEnabled(false);
+            B1Holder.setEnabled(false);
+            C1Holder.setEnabled(false);
+            D1Holder.setEnabled(false);
+        }
+
         private void setData(cls_part_1 model,int pos){
            numQuestionHolder.setText("Question " + (pos+1));
             A1Holder.setOnClickListener(new View.OnClickListener() {
@@ -135,6 +143,7 @@ public class adt_desc_P1 extends FirebaseRecyclerAdapter<cls_part_1, adt_desc_P1
                         }
 
                     } updateQuestion(pos);
+                      setEnableButton();
                     // doi. 2s thi chay ham ben trong
                     A1Holder.postDelayed(() -> {
                         if (onNextQuestionListener != null) {
@@ -173,6 +182,7 @@ public class adt_desc_P1 extends FirebaseRecyclerAdapter<cls_part_1, adt_desc_P1
                             A1Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                     }updateQuestion(pos);
+                    setEnableButton();
                     // doi. 2s thi chay ham ben trong
                     B1Holder.postDelayed(() -> {
                         if (onNextQuestionListener != null) {
@@ -210,6 +220,7 @@ public class adt_desc_P1 extends FirebaseRecyclerAdapter<cls_part_1, adt_desc_P1
                         }
 
                     }updateQuestion(pos);
+                    setEnableButton();
                     // doi. 2s thi chay ham ben trong
                     C1Holder.postDelayed(() -> {
                         if (onNextQuestionListener != null) {
@@ -249,6 +260,7 @@ public class adt_desc_P1 extends FirebaseRecyclerAdapter<cls_part_1, adt_desc_P1
                         }
 
                     }updateQuestion(pos);
+                    setEnableButton();
                     // doi. 2s thi chay ham ben trong
                     D1Holder.postDelayed(() -> {
                         if (onNextQuestionListener != null) {

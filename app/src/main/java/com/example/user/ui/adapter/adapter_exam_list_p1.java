@@ -62,7 +62,7 @@ public class adapter_exam_list_p1 extends FirebaseRecyclerAdapter<list_exam_1,ad
             id_exam = itemView.findViewById(R.id.txt_list_Exam_p1);
             get_dataTodesc = (Button) itemView.findViewById(R.id.btn_start_list_p1);
 
-            get_dataTodesc.setOnClickListener(new View.OnClickListener() {
+           /* get_dataTodesc.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
@@ -71,7 +71,7 @@ public class adapter_exam_list_p1 extends FirebaseRecyclerAdapter<list_exam_1,ad
                     activity.getSupportFragmentManager().beginTransaction().replace(R.id.wraper1,new Desc_Fragment_P1()).commit();
 
                 }
-            });
+            });*/
         }
 
     }

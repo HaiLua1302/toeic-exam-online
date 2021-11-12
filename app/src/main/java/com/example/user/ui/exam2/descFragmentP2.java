@@ -1,42 +1,38 @@
-package com.example.user.ui.exam;
+package com.example.user.ui.exam2;
 
 import android.annotation.SuppressLint;
-import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.user.R;
-import com.example.user.ui.adapter.adt_desc_P1;
-import com.example.user.ui.class_exam.cls_part_1;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.List;
+import com.example.user.R;
+import com.example.user.ui.adapter.adtDescP2;
+import com.example.user.ui.adapter.adt_desc_P1;
+import com.example.user.ui.class_exam.clsPart2;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Desc_Fragment_P1#newInstance} factory method to
+ * Use the {@link descFragmentP2#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Desc_Fragment_P1 extends Fragment {
+public class descFragmentP2 extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,29 +44,30 @@ public class Desc_Fragment_P1 extends Fragment {
     private String mParam2;
 
     private MediaPlayer mediaPlayer;
-    private SeekBar seekBarPlayer;
-    private ImageView imageViewPlayPause;
-    private TextView txtCurrentTime , txtTotalTime;
+    private SeekBar seekBarPlayer2;
+    private ImageView imageViewPlayPaus2;
+    private TextView txtCurrentTime2 , txtTotalTime2;
     private Handler handler = new Handler();
 
-    String id_exam,url_audio;
+    String id_exam2,url_audio2;
     int pos;
-    private adt_desc_P1 adapterExamP1;
-    RecyclerView Rec_Decs_P1;
+    private adtDescP2 adapterExamP2;
+    RecyclerView Rec_Decs_P2;
 
-    public Desc_Fragment_P1(String id_exam, String url_audio,int pos) {
-        this.id_exam = id_exam;
-        this.url_audio = url_audio;
-        this.pos = pos;
-    }
 
-    public Desc_Fragment_P1() {
+    public descFragmentP2() {
         // Required empty public constructor
     }
 
+    public descFragmentP2(String id_exam, String url_audio) {
+        this.id_exam2 = id_exam;
+        this.url_audio2 = url_audio;
+    }
+
+
     // TODO: Rename and change types and number of parameters
-    public static Desc_Fragment_P1 newInstance(String param1, String param2) {
-        Desc_Fragment_P1 fragment = new Desc_Fragment_P1();
+    public static descFragmentP2 newInstance(String param1, String param2) {
+        descFragmentP2 fragment = new descFragmentP2();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -92,18 +89,21 @@ public class Desc_Fragment_P1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_desc_p1, container, false);
+        View view = inflater.inflate(R.layout.fragment_desc_p2, container, false);
 
-        imageViewPlayPause = view.findViewById(R.id.img_play_1);
-        seekBarPlayer = view.findViewById(R.id.playerSeekBar1);
-        txtCurrentTime = view.findViewById(R.id.txtCurrentTime1);
-        txtTotalTime = view.findViewById(R.id.txtTimeTotal1);
+        Toast.makeText(getContext(),id_exam2,Toast.LENGTH_LONG).show();
 
-        seekBarPlayer.setMax(100);
+        imageViewPlayPaus2 = view.findViewById(R.id.imgPlayP2);
+        seekBarPlayer2 = view.findViewById(R.id.playerSeekBar2);
+        txtCurrentTime2 = view.findViewById(R.id.txtCurrentTime2);
+        txtTotalTime2 = view.findViewById(R.id.txtTimeTotal2);
+
+        seekBarPlayer2.setMax(100);
         mediaPlayer = new MediaPlayer();
 
-        Rec_Decs_P1 = view.findViewById(R.id.Rec_Question_P1);
-        Rec_Decs_P1.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        //truyen du lieu adapter
+        Rec_Decs_P2 = view.findViewById(R.id.recQuestionP2);
+        Rec_Decs_P2.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
 
         LinearSnapHelper snapHelper = new LinearSnapHelper() {
             @Override
@@ -137,66 +137,64 @@ public class Desc_Fragment_P1 extends Fragment {
             }
         };
 
-        snapHelper.attachToRecyclerView(Rec_Decs_P1);
+        snapHelper.attachToRecyclerView(Rec_Decs_P2);
 
-        // Instantiate a ViewPager and a PagerAdapter.
-        // init event
-        FirebaseRecyclerOptions<cls_part_1> options =
-                new FirebaseRecyclerOptions.Builder<cls_part_1>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference("Cauhoi_Ques1").child(id_exam), cls_part_1.class)
-                        .build();
+//        getdat
+        FirebaseRecyclerOptions<clsPart2> options = new FirebaseRecyclerOptions.Builder<clsPart2>()
+                .setQuery(FirebaseDatabase.getInstance().getReference("List_Ques2").child(id_exam2),clsPart2.class)
+                .build();
 
-        adapterExamP1 = new adt_desc_P1(options);
+        adapterExamP2 = new adtDescP2(options);
 
         //next question
-        adapterExamP1.setOnNextQuestionListener(currentQuestion -> {
-            Rec_Decs_P1.smoothScrollToPosition(currentQuestion + 1);
+        adapterExamP2.setOnNextQuestionListener(currentQuestion -> {
+            Rec_Decs_P2.smoothScrollToPosition(currentQuestion + 1);
         });
 
-        Rec_Decs_P1.setAdapter(adapterExamP1);
+        Rec_Decs_P2.setAdapter(adapterExamP2);
 
-        imageViewPlayPause.setOnClickListener(new View.OnClickListener() {
+        imageViewPlayPaus2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(mediaPlayer.isPlaying()){
                     handler.removeCallbacks(runnable);
                     mediaPlayer.pause();
-                    imageViewPlayPause.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+                    imageViewPlayPaus2.setImageResource(R.drawable.ic_baseline_play_arrow_24);
                 }else {
                     mediaPlayer.start();
-                    imageViewPlayPause.setImageResource(R.drawable.ic_baseline_pause_24);
+                    imageViewPlayPaus2.setImageResource(R.drawable.ic_baseline_pause_24);
                     updateSeekbar();
                 }
             }
         });
+
         prepareMediaPlayer();
-        seekBarPlayer.setOnTouchListener(new View.OnTouchListener() {
+        seekBarPlayer2.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 SeekBar seekBar = (SeekBar) v;
                 int playPostion = (mediaPlayer.getDuration()/100)*seekBar.getProgress();
                 mediaPlayer.seekTo(playPostion);
-                txtCurrentTime.setText(milliSecondsToTimer(mediaPlayer.getCurrentPosition()));
+                txtCurrentTime2.setText(milliSecondsToTimer(mediaPlayer.getCurrentPosition()));
                 return false;
             }
         });
+
         mediaPlayer.setOnBufferingUpdateListener(new MediaPlayer.OnBufferingUpdateListener() {
             @Override
             public void onBufferingUpdate(MediaPlayer mp, int percent) {
-                seekBarPlayer.setSecondaryProgress(percent);
+                seekBarPlayer2.setSecondaryProgress(percent);
             }
         });
 
-
-//        Toast.makeText(getContext(),url_audio,Toast.LENGTH_LONG).show();
-        return  view;
+        return view;
     }
 
     private void prepareMediaPlayer(){
         try{
-            mediaPlayer.setDataSource(url_audio);
+            mediaPlayer.setDataSource(url_audio2);
             mediaPlayer.prepare();
-            txtTotalTime.setText(milliSecondsToTimer(mediaPlayer.getDuration()));
+            txtTotalTime2.setText(milliSecondsToTimer(mediaPlayer.getDuration()));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -207,13 +205,13 @@ public class Desc_Fragment_P1 extends Fragment {
         public void run() {
             updateSeekbar();
             long currentDuration = mediaPlayer.getCurrentPosition();
-            txtCurrentTime.setText(milliSecondsToTimer(currentDuration));
+            txtCurrentTime2.setText(milliSecondsToTimer(currentDuration));
         }
     };
 
     private void updateSeekbar(){
         if(mediaPlayer.isPlaying()){
-            seekBarPlayer.setProgress((int)(((float)mediaPlayer.getCurrentPosition() / mediaPlayer.getDuration()) * 100));
+            seekBarPlayer2.setProgress((int)(((float)mediaPlayer.getCurrentPosition() / mediaPlayer.getDuration()) * 100));
             handler.postDelayed(runnable,1000);
         }
     }
@@ -236,17 +234,16 @@ public class Desc_Fragment_P1 extends Fragment {
         return timeString;
     }
 
-
     @Override
     public void onStart() {
         super.onStart();
-        adapterExamP1.startListening();
+        adapterExamP2.startListening();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        adapterExamP1.stopListening();
+        adapterExamP2.stopListening();
     }
 
 }
