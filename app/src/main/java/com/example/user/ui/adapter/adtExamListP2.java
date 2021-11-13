@@ -12,24 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
 import com.example.user.ui.class_exam.listExam2;
-import com.example.user.ui.exam.Desc_Fragment_P1;
 import com.example.user.ui.exam2.descFragmentP2;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-public class adtExamList2 extends FirebaseRecyclerAdapter<listExam2,adtExamList2.ExamListHolder2> {
-    /**
-     * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
-     * {@link FirebaseRecyclerOptions} for configuration options.
-     *
-     * @param options
-     */
-    public adtExamList2(@NonNull FirebaseRecyclerOptions<listExam2> options) {
+public class adtExamListP2 extends FirebaseRecyclerAdapter<listExam2, adtExamListP2.ExamListHolder2> {
+
+    public adtExamListP2(@NonNull FirebaseRecyclerOptions<listExam2> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull adtExamList2.ExamListHolder2 holder, int position, @NonNull listExam2 model) {
+    protected void onBindViewHolder(@NonNull adtExamListP2.ExamListHolder2 holder, int position, @NonNull listExam2 model) {
         holder.idExam2Holder.setText("Exam :"+(position+1));
         holder.getToDataExamHolder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,9 +36,9 @@ public class adtExamList2 extends FirebaseRecyclerAdapter<listExam2,adtExamList2
 
     @NonNull
     @Override
-    public adtExamList2.ExamListHolder2 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public adtExamListP2.ExamListHolder2 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_list_p1,parent,false);
-        return new adtExamList2.ExamListHolder2(view);
+        return new adtExamListP2.ExamListHolder2(view);
     }
 
     public class ExamListHolder2 extends RecyclerView.ViewHolder {

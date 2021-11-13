@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/wrapper2"
+    android:id="@+id/wrapper3"
     android:background="@drawable/background_app"
-    tools:context=".ui.exam2.screen_switch_2">
+    tools:context=".ui.exam3.ScreenSwitchP3Activity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

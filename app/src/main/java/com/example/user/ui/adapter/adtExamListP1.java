@@ -3,7 +3,6 @@ package com.example.user.ui.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -14,12 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.user.R;
 import com.example.user.ui.class_exam.list_exam_1;
 import com.example.user.ui.exam.Desc_Fragment_P1;
-import com.example.user.ui.exam.Rec_Fragment_P1;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 
-public class adapter_exam_list_p1 extends FirebaseRecyclerAdapter<list_exam_1,adapter_exam_list_p1.exam_list_p1_holder> {
+public class adtExamListP1 extends FirebaseRecyclerAdapter<list_exam_1, adtExamListP1.exam_list_p1_holder> {
 
 
     /**
@@ -28,7 +26,7 @@ public class adapter_exam_list_p1 extends FirebaseRecyclerAdapter<list_exam_1,ad
      *
      * @param options
      */
-    public adapter_exam_list_p1(@NonNull FirebaseRecyclerOptions<list_exam_1> options) {
+    public adtExamListP1(@NonNull FirebaseRecyclerOptions<list_exam_1> options) {
         super(options);
 
     }

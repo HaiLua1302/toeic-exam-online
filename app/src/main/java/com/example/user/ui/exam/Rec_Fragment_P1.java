@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.user.R;
-import com.example.user.ui.adapter.adapter_exam_list_p1;
+import com.example.user.ui.adapter.adtExamListP1;
 import com.example.user.ui.class_exam.list_exam_1;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
@@ -33,7 +33,7 @@ public class Rec_Fragment_P1 extends Fragment {
     private String mParam2;
 
     private RecyclerView recyclerView_list;
-    private adapter_exam_list_p1 adapterExamListP1;
+    private adtExamListP1 adapterExamListP1;
 
     public Rec_Fragment_P1() {
         // Required empty public constructor
@@ -80,7 +80,7 @@ public class Rec_Fragment_P1 extends Fragment {
                         .setQuery(FirebaseDatabase.getInstance().getReference().child("Ques_1"), list_exam_1.class)
                         .build();
 
-        adapterExamListP1 = new adapter_exam_list_p1(options);
+        adapterExamListP1 = new adtExamListP1(options);
         recyclerView_list.setAdapter(adapterExamListP1);
 
         return view;

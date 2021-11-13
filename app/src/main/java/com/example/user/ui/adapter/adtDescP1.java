@@ -1,27 +1,19 @@
 package com.example.user.ui.adapter;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.view.accessibility.AccessibilityViewCommand;
-import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
 import com.example.user.ui.class_exam.cls_part_1;
 import com.example.user.ui.class_user.cls_achievement;
-import com.example.user.ui.exam.Desc_Fragment_P1;
 import com.example.user.ui.exam.ResultP1Activity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -32,16 +24,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
-public class adt_desc_P1 extends FirebaseRecyclerAdapter<cls_part_1, adt_desc_P1.exam_ques_p1_holder> {
+public class adtDescP1 extends FirebaseRecyclerAdapter<cls_part_1, adtDescP1.exam_ques_p1_holder> {
     //click chuyen cau hoi callback
     private OnNextQuestionListener onNextQuestionListener;
 
-    public adt_desc_P1(@NonNull FirebaseRecyclerOptions options) {
+    public adtDescP1(@NonNull FirebaseRecyclerOptions options) {
         super(options);
     }
 
@@ -53,7 +43,7 @@ public class adt_desc_P1 extends FirebaseRecyclerAdapter<cls_part_1, adt_desc_P1
     @Override
     public exam_ques_p1_holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.exam_p1,parent,false);
-        return new adt_desc_P1.exam_ques_p1_holder(view);
+        return new adtDescP1.exam_ques_p1_holder(view);
     }
 
     @Override

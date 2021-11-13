@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -22,7 +21,6 @@ import android.widget.Toast;
 
 import com.example.user.R;
 import com.example.user.ui.adapter.adtDescP2;
-import com.example.user.ui.adapter.adt_desc_P1;
 import com.example.user.ui.class_exam.clsPart2;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
@@ -50,8 +48,8 @@ public class descFragmentP2 extends Fragment {
     private Handler handler = new Handler();
 
     String id_exam2,url_audio2;
-    int pos;
     private adtDescP2 adapterExamP2;
+
     RecyclerView Rec_Decs_P2;
 
 
@@ -105,13 +103,12 @@ public class descFragmentP2 extends Fragment {
         Rec_Decs_P2 = view.findViewById(R.id.recQuestionP2);
         Rec_Decs_P2.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
 
-        LinearSnapHelper snapHelper = new LinearSnapHelper() {
+        LinearSnapHelper snapHelper = new LinearSnapHelper(){
             @Override
-            public int findTargetSnapPosition(RecyclerView.LayoutManager lm, int velocityX, int velocityY) {
+            public int findTargetSnapPosition(RecyclerView.LayoutManager lm, int velocityX, int velocityY){
                 View centerView = findSnapView(lm);
                 if (centerView == null)
                     return RecyclerView.NO_POSITION;
-
                 int position = lm.getPosition(centerView);
                 int targetPosition = -1;
                 if (lm.canScrollHorizontally()) {
@@ -121,7 +118,6 @@ public class descFragmentP2 extends Fragment {
                         targetPosition = position + 1;
                     }
                 }
-
                 if (lm.canScrollVertically()) {
                     if (velocityY < 0) {
                         targetPosition = position - 1;
@@ -129,7 +125,6 @@ public class descFragmentP2 extends Fragment {
                         targetPosition = position + 1;
                     }
                 }
-
                 final int firstItem = 0;
                 final int lastItem = lm.getItemCount() - 1;
                 targetPosition = Math.min(lastItem, Math.max(targetPosition, firstItem));

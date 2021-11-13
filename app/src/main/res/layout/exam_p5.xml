@@ -7,5 +7,5 @@
         android:id="@+id/lst_ques_5"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/exam_p3_list"/>
+        tools:listitem="@layout/custom_list_question_p3"/>
 </LinearLayout>

@@ -1,7 +1,6 @@
 package com.example.user.ui.exam;
 
 import android.annotation.SuppressLint;
-import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,27 +8,20 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 import com.example.user.R;
-import com.example.user.ui.adapter.adt_desc_P1;
+import com.example.user.ui.adapter.adtDescP1;
 import com.example.user.ui.class_exam.cls_part_1;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,7 +47,7 @@ public class Desc_Fragment_P1 extends Fragment {
 
     String id_exam,url_audio;
     int pos;
-    private adt_desc_P1 adapterExamP1;
+    private adtDescP1 adapterExamP1;
     RecyclerView Rec_Decs_P1;
 
     public Desc_Fragment_P1(String id_exam, String url_audio,int pos) {
@@ -146,7 +138,7 @@ public class Desc_Fragment_P1 extends Fragment {
                         .setQuery(FirebaseDatabase.getInstance().getReference("Cauhoi_Ques1").child(id_exam), cls_part_1.class)
                         .build();
 
-        adapterExamP1 = new adt_desc_P1(options);
+        adapterExamP1 = new adtDescP1(options);
 
         //next question
         adapterExamP1.setOnNextQuestionListener(currentQuestion -> {

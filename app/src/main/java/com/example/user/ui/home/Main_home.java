@@ -13,12 +13,13 @@ import android.widget.Toast;
 import com.example.user.R;
 import com.example.user.ui.exam.Tutorial_P1_Activity;
 import com.example.user.ui.exam2.Tutorial_P2_Activity;
+import com.example.user.ui.exam3.TutorialP3Activity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 @SuppressWarnings("ALL")
 public class Main_home extends AppCompatActivity implements BottomNavigationView.OnNavigationItemReselectedListener{
 
-    public Button exam_1,exam_2;
+    public Button exam_1,exam_2,exam_3;
     private BottomNavigationView bottomNavigationView;
 
     @Override
@@ -42,6 +43,15 @@ public class Main_home extends AppCompatActivity implements BottomNavigationView
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Main_home.this, Tutorial_P2_Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        exam_3 = findViewById(R.id.btn_part_3);
+        exam_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main_home.this, TutorialP3Activity.class);
                 startActivity(intent);
             }
         });
