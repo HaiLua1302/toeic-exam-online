@@ -2,14 +2,11 @@ package com.example.user.ui.admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.content.CursorLoader;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.icu.text.SimpleDateFormat;
-import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -20,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.user.R;
-import com.example.user.ui.class_exam.cls_part_1;
+import com.example.user.ui.class_exam.ClsPartP1;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -30,16 +27,11 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import org.xml.sax.Parser;
-
-import java.io.File;
 import java.io.IOException;
-import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.UUID;
 
 public class add_ques_p1 extends AppCompatActivity {
 
@@ -55,7 +47,7 @@ public class add_ques_p1 extends AppCompatActivity {
 
 
     //a list to store all the Question from firebase database
-    List<cls_part_1> clsQues_p1;
+    List<ClsPartP1> clsQues_p1;
 
     //our database reference object
     DatabaseReference databaseQuest_p1;

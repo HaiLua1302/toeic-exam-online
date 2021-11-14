@@ -4,11 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_app"
-    android:layout_gravity="center"
-    tools:context=".ui.exam3.RecP3Fragment">
+    tools:context=".ui.exam4.RecP4Fragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recViewListP3"
+        android:id="@+id/recViewListP4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="1dp"

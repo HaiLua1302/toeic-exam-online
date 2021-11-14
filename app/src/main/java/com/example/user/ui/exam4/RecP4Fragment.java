@@ -1,4 +1,4 @@
-package com.example.user.ui.exam3;
+package com.example.user.ui.exam4;
 
 import android.os.Bundle;
 
@@ -12,8 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.user.R;
-import com.example.user.ui.adapter.AdtExamListP3;
-import com.example.user.ui.class_exam.ClsRecExamP3;
+import com.example.user.ui.adapter.AdtExamListP4;
+import com.example.user.ui.adapter.AdtExamListP4;
+import com.example.user.ui.class_exam.ClsRecExamP4;
+import com.example.user.ui.class_exam.ClsRecExamP4;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,8 +25,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class RecP3Fragment extends Fragment {
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link RecP4Fragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class RecP4Fragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,19 +41,17 @@ public class RecP3Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private RecyclerView recyclerViewList3;
-    private AdtExamListP3 adapterExamList3;
-    private List<ClsRecExamP3> ClsRecExamP3s;
+    private RecyclerView recyclerViewList4;
+    private AdtExamListP4 adapterExamList4;
+    private List<ClsRecExamP4> clsRecP4s ;
 
-
-    public RecP3Fragment() {
+    public RecP4Fragment() {
         // Required empty public constructor
     }
 
-
     // TODO: Rename and change types and number of parameters
-    public static RecP3Fragment newInstance(String param1, String param2) {
-        RecP3Fragment fragment = new RecP3Fragment();
+    public static RecP4Fragment newInstance(String param1, String param2) {
+        RecP4Fragment fragment = new RecP4Fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -68,33 +72,31 @@ public class RecP3Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_rec_p3, container, false);
-        recyclerViewList3 = view.findViewById(R.id.recViewListP3);
-        recyclerViewList3.setLayoutManager(new LinearLayoutManager(getContext()));
+        View view = inflater.inflate(R.layout.fragment_rec_p4, container, false);
+        recyclerViewList4 = view.findViewById(R.id.recViewListP4);
+        recyclerViewList4.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        ClsRecExamP3s = new ArrayList<>();
+        clsRecP4s = new ArrayList<>();
 
-        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("Ques_3");
+        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("Ques_4");
 
         ref1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot locationSnapshot: snapshot.getChildren()){
                     for (DataSnapshot dataSnapshot : locationSnapshot.getChildren()){
-                        ClsRecExamP3 recP3 = dataSnapshot.getValue(ClsRecExamP3.class);
-                        ClsRecExamP3s.add(recP3);
+                        ClsRecExamP4 recP4 = dataSnapshot.getValue(ClsRecExamP4.class);
+                        clsRecP4s.add(recP4);
                     }
                 }
-                adapterExamList3 = new AdtExamListP3(ClsRecExamP3s);
-                recyclerViewList3.setAdapter(adapterExamList3);
+                adapterExamList4 = new AdtExamListP4(clsRecP4s);
+                recyclerViewList4.setAdapter(adapterExamList4);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
 
-        return  view;
+        return view;
     }
-
-
 }

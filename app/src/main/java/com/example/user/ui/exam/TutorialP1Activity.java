@@ -1,4 +1,4 @@
-package com.example.user.ui.exam3;
+package com.example.user.ui.exam;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -12,13 +12,13 @@ import android.widget.Button;
 
 import com.example.user.R;
 
-public class TutorialP3Activity extends AppCompatActivity {
+public class TutorialP1Activity extends AppCompatActivity {
 
     Button getRec;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tutorial_p3);
+        setContentView(R.layout.activity_tutorial_p1_);
         getSupportActionBar().setTitle("Hướng dẫn");
         // calling the action bar
         ActionBar actionBar = getSupportActionBar();
@@ -29,11 +29,11 @@ public class TutorialP3Activity extends AppCompatActivity {
         // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        getRec = findViewById(R.id.btn_okie_tutorial_p3);
+        getRec = findViewById(R.id.btn_okie_tutorial_p1);
         getRec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TutorialP3Activity.this, ScreenSwitchP3Activity.class);
+                Intent intent = new Intent(TutorialP1Activity.this, ScreenSwitchP1Activity.class);
                 startActivity(intent);
             }
         });
@@ -49,4 +49,4 @@ public class TutorialP3Activity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     };
-    }
+}

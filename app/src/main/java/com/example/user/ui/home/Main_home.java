@@ -8,18 +8,18 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.user.R;
-import com.example.user.ui.exam.Tutorial_P1_Activity;
-import com.example.user.ui.exam2.Tutorial_P2_Activity;
+import com.example.user.ui.exam.TutorialP1Activity;
+import com.example.user.ui.exam2.TutorialP2Activity;
 import com.example.user.ui.exam3.TutorialP3Activity;
+import com.example.user.ui.exam4.TutorialP4Activity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 @SuppressWarnings("ALL")
 public class Main_home extends AppCompatActivity implements BottomNavigationView.OnNavigationItemReselectedListener{
 
-    public Button exam_1,exam_2,exam_3;
+    public Button exam_1,exam_2,exam_3,exam_4,exam_5,exam_6,exam_7;
     private BottomNavigationView bottomNavigationView;
 
     @Override
@@ -33,7 +33,7 @@ public class Main_home extends AppCompatActivity implements BottomNavigationView
         exam_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Main_home.this, Tutorial_P1_Activity.class);
+                Intent intent = new Intent(Main_home.this, TutorialP1Activity.class);
                 startActivity(intent);
             }
         });
@@ -42,7 +42,7 @@ public class Main_home extends AppCompatActivity implements BottomNavigationView
         exam_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Main_home.this, Tutorial_P2_Activity.class);
+                Intent intent = new Intent(Main_home.this, TutorialP2Activity.class);
                 startActivity(intent);
             }
         });
@@ -52,6 +52,15 @@ public class Main_home extends AppCompatActivity implements BottomNavigationView
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Main_home.this, TutorialP3Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        exam_4 = findViewById(R.id.btn_part_4);
+        exam_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main_home.this, TutorialP4Activity.class);
                 startActivity(intent);
             }
         });

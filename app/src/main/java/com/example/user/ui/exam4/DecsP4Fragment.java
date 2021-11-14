@@ -1,4 +1,4 @@
-package com.example.user.ui.exam3;
+package com.example.user.ui.exam4;
 
 import android.os.Bundle;
 
@@ -13,11 +13,18 @@ import android.view.ViewGroup;
 
 import com.example.user.R;
 import com.example.user.ui.adapter.AdtDescP3;
+import com.example.user.ui.adapter.AdtDescP4;
 import com.example.user.ui.class_exam.ClsRecExamP3;
+import com.example.user.ui.class_exam.ClsRecExamP4;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class DecsP3Fragment extends Fragment {
+/**
+ * A simple {@li    nk Fragment} subclass.
+ * Use the {@link DecsP4Fragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class DecsP4Fragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,8 +35,8 @@ public class DecsP3Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private RecyclerView recyclerViewQuestionP3;
-    private AdtDescP3 adtDescP3;
+    private RecyclerView recyclerViewQuestionP4;
+    private AdtDescP4 adtDescP4;
 
 
     String id_exam;
@@ -37,19 +44,19 @@ public class DecsP3Fragment extends Fragment {
     String url_audio;
 
 
-    public DecsP3Fragment() {
+    public DecsP4Fragment() {
         // Required empty public constructor
     }
 
-    public DecsP3Fragment(String id_exam, int id_question, String url_audio) {
+    public DecsP4Fragment(String id_exam, int id_question, String url_audio) {
         this.id_exam = id_exam;
         this.id_question = id_question;
         this.url_audio = url_audio;
     }
 
     // TODO: Rename and change types and number of parameters
-    public static DecsP3Fragment newInstance(String param1, String param2) {
-        DecsP3Fragment fragment = new DecsP3Fragment();
+    public static DecsP4Fragment newInstance(String param1, String param2) {
+        DecsP4Fragment fragment = new DecsP4Fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -70,10 +77,9 @@ public class DecsP3Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_decs_p3, container, false);
-
-        recyclerViewQuestionP3 = view.findViewById(R.id.decsListQuestionP3);
-        recyclerViewQuestionP3.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        View view = inflater.inflate(R.layout.fragment_decs_p4, container, false);
+        recyclerViewQuestionP4 = view.findViewById(R.id.decsListQuestionP4);
+        recyclerViewQuestionP4.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         LinearSnapHelper snapHelper = new LinearSnapHelper(){
             @Override
             public int findTargetSnapPosition(RecyclerView.LayoutManager lm, int velocityX, int velocityY){
@@ -103,26 +109,25 @@ public class DecsP3Fragment extends Fragment {
             }
         };
 
-        snapHelper.attachToRecyclerView(recyclerViewQuestionP3);
+        snapHelper.attachToRecyclerView(recyclerViewQuestionP4);
 //        String child = id_exam + "/" + String.valueOf(id_question);
-        FirebaseRecyclerOptions<ClsRecExamP3> options = new FirebaseRecyclerOptions.Builder<ClsRecExamP3>()
-                .setQuery(FirebaseDatabase.getInstance().getReference("Ques_3").child(id_exam), ClsRecExamP3.class)
+        FirebaseRecyclerOptions<ClsRecExamP4> options = new FirebaseRecyclerOptions.Builder<ClsRecExamP4>()
+                .setQuery(FirebaseDatabase.getInstance().getReference("Ques_4").child(id_exam), ClsRecExamP4.class)
                 .build();
 
-        adtDescP3 = new AdtDescP3(options);
-        recyclerViewQuestionP3.setAdapter(adtDescP3);
+        adtDescP4 = new AdtDescP4(options);
+        recyclerViewQuestionP4.setAdapter(adtDescP4);
         return view;
     }
-
     @Override
     public void onStart() {
         super.onStart();
-        adtDescP3.startListening();
+        adtDescP4.startListening();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        adtDescP3.stopListening();
+        adtDescP4.stopListening();
     }
 }
