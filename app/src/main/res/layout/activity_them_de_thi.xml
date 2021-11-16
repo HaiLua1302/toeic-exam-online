@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/background_app"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.admin.ThemDeThiActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/rounded_edittext"
+        android:gravity="center|top"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/txttendethi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:hint="Nhập tên đề thi" />
+
+        <ListView
+            android:paddingBottom="3dp"
+            android:padding="5dp"
+            android:id="@+id/lvCacCauHoi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="9"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnLuuThemdeThi"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@drawable/infor_user"
+            android:text="LƯU"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</LinearLayout>
