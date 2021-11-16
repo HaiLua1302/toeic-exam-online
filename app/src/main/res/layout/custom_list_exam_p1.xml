@@ -14,22 +14,36 @@
         android:layout_margin="5dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/mybutton"
-        android:gravity="center"
 
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txt_list_Exam_p1"
-            style="@style/txtMaDe"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
             android:background="@drawable/dashed_underline"
-            android:paddingBottom="5dp"
-            android:text="Đề 1 | 7 Câu hỏi" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_list_Exam_p1"
+                style="@style/txtMaDe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:text="1" />
+
+            <TextView
+                android:id="@+id/txt2"
+                style="@style/txtMaDe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="| 7 Câu hỏi" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_start_list_p1"

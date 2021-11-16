@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:gravity="center"
     android:background="#B0F8F1"
     android:orientation="vertical">
+    <TextView
+        android:id="@+id/txtNumberQuestion"
+        android:layout_marginLeft="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        style="@style/txtMaDe"
+        android:background="@drawable/dashed_underline"
+        android:text="Question 1" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,8 +25,7 @@
             android:id="@+id/txtContentQuestionP3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            style="@style/txtMaDe"
+            style="@style/txtCauhoi"
             android:paddingBottom="10dp"
             android:background="@drawable/dashed_underline"
             android:text="1 .What is the purpose of notice ?" />

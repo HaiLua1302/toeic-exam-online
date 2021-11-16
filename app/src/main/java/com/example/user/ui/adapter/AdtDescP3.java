@@ -73,7 +73,7 @@ public class AdtDescP3 extends FirebaseRecyclerAdapter<ClsRecExamP3, AdtDescP3.D
             imageViewPlayPause3Holder = itemView.findViewById(R.id.imgPlayP3);
             txtCurrentTime3Holder = itemView.findViewById(R.id.txtCurrentTime3);
             txtTotalTime3Holder = itemView.findViewById(R.id.txtTimeTotal3);
-            btnSubmitHolder = itemView.findViewById(R.id.btnSubmit3);
+            btnSubmitHolder = itemView.findViewById(R.id.btnSubmitP3);
             btnSubmitHolder.setVisibility(View.INVISIBLE);
 
 

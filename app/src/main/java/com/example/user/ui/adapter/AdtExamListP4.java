@@ -1,5 +1,6 @@
 package com.example.user.ui.adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.user.R;
 import com.example.user.R;
 import com.example.user.ui.class_exam.ClsRecExamP4;
 import com.example.user.ui.exam4.DecsP4Fragment;
@@ -33,20 +33,21 @@ public class AdtExamListP4 extends RecyclerView.Adapter<AdtExamListP4.ExamListHo
         return new AdtExamListP4.ExamListHolder4(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ExamListHolder4 holder, int position) {
-        holder.idExamHolder.setText("Exam :"+(position+1));
+        holder.idExamHolder.setText("Exam : "+(position+1));
         holder.getToDataExamHolder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
                 activity.getSupportFragmentManager().beginTransaction().
-                        replace(R.id.wrapper4,
+                        replace(R.id.wraper4,
                                 new DecsP4Fragment(ClsRecExamP4s.get(position).getId_exam(),
                                         ClsRecExamP4s.get(position).getId_question(),
                                         ClsRecExamP4s.get(position).getUrl_audio()))
                         .addToBackStack(null).commit();
-                notifyDataSetChanged();
+
             }
         });
     }
@@ -59,10 +60,12 @@ public class AdtExamListP4 extends RecyclerView.Adapter<AdtExamListP4.ExamListHo
     public class ExamListHolder4 extends RecyclerView.ViewHolder {
         TextView idExamHolder;
         Button getToDataExamHolder;
+
         public ExamListHolder4(@NonNull View itemView) {
             super(itemView);
             idExamHolder = itemView.findViewById(R.id.txt_list_Exam_p1);
             getToDataExamHolder = itemView.findViewById(R.id.btn_start_list_p1);
         }
     }
+
 }

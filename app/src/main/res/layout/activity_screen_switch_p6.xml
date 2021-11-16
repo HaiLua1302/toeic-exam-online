@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/wraper3"
-    android:background="@drawable/background_app"
-    tools:context=".ui.exam3.ScreenSwitchP3Activity">
+    android:id="@+id/wraper6"
+    tools:context=".ui.exam6.ScreenSwitchP6Activity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

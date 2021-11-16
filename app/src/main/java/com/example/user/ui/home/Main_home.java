@@ -14,6 +14,8 @@ import com.example.user.ui.exam.TutorialP1Activity;
 import com.example.user.ui.exam2.TutorialP2Activity;
 import com.example.user.ui.exam3.TutorialP3Activity;
 import com.example.user.ui.exam4.TutorialP4Activity;
+import com.example.user.ui.exam5.TutorialP5Activity;
+import com.example.user.ui.exam6.TutorialP6Activity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 @SuppressWarnings("ALL")
@@ -61,6 +63,24 @@ public class Main_home extends AppCompatActivity implements BottomNavigationView
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Main_home.this, TutorialP4Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        exam_5 = findViewById(R.id.btn_part_5);
+        exam_5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main_home.this, TutorialP5Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        exam_6 = findViewById(R.id.btn_part_6);
+        exam_6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main_home.this, TutorialP6Activity.class);
                 startActivity(intent);
             }
         });

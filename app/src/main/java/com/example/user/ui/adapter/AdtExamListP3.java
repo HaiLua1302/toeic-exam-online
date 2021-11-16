@@ -42,7 +42,7 @@ public class AdtExamListP3 extends RecyclerView.Adapter<AdtExamListP3.ExamListHo
             public void onClick(View v) {
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
                 activity.getSupportFragmentManager().beginTransaction().
-                        replace(R.id.wrapper3,
+                        replace(R.id.wraper3,
                                 new DecsP3Fragment(ClsRecExamP3s.get(position).getId_exam(),
                                         ClsRecExamP3s.get(position).getId_question(),
                                         ClsRecExamP3s.get(position).getUrl_audio()))

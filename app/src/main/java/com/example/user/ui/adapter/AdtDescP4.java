@@ -101,7 +101,6 @@ public class AdtDescP4 extends FirebaseRecyclerAdapter<ClsRecExamP4,AdtDescP4.De
                     }
                     listQuestionP4Holder = new AdtDescListQuestionP4(questionP4Holder);
                     recyclerViewListQuestionP4Holder.setAdapter(listQuestionP4Holder);
-                    notifyDataSetChanged();
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {

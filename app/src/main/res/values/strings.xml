@@ -24,4 +24,15 @@
     <string name="title_setting">setting</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="paragraph">"Just a reminder that the charity barbecue is happening this Friday! It is for a good cause;
+        we're __(1)__ money for the children's charity Future Horizons to buy computers for community centers in disadvantaged neighborhoods,
+        so please come along and help out!  It will be at 7:30 at Oak Park, next to the gazebo by the west gate. Dinner will be 15 dollars
+        and there will be hamburgers, hotdogs, or veggie burgers, and of course a lots of salads and desserts! Bring your family and friends;
+        everyone __(2)__ welcome. Please get tickets from me or from Sophia Johnson.  I hope __(3)__ you there!  Jane Anderson "</string>
+
+    <string name="Directions">For each question, you will see a picture and you will hear four short statements.
+        The statements will be spoken just one time. They will not be printed in your test book so you must listen carefully
+        to understand what the speaker says. When you hear the four statements, look at the picture and choose the statement
+        that best describes what you see in the picture. Choose the best answer A, B, C or D</string>
 </resources>
