@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
 
 
-        setContentView(R.layout.setting_user);
+                setContentView(R.layout.setting_user);
 
 //        Button btn_login = findViewById(R.id.btn_batdau);
 //
@@ -57,54 +57,55 @@ public class MainActivity extends AppCompatActivity {
 //
 //            }
 //        });
-        Button achie = findViewById(R.id.btn_achievement);
-        achie.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, achievement_user.class);
-                startActivity(intent);
-            }
-        });
-        Button feedback = findViewById(R.id.btn_feedback);
-        feedback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, feedback_user.class);
-                startActivity(intent);
-            }
-        });
-        Button tutorial = findViewById(R.id.btn_tutorial);
-        tutorial.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, tutorial_user.class);
-                startActivity(intent);
-            }
-        });
-        Button changelayout = findViewById(R.id.btn_theme);
-        changelayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, changelayout_user.class);
-                startActivity(intent);
-            }
-        });
-        Button changeLanguage = findViewById(R.id.btn_language);
-        changeLanguage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, changelanguage_user.class));
-                finish();
-            }
-        });
-        Button rule = findViewById(R.id.btn_rule);
-        rule.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, rule_user.class));
-                finish();
+                Button achie = findViewById(R.id.btn_achievement);
+                achie.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(MainActivity.this, achievement_user.class);
+                        startActivity(intent);
+                    }
+                });
+                Button feedback = findViewById(R.id.btn_feedback);
+                feedback.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(MainActivity.this, feedback_user.class);
+                        startActivity(intent);
+                    }
+                });
+                Button tutorial = findViewById(R.id.btn_tutorial);
+                tutorial.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(MainActivity.this, tutorial_user.class);
+                        startActivity(intent);
+                    }
+                });
+                Button changelayout = findViewById(R.id.btn_theme);
+                changelayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(MainActivity.this, changelayout_user.class);
+                        startActivity(intent);
+                    }
+                });
+                Button changeLanguage = findViewById(R.id.btn_language);
+                changeLanguage.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(MainActivity.this, changelanguage_user.class));
+                        finish();
+                    }
+                });
+                Button rule = findViewById(R.id.btn_rule);
+                rule.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(MainActivity.this, rule_user.class));
+                        finish();
 
+                    }
+                });
             }
         });
-    }
-}
+    }}
