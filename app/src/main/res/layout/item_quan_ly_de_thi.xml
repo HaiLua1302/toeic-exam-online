@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@null"
+    android:id="@+id/lnearitemQuanLyDeThi"
+    android:layout_height="40dp">
+
+    <TextView
+        android:background="@drawable/vien1"
+        android:id="@+id/txtIDBoDe"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="ID"
+        android:textColor="#3F51B5"
+        android:textStyle="bold" />
+
+    <TextView    android:background="@drawable/vien1"
+        android:id="@+id/txtBoDe"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="BỘ ĐỀ"
+        android:textColor="#3F51B5"
+        android:textStyle="bold" />
+
+    <TextView    android:background="@drawable/vien1"
+        android:id="@+id/txtNgayThemBoDe"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="NGÀY THÊM"
+        android:textColor="#3F51B5"
+        android:textStyle="bold" />
+</LinearLayout>
