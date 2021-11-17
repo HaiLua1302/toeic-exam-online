@@ -34,7 +34,7 @@ public class AdtDescListQuestionP6 extends RecyclerView.Adapter<AdtDescListQuest
 
     @Override
     public void onBindViewHolder(@NonNull DescListQuestionP6Holder holder, int position) {
-
+        holder.SetData(position);
     }
 
     @Override
