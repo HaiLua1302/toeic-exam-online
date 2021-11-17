@@ -6,8 +6,15 @@
         <entry key="..\:/Chuyende2/app/src/main/res/layout/activity_chi_tiet_cau_hoi.xml" value="0.1796875" />
         <entry key="..\:/Chuyende2/app/src/main/res/layout/activity_chi_tiet_de_thi.xml" value="0.1796875" />
         <entry key="..\:/Chuyende2/app/src/main/res/layout/activity_chon_cau_hoi.xml" value="0.1796875" />
+        <entry key="..\:/Chuyende2/app/src/main/res/layout/activity_forgot_pass_admin.xml" value="0.1" />
+        <entry key="..\:/Chuyende2/app/src/main/res/layout/activity_login_admin.xml" value="0.1" />
+        <entry key="..\:/Chuyende2/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Chuyende2/app/src/main/res/layout/activity_quan_ly.xml" value="0.1796875" />
+        <entry key="..\:/Chuyende2/app/src/main/res/layout/activity_quan_ly_cau_hoi.xml" value="0.1" />
+        <entry key="..\:/Chuyende2/app/src/main/res/layout/activity_quan_ly_de_thi_layout.xml" value="0.1" />
+        <entry key="..\:/Chuyende2/app/src/main/res/layout/exam_p1.xml" value="0.1" />
         <entry key="..\:/Chuyende2/app/src/main/res/layout/item_chon_cau_hoi.xml" value="0.1796875" />
+        <entry key="..\:/Chuyende2/app/src/main/res/layout/item_quan_ly_cau_hoi.xml" value="0.1" />
       </map>
     </option>
   </component>

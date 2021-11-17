@@ -40,11 +40,11 @@ public class AdapterQuanLyDeThi extends ArrayAdapter {
             convertView = LayoutInflater.from(context).inflate(resource, null);
 
             viewHolder = new ViewHolder();
-//            viewHolder.txtBoDe = convertView.findViewById(R.id.txtBoDe);
-//            viewHolder.txtIDBoDe = convertView.findViewById(R.id.txtIDBoDe);
-//            viewHolder.txtNgayThemBoDe = convertView.findViewById(R.id.txtNgayThemBoDe);
-//            viewHolder.lnearitemQuanLyDeThi = convertView.findViewById(R.id.lnearitemQuanLyDeThi);
-//
+            viewHolder.txtBoDe = convertView.findViewById(R.id.txtBoDe);
+            viewHolder.txtIDBoDe = convertView.findViewById(R.id.txtIDBoDe);
+            viewHolder.txtNgayThemBoDe = convertView.findViewById(R.id.txtNgayThemBoDe);
+            viewHolder.lnearitemQuanLyDeThi = convertView.findViewById(R.id.lnearitemQuanLyDeThi);
+
 
             convertView.setTag(viewHolder);
         } else {

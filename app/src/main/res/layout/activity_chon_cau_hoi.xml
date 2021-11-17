@@ -16,11 +16,16 @@
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/txtSearchCauHoi"
             android:layout_width="match_parent"
             android:layout_height="32dp"
             android:layout_marginLeft="3dp"
             android:layout_weight="1"
-            android:background="@drawable/rounded_edittext" />
+            android:background="@drawable/rounded_edittext"
+            android:hint="Search"
+            android:paddingLeft="20dp"
+            android:textColor="#043543"
+            android:textSize="15dp" />
 
         <ImageView
             android:layout_width="match_parent"
@@ -52,6 +57,7 @@
                 android:textStyle="bold" />
 
             <Spinner
+                android:id="@+id/spLocCauHoi"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="5" />
@@ -115,6 +121,7 @@
 
 
         <ListView
+            android:id="@+id/lvCauHoi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
