@@ -1,11 +1,11 @@
 package com.example.user.ui.admin;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.user.R;
 import com.example.user.adapter.AdapterChonCauHoi;

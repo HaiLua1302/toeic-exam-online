@@ -8,24 +8,52 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.user.R;
+import com.example.user.ui.home.Main_home;
 
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class setting_user extends AppCompatActivity {
+public class Setting_user extends AppCompatActivity {
     public String selected = "Male";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_user);
+        Button achie = findViewById(R.id.btn_achievement);
+        achie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Setting_user.this, Achievement_user.class);
+                startActivity(intent);
+            }
+        });
+
+
+        Button changelayout = findViewById(R.id.btn_theme);
+        changelayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Setting_user.this, Changelayout_user.class);
+                startActivity(intent);
+            }
+        });
+        Button changeLanguage = findViewById(R.id.btn_language);
+        changeLanguage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Setting_user.this, Changelanguage_user.class));
+                finish();
+            }
+        });
+
         //Rule
         Button rule = findViewById(R.id.btn_rule);
         rule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(setting_user.this, rule_user.class);
+                Intent intent = new Intent(Setting_user.this, Rule_user.class);
                 startActivity(intent);
             }
         });
@@ -34,7 +62,7 @@ public class setting_user extends AppCompatActivity {
         tutorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(setting_user.this, tutorial_user.class);
+                Intent intent = new Intent(Setting_user.this, Tutorial_user.class);
                 startActivity(intent);
             }
         });
@@ -44,7 +72,7 @@ public class setting_user extends AppCompatActivity {
         feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(setting_user.this, feedback_user.class);
+                Intent intent = new Intent(Setting_user.this, Feedback_user.class);
                 startActivity(intent);
             }
         });
@@ -59,13 +87,13 @@ public class setting_user extends AppCompatActivity {
     }
     public void showDialog(){
         final String[] genders = {"Male", "Female"};
-        AlertDialog.Builder builder =new AlertDialog.Builder(setting_user.this);
+        AlertDialog.Builder builder =new AlertDialog.Builder(Setting_user.this);
         builder.setTitle("Choose language");
         builder.setSingleChoiceItems(genders, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 selected = genders[i];
-                Toast.makeText(setting_user.this,"clicked"+selected,Toast.LENGTH_LONG).show();
+                Toast.makeText(Setting_user.this,"clicked"+selected,Toast.LENGTH_LONG).show();
             }
         });
         builder.show();

@@ -1,6 +1,5 @@
 package com.example.user.ui.setting;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -24,9 +23,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import static com.example.user.R.color.cardview_dark_background;
-
-public class changelayout_user extends AppCompatActivity {
+public class Changelayout_user extends AppCompatActivity {
     public String selected;
     private int checkedItem;
     private String CHECKEDITEM ="checked_item";
@@ -62,14 +59,14 @@ public class changelayout_user extends AppCompatActivity {
 
     public void showDialog(){
         final String[] themes = this.getResources().getStringArray(R.array.theme);
-        AlertDialog.Builder builder =new AlertDialog.Builder(changelayout_user.this);
+        AlertDialog.Builder builder =new AlertDialog.Builder(Changelayout_user.this);
         builder.setTitle("Choose language");
         builder.setSingleChoiceItems(themes, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 selected = themes[i];
                 checkedItem = i;
-                Toast.makeText(changelayout_user.this,"clicked"+selected,Toast.LENGTH_LONG).show();
+                Toast.makeText(Changelayout_user.this,"clicked"+selected,Toast.LENGTH_LONG).show();
             }
         });
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -116,7 +113,7 @@ public class changelayout_user extends AppCompatActivity {
         RadioButton rdBtnDf = findViewById(R.id.radioDefault);
         RadioButton rdBtnD = findViewById(R.id.radioDark);
         if (rdGr == null) {
-            Toast.makeText(changelayout_user.this, "null", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Changelayout_user.this, "null", Toast.LENGTH_SHORT).show();
         } else {
             rdGr.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                 @Override
@@ -151,7 +148,7 @@ public class changelayout_user extends AppCompatActivity {
                         // on below line we are checking the radio button with id.
                         // on below line we are setting the text to text view as light mode.
                         // on below line we are changing the theme to light mode.
-                        Toast.makeText(changelayout_user.this,"clicked",Toast.LENGTH_LONG).show();
+                        Toast.makeText(Changelayout_user.this,"clicked",Toast.LENGTH_LONG).show();
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                         break;
                     case R.id.radioDark:
@@ -159,7 +156,7 @@ public class changelayout_user extends AppCompatActivity {
                         // on below line we are setting dark theme text to our text view.
                         // on below line we are changing the theme to dark mode.
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                        Toast.makeText(changelayout_user.this,"clicked",Toast.LENGTH_LONG).show();
+                        Toast.makeText(Changelayout_user.this,"clicked",Toast.LENGTH_LONG).show();
 
                         break;
                 }

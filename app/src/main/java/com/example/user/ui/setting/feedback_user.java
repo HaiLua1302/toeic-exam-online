@@ -19,7 +19,7 @@ import com.example.user.R;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class feedback_user extends AppCompatActivity {
+public class Feedback_user extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,14 +44,14 @@ public class feedback_user extends AppCompatActivity {
         layoutFbackEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(feedback_user.this, "Email is Clicked", Toast.LENGTH_LONG).show();
+                Toast.makeText(Feedback_user.this, "Email is Clicked", Toast.LENGTH_LONG).show();
                 dialog.dismiss();
             }
         });
         layoutFbackMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(feedback_user.this, "Mail is Clicked", Toast.LENGTH_LONG).show();
+                Toast.makeText(Feedback_user.this, "Mail is Clicked", Toast.LENGTH_LONG).show();
                 dialog.dismiss();
             }
         });

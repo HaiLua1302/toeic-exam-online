@@ -8,15 +8,18 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Paint;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,49 +30,29 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.SignInMethodQueryResult;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import static android.service.controls.ControlsProviderService.TAG;
+import okhttp3.Cache;
 
 public class Register_user extends AppCompatActivity {
+
     private FirebaseAuth mAuth;
     public EditText user_name, email_user, pass_user, check_pass_again;
-    public Button register,okie;
-
+    public Button register;
+    public CheckBox ckb_rules;
+    public ProgressBar process_loading;
+    //our database reference object
+    DatabaseReference databases_user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_user);
         getSupportActionBar().setTitle("Đăng ký tài khoản");
-        mAuth = FirebaseAuth.getInstance();
 
-        user_name = findViewById(R.id.edt_user_name);
-        email_user = findViewById(R.id.edt_email_reg);
-        pass_user = findViewById(R.id.edt_pass_reg);
-        check_pass_again = findViewById(R.id.edt_pass_re_reg);
-
-
-
-        TextView txt_login = findViewById(R.id.txt_login);
-        txt_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Register_user.this, Login_user.class);
-                startActivity(intent);
-
-            }
-        });
-
-        TextView txt_skip_reg = findViewById(R.id.txt_skip_reg);
-        txt_skip_reg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Register_user.this, Main_home.class);
-                startActivity(intent);
-
-            }
-        });
+        //getting the reference of artists node
+        databases_user = FirebaseDatabase.getInstance().getReference("User");
 
         // calling the action bar
         ActionBar actionBar = getSupportActionBar();
@@ -80,14 +63,63 @@ public class Register_user extends AppCompatActivity {
         // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        mAuth = FirebaseAuth.getInstance();
+
+        user_name = findViewById(R.id.edt_user_name);
+        email_user = findViewById(R.id.edt_email_reg);
+        pass_user = findViewById(R.id.edt_pass_reg);
+        check_pass_again = findViewById(R.id.edt_pass_re_reg);
+
+        process_loading = findViewById(R.id.progressBar_loading);
+        process_loading.setVisibility(View.INVISIBLE);
+
+        //event click txt login
+        TextView txt_login = findViewById(R.id.txt_login);
+        txt_login.setPaintFlags(txt_login.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        txt_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Register_user.this, Login_user.class);
+                startActivity(intent);
+
+            }
+        });
+
+        //event click txt skip
+        TextView txt_skip_reg = findViewById(R.id.txt_skip_reg);
+        txt_skip_reg.setPaintFlags(txt_skip_reg.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        txt_skip_reg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Register_user.this, Main_home.class);
+                startActivity(intent);
+
+            }
+        });
+
+        //event click checkbox rules
+        ckb_rules = findViewById(R.id.ckb__rules);
+        ckb_rules.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ViewDialog_rules();
+            }
+        });
+
+
+
+        //event btn register
         register = findViewById(R.id.btn_reg);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 register_user();
             }
         });
-    }
+
+    };
+
     // this event will enable the back
     // function to the button on press
     @Override
@@ -98,11 +130,33 @@ public class Register_user extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
+    };
 
+    //show dialog rules
+    public void ViewDialog_rules() {
+        LayoutInflater inflater = LayoutInflater.from(Register_user.this);
+        View view = inflater.inflate(R.layout.dialog_rules, null);
+        TextView txt_dialog = view.findViewById(R.id.txt_dialog_rules);
+        txt_dialog.setMovementMethod(new ScrollingMovementMethod());
+
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(Register_user.this);
+        alertDialog.setView(view);
+        AlertDialog alert = alertDialog.create();
+        alert.show();
+
+        Button okie = alert.findViewById(R.id.btn_okie_rules);
+        okie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alert.dismiss();
+                ckb_rules.setError(null);
+            }
+        });
+    };
+
+    //show dialog login success message
     public class ViewDialog {
-
-        public void showDialog(Activity activity, String msg){
+        public void showDialog(Activity activity, String msg) {
             final Dialog dialog = new Dialog(activity);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setCancelable(false);
@@ -120,74 +174,106 @@ public class Register_user extends AppCompatActivity {
                     dialog.dismiss();
                 }
             });
-
             dialog.show();
-
-        }
     }
-    public void register_user()
-    {
+};
+
+    //check validation
+    public void register_user() {
         String userName = user_name.getText().toString().trim();
         String emailUser = email_user.getText().toString().trim();
         String passUser = pass_user.getText().toString().trim();
         String passAgainUser = check_pass_again.getText().toString().trim();
+        String idUser = databases_user.push().getKey();
 
-        if (userName.isEmpty())
-        {
+        if (userName.isEmpty()) {
             user_name.setError("Tên người dùng không được để trống!");
             user_name.requestFocus();
             return;
         }
-        if (emailUser.isEmpty())
-        {
+        else if (!userName.matches("[a-zA-Z ]+")){
+            user_name.setError("Tên người dùng không chứa ký tự không hợp lệ!");
+            user_name.requestFocus();
+            return;
+        }
+        if (emailUser.isEmpty()) {
             email_user.setError("Email không được để trống!");
             email_user.requestFocus();
             return;
         }
-        if (passUser.isEmpty())
-        {
+        else if (!emailUser.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")) {
+            email_user.setError("Email không hợp lệ!");
+            email_user.requestFocus();
+            return;
+        }
+        if (passUser.isEmpty()) {
             pass_user.setError("Mật khẩu không được để trống!");
             pass_user.requestFocus();
             return;
         }
-        if (passUser.length() < 8)
-        {
+        if (passUser.length() < 8) {
             pass_user.setError("Mật khẩu không đủ dài. Tối thiểu 8 ký tự!");
             pass_user.requestFocus();
             return;
         }
-        if (passAgainUser.isEmpty())
-        {
+        if (passAgainUser.isEmpty()) {
             check_pass_again.setError("Mật khẩu nhập lại không trùng khớp!");
             check_pass_again.requestFocus();
             return;
         }
+        else if (passAgainUser.equals(passUser) == false) {
+            check_pass_again.setError("Mật khẩu nhập lại không trùng khớp!");
+            check_pass_again.requestFocus();
+            return;
+        }
+        ckb_rules = findViewById(R.id.ckb__rules);
+        if (!ckb_rules.isChecked()){
+            ckb_rules.setError("\n Chấp nhận điều khoản để được đăng ký!");
+            ckb_rules.requestFocus();
+            return;
+        }
 
-        mAuth.createUserWithEmailAndPassword(emailUser,passUser).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        process_loading.setVisibility(View.VISIBLE);
+        mAuth.fetchSignInMethodsForEmail(emailUser).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    cls_user_info clsUserInfo = new cls_user_info(1,userName,1998,0123123,passUser,emailUser,"a");
-                    FirebaseDatabase.getInstance().getReference("user").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                            .setValue(userName).addOnCompleteListener(new OnCompleteListener<Void>() {
+            public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+                boolean check = !task.getResult().getSignInMethods().isEmpty();
+                if(check){
+                    process_loading.setVisibility(View.INVISIBLE);
+                    Toast.makeText(Register_user.this, "Email đã tồn tại!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                else {
+                    mAuth.createUserWithEmailAndPassword(emailUser, passUser).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()){
-                                Toast.makeText(Register_user.this,"Đăng ký thành công!",Toast.LENGTH_LONG).show();
-                                ViewDialog alert = new ViewDialog();
-                                alert.showDialog(Register_user.this, "Đăng kí thành công!");
-                            }
-                            else {
-                                Toast.makeText(Register_user.this,"Đăng ký thất bại! Vui lòng thử lại",Toast.LENGTH_LONG).show();
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+
+                                cls_user_info clsUserInfo = new cls_user_info(idUser, userName,0, 0, passUser, emailUser,"");
+                                databases_user.child(idUser).setValue(clsUserInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            process_loading.setVisibility(View.INVISIBLE);
+                                            Toast.makeText(Register_user.this, "Đăng ký thành công!", Toast.LENGTH_LONG).show();
+                                            ViewDialog alert = new ViewDialog();
+                                            alert.showDialog(Register_user.this, "Đăng kí thành công!");
+                                        } else {
+                                            process_loading.setVisibility(View.INVISIBLE);
+                                            Toast.makeText(Register_user.this, "Đăng ký thất bại! Vui lòng thử lại !", Toast.LENGTH_LONG).show();
+                                        }
+                                    }
+                                });
+                            } else {
+                                process_loading.setVisibility(View.INVISIBLE);
+                                Toast.makeText(Register_user.this, "Đăng ký thất bại! Vui lòng kiểm tra lại !", Toast.LENGTH_LONG).show();
                             }
                         }
                     });
-                }else {
-                    Toast.makeText(Register_user.this,"Đăng ký thất bại!",Toast.LENGTH_LONG).show();
                 }
             }
         });
+
+
     }
-
-
 }

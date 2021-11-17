@@ -1,14 +1,9 @@
 package com.example.user.ui.setting;
 
 import android.app.Dialog;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -19,13 +14,10 @@ import android.widget.Toast;
 
 import com.example.user.R;
 
-import java.util.Locale;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 
-public class changelanguage_user extends AppCompatActivity {
+public class Changelanguage_user extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +46,7 @@ public class changelanguage_user extends AppCompatActivity {
         RadioButton rdBtnLanguageE = findViewById(R.id.radioLanguageE);
         RadioButton rdBtnLanguageV = findViewById(R.id.radioLanguageV);
         if (rdGr == null) {
-            Toast.makeText(changelanguage_user.this, "null", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Changelanguage_user.this, "null", Toast.LENGTH_SHORT).show();
         } else {
         }
             dialog.show();

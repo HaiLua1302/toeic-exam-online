@@ -3,18 +3,96 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Chuyende2/app/src/main/res/layout/activity_chi_tiet_cau_hoi.xml" value="0.1796875" />
-        <entry key="..\:/Chuyende2/app/src/main/res/layout/activity_chi_tiet_de_thi.xml" value="0.1796875" />
-        <entry key="..\:/Chuyende2/app/src/main/res/layout/activity_chon_cau_hoi.xml" value="0.1796875" />
-        <entry key="..\:/Chuyende2/app/src/main/res/layout/activity_forgot_pass_admin.xml" value="0.1" />
-        <entry key="..\:/Chuyende2/app/src/main/res/layout/activity_login_admin.xml" value="0.1" />
-        <entry key="..\:/Chuyende2/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Chuyende2/app/src/main/res/layout/activity_quan_ly.xml" value="0.1796875" />
-        <entry key="..\:/Chuyende2/app/src/main/res/layout/activity_quan_ly_cau_hoi.xml" value="0.1" />
-        <entry key="..\:/Chuyende2/app/src/main/res/layout/activity_quan_ly_de_thi_layout.xml" value="0.1" />
-        <entry key="..\:/Chuyende2/app/src/main/res/layout/exam_p1.xml" value="0.1" />
-        <entry key="..\:/Chuyende2/app/src/main/res/layout/item_chon_cau_hoi.xml" value="0.1796875" />
-        <entry key="..\:/Chuyende2/app/src/main/res/layout/item_quan_ly_cau_hoi.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/Desktop/Chuyende2/app/src/main/res/layout/activity_chi_tiet_de_thi.xml" value="0.175" />
+        <entry key="..\:/Users/Admin/Desktop/Chuyende2/app/src/main/res/layout/activity_chon_cau_hoi.xml" value="0.175" />
+        <entry key="..\:/Users/Admin/Desktop/Chuyende2/app/src/main/res/layout/activity_quan_ly_cau_hoi.xml" value="0.175" />
+        <entry key="..\:/Users/Admin/Desktop/Chuyende2/app/src/main/res/layout/activity_quan_ly_de_thi_layout.xml" value="0.175" />
+        <entry key="..\:/Users/Admin/Desktop/Chuyende2/app/src/main/res/layout/item_chon_cau_hoi.xml" value="0.175" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/drawable/cell_shape.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/drawable/ic_background_app_background.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/activity_chi_tiet_cau_hoi.xml" value="0.14583333333333334" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/activity_chi_tiet_de_thi.xml" value="0.175" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/activity_chon_cau_hoi.xml" value="0.175" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/activity_forgot_pass_admin.xml" value="0.11005434782608696" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/activity_login_admin.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/activity_main.xml" value="0.14583333333333334" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/activity_quan_ly.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/activity_quan_ly_cau_hoi.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/activity_quan_ly_de_thi.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/activity_quan_ly_de_thi_layout.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/activity_register_admin.xml" value="0.11005434782608696" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/begin_user.xml" value="0.12092391304347826" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/description_exam_user.xml" value="0.14583333333333334" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/dialog_bottom.xml" value="0.14583333333333334" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/dialog_changelanguage.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/dialog_notification.xml" value="0.14583333333333334" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/dialog_rules.xml" value="0.14583333333333334" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/exam_list_user.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/exam_p1.xml" value="0.14583333333333334" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/exam_p2.xml" value="0.14583333333333334" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/exam_p3.xml" value="0.175" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/exam_p3_list.xml" value="0.175" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/exam_p4.xml" value="0.175" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/exam_p5.xml" value="0.175" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/exam_p6.xml" value="0.175" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/exam_p7.xml" value="0.175" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/exam_result.xml" value="0.14583333333333334" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/exam_user.xml" value="0.14583333333333334" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/fragment_dashboard.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/fragment_home.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/fragment_notifications.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/infor_user_detail.xml" value="0.11005434782608696" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/login_user.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/main_question.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/main_user.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/register_user.xml" value="0.11322463768115942" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/rules_user.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/set_pass_again.xml" value="0.12092391304347826" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/setting_user.xml" value="0.175" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/show_answer.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/show_list_answer.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/layout/tutorial_user.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1796875" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1796875" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/toeic-exam-online-v1.3/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/drawable/ic_baseline_replay_24.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/drawable/ic_exam_background.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/drawable/ic_login_background.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/drawable/infor_user.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/drawable/mybtn2.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/drawable/round_edt.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/drawable/rounded_edittext.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/drawable/rounded_lnabout.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/drawable/vien1.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/drawable/vien2.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/drawable/vien_tron.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/drawable/vien_tron_trang.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/achievement_user.xml" value="0.25905797101449274" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/activity_chi_tiet_cau_hoi.xml" value="0.25905797101449274" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/activity_chi_tiet_de_thi.xml" value="0.25905797101449274" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/activity_chon_cau_hoi.xml" value="0.264" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/activity_main.xml" value="0.25905797101449274" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/activity_quan_ly.xml" value="0.25905797101449274" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/activity_quan_ly_cau_hoi.xml" value="0.25905797101449274" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/activity_quan_ly_de_thi_layout.xml" value="0.25" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/activity_them_bo_de.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/activity_them_cau_hoi.xml" value="0.25905797101449274" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/activity_them_de_thi.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/item_chon_cau_hoi.xml" value="0.25905797101449274" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/item_quan_ly_cau_hoi.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/item_quan_ly_de_thi.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/item_them_de_thi.xml" value="0.25905797101449274" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/login_user.xml" value="0.17300724637681159" />
+        <entry key="..\:/di động 2/Toiec/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/activity_chi_tiet_cau_hoi.xml" value="0.1" />
+        <entry key="..\:/di động 2/Toiec/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/activity_chi_tiet_de_thi.xml" value="0.1" />
+        <entry key="..\:/di động 2/Toiec/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/activity_chon_cau_hoi.xml" value="0.1" />
+        <entry key="..\:/di động 2/Toiec/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/activity_quan_ly_cau_hoi.xml" value="0.1" />
+        <entry key="..\:/di động 2/Toiec/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/activity_quan_ly_de_thi_layout.xml" value="0.1" />
+        <entry key="..\:/di động 2/Toiec/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/item_chon_cau_hoi.xml" value="0.1" />
+        <entry key="..\:/di động 2/Toiec/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/item_quan_ly_cau_hoi.xml" value="0.1" />
+        <entry key="..\:/di động 2/Toiec/Toiec/toeic-exam-online-v1.3/app/src/main/res/layout/main_question.xml" value="0.11639492753623189" />
       </map>
     </option>
   </component>

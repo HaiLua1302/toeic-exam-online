@@ -16,9 +16,9 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 
 
-public class achievement_user extends AppCompatActivity {
+public class Achievement_user extends AppCompatActivity {
 
-     BarChart mBarChart;
+    BarChart mBarChart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,9 +1,8 @@
 package com.example.user.ui.admin;
 
-import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Bundle;
 import com.example.user.R;
 
 public class Forgot_pass_admin extends AppCompatActivity {

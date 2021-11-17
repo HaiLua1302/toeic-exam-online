@@ -1,5 +1,8 @@
 package com.example.user.ui.admin;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -10,11 +13,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.user.R;
 import com.example.user.ui.home.Main_home;
+import com.example.user.ui.login.Forgot_pass_user;
+import com.example.user.ui.login.Login_user;
+import com.example.user.ui.login.Register_user;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

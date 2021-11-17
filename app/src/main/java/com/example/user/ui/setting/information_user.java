@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.user.R;
-import com.example.user.ui.class_user.cls_user_info;
 import com.example.user.ui.login.Login_user;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -17,7 +16,7 @@ import com.google.firebase.auth.FirebaseUser;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class information_user extends AppCompatActivity {
+public class Information_user extends AppCompatActivity {
 
     TextView name_user, dOB, phone, email;
     ImageView imageUser;
@@ -47,14 +46,14 @@ public class information_user extends AppCompatActivity {
         name_user.setText(userInfo.getDisplayName());
         phone.setText(userInfo.getPhoneNumber());
         email.setText(userInfo.getEmail());
-        Glide.with(information_user.this).load(userInfo.getPhotoUrl()).into(imageUser);
+        Glide.with(Information_user.this).load(userInfo.getPhotoUrl()).into(imageUser);
 
         //logout user
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(information_user.this, Login_user.class));
+                startActivity(new Intent(Information_user.this, Login_user.class));
                 finish();
             }
         });
@@ -62,7 +61,7 @@ public class information_user extends AppCompatActivity {
         updated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(information_user.this, update_information_user.class
+                startActivity(new Intent(Information_user.this, Update_information_user.class
                 ));
             }
         });
