@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ import com.example.user.R;
 import com.example.user.ui.class_user.cls_user_info;
 import com.example.user.ui.login.Login_user;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -41,6 +43,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
 
 
 import androidx.annotation.NonNull;
@@ -61,7 +64,10 @@ public class setting_user extends AppCompatActivity {
     private double VERSION = 1.0;
     private FirebaseUser userInfo;
     private DatabaseReference reference;
+    private StorageReference storageRef;
     private String userID;
+    private TextView nameUser;
+    private ImageView imageUser;
 
     Context context;
     Resources resources;
@@ -79,20 +85,20 @@ public class setting_user extends AppCompatActivity {
         userID = userInfo.getUid();
 
 //        nameUser.setText(userInfo.getDisplayName());
-
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 cls_user_info user = snapshot.getValue(cls_user_info.class);
                 if(user!=null){
                     String name = user.name_user;
-                    String email = user.mail_user;
-                    String dob = user.dob_user;
-                    String phone = user.numberP_user;
                     String image = user.avata_user;
 
                     nameUser.setText("Xin chao " +name+"!");
                     Glide.with(setting_user.this).load(image).into(imageUser);
+                }
+                else{
+                    nameUser.setText("Xin chao!");
+                    Glide.with(setting_user.this).load(getDrawable(R.drawable.a1)).into(imageUser);
                 }
             }
 
@@ -183,7 +189,6 @@ public class setting_user extends AppCompatActivity {
             }
         });
     }
-
 
     public void showChangeLayout() {
         final String[] themes = this.getResources().getStringArray(R.array.theme);

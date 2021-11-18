@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 
 
+import com.example.user.ui.admin.home.Main;
+import com.example.user.ui.admin.login.LoginAdmin;
 import com.example.user.ui.login.Begin_user;
 import com.example.user.ui.login.Login_user;
 
@@ -52,11 +54,17 @@ public class MainActivity extends AppCompatActivity {
     }
     private void isLogged(){
         FirebaseUser user = mAuth.getCurrentUser();
+//        if(user == null){
+//            startActivity(new Intent(MainActivity.this, Login_user.class));
+//        }
+//        else{
+//            startActivity(new Intent(MainActivity.this, setting_user.class));
+//        }
         if(user == null){
-            startActivity(new Intent(MainActivity.this, Login_user.class));
+            startActivity(new Intent(MainActivity.this, LoginAdmin.class));
         }
         else{
-            startActivity(new Intent(MainActivity.this, setting_user.class));
+            startActivity(new Intent(MainActivity.this, Main.class));
         }
     }
 }

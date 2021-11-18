@@ -2,12 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.user">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    //permission for pick an image library
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    //for permission sms to admin
-    <uses-permission android:name="android.permission.SEND_SMS"></uses-permission>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<!--        <activity android:name=".ui.dialog.dialog_notification"></activity>-->
+        <!--        <activity android:name=".ui.dialog.dialog_notification"></activity>-->
         <activity android:name=".ui.home.Main_home" />
         <activity android:name=".ui.login.Forgot_pass_user" />
         <activity android:name=".ui.login.Register_user" />
@@ -37,9 +31,28 @@
         <activity android:name=".ui.setting.rule_user" />
         <activity android:name=".ui.setting.achievement_user" />
         <activity android:name=".ui.setting.feedback_user" />
-        <activity android:name=".ui.setting.information_user"/>
-        <activity android:name=".ui.setting.update_information_user"/>
+        <activity android:name=".ui.setting.information_user" />
+        <activity android:name=".ui.setting.update_information_user" />
+
+        <!--  activity for admin  -->
+        <activity android:name=".ui.admin.home.Main" />
+        <activity android:name=".ui.admin.login.LoginAdmin" />
+        <activity android:name=".ui.admin.login.RegisterAdmin" />
+        //manager question
+        <activity android:name=".ui.admin.manager_ques.Manager_Question" />
+        <activity android:name=".ui.admin.manager_ques.AddQues" />
+        <activity android:name=".ui.admin.manager_ques.QuesDetail" />
+        //manager exam
+        <activity android:name=".ui.admin.manager_exam.Manager_Exam" />
+        <activity android:name=".ui.admin.manager_exam.AddExam" />
+        <activity android:name=".ui.admin.manager_exam.ExamDetail" />
 
     </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    //permission for pick an image library
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    //for permission sms to admin
+    <uses-permission android:name="android.permission.SEND_SMS"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

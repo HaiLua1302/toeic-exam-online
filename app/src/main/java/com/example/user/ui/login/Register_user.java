@@ -170,7 +170,7 @@ public class Register_user extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    cls_user_info clsUserInfo = new cls_user_info(idUser,userName,dobUser,phoneUser,passUser,emailUser,avaUser);
+                    cls_user_info clsUserInfo = new cls_user_info(mAuth.getUid(),userName,dobUser,phoneUser,passUser,emailUser,avaUser);
                     FirebaseDatabase.getInstance().getReference("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                             .setValue(clsUserInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
