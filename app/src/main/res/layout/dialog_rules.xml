@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:layout_gravity="center"
+    android:background="@drawable/mybutton"
+    android:scrollbars="vertical"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:scrollbarAlwaysDrawVerticalTrack="true">
+    <TextView
+        android:id="@+id/txt_title_rules"
+        style="@style/txt_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="10dp"
+        android:text="Điều khoản sử dụng"
+        android:gravity="center"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/txt_dialog_rules"
+                style="@style/txt_desc"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:paddingRight="10dp"
+                android:text="@string/rules" />
+        </RelativeLayout>
+    </ScrollView>
+    <Button
+        android:id="@+id/btn_okie_rules"
+        style="@style/txtMaDe"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_weight="1"
+        android:background="@drawable/mybtn2"
+        android:text="Okie"
+        android:textColor="#FFF" />
+</LinearLayout>

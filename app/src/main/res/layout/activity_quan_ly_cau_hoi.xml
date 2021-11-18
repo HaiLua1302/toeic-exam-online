@@ -7,16 +7,6 @@
     android:orientation="vertical"
     tools:context=".ui.admin.QuestionManagementActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tbChangePassword"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#00BCD4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="Chi tiết câu hỏi" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -68,15 +58,16 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4.5"
+                    android:textStyle="bold"
+                    android:textColor="#0E7680"
                     android:gravity="center"
                     android:text="ID"
-                    android:textColor="#0E7680"
-                    android:textStyle="bold" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4.5" />
 
                 <TextView
+                    android:textStyle="bold"
                     android:id="@+id/txtNoiDungCauHoi"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -87,8 +78,7 @@
                     android:paddingLeft="5dp"
                     android:text="Nội dung câu hỏi"
                     android:textColor="#009688"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/txtidCauHoi"
