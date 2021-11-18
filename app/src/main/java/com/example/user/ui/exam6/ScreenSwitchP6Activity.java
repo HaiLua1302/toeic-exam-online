@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.WindowManager;
 
 import com.example.user.R;
-import com.example.user.ui.exam5.RecP5Fragment;
+import com.example.user.ui.exam7.RecP7Fragment;
 
 public class ScreenSwitchP6Activity extends AppCompatActivity {
 

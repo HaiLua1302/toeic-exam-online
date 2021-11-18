@@ -13,10 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.exam7.ScreenSwitchP7Activity"></activity>
-        <activity android:name=".ui.exam7.TutorialP7Activity" />
-        <activity android:name=".ui.exam6.ScreenSwitchP6Activity" />
+        <activity android:name=".ui.exam6.ScreenSwitchP6Activity"></activity>
         <activity android:name=".ui.exam6.TutorialP6Activity" />
+        <activity android:name=".ui.fullExam.ScreenSwitchFullExamActivity" />
+        <activity android:name=".ui.fullExam.TutorialFullExamActivity" />
+        <activity android:name=".ui.exam7.ScreenSwitchP7Activity" />
+        <activity android:name=".ui.exam7.TutorialP7Activity" />
         <activity android:name=".ui.exam5.ScreenSwitchP5Activity" />
         <activity android:name=".ui.exam5.TutorialP5Activity" />
         <activity android:name=".ui.exam4.ScreenSwitchP4Activity" />

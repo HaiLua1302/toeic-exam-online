@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.user.R;
-import com.example.user.ui.adapter.AdtExamListP5;
+import com.example.user.ui.adapter.AdtExamListP6;
 import com.example.user.ui.adapter.AdtExamListP6;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,11 +40,11 @@ public class RecP6Fragment extends Fragment {
     private String mParam2;
     private RecyclerView recyclerViewListP6;
     private AdtExamListP6 adapterExamListP6;
-
+    
     public RecP6Fragment() {
         // Required empty public constructor
     }
-
+    
     // TODO: Rename and change types and number of parameters
     public static RecP6Fragment newInstance(String param1, String param2) {
         RecP6Fragment fragment = new RecP6Fragment();
@@ -91,7 +91,7 @@ public class RecP6Fragment extends Fragment {
 
             }
         });
-
+        
         return view;
     }
 }

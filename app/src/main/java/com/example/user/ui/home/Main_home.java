@@ -17,12 +17,13 @@ import com.example.user.ui.exam4.TutorialP4Activity;
 import com.example.user.ui.exam5.TutorialP5Activity;
 import com.example.user.ui.exam6.TutorialP6Activity;
 import com.example.user.ui.exam7.TutorialP7Activity;
+import com.example.user.ui.fullExam.TutorialFullExamActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 @SuppressWarnings("ALL")
 public class Main_home extends AppCompatActivity implements BottomNavigationView.OnNavigationItemReselectedListener{
 
-    public Button exam_1,exam_2,exam_3,exam_4,exam_5,exam_6,exam_7;
+    public Button exam_1,exam_2,exam_3,exam_4,exam_5,exam_6,exam_7,full_exam;
     private BottomNavigationView bottomNavigationView;
 
     @Override
@@ -90,6 +91,14 @@ public class Main_home extends AppCompatActivity implements BottomNavigationView
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Main_home.this, TutorialP7Activity.class);
+                startActivity(intent);
+            }
+        });
+        full_exam = findViewById(R.id.btn_full_exam);
+        full_exam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main_home.this, TutorialFullExamActivity.class);
                 startActivity(intent);
             }
         });

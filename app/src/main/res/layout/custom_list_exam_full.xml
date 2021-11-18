@@ -27,7 +27,7 @@
             android:text="Thời gian : 120 phút | Câu hỏi : 200" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_start_list_full"
             style="@style/Btnbatdau"
             android:layout_gravity="center"
             android:text="Bắt Đầu" />

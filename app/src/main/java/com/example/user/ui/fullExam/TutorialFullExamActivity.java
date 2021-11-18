@@ -1,4 +1,4 @@
-package com.example.user.ui.exam7;
+package com.example.user.ui.fullExam;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -12,13 +12,13 @@ import android.widget.Button;
 
 import com.example.user.R;
 
-public class TutorialP7Activity extends AppCompatActivity {
-
+public class TutorialFullExamActivity extends AppCompatActivity {
     Button getRec;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tutorial_p7);
+        setContentView(R.layout.activity_tutorial_full_exam);
+
         getSupportActionBar().setTitle("Description");
         // calling the action bar
         ActionBar actionBar = getSupportActionBar();
@@ -28,11 +28,11 @@ public class TutorialP7Activity extends AppCompatActivity {
         // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        getRec = findViewById(R.id.btn_okie_tutorial_p7);
+        getRec = findViewById(R.id.btn_okie_tutorial_full);
         getRec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TutorialP7Activity.this, ScreenSwitchP7Activity.class);
+                Intent intent = new Intent(TutorialFullExamActivity.this, ScreenSwitchFullExamActivity.class);
                 startActivity(intent);
             }
         });
@@ -47,6 +47,5 @@ public class TutorialP7Activity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-
+    };
     }
-}

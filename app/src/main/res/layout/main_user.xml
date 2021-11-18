@@ -12,7 +12,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:text="Nghe Hiểu"
             android:textSize="16dp"
             android:textStyle="bold" />
@@ -149,7 +149,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:text="Đọc Hiểu"
             android:textSize="16dp"
             android:textStyle="bold" />
@@ -240,7 +240,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:text="Exam"
             android:textSize="16dp"
             android:textStyle="bold"
@@ -271,7 +271,7 @@
                     android:orientation="vertical">
 
                     <Button
-                        android:id="@+id/button1"
+                        android:id="@+id/btn_full_exam"
                         android:layout_width="150dp"
                         android:layout_height="90dp"
                         android:background="@drawable/mybutton"

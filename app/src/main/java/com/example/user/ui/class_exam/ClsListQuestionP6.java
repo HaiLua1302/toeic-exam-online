@@ -2,7 +2,6 @@ package com.example.user.ui.class_exam;
 
 public class ClsListQuestionP6 {
     String ans_a,ans_b,ans_c,ans_d,ques_content,result;
-
     public ClsListQuestionP6() {
     }
 

@@ -11,47 +11,48 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
-import com.example.user.ui.exam6.DescP6Fragment;
+import com.example.user.ui.exam7.DescP7Fragment;
+import com.example.user.ui.fullExam.DescFullExamFragment;
 
 import java.util.List;
 
-public class AdtExamListP6 extends RecyclerView.Adapter<AdtExamListP6.ExamListP6Holder> {
-    private List<String> getKey6;
+public class AdtExamListFull extends RecyclerView.Adapter<AdtExamListFull.ExamListFullHolder> {
+    private List<String> getKeyFull;
 
-    public AdtExamListP6() {
+    public AdtExamListFull() {
     }
 
-    public AdtExamListP6(List<String> getKey6) {
-        this.getKey6 = getKey6;
+    public AdtExamListFull(List<String> getKeyFull) {
+        this.getKeyFull = getKeyFull;
     }
 
     @NonNull
     @Override
-    public ExamListP6Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_list_exam_p1,parent,false);
-        return new ExamListP6Holder(view);
+    public ExamListFullHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_list_exam_full,parent,false);
+        return new ExamListFullHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ExamListP6Holder holder, int position) {
+    public void onBindViewHolder(@NonNull ExamListFullHolder holder, int position) {
         holder.SetData(position);
     }
 
     @Override
     public int getItemCount() {
-        return getKey6.size();
+        return getKeyFull.size();
     }
 
-    public class ExamListP6Holder extends RecyclerView.ViewHolder {
+    public class ExamListFullHolder extends RecyclerView.ViewHolder {
         TextView idExamHolder;
         Button getToDataExamHolder;
-        public ExamListP6Holder(@NonNull View itemView) {
+        public ExamListFullHolder(@NonNull View itemView) {
             super(itemView);
-            idExamHolder = itemView.findViewById(R.id.txt_list_Exam_p1);
+            idExamHolder = itemView.findViewById(R.id.txt_nameExam);
             getToDataExamHolder = itemView.findViewById(R.id.btn_start_list_p1);
         }
         public void SetData(int Pos){
-            idExamHolder.setText(getKey6.get(Pos).toString());
+            idExamHolder.setText(getKeyFull.get(Pos).toString());
             getToDataExamHolder.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -60,8 +61,8 @@ public class AdtExamListP6 extends RecyclerView.Adapter<AdtExamListP6.ExamListP6
                         public void onClick(View v) {
                             AppCompatActivity activity = (AppCompatActivity) v.getContext();
                             activity.getSupportFragmentManager().beginTransaction().
-                                    replace(R.id.wraper6,
-                                            new DescP6Fragment(getKey6.get(Pos).toString()))
+                                    replace(R.id.wraperfull,
+                                            new DescFullExamFragment(getKeyFull.get(Pos).toString()))
                                     .addToBackStack(null).commit();
                         }
                     });

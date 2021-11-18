@@ -73,7 +73,7 @@ public class AdtDescP7 extends RecyclerView.Adapter<AdtDescP7.DescP7Holder> {
 
             String child = recExamP7List.get(pos).getId_exam() + "/" + recExamP7List.get(pos).getId_question() + "/Question";
             DatabaseReference ref = FirebaseDatabase.getInstance()
-                    .getReference("List_Ques7").child(child);
+                    .getReference("List_ques7").child(child);
 
             recListQuestionP7Holder.setLayoutManager(new LinearLayoutManager(itemView.getContext()));
             ref.addValueEventListener(new ValueEventListener() {

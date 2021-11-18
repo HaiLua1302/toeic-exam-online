@@ -1,6 +1,5 @@
 package com.example.user.ui.adapter;
 
-import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
-import com.example.user.ui.class_exam.ClsListQuestionP4;
 import com.example.user.ui.class_exam.ClsListQuestionP6;
+import com.example.user.ui.class_exam.ClsRecExamP6;
 import com.example.user.ui.class_exam.ClsRecExamP6;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdtDescP6 extends RecyclerView.Adapter<AdtDescP6.DescP6Holder> {
-    List<ClsRecExamP6> recExamP6List;
+    private List<ClsRecExamP6> recExamP6List;
 
     public AdtDescP6() {
     }
@@ -57,7 +56,6 @@ public class AdtDescP6 extends RecyclerView.Adapter<AdtDescP6.DescP6Holder> {
         RecyclerView recListQuestionP6Holder;
         AdtDescListQuestionP6 adtDescListQuestionP6Holder;
         List<ClsListQuestionP6> clsListQuestionP6sHolder;
-
         public DescP6Holder(@NonNull View itemView) {
             super(itemView);
             txtNumberParagraphHolder = itemView.findViewById(R.id.txtNumberParagraphP6);
@@ -68,7 +66,6 @@ public class AdtDescP6 extends RecyclerView.Adapter<AdtDescP6.DescP6Holder> {
 
             clsListQuestionP6sHolder = new ArrayList<>();
         }
-        @SuppressLint("SetTextI18n")
         public void SetData(int pos){
             txtNumberParagraphHolder.setText("Question : " + recExamP6List.get(pos).getId_question());
             txtParagraphContentHolder.setText(recExamP6List.get(pos).getParagraph());

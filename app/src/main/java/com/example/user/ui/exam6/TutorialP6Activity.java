@@ -11,8 +11,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.user.R;
-import com.example.user.ui.exam5.ScreenSwitchP5Activity;
-import com.example.user.ui.exam5.TutorialP5Activity;
+import com.example.user.ui.exam7.ScreenSwitchP7Activity;
+import com.example.user.ui.exam7.TutorialP7Activity;
 
 public class TutorialP6Activity extends AppCompatActivity {
     Button getRec;
@@ -48,6 +48,5 @@ public class TutorialP6Activity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    };
-
+    }
 }

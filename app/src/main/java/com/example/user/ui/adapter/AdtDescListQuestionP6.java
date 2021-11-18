@@ -11,11 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
 import com.example.user.ui.class_exam.ClsListQuestionP6;
+import com.example.user.ui.class_exam.ClsListQuestionP6;
 
 import java.util.List;
 
-public class AdtDescListQuestionP6 extends RecyclerView.Adapter<AdtDescListQuestionP6.DescListQuestionP6Holder> {
-    List<ClsListQuestionP6> clsListQuestionP6List;
+public class AdtDescListQuestionP6  extends RecyclerView.Adapter<AdtDescListQuestionP6.DescListQuestionP6Holder> {
+    private List<ClsListQuestionP6> clsListQuestionP6List;
 
     public AdtDescListQuestionP6() {
     }
@@ -29,7 +30,6 @@ public class AdtDescListQuestionP6 extends RecyclerView.Adapter<AdtDescListQuest
     public DescListQuestionP6Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_list_question_p3,parent,false);
         return new DescListQuestionP6Holder(view);
-                
     }
 
     @Override

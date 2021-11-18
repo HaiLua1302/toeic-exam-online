@@ -1,4 +1,4 @@
-package com.example.user.ui.exam7;
+package com.example.user.ui.fullExam;
 
 import android.os.Bundle;
 
@@ -12,7 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.user.R;
-import com.example.user.ui.adapter.AdtExamListP7;
+import com.example.user.ui.adapter.AdtExamListFull;
+import com.example.user.ui.adapter.AdtExamListFull;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,10 +25,10 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link RecP7Fragment#newInstance} factory method to
+ * Use the {@link RecFullExamFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RecP7Fragment extends Fragment {
+public class RecFullExamFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,17 +38,16 @@ public class RecP7Fragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private RecyclerView recyclerViewListP7;
-    private AdtExamListP7 adapterExamListP7;
+    private RecyclerView recyclerViewListFull;
+    private AdtExamListFull adapterExamListFull;
 
-    public RecP7Fragment() {
+    public RecFullExamFragment() {
         // Required empty public constructor
     }
 
-
     // TODO: Rename and change types and number of parameters
-    public static RecP7Fragment newInstance(String param1, String param2) {
-        RecP7Fragment fragment = new RecP7Fragment();
+    public static RecFullExamFragment newInstance(String param1, String param2) {
+        RecFullExamFragment fragment = new RecFullExamFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -68,22 +68,22 @@ public class RecP7Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_rec_p7, container, false);
-        recyclerViewListP7 = view.findViewById(R.id.recViewListP7);
-        recyclerViewListP7.setLayoutManager(new LinearLayoutManager(getContext()));
+        View view = inflater.inflate(R.layout.fragment_rec_full_exam, container, false);
+        recyclerViewListFull= view.findViewById(R.id.recViewListFull);
+        recyclerViewListFull.setLayoutManager(new LinearLayoutManager(getContext()));
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Ques_7");
-        List<String> getKey7 = new ArrayList<>();
+        List<String> getKeyFull = new ArrayList<>();
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     String keyValue = dataSnapshot.getRef().getKey().toString();
-                    getKey7.add(keyValue);
+                    getKeyFull.add(keyValue);
                 }
-                adapterExamListP7 = new AdtExamListP7(getKey7);
-                recyclerViewListP7.setAdapter(adapterExamListP7);
+                adapterExamListFull = new AdtExamListFull(getKeyFull);
+                recyclerViewListFull.setAdapter(adapterExamListFull);
             }
 
             @Override
@@ -91,7 +91,6 @@ public class RecP7Fragment extends Fragment {
 
             }
         });
-
 
         return view;
     }

@@ -13,9 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.user.R;
-import com.example.user.ui.adapter.AdtDescP5;
 import com.example.user.ui.adapter.AdtDescP6;
-import com.example.user.ui.class_exam.ClsPartP5;
+import com.example.user.ui.adapter.AdtDescP6;
+import com.example.user.ui.class_exam.ClsRecExamP6;
 import com.example.user.ui.class_exam.ClsRecExamP6;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,11 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DescP6Fragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class DescP6Fragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -41,14 +37,15 @@ public class DescP6Fragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    
     private RecyclerView recyclerViewQuestionP6;
     private AdtDescP6 adtDescP6;
     private List<ClsRecExamP6> clsRecP6s;
 
-    String keyExam;
+    String getKey6;
 
-    public DescP6Fragment(String keyExam) {
-        this.keyExam = keyExam;
+    public DescP6Fragment(String getKey6) {
+        this.getKey6 = getKey6;
     }
 
     public DescP6Fragment() {
@@ -79,6 +76,7 @@ public class DescP6Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_desc_p6, container, false);
+
         clsRecP6s = new ArrayList<>();
         recyclerViewQuestionP6 = view.findViewById(R.id.decsListQuestionP6);
 
@@ -114,7 +112,7 @@ public class DescP6Fragment extends Fragment {
 
         snapHelper.attachToRecyclerView(recyclerViewQuestionP6);
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Ques_6").child(keyExam);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Ques_6").child(getKey6);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -131,7 +129,7 @@ public class DescP6Fragment extends Fragment {
 
             }
         });
-
+        
         return view;
     }
 }
