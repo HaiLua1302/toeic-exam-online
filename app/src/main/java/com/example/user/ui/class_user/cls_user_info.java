@@ -12,7 +12,7 @@ public class cls_user_info {
 
 
     public cls_user_info() {
-        super();
+
     }
 
     public cls_user_info(String id_user, String name_user, int dob_user, int numberP_user, String pass_user, String mail_user, String avata_user) {

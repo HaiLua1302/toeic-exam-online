@@ -273,7 +273,5 @@ public class Register_user extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 }

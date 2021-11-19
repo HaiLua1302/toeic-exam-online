@@ -47,17 +47,10 @@
         <activity
             android:name=".ui.admin.login_admin"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name=".ui.exam.slide_exam_p1" />
         <activity android:name=".ui.admin.add_ques_p1" />
         <activity android:name=".ui.exam.exam_part_1" />
         <activity android:name=".ui.home.Main_home" >
-
         </activity>
         <activity android:name=".ui.login.Register_user" />
         <activity android:name=".ui.login.Begin_user" />
@@ -69,8 +62,13 @@
         <activity android:name=".ui.setting.Rule_user" />
         <activity android:name=".ui.setting.Achievement_user" />
         <activity android:name=".ui.setting.Feedback_user" />
-        <activity android:name=".TestTableActivity">
+        <activity android:name=".TestTableActivity">  </activity>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

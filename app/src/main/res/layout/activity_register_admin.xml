@@ -37,7 +37,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/edt_user_name"
+            android:id="@+id/edt_admin_name"
             android:layout_width="360dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
