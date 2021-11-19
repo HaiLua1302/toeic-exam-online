@@ -11,7 +11,10 @@ import com.example.user.R;
 import com.example.user.adapter.AdapterThemDeThi;
 import com.example.user.adapter.ClickAddQuenstion;
 import com.example.user.models.CauHoiModel;
+import com.example.user.models.DeThi;
 import com.example.user.ui.admin.ChonCauHoi;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -19,10 +22,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AddExam extends AppCompatActivity {
-    TextView txttendethi;
+    TextView txtTendethi;
     ListView lvCacCauHoi;
     Button btnLuuThemdeThi;
-
+    public DatabaseReference mDatabase ;
     ArrayList<CauHoiModel> list;
     AdapterThemDeThi adapterThemDeThi;
     @Override
@@ -54,8 +57,16 @@ public class AddExam extends AppCompatActivity {
     }
 
     private void setControl() {
-        txttendethi = findViewById(R.id.txttendethi);
+        txtTendethi = findViewById(R.id.txt_Tendethi);
         lvCacCauHoi = findViewById(R.id.lvCacCauHoi);
         btnLuuThemdeThi = findViewById(R.id.btnLuuThemdeThi);
+    }
+    private void addExam(){
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Examtest");
+        btnLuuThemdeThi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
     }
 }

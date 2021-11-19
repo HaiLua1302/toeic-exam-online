@@ -46,6 +46,7 @@
         <activity android:name=".ui.admin.manager_exam.Manager_Exam" />
         <activity android:name=".ui.admin.manager_exam.AddExam" />
         <activity android:name=".ui.admin.manager_exam.ExamDetail" />
+        <activity android:name=".ui.admin.ChonCauHoi"/>
 
     </application>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

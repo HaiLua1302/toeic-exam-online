@@ -27,8 +27,8 @@ public class ExamDetail extends AppCompatActivity {
         Intent intent = getIntent();
 
         String id = intent.getStringExtra("id_dethi");
-        EditText txttendethi = findViewById(R.id.txttendethi);
-        txttendethi.setText( intent.getStringExtra("name_dethi"));
+        EditText txtNameDetailExam = findViewById(R.id.txt_NameDetailExam);
+        txtNameDetailExam.setText( intent.getStringExtra("name_dethi"));
 
         list = new ArrayList<>();
         lvCacCauHoi = findViewById(R.id.lvCacCauHoi);
