@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.R;
+import com.example.user.ui.class_user.cls_achievement;
 import com.example.user.ui.class_user.cls_user_info;
 import com.example.user.ui.home.Main_home;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,7 +29,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import static android.service.controls.ControlsProviderService.TAG;
 
@@ -36,7 +42,7 @@ public class Register_user extends AppCompatActivity {
     private FirebaseAuth mAuth;
     public EditText user_name, email_user, pass_user, check_pass_again;
     public Button register,okie;
-
+    private DatabaseReference databases_user1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,6 +141,8 @@ public class Register_user extends AppCompatActivity {
         String phoneUser = "";
         String avaUser = "";
         String idUser = "";
+        SimpleDateFormat getTime = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+        String timeCurrent = getTime.format(new Date());
         if (userName.isEmpty())
         {
             user_name.setError("Tên người dùng không được để trống!");
@@ -177,6 +185,17 @@ public class Register_user extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
                                 Toast.makeText(Register_user.this,"Đăng ký thành công!",Toast.LENGTH_LONG).show();
+                                databases_user1 = FirebaseDatabase.getInstance().getReference("Achievement");
+                                cls_achievement cls_achievement = new cls_achievement(0,timeCurrent);
+                                databases_user1.child(mAuth.getUid() +"/Part1").setValue(cls_achievement);
+                                databases_user1.child(mAuth.getUid() +"/Part2").setValue(cls_achievement);
+                                databases_user1.child(mAuth.getUid() +"/Part3").setValue(cls_achievement);
+                                databases_user1.child(mAuth.getUid() +"/Part4").setValue(cls_achievement);
+                                databases_user1.child(mAuth.getUid() +"/Part5").setValue(cls_achievement);
+                                databases_user1.child(mAuth.getUid() +"/Part6").setValue(cls_achievement);
+                                databases_user1.child(mAuth.getUid() +"/Part7").setValue(cls_achievement);
+                                databases_user1.child(mAuth.getUid() +"/Exam").setValue(cls_achievement);
+
                                 ViewDialog alert = new ViewDialog();
                                 alert.showDialog(Register_user.this, "Đăng kí thành công!");
                             }

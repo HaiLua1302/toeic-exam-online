@@ -188,6 +188,13 @@ public class setting_user extends AppCompatActivity {
                 Toast.makeText(setting_user.this,"V "+VERSION,Toast.LENGTH_LONG).show();
             }
         });
+        Button achieviement = findViewById(R.id.btn_achievement);
+        achieviement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(setting_user.this, achievement_user.class));
+            }
+        });
     }
 
     public void showChangeLayout() {

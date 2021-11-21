@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.example.user.MainActivity;
 import com.example.user.R;
+import com.example.user.ui.class_user.cls_user_info;
 import com.example.user.ui.home.Main_home;
 
 import com.example.user.ui.setting.setting_user;
@@ -30,6 +31,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.ArrayList;
 
 public class Login_user extends AppCompatActivity {
     private Button editLogin;
@@ -52,7 +55,7 @@ public class Login_user extends AppCompatActivity {
         editLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                login();
+                    login();
             }
         });
 
@@ -87,7 +90,6 @@ public class Login_user extends AppCompatActivity {
             }
         });
     }
-
     private void login() {
         String email, pass;
         email = editEmail.getText().toString();
