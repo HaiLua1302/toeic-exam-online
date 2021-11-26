@@ -14,9 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.user.R;
 import com.example.user.ui.adapter.AdtDescP7;
-import com.example.user.ui.adapter.AdtDescP7;
-import com.example.user.ui.class_exam.ClsRecExamP7;
-import com.example.user.ui.class_exam.ClsRecExamP7;
+import com.example.user.ui.classExam.ClsRecExamP7;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

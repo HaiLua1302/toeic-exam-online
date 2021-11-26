@@ -11,14 +11,59 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
-import com.example.user.ui.class_exam.ClsRecExamP2;
-import com.example.user.ui.exam2.DescFragmentP2;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.example.user.ui.exam2.DescP2Fragment;
 
-public class AdtExamListP2 extends FirebaseRecyclerAdapter<ClsRecExamP2, AdtExamListP2.ExamListHolder2> {
+import java.util.List;
 
-    public AdtExamListP2(@NonNull FirebaseRecyclerOptions<ClsRecExamP2> options) {
+public class AdtExamListP2 extends RecyclerView.Adapter<AdtExamListP2.ExamListP2Holder> {
+    private List<String> keyExam;
+
+    public AdtExamListP2() {
+    }
+
+    public AdtExamListP2(List<String> keyExam) {
+        this.keyExam = keyExam;
+    }
+
+    @NonNull
+    @Override
+    public ExamListP2Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_list_exam_p1,parent,false);
+        return new ExamListP2Holder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ExamListP2Holder holder, int position) {
+        holder.setData(position);
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return keyExam.size();
+    }
+
+    public class ExamListP2Holder extends RecyclerView.ViewHolder {
+        TextView idExam2Holder;
+        Button getToDataExamHolder;
+        public ExamListP2Holder(@NonNull View itemView) {
+            super(itemView);
+            idExam2Holder = itemView.findViewById(R.id.txt_list_Exam_p1);
+            getToDataExamHolder = itemView.findViewById(R.id.btn_start_list_p1);
+        }
+        private void setData(int pos){
+            idExam2Holder.setText(keyExam.get(pos).toString());
+            getToDataExamHolder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AppCompatActivity activity=(AppCompatActivity)v.getContext();
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper2,new DescP2Fragment(keyExam.get(pos).toString())).addToBackStack(null).commit();
+                }
+            });
+        }
+    }
+
+    /*public AdtExamListP2(@NonNull FirebaseRecyclerOptions<ClsRecExamP2> options) {
         super(options);
     }
 
@@ -51,5 +96,5 @@ public class AdtExamListP2 extends FirebaseRecyclerAdapter<ClsRecExamP2, AdtExam
             getToDataExamHolder = itemView.findViewById(R.id.btn_start_list_p1);
 
         }
-    }
+    }*/
 }

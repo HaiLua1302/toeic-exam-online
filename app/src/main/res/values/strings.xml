@@ -31,8 +31,30 @@
         and there will be hamburgers, hotdogs, or veggie burgers, and of course a lots of salads and desserts! Bring your family and friends;
         everyone __(2)__ welcome. Please get tickets from me or from Sophia Johnson.  I hope __(3)__ you there!  Jane Anderson "</string>
 
-    <string name="Directions">For each question, you will see a picture and you will hear four short statements.
+    <string name="P1">For each question, you will see a picture and you will hear four short statements.
         The statements will be spoken just one time. They will not be printed in your test book so you must listen carefully
         to understand what the speaker says. When you hear the four statements, look at the picture and choose the statement
         that best describes what you see in the picture. Choose the best answer A, B, C or D</string>
+
+    <string name="P2">In this part of the test, you will hear a question or statement spoken in English, followed by three responses,
+        also spoken in English. The question or statement and the responses will be spoken just one time. They will not be printed in your test book,
+        so you must listen carefully. You are to choose the best response to each question or statement. Now listen to a sample question.</string>
+
+    <string name="P3">You will hear some conversations between two people. You will be asked to answer three questions about what the speakers
+        say in each conversation. Select the best response to each question and mark the letter A, B, C or D on your answer sheet.
+        The conversations will not be printed in your test book and will be spoken only one time.</string>
+
+    <string name="P4">You will hear some talks given by a single speaker. You will be asked to answer three questions about what
+        the speaker says in each talk. Select the best response to each question and mark the letter A, B, C or D on your answer sheet.
+        The talks will not be printed in your test book and will be spoken only one time.</string>
+
+    <string name="P5">You will hear some conversations between two people. You will be asked to answer three questions about what the
+        speakers say in each conversation. Select the best response to each question and mark the letter A, B , C or D on your answer sheet.
+        The conversations will not be printed in your test book and will be spoken only one time.</string>
+
+    <string name="P6">Read the texts that follow. A word or pharse is missing in some of the sentences. Four answer choices are given below
+        each of the sentences. Select the best answer to complete the text. Then mark the letter A, B, C or D on your answer sheet.</string>
+
+    <string name="P7">In this part you will read a selection of texts, such as magezine and newspaper articles, letters, and advertisements.
+        Each text is followed by several questions. Select the best answer for each question and mark the letter A, B, C or D on your answer sheet.</string>
 </resources>

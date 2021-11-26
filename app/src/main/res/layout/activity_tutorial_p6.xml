@@ -45,7 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
                     android:paddingRight="10dp"
-                    android:text="@string/Directions"/>
+                    android:text="@string/P1"/>
             </RelativeLayout>
         </ScrollView>
     </LinearLayout>

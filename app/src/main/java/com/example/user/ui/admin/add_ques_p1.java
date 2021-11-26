@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.user.R;
-import com.example.user.ui.class_exam.ClsPartP1;
+import com.example.user.ui.classExam.ClsPartP1;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;

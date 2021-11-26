@@ -11,8 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
-import com.example.user.ui.exam7.DescP7Fragment;
-import com.example.user.ui.fullExam.DescFullExamFragment;
+import com.example.user.ui.fullExam.DescFullP1Fragment;
 
 import java.util.List;
 
@@ -49,23 +48,18 @@ public class AdtExamListFull extends RecyclerView.Adapter<AdtExamListFull.ExamLi
         public ExamListFullHolder(@NonNull View itemView) {
             super(itemView);
             idExamHolder = itemView.findViewById(R.id.txt_nameExam);
-            getToDataExamHolder = itemView.findViewById(R.id.btn_start_list_p1);
+            getToDataExamHolder = itemView.findViewById(R.id.btn_start_list_full);
         }
         public void SetData(int Pos){
             idExamHolder.setText(getKeyFull.get(Pos).toString());
             getToDataExamHolder.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    getToDataExamHolder.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                            activity.getSupportFragmentManager().beginTransaction().
-                                    replace(R.id.wraperfull,
-                                            new DescFullExamFragment(getKeyFull.get(Pos).toString()))
-                                    .addToBackStack(null).commit();
-                        }
-                    });
+                    AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                    activity.getSupportFragmentManager().beginTransaction().
+                            replace(R.id.wraperfullp1,
+                                    new DescFullP1Fragment(getKeyFull.get(Pos).toString()))
+                            .addToBackStack(null).commit();
                 }
             });
         }

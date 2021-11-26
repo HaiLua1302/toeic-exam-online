@@ -23,12 +23,13 @@
 
         <TextView
             android:id="@+id/txt_title_tutorial_p3"
-            style="@style/txt_desc"
+            style="@style/txtCauhoi"
+            android:background="@drawable/dashed_underline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:paddingRight="10dp"
-            android:text="Hướng dẫn" />
+            android:text="Direction" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -40,11 +41,11 @@
 
                 <TextView
                     android:id="@+id/txt_tutorial_p1"
-                    style="@style/txt_desc"
+                    style="@style/txtCauhoi"
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
                     android:paddingRight="10dp"
-                    android:text="@string/rules" />
+                    android:text="@string/P1" />
             </RelativeLayout>
         </ScrollView>
     </LinearLayout>

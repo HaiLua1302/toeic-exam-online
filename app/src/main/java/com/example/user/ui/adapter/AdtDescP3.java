@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
-import com.example.user.ui.class_exam.ClsListQuestionP3;
-import com.example.user.ui.class_exam.ClsRecExamP3;
+import com.example.user.ui.classExam.ClsListQuestionP3;
+import com.example.user.ui.classExam.ClsRecExamP3;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;

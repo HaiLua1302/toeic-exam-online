@@ -9,7 +9,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Paint;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
@@ -24,8 +23,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.R;
-import com.example.user.ui.class_user.cls_achievement;
-import com.example.user.ui.class_user.cls_user_info;
+import com.example.user.ui.classUser.cls_achievement;
+import com.example.user.ui.classUser.cls_user_info;
 import com.example.user.ui.home.Main_home;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -39,8 +38,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-
-import okhttp3.Cache;
 
 public class Register_user extends AppCompatActivity {
 

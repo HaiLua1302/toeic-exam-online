@@ -10,14 +10,14 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.user.R;
-import com.example.user.ui.exam.TutorialP1Activity;
+import com.example.user.ui.exam1.TutorialP1Activity;
 import com.example.user.ui.exam2.TutorialP2Activity;
 import com.example.user.ui.exam3.TutorialP3Activity;
 import com.example.user.ui.exam4.TutorialP4Activity;
 import com.example.user.ui.exam5.TutorialP5Activity;
 import com.example.user.ui.exam6.TutorialP6Activity;
 import com.example.user.ui.exam7.TutorialP7Activity;
-import com.example.user.ui.fullExam.TutorialFullExamActivity;
+import com.example.user.ui.fullExam.TutorialFullExamP1Activity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 @SuppressWarnings("ALL")
@@ -29,7 +29,7 @@ public class Main_home extends AppCompatActivity implements BottomNavigationView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_user);
+        setContentView(R.layout.activity_user_home);
         getSupportActionBar().setTitle("TOEIC EXAM");
 
 
@@ -41,7 +41,6 @@ public class Main_home extends AppCompatActivity implements BottomNavigationView
                 startActivity(intent);
             }
         });
-
         exam_2 = findViewById(R.id.btn_part_2);
         exam_2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +49,6 @@ public class Main_home extends AppCompatActivity implements BottomNavigationView
                 startActivity(intent);
             }
         });
-
         exam_3 = findViewById(R.id.btn_part_3);
         exam_3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +57,6 @@ public class Main_home extends AppCompatActivity implements BottomNavigationView
                 startActivity(intent);
             }
         });
-
         exam_4 = findViewById(R.id.btn_part_4);
         exam_4.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +65,6 @@ public class Main_home extends AppCompatActivity implements BottomNavigationView
                 startActivity(intent);
             }
         });
-
         exam_5 = findViewById(R.id.btn_part_5);
         exam_5.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +73,6 @@ public class Main_home extends AppCompatActivity implements BottomNavigationView
                 startActivity(intent);
             }
         });
-
         exam_6 = findViewById(R.id.btn_part_6);
         exam_6.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +93,7 @@ public class Main_home extends AppCompatActivity implements BottomNavigationView
         full_exam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Main_home.this, TutorialFullExamActivity.class);
+                Intent intent = new Intent(Main_home.this, TutorialFullExamP1Activity.class);
                 startActivity(intent);
             }
         });

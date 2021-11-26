@@ -10,8 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
-import com.example.user.ui.class_exam.ClsListQuestionP7;
-import com.example.user.ui.class_exam.ClsListQuestionP7;
+import com.example.user.ui.classExam.ClsListQuestionP7;
 
 import java.util.List;
 

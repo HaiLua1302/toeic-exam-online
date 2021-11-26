@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_app"
-    tools:context=".ui.exam.TutorialP1Activity">
+    tools:context=".ui.exam1.TutorialP1Activity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:paddingRight="10dp"
-            android:text="Điều khoản sử dụng" />
+            android:text="Direction" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
                     android:paddingRight="10dp"
-                    android:text="@string/rules" />
+                    android:text="@string/P1" />
             </RelativeLayout>
         </ScrollView>
     </LinearLayout>
@@ -53,13 +53,13 @@
     <Button
         android:id="@+id/btn_okie_tutorial_p1"
         style="@style/txtMaDe"
-        android:layout_width="100dp"
+        android:layout_width="170dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginBottom="100dp"
         android:layout_weight="1"
         android:background="@drawable/mybtn2"
-        android:text="Okie"
+        android:text="Bắt đầu nào"
         android:textColor="#FFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

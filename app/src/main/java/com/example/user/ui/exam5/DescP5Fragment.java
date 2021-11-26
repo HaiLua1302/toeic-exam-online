@@ -14,8 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.user.R;
 import com.example.user.ui.adapter.AdtDescP5;
-import com.example.user.ui.adapter.AdtExamListP5;
-import com.example.user.ui.class_exam.ClsPartP5;
+import com.example.user.ui.classExam.ClsPartP5;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

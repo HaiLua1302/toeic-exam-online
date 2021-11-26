@@ -19,7 +19,7 @@ public class ResultP2Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.exam_result);
+        setContentView(R.layout.activity_result_p1);
         txtResultExam = findViewById(R.id.txtResultExam);
         txtPercent = findViewById(R.id.txtPercent);
         progressBarPercent = findViewById(R.id.progressBarrPercentResult);

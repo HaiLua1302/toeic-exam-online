@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.user.R;
 import com.example.user.ui.adapter.AdtDescP3;
-import com.example.user.ui.class_exam.ClsRecExamP3;
+import com.example.user.ui.classExam.ClsRecExamP3;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -70,7 +70,7 @@ public class DecsP3Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_decs_p3, container, false);
+        View view = inflater.inflate(R.layout.fragment_desc_p3, container, false);
 
         recyclerViewQuestionP3 = view.findViewById(R.id.decsListQuestionP3);
         recyclerViewQuestionP3.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));

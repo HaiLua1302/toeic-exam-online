@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.Button;
 
 
-import com.example.user.ui.class_exam.ClsPartP1;
+import com.example.user.ui.admin.AdminHomeActivity;
+import com.example.user.ui.classExam.ClsPartP1;
 
-import com.example.user.ui.home.Main_home;
 import com.google.firebase.database.DatabaseReference;
 
 import java.util.List;
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Main_home.class);
+                Intent intent = new Intent(MainActivity.this, AdminHomeActivity.class);
                 startActivity(intent);
             }
         });

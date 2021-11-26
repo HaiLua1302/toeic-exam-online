@@ -2,6 +2,7 @@ package com.example.user.ui.exam2;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,10 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.user.R;
+import com.example.user.ui.adapter.AdtExamListP1;
 import com.example.user.ui.adapter.AdtExamListP2;
-import com.example.user.ui.class_exam.ClsRecExamP2;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,8 +39,8 @@ public class RecFragmentP2 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private RecyclerView recyclerViewList2;
-    private AdtExamListP2 adapterExamListP2;
+    private RecyclerView recyclerviewlist2;
+    private AdtExamListP2 adtExamListP2;
 
 
     public RecFragmentP2() {
@@ -64,28 +71,30 @@ public class RecFragmentP2 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_rec_p2, container, false);
-        recyclerViewList2 = view.findViewById(R.id.recView_list_p2);
-        recyclerViewList2.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerviewlist2 = view.findViewById(R.id.recView_list_p2);
+        recyclerviewlist2.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        FirebaseRecyclerOptions options = new FirebaseRecyclerOptions.Builder<ClsRecExamP2>()
-                .setQuery(FirebaseDatabase.getInstance().getReference().child("Ques_2"), ClsRecExamP2.class)
-                .build();
 
-        adapterExamListP2 = new AdtExamListP2(options);
-        recyclerViewList2.setAdapter(adapterExamListP2);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Ques_2");
+        List<String> Key = new ArrayList<>();
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    String keyValue = dataSnapshot.getRef().getKey().toString();
+                    Key.add(keyValue);
+                }
+                adtExamListP2 = new AdtExamListP2(Key);
+                recyclerviewlist2.setAdapter(adtExamListP2);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         return view;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        adapterExamListP2.startListening();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        adapterExamListP2.stopListening();
     }
 }

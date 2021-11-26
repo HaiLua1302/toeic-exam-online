@@ -11,9 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
-import com.example.user.ui.class_exam.ClsListQuestionP6;
-import com.example.user.ui.class_exam.ClsRecExamP6;
-import com.example.user.ui.class_exam.ClsRecExamP6;
+import com.example.user.ui.classExam.ClsListQuestionP6;
+import com.example.user.ui.classExam.ClsRecExamP6;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -69,7 +68,6 @@ public class AdtDescP6 extends RecyclerView.Adapter<AdtDescP6.DescP6Holder> {
         public void SetData(int pos){
             txtNumberParagraphHolder.setText("Question : " + recExamP6List.get(pos).getId_question());
             txtParagraphContentHolder.setText(recExamP6List.get(pos).getParagraph());
-            InvisibleSubmit(pos);
 
             String child = recExamP6List.get(pos).getId_exam() + "/" + recExamP6List.get(pos).getId_question() + "/Question";
             DatabaseReference ref = FirebaseDatabase.getInstance()
@@ -93,10 +91,6 @@ public class AdtDescP6 extends RecyclerView.Adapter<AdtDescP6.DescP6Holder> {
                 }
             });
         }
-        public void InvisibleSubmit(int pos){
-            if ((pos+1) == recExamP6List.size()){
-                btnSubmitHolder.setVisibility(View.VISIBLE);
-            }
-        }
+
     }
 }

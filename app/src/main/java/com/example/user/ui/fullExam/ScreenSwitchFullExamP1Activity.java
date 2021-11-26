@@ -1,0 +1,19 @@
+package com.example.user.ui.fullExam;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.WindowManager;
+
+import com.example.user.R;
+
+public class ScreenSwitchFullExamP1Activity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_screen_switch_full_exam_p1);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportFragmentManager().beginTransaction().replace(R.id.wraperfullp1,new RecFullExamP1Fragment()).commit();
+    }
+}

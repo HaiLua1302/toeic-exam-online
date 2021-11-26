@@ -1,5 +1,6 @@
 package com.example.user.ui.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
-import com.example.user.ui.class_exam.ClsListQuestionP6;
-import com.example.user.ui.class_exam.ClsListQuestionP6;
+import com.example.user.ui.classExam.ClsListQuestionP6;
+import com.example.user.ui.exam1.ResultP1Activity;
 
 import java.util.List;
 
@@ -28,13 +29,14 @@ public class AdtDescListQuestionP6  extends RecyclerView.Adapter<AdtDescListQues
     @NonNull
     @Override
     public DescListQuestionP6Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_list_question_p3,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_list_question_p5,parent,false);
         return new DescListQuestionP6Holder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull DescListQuestionP6Holder holder, int position) {
         holder.SetData(position);
+        holder.showBtnSubmit(position);
     }
 
     @Override
@@ -44,19 +46,36 @@ public class AdtDescListQuestionP6  extends RecyclerView.Adapter<AdtDescListQues
 
     public class DescListQuestionP6Holder extends RecyclerView.ViewHolder {
         TextView txtContentQuestionP6Holder,txtA6Holder,txtB6Holder,txtC6Holder,txtD6Holder;
-        Button btnA6Holder,btnB6Holder,btnC6Holder,btnD6Holder;
+        Button btnA6Holder,btnB6Holder,btnC6Holder,btnD6Holder,btnSubmitP6Holder;
         public DescListQuestionP6Holder(@NonNull View itemView) {
             super(itemView);
-            txtContentQuestionP6Holder = itemView.findViewById(R.id.txtContentQuestionP3);
-            txtA6Holder = itemView.findViewById(R.id.txtA3);
-            txtB6Holder = itemView.findViewById(R.id.txtB3);
-            txtC6Holder = itemView.findViewById(R.id.txtC3);
-            txtD6Holder = itemView.findViewById(R.id.txtD3);
+            txtContentQuestionP6Holder = itemView.findViewById(R.id.txtContentQuestionP5);
+            txtA6Holder = itemView.findViewById(R.id.txtA5);
+            txtB6Holder = itemView.findViewById(R.id.txtB5);
+            txtC6Holder = itemView.findViewById(R.id.txtC5);
+            txtD6Holder = itemView.findViewById(R.id.txtD5);
 
-            btnA6Holder = itemView.findViewById(R.id.btnA3);
-            btnB6Holder = itemView.findViewById(R.id.btnB3);
-            btnC6Holder = itemView.findViewById(R.id.btnC3);
-            btnD6Holder = itemView.findViewById(R.id.btnD3);
+            btnA6Holder = itemView.findViewById(R.id.btnA5);
+            btnB6Holder = itemView.findViewById(R.id.btnB5);
+            btnC6Holder = itemView.findViewById(R.id.btnC5);
+            btnD6Holder = itemView.findViewById(R.id.btnD5);
+
+            btnSubmitP6Holder = itemView.findViewById(R.id.btnSubmitP5);
+            btnSubmitP6Holder.setVisibility(View.INVISIBLE);
+
+            btnSubmitP6Holder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(itemView.getContext(), ResultP1Activity.class);
+                    itemView.getContext().startActivity(intent);
+                }
+            });
+        }
+        private void showBtnSubmit(int pos)
+        {
+            if((pos+1) == getItemCount()){
+                btnSubmitP6Holder.setVisibility(View.VISIBLE);
+            }
         }
         private void SetData(int pos){
             txtContentQuestionP6Holder.setText(clsListQuestionP6List.get(pos).getQues_content());

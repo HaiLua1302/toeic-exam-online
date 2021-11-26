@@ -12,10 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.user.R;
-import com.example.user.ui.adapter.AdtDescP3;
 import com.example.user.ui.adapter.AdtDescP4;
-import com.example.user.ui.class_exam.ClsRecExamP3;
-import com.example.user.ui.class_exam.ClsRecExamP4;
+import com.example.user.ui.classExam.ClsRecExamP4;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 
