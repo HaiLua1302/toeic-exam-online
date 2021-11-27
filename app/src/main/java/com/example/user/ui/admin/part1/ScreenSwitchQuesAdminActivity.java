@@ -1,4 +1,4 @@
-package com.example.user.ui.admin;
+package com.example.user.ui.admin.part1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.WindowManager;
 
 import com.example.user.R;
-import com.example.user.ui.exam1.RecP1Fragment;
+import com.example.user.ui.admin.part1.DescQuesAdminFragment;
 
 public class ScreenSwitchQuesAdminActivity extends AppCompatActivity {
 

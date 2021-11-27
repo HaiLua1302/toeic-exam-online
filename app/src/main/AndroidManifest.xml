@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.admin.ScreenSwitchQuesAdminActivity"></activity>
+        <activity android:name=".ui.admin.part1.DescExamEditP1"></activity>
+        <activity android:name=".ui.admin.part1.AddNewDescP1Activity" />
+        <activity android:name=".ui.admin.part1.AddNewAudioP1Activity" />
+        <activity android:name=".ui.admin.part1.ScreenSwitchQuesAdminActivity" />
         <activity android:name=".ui.admin.ManagerQuestionActivity" />
         <activity android:name=".ui.admin.AdminHomeActivity" />
         <activity android:name=".ui.fullExam.ResultFullActivity" />
@@ -47,7 +50,6 @@
         <activity android:name=".ui.exam2.TutorialP2Activity" />
         <activity android:name=".ui.exam1.ScreenSwitchP1Activity" />
         <activity android:name=".ui.exam1.TutorialP1Activity" />
-        <activity android:name=".ui.admin.add_ques_p1" />
         <activity android:name=".ui.home.Main_home" />
         <activity android:name=".ui.login.Register_user" />
         <activity android:name=".ui.login.Begin_user" />

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_app"
+    tools:context=".ui.admin.part1.DescExamEditP1">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/border"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/txtNameExamEditP1"
+                android:layout_width="350dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:lines="3"
+                android:paddingLeft="5dp"
+                android:text="Bộ câu hỏi"
+                android:textColor="#009688"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+            <!--<TextView
+                android:id="@+id/txtNumTilte"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:lines="3"
+                android:paddingLeft="5dp"
+                android:text="| Câu :"
+                android:textColor="#009688"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/txtNumEditQuestP1"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:lines="3"
+                android:paddingLeft="5dp"
+                android:text="1"
+                android:textColor="#009688"
+                android:textSize="18dp"
+                android:textStyle="bold" />-->
+            <ImageView
+                android:id="@+id/imgRefreshEditP1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:paddingRight="5dp"
+                android:paddingLeft="8dp"
+                android:src="@drawable/ic_baseline_refresh_24" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="right">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/txtFilePathEditAudio1"
+                android:textStyle="italic"
+                android:text="file audio"/>
+            <Button
+                android:id="@+id/btnEditAudioP1"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:textColor="#fff"
+                android:background="@drawable/mybtn2"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Sửa file"/>
+            <Button
+                android:id="@+id/btnSaveEditAudioP1"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:textSize="25dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/mybutton"
+                android:paddingLeft="8dp"
+                android:drawableLeft="@drawable/ic_baseline_add_24"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearLayout6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/mybutton"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgPlayAudEditP1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_baseline_play_arrow_24" />
+
+                <TextView
+                    android:id="@+id/txtCurrentTimeEditP1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="0:00"
+                    android:textSize="18dp" />
+
+                <SeekBar
+                    android:id="@+id/playerSeekBarEditP1"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/txtTimeTotalEditP1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="0:00"
+                    android:textSize="18dp" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout13"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/custom_spinner"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/SttTitle"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:gravity="center"
+                android:text="Stt"
+                android:textColor="#009688"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtContentQuestionAdminTitle"
+                android:layout_width="270dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:gravity="center"
+                android:lines="3"
+                android:paddingLeft="5dp"
+                android:text="Hình Ảnh"
+                android:textColor="#009688"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtIdQuestionTitle"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:gravity="center"
+                android:text="Đáp án"
+                android:textColor="#009688"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imgSelectEditQuesTitle"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_edit_24"/>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recViewListQuestEditP1"
+            android:layout_width="match_parent"
+            android:layout_height="470dp"/>
+
+        <Button
+            android:id="@+id/btnDelExamP1"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:textColor="#fff"
+            android:background="@drawable/mybtn2"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="Xóa"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

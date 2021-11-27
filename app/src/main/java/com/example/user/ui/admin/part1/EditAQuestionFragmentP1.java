@@ -1,4 +1,4 @@
-package com.example.user.ui.admin;
+package com.example.user.ui.admin.part1;
 
 import android.os.Bundle;
 
@@ -12,10 +12,10 @@ import com.example.user.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link AddNewAQuestionFragment#newInstance} factory method to
+ * Use the {@link EditAQuestionFragmentP1#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AddNewAQuestionFragment extends Fragment {
+public class EditAQuestionFragmentP1 extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,13 +26,13 @@ public class AddNewAQuestionFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public AddNewAQuestionFragment() {
+    public EditAQuestionFragmentP1() {
         // Required empty public constructor
     }
 
     // TODO: Rename and change types and number of parameters
-    public static AddNewAQuestionFragment newInstance(String param1, String param2) {
-        AddNewAQuestionFragment fragment = new AddNewAQuestionFragment();
+    public static EditAQuestionFragmentP1 newInstance(String param1, String param2) {
+        EditAQuestionFragmentP1 fragment = new EditAQuestionFragmentP1();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -53,6 +53,6 @@ public class AddNewAQuestionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_new_question, container, false);
+        return inflater.inflate(R.layout.fragment_edit_question_p1, container, false);
     }
 }

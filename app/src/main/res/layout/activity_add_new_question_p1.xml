@@ -3,22 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.admin.AddNewQuestionP1Fragment">
+    android:background="@drawable/background_app">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
         android:orientation="vertical">
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:id="@+id/txtExamName"
-            android:background="@drawable/border"
-            style="@style/txtCauhoi"
-            android:text="filepath"/>
-
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/edtAddExamNameP1"
+                android:layout_width="350dp"
+                android:paddingLeft="10dp"
+                android:layout_height="40dp"
+                android:background="@drawable/rounded_edittext"
+                android:ems="10"
+                android:hint="Nhập tên bộ đề"
+                android:inputType="textPersonName" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/imgRefreshP1"
+                android:paddingLeft="8dp"
+                android:src="@drawable/ic_baseline_refresh_24"
+                />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,21 +42,21 @@
                 android:gravity="center"
                 android:id="@+id/txtFilePathAudio1"
                 android:textStyle="italic"
-                android:text="filepath"/>
+                android:text="file audio"/>
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:id="@+id/btnbrowser"
+                android:id="@+id/btnAddAudioP1"
                 android:textColor="#fff"
                 android:background="@drawable/mybtn2"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:text="Browser"/>
+                android:text="thêm file"/>
             <Button
                 android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:id="@+id/btnAddAudio"
+                android:layout_height="30dp"
+                android:id="@+id/btnSaveAudioP1"
                 android:textStyle="bold"
                 android:textColor="#fff"
                 android:textSize="25dp"
@@ -58,10 +70,10 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:id="@+id/btnAddNewQuestionP1"
+            android:id="@+id/btnIntentToAddQuesP1"
             android:textColor="#fff"
             android:background="@drawable/mybtn2"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:text="thêm"/>

@@ -1,6 +1,7 @@
 package com.example.user.ui.adapterAdmin;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
 import com.example.user.ui.adapter.AdtDescFullListQuestionP3;
+import com.example.user.ui.admin.part1.DescExamEditP1;
 
 import java.util.List;
 
@@ -37,6 +39,12 @@ public class adtRecPartExam extends RecyclerView.Adapter<adtRecPartExam.RecPartE
     @Override
     public void onBindViewHolder(@NonNull RecPartExamHolder holder, int position) {
         holder.setData(position);
+        holder.imgEdt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.sendDataEdit(position);
+            }
+        });
     }
 
     @Override
@@ -66,6 +74,15 @@ public class adtRecPartExam extends RecyclerView.Adapter<adtRecPartExam.RecPartE
 
                 }
             });
+        }
+
+        private void sendDataEdit(int pos){
+            String idExam = getKey.get(pos).toString().trim();
+            int numberQues = pos+1;
+            Intent intent = new Intent(itemView.getContext(), DescExamEditP1.class);
+            intent.putExtra("idExam",idExam);
+            intent.putExtra("numQues",numberQues);
+            itemView.getContext().startActivity(intent);
         }
     }
 }

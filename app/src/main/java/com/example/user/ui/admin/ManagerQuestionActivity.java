@@ -1,26 +1,24 @@
 package com.example.user.ui.admin;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.user.R;
 import com.example.user.ui.adapterAdmin.adtRecPartExam;
 import com.example.user.ui.adapterAdmin.adtSpinerPart;
+import com.example.user.ui.admin.part1.AddNewAudioP1Activity;
 import com.example.user.ui.classAdmin.clsPartExam;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -81,6 +79,37 @@ public class ManagerQuestionActivity extends AppCompatActivity implements Bottom
                 switch(posSpinner) {
                     case 0:
                         getDataFirebase("Cauhoi_Ques1","Ques_1");
+                        break;
+                    case 1:
+                        getDataFirebase("List_Ques2","Ques_2");
+                        break;
+                    case 2:
+                        getDataFirebase("List_Ques3","Ques_3");
+                        break;
+                    case 3:
+                        getDataFirebase("List_Ques4","Ques_4");
+                        break;
+                    case 4:
+                        getDataFirebase2("List_Ques5","Ques_5");
+                        break;
+                    case 5:
+                        getDataFirebase("List_Ques6","Ques_6");
+                        break;
+                    default:
+                        getDataFirebase("List_ques7","Ques_7");
+                        break;
+                }
+            }
+        });
+
+        btnAddNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                posSpinner = spnFilter.getSelectedItemPosition();
+                switch(posSpinner) {
+                    case 0:
+                        Intent intent = new Intent(ManagerQuestionActivity.this, AddNewAudioP1Activity.class);
+                        startActivity(intent);
                         break;
                     case 1:
                         getDataFirebase("List_Ques2","Ques_2");
