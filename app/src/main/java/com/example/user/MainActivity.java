@@ -61,10 +61,10 @@ public class MainActivity extends AppCompatActivity {
 //            startActivity(new Intent(MainActivity.this, setting_user.class));
 //        }
         if(user == null){
-            startActivity(new Intent(MainActivity.this, LoginAdmin.class));
+            startActivity(new Intent(MainActivity.this, Login_user.class));
         }
         else{
-            startActivity(new Intent(MainActivity.this, Main.class));
+            startActivity(new Intent(MainActivity.this, setting_user.class));
         }
     }
 }

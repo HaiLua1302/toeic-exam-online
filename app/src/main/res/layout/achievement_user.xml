@@ -29,7 +29,8 @@
             android:layout_height="40dp"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:entries="@array/part"/>
     </LinearLayout>
 
     <com.github.mikephil.charting.charts.BarChart

@@ -38,6 +38,16 @@
         <item>Vietnamese</item>
     </string-array>
 
+    <string-array name="part">
+        <item>Exam</item>
+        <item>Part 1</item>
+        <item>Part 2</item>
+        <item>Part 3</item>
+        <item>Part 4</item>
+        <item>Part 5</item>
+        <item>Part 6</item>
+        <item>Part 7</item>
+    </string-array>
 
     <string name="part_1">Part 1</string>
     <string name="part_2">Part 2</string>
