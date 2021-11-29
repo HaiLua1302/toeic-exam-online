@@ -5,132 +5,103 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_app"
-    tools:context=".ui.admin.part1.EditQuesP1Activity">
+    tools:context=".ui.admin.part2.AddNewQuesP2Activity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/border"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/txtNameExamEditP1"
-                android:layout_width="350dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:lines="3"
-                android:paddingLeft="5dp"
-                android:text="Bộ câu hỏi"
-                android:textColor="#009688"
-                android:textSize="18dp"
-                android:textStyle="bold" />
-            <ImageView
-                android:id="@+id/imgRefreshEditP1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/border"
-                android:paddingRight="5dp"
-                android:paddingLeft="8dp"
-                android:src="@drawable/ic_baseline_refresh_24" />
-        </LinearLayout>
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edtAddExamNameP2"
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:background="@drawable/rounded_edittext"
+                android:ems="10"
+                android:hint="Nhập tên bộ đề"
+                android:inputType="textPersonName"
+                android:paddingLeft="10dp" />
+
+            <ImageView
+                android:id="@+id/imgRefreshP2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="8dp"
+                android:src="@drawable/ic_baseline_refresh_24" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:gravity="right">
+            android:gravity="center">
+
             <ScrollView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent">
                 <TextView
-                    android:id="@+id/txtFilePathEditAudioP1"
+                    android:id="@+id/txtFilePathAudioP2"
                     android:layout_width="230dp"
                     android:layout_height="match_parent"
-                    android:padding="5dp"
                     android:gravity="left"
+                    android:padding="5dp"
                     android:text="filepath"
                     android:textStyle="italic" />
             </ScrollView>
+
             <Button
-                android:id="@+id/btnEditAudioP1"
+                android:id="@+id/btnAddAudioP2"
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:textColor="#fff"
-                android:background="@drawable/mybtn2"
-                android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:text="Sửa file"/>
+                android:layout_marginRight="10dp"
+                android:background="@drawable/mybtn2"
+                android:text="thêm file"
+                android:textColor="#fff" />
+
             <Button
-                android:id="@+id/btnSaveEditAudioP1"
+                android:id="@+id/btnSaveAudioP2"
                 android:layout_width="40dp"
                 android:layout_height="30dp"
-                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/mybutton"
+                android:drawableLeft="@drawable/ic_baseline_add_24"
+                android:paddingLeft="8dp"
                 android:textColor="#fff"
                 android:textSize="25dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/mybutton"
-                android:paddingLeft="8dp"
-                android:drawableLeft="@drawable/ic_baseline_add_24"/>
+                android:textStyle="bold" />
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/linearLayout6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/mybutton"
-                android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnIntentToAddQuesP2"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/mybtn2"
+            android:text="thêm"
+            android:textColor="#fff" />
 
-                <ImageView
-                    android:id="@+id/imgPlayAudEditP1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/ic_baseline_play_arrow_24" />
-
-                <TextView
-                    android:id="@+id/txtCurrentTimeEditP1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="0:00"
-                    android:textSize="18dp" />
-
-                <SeekBar
-                    android:id="@+id/playerSeekBarEditP1"
-                    android:layout_width="200dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1" />
-
-                <TextView
-                    android:id="@+id/txtTimeTotalEditP1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="0:00"
-                    android:textSize="18dp" />
-            </LinearLayout>
-        </LinearLayout>
         <LinearLayout
             android:id="@+id/linearLayout13"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/custom_spinner"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
@@ -151,7 +122,7 @@
                 android:gravity="center"
                 android:lines="3"
                 android:paddingLeft="5dp"
-                android:text="Hình Ảnh"
+                android:text="ID Câu hỏi"
                 android:textColor="#009688"
                 android:textSize="18dp"
                 android:textStyle="bold" />
@@ -169,16 +140,16 @@
 
             <ImageView
                 android:id="@+id/imgSelectEditQuesTitle"
-                android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_edit_24"/>
+                android:layout_gravity="center"
+                android:src="@drawable/ic_baseline_edit_24" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recViewListQuestEditP1"
+            android:id="@+id/recViewListQuestEditP2"
             android:layout_width="match_parent"
-            android:layout_height="530dp" />
-
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -135,7 +135,7 @@ public class DescFullP1Fragment extends Fragment {
         snapHelper.attachToRecyclerView(recyclerViewQuestionFull1);
 
         clsPartP1s = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Cauhoi_Ques1").child(getKeyFull);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("List_Ques1").child(getKeyFull);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

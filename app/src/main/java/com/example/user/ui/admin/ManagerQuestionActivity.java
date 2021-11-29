@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,9 +15,10 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.example.user.R;
-import com.example.user.ui.adapterAdmin.adtRecPartExam;
-import com.example.user.ui.adapterAdmin.adtSpinerPart;
-import com.example.user.ui.admin.part1.AddNewAudioP1Activity;
+import com.example.user.ui.adapterAdmin.AdtRecExamByPart;
+import com.example.user.ui.adapterAdmin.AdtSpinerPart;
+import com.example.user.ui.admin.part1.AddNewQuesP1Activity;
+import com.example.user.ui.admin.part2.AddNewQuesP2Activity;
 import com.example.user.ui.classAdmin.clsPartExam;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
@@ -36,16 +38,16 @@ public class ManagerQuestionActivity extends AppCompatActivity implements Bottom
     private BottomNavigationView bottomNavigationView;
     private RecyclerView recViewQuestion;
     private ArrayList<clsPartExam> clsPartExams;
-    private adtSpinerPart adtSpinerPart;
-    private adtRecPartExam recPartExam;
+    private AdtSpinerPart adtSpinerPart;
+    private AdtRecExamByPart recPartExam;
     private String clickPartName;
     private int posSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_manager_question);
-        getSupportActionBar().setTitle("Question Manager");
+        setContentView(R.layout.activity_admin_manager_question);
+        getSupportActionBar().setTitle("Exam Manager");
 
         bottomNavigationView = findViewById(R.id.navigation_bottom_admin);
         btnFilter = findViewById(R.id.btnFilter);
@@ -55,7 +57,7 @@ public class ManagerQuestionActivity extends AppCompatActivity implements Bottom
 
         initListPart();
 
-        adtSpinerPart = new adtSpinerPart(this,clsPartExams);
+        adtSpinerPart = new AdtSpinerPart(this,clsPartExams);
         spnFilter.setAdapter(adtSpinerPart);
 
         spnFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -71,14 +73,14 @@ public class ManagerQuestionActivity extends AppCompatActivity implements Bottom
             }
         });
 
-        getDataFirebase("Cauhoi_Ques1","Ques_1");
+
         btnFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 posSpinner = spnFilter.getSelectedItemPosition();
                 switch(posSpinner) {
                     case 0:
-                        getDataFirebase("Cauhoi_Ques1","Ques_1");
+                        getDataFirebase("List_Ques1","Ques_1");
                         break;
                     case 1:
                         getDataFirebase("List_Ques2","Ques_2");
@@ -95,8 +97,11 @@ public class ManagerQuestionActivity extends AppCompatActivity implements Bottom
                     case 5:
                         getDataFirebase("List_Ques6","Ques_6");
                         break;
+                    case 6:
+                        getDataFirebase("List_Ques7","Ques_7");
+                        break;
                     default:
-                        getDataFirebase("List_ques7","Ques_7");
+                        getDataFirebase("List_Ques1","Ques_1");
                         break;
                 }
             }
@@ -108,28 +113,34 @@ public class ManagerQuestionActivity extends AppCompatActivity implements Bottom
                 posSpinner = spnFilter.getSelectedItemPosition();
                 switch(posSpinner) {
                     case 0:
-                        Intent intent = new Intent(ManagerQuestionActivity.this, AddNewAudioP1Activity.class);
+                        Intent intent = new Intent(ManagerQuestionActivity.this, AddNewQuesP1Activity.class);
                         startActivity(intent);
                         break;
                     case 1:
-                        getDataFirebase("List_Ques2","Ques_2");
-                        break;
+                        Intent intent2 = new Intent(ManagerQuestionActivity.this, AddNewQuesP2Activity.class);
+                        startActivity(intent2);
                     case 2:
-                        getDataFirebase("List_Ques3","Ques_3");
+                        //getDataFirebase("List_Ques3","Ques_3");
                         break;
                     case 3:
-                        getDataFirebase("List_Ques4","Ques_4");
+                       // getDataFirebase("List_Ques4","Ques_4");
                         break;
                     case 4:
-                        getDataFirebase2("List_Ques5","Ques_5");
+                       // getDataFirebase2("List_Ques5","Ques_5");
                         break;
                     case 5:
-                        getDataFirebase("List_Ques6","Ques_6");
+                       // getDataFirebase("List_Ques6","Ques_6");
                         break;
                     default:
-                        getDataFirebase("List_ques7","Ques_7");
+                      //  getDataFirebase("List_ques7","Ques_7");
                         break;
                 }
+            }
+        });
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                btnFilter.performClick();
             }
         });
     }
@@ -171,7 +182,7 @@ public class ManagerQuestionActivity extends AppCompatActivity implements Bottom
                             long count = snapshot3.getChildrenCount();
                             countTotal.add((int) count);
                         }
-                        recPartExam = new adtRecPartExam(getKey,countTotal);
+                        recPartExam = new AdtRecExamByPart(getKey,countTotal,child);
                         recViewQuestion.setAdapter(recPartExam);
                     }
                     @Override
@@ -201,7 +212,7 @@ public class ManagerQuestionActivity extends AppCompatActivity implements Bottom
                     countTotal.add((int) count);
                    // Toast.makeText(ManagerQuestionActivity.this, countTotal.toString(),Toast.LENGTH_LONG).show();
                 }
-                recPartExam = new adtRecPartExam(getKey,countTotal);
+                recPartExam = new AdtRecExamByPart(getKey,countTotal,child);
                 recViewQuestion.setAdapter(recPartExam);
             }
             @Override

@@ -31,17 +31,18 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.Date;
 import java.util.Locale;
 
-public class AddNewDescP1Activity extends AppCompatActivity {
+public class EditListQuesP1Activity extends AppCompatActivity {
 
-    public String idExam,urlAudio;
-    private int countNumQues;
+    private String urlImg, result, idExam ,idQues;
+    private int iNumQues;
 
-    private TextView txtxNameExam,txtnameFileIMG,txtNumQues;
+    private TextView txtNameExam,txtnameFileIMG,txtNumQues;
     private EditText edtResult;
     private Button btnGetImg,btnSaveQuestion;
     private ImageView imgQues;
@@ -56,8 +57,8 @@ public class AddNewDescP1Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_new_desc_p1);
-        getSupportActionBar().setTitle("Thêm câu hỏi");
+        setContentView(R.layout.activity_edit_a_question_p1);
+        getSupportActionBar().setTitle("Edit Desc Quesion");
         // calling the action bar
         ActionBar actionBar = getSupportActionBar();
         // Customize the back button
@@ -65,26 +66,32 @@ public class AddNewDescP1Activity extends AppCompatActivity {
         // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        idExam = bundle.getString("idExam");
-        urlAudio = bundle.getString("urlAudio");
-        countNumQues = bundle.getInt("count");
 
-        txtxNameExam = findViewById(R.id.txtContentQuestionAdminTitleP1);
-        txtnameFileIMG = findViewById(R.id.txtFilePathAudioP1);
-        txtNumQues = findViewById(R.id.txtNumAddQuestP1);
-        edtResult = findViewById(R.id.edtResultP1);
-        btnGetImg = findViewById(R.id.btnGetImgP1);
-        btnSaveQuestion = findViewById(R.id.btnAddAQuestionP1);
-        imgQues = findViewById(R.id.imgViewP1);
+        txtNameExam = findViewById(R.id.txtContentQuestionEditAdminTitleP1);
+        txtNumQues = findViewById(R.id.txtNumEditAdminP1);
+        edtResult = findViewById(R.id.edtResultEditP1);
+        txtnameFileIMG = findViewById(R.id.txtFilePathAudioEditAdmin1);
+
+        btnGetImg = findViewById(R.id.btnGetImgEditAdminP1);
+        btnSaveQuestion = findViewById(R.id.btnSaveEditAdminP1);
+        imgQues = findViewById(R.id.imgViewEditAdminP1);
+
+        idExam = bundle.getString("idExam");
+        iNumQues = bundle.getInt("numQues");
+        result = bundle.getString("result");
+        urlImg = bundle.getString("urlImg");
+        idQues = bundle.getString("idQues");
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        txtxNameExam.setText(idExam);
-        txtNumQues.setText(String.valueOf(countNumQues));
+        txtNameExam.setText(idExam);
+        txtNumQues.setText(String.valueOf(iNumQues));
+        Picasso.get().load(urlImg).into(imgQues);
+        edtResult.setText(result);
+        txtnameFileIMG.setText(urlImg);
 
         btnGetImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,14 +103,12 @@ public class AddNewDescP1Activity extends AppCompatActivity {
         btnSaveQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveQuesImage();
+               saveEditQues();
             }
         });
+
     }
 
-    /*
-     * This method is choose img to the
-     * */
     private void chooseImage(){
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -118,6 +123,7 @@ public class AddNewDescP1Activity extends AppCompatActivity {
                 && data != null && data.getData() != null )
         {
             filePath_IMG = data.getData();
+            txtnameFileIMG.setText(filePath_IMG.toString());
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath_IMG);
                 imgQues.setImageBitmap(bitmap);
@@ -130,12 +136,13 @@ public class AddNewDescP1Activity extends AppCompatActivity {
     };
 
 
-    private void addListQues(int NumQues,String url_img){
+
+    private void editAQuesImg(String url_img){
         //getting the reference of question part 1 node
         databaseQuest_p1 = FirebaseDatabase.getInstance().getReference().child("List_Ques1");
         String Result = edtResult.getText().toString();
-        ClsPartP1 clsPartP1 = new ClsPartP1(Result,url_img);
-        String child = idExam + "/" + NumQues;
+        ClsPartP1 clsPartP1 = new ClsPartP1(Result,url_img,idQues);
+        String child = idExam + "/" + idQues;
         databaseQuest_p1.child(child).setValue(clsPartP1).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -145,18 +152,73 @@ public class AddNewDescP1Activity extends AppCompatActivity {
         });
     }
 
-    private void saveQuesImage()
+    private void editAQues(){
+        //getting the reference of question part 1 node
+        databaseQuest_p1 = FirebaseDatabase.getInstance().getReference().child("List_Ques1");
+        String Result = edtResult.getText().toString();
+        ClsPartP1 clsPartP1 = new ClsPartP1(Result,urlImg,idQues);
+        String child = idExam + "/" + idQues;
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Edit Question...");
+        progressDialog.show();
+        databaseQuest_p1.child(child).setValue(clsPartP1).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    progressDialog.dismiss();
+                    Toast.makeText(EditListQuesP1Activity.this, "Đã lưu thay đổi thành công ", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    private void delete(){
+       //String link = String.valueOf(Pattern.compile("%2..*%2F(.*?)\\?alt").matcher(urlImg).matches());
+        /*link =  link.split("/")[7];
+        link = link.split("%2F\\?alt");*/
+
+        storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(urlImg);
+        String link = storageReference.getName();
+
+        Toast.makeText(EditListQuesP1Activity.this, link, Toast.LENGTH_SHORT).show();
+       /* removeImg.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });*/
+    }
+    private void saveEditQues()
     {
 
         //create id question
-        String ID_Quest = idExam + "_" + getTime();
+        String ID_Quest = "Exam1" + "_" + getTime();
+        storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(urlImg);
+        String link = storageReference.getName();
+
+        StorageReference removeImg = storage.getReference("images_exam").child(link);
+        removeImg.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
 
         if(filePath_IMG != null)
         {
             final ProgressDialog progressDialog = new ProgressDialog(this);
-            final ProgressDialog progressDialog_audio = new ProgressDialog(this);
 
-            progressDialog.setTitle("Uploading Image...");
+            progressDialog.setTitle("Edit Question...");
             progressDialog.show();
 
             StorageReference ref_IMG = storageReference.child("images_exam/"+  ID_Quest);
@@ -168,11 +230,10 @@ public class AddNewDescP1Activity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     String url_IMG = uri.toString();
-                                    addListQues(countNumQues,url_IMG);
+                                    editAQuesImg(url_IMG);
                                     progressDialog.dismiss();
-                                    Toast.makeText(AddNewDescP1Activity.this, "Thêm câu hỏi "+countNumQues+" thành công ", Toast.LENGTH_SHORT).show();
-                                    countNumQues++;
-                                    txtNumQues.setText(String.valueOf(countNumQues));
+                                    Toast.makeText(EditListQuesP1Activity.this, "Đã lưu thay đổi thành công ", Toast.LENGTH_SHORT).show();
+                                    txtnameFileIMG.setText(String.valueOf(url_IMG));
                                 }
                             });
 
@@ -182,7 +243,7 @@ public class AddNewDescP1Activity extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             progressDialog.dismiss();
-                            Toast.makeText(AddNewDescP1Activity.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditListQuesP1Activity.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -194,8 +255,16 @@ public class AddNewDescP1Activity extends AppCompatActivity {
                         }
                     });
         }
+        else {
+            editAQues();
+        }
     }
 
+    private String getTime(){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
+        String currentDateandTime = sdf.format(new Date());
+        return  currentDateandTime;
+    }
     // this event will enable the back
     // function to the button on press
     @Override
@@ -207,13 +276,4 @@ public class AddNewDescP1Activity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     };
-
-    /*
-    gettime current
-    * */
-    private String getTime(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
-        String currentDateandTime = sdf.format(new Date());
-        return  currentDateandTime;
-    }
 }

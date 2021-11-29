@@ -1,6 +1,7 @@
 package com.example.user.ui.admin.part1;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,7 +11,9 @@ import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.InputType;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.R;
-import com.example.user.ui.adapterAdmin.adtRecViewQuestionP1;
+import com.example.user.ui.adapterAdmin.AdtRecQuesP1;
 import com.example.user.ui.classExam.ClsPartP1;
 import com.example.user.ui.classExam.ClsRecExamP1;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,6 +33,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -41,7 +45,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class AddNewAudioP1Activity extends AppCompatActivity {
+public class AddNewQuesP1Activity extends AppCompatActivity {
 
     private Uri filePath_AUD;
     private final int PICK_AUDIO_REQUEST = 1;
@@ -56,7 +60,7 @@ public class AddNewAudioP1Activity extends AppCompatActivity {
     private List<ClsPartP1> clsPartP1s;
     private String urlAud,idExam;
 
-    private com.example.user.ui.adapterAdmin.adtRecViewQuestionP1 adtRecViewQuestionP1;
+    private AdtRecQuesP1 AdtRecQuesP1;
 
     //our database reference object
     private DatabaseReference databaseQuest_p1;
@@ -64,13 +68,21 @@ public class AddNewAudioP1Activity extends AppCompatActivity {
     private FirebaseStorage storage;
     private StorageReference storageReference;
 
+    int check = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_new_question_p1);
-
+        setContentView(R.layout.activity_add_new_audio_p1);
+        getSupportActionBar().setTitle("Add New Part 1");
+        // calling the action bar
+        ActionBar actionBar = getSupportActionBar();
+        // Customize the back button
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_24);
+        // showing the back button in action bar
+        actionBar.setDisplayHomeAsUpEnabled(true);
         //getting the reference of question part 1 node
-        databaseQuest_p1 = FirebaseDatabase.getInstance().getReference().child("Ques_P1");
+        //databaseQuest_p1 = FirebaseDatabase.getInstance().getReference().child("Ques_P1");
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
@@ -78,8 +90,8 @@ public class AddNewAudioP1Activity extends AppCompatActivity {
         btnGetUrl = findViewById(R.id.btnAddAudioP1);
         btnSaveAudio = findViewById(R.id.btnSaveAudioP1);
         btnIntentToAddQues = findViewById(R.id.btnIntentToAddQuesP1);
-        txtFilePathAudio = findViewById(R.id.txtFilePathAudio1);
-        recyclerView = findViewById(R.id.recViewListQuestEdit);;
+        txtFilePathAudio = findViewById(R.id.txtFilePathAudioP1);
+        recyclerView = findViewById(R.id.recViewListQuestEditP1);;
         imgRefresh = findViewById(R.id.imgRefreshP1);;
 
         imgRefresh.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +101,12 @@ public class AddNewAudioP1Activity extends AppCompatActivity {
 
             }
         });
-
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                imgRefresh.performClick();
+            }
+        });
         btnGetUrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,7 +116,7 @@ public class AddNewAudioP1Activity extends AppCompatActivity {
         btnSaveAudio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveAudio();
+                checkDuplicate();
             }
         });
 
@@ -107,7 +124,6 @@ public class AddNewAudioP1Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getDatabyEdit();
-                Toast.makeText(AddNewAudioP1Activity.this, "Cập nhật dữ liệu thành công", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -130,8 +146,10 @@ public class AddNewAudioP1Activity extends AppCompatActivity {
                 && data != null && data.getData() != null )
         {
             filePath_AUD = data.getData();
+            txtFilePathAudio.setText(filePath_AUD.toString());
         }
     };
+
     /*
      gettime current
      * */
@@ -144,15 +162,45 @@ public class AddNewAudioP1Activity extends AppCompatActivity {
      * This method is saving a new quest to the
      * Firebase Realtime Database
      * */
-    private void addQues(String url_Audio) {
-        //getting the reference of question part 1 node
+    private void checkDuplicate(){
         String id_Exam = edtNameExam.getText().toString();
-        databaseQuest_p1 = FirebaseDatabase.getInstance().getReference().child("Ques_P1");
-        ClsRecExamP1 clsRecExamP1 = new ClsRecExamP1(id_Exam, url_Audio);
-        databaseQuest_p1.child(id_Exam).setValue(clsRecExamP1).addOnCompleteListener(new OnCompleteListener<Void>() {
+        databaseQuest_p1 = FirebaseDatabase.getInstance().getReference();
+        Query query = databaseQuest_p1.child("Ques_1").orderByChild("id_exam").equalTo(id_Exam);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    Toast.makeText(AddNewQuesP1Activity.this, "Tên bộ đề đã có ",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    saveAudio();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+    private void addQues(String url_audio) {
+        //getting the reference of question part 1 node
+        idExam = edtNameExam.getText().toString();
+        databaseQuest_p1 = FirebaseDatabase.getInstance().getReference().child("Ques_1");
+        ClsRecExamP1 clsRecExamP1 = new ClsRecExamP1(idExam, url_audio);
+        databaseQuest_p1.child(idExam).setValue(clsRecExamP1).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
+                    Toast.makeText(AddNewQuesP1Activity.this, "Thêm bộ đè thành công", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(AddNewQuesP1Activity.this, AddNewListQuesP1Activity.class);
+                    intent.putExtra("idExam",idExam);
+                   /* intent.putExtra("urlAudio",url_audio);
+                    intent.putExtra("count",1);*/
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(AddNewQuesP1Activity.this, "Đã xảy ra lỗi vui lòng thử lại", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -160,7 +208,6 @@ public class AddNewAudioP1Activity extends AppCompatActivity {
     private void saveAudio(){
         //getting the values to save
         String id_quest = edtNameExam.getText().toString().trim();
-
         //create id question
         String ID_Quest = id_quest +"_"+ getTime();
             //add audio
@@ -178,20 +225,9 @@ public class AddNewAudioP1Activity extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Uri uri_AUD) {
                                         urlAud = uri_AUD.toString();
-                                        idExam = edtNameExam.getText().toString();
-                                        //cls_part_1 quest = new cls_part_1("",ID_Quest, result_quest, url_IMG,url_AUD,"");
-                                        //Saving the question
-                                        // databaseQuest_p1.child(ID_Quest).setValue(quest);
                                         addQues(urlAud);
                                         progressDialog_audio.dismiss();
-                                        Toast.makeText(AddNewAudioP1Activity.this, "Thêm file audio thành công", Toast.LENGTH_SHORT).show();
-                                        //Toast.makeText(AddNewP1Activity.this, url_AUD, Toast.LENGTH_SHORT).show();
                                         edtNameExam.setInputType(InputType.TYPE_NULL);
-                                        Intent intent = new Intent(AddNewAudioP1Activity.this, AddNewDescP1Activity.class);
-                                        intent.putExtra("idExam",idExam);
-                                        intent.putExtra("urlAudio",urlAud);
-                                        intent.putExtra("count",1);
-                                        startActivity(intent);
                                     }
                                 });
                             }
@@ -200,7 +236,7 @@ public class AddNewAudioP1Activity extends AppCompatActivity {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 progressDialog_audio.dismiss();
-                                Toast.makeText(AddNewAudioP1Activity.this, "Đã xảy ra lỗi vui lòng thử lại " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AddNewQuesP1Activity.this, "Đã xảy ra lỗi vui lòng thử lại " + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -212,67 +248,29 @@ public class AddNewAudioP1Activity extends AppCompatActivity {
                             }
                         });
             }
+            else {
+                Toast.makeText(AddNewQuesP1Activity.this, "File Audio Chưa Được Chọn ", Toast.LENGTH_SHORT).show();
+            }
 
     };
 
     private void getDatabyEdit()
     {
-        String nameExam = edtNameExam.getText().toString().trim();
-
+        String id_Exam = edtNameExam.getText().toString().trim();
         recExamP1List = new ArrayList<>();
-        if (nameExam.isEmpty()){
+        if (id_Exam.isEmpty()){
             edtNameExam.setError("Tên đề không được để trống!");
             edtNameExam.requestFocus();
             return;
         }
-
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Ques_1").child(nameExam);
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                    idExam = snapshot.child("id_exam").getValue().toString();
-                    urlAud = snapshot.child("url_audio").getValue().toString();
-
-                    DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("List_Ques1").child(idExam);
-                    ref2.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.exists()){
-                                long count = snapshot.getChildrenCount();
-                                Intent intent = new Intent(AddNewAudioP1Activity.this,AddNewDescP1Activity.class);
-                                intent.putExtra("idExam",idExam);
-                                intent.putExtra("urlAudio",urlAud);
-                                intent.putExtra("count",(int)count);
-                                startActivity(intent);
-                            }
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                        }
-                    });
-
-
-                }
-                else {
-                    edtNameExam.setError("Tên đề không không hợp lệ!");
-                    edtNameExam.requestFocus();
-                    return;
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        Intent intent = new Intent(AddNewQuesP1Activity.this, AddNewListQuesP1Activity.class);
+        intent.putExtra("idExam",id_Exam);
+        startActivity(intent);
     }
 
     private void setDataToRecView(){
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         clsPartP1s = new ArrayList<>();
-
         String nameExam = edtNameExam.getText().toString().trim();
         if (nameExam.isEmpty()){
             edtNameExam.setError("Tên đề không được để trống!");
@@ -289,8 +287,11 @@ public class AddNewAudioP1Activity extends AppCompatActivity {
                         ClsPartP1 clsPartP1 = dataSnapshot.getValue(ClsPartP1.class);
                         clsPartP1s.add(clsPartP1);
                     }
-                    adtRecViewQuestionP1 = new adtRecViewQuestionP1(clsPartP1s);
-                    recyclerView.setAdapter(adtRecViewQuestionP1);
+                    AdtRecQuesP1 = new AdtRecQuesP1(clsPartP1s);
+                    recyclerView.setAdapter(AdtRecQuesP1);
+                    Toast.makeText(AddNewQuesP1Activity.this, "Cập nhật dữ liệu thành công", Toast.LENGTH_SHORT).show();
+                }else {
+                    return;
                 }
             }
 
@@ -299,4 +300,13 @@ public class AddNewAudioP1Activity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    };
 }

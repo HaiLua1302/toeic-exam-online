@@ -15,26 +15,26 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class adtRecViewQuestionP1 extends RecyclerView.Adapter<adtRecViewQuestionP1.RecViewQuestionP1Holder> {
+public class AdtRecQuesP1 extends RecyclerView.Adapter<AdtRecQuesP1.RecViewQuestionP1Holder> {
 
     private List<ClsPartP1> clsPartP1s;
 
-    public adtRecViewQuestionP1() {
+    public AdtRecQuesP1() {
     }
 
-    public adtRecViewQuestionP1(List<ClsPartP1> clsPartP1s) {
+    public AdtRecQuesP1(List<ClsPartP1> clsPartP1s) {
         this.clsPartP1s = clsPartP1s;
     }
 
     @NonNull
     @Override
-    public adtRecViewQuestionP1.RecViewQuestionP1Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdtRecQuesP1.RecViewQuestionP1Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_rec_view_question_p1_admin,parent,false);
-        return new  adtRecViewQuestionP1.RecViewQuestionP1Holder(view);
+        return new  AdtRecQuesP1.RecViewQuestionP1Holder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull adtRecViewQuestionP1.RecViewQuestionP1Holder holder, int position) {
+    public void onBindViewHolder(@NonNull AdtRecQuesP1.RecViewQuestionP1Holder holder, int position) {
         holder.setData(position);
     }
 
@@ -52,7 +52,7 @@ public class adtRecViewQuestionP1 extends RecyclerView.Adapter<adtRecViewQuestio
             nounHolder = itemView.findViewById(R.id.txtNounRecQuesP1);
             resultHolder = itemView.findViewById(R.id.txtRecResultAdminP1);
             imgQuesHolder = itemView.findViewById(R.id.imgRecViewAdminP1);
-            imgEditAQuesHolder = itemView.findViewById(R.id.imgRecSelectEditQuesP1);
+            imgEditAQuesHolder = itemView.findViewById(R.id.imgRecSelectAdminP1);
         }
 
         private void setData(int pos){

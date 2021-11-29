@@ -15,14 +15,14 @@ import com.example.user.ui.classAdmin.clsPartExam;
 
 import java.util.ArrayList;
 
-public class adtSpinerPart extends ArrayAdapter<clsPartExam> {
+public class AdtSpinerPart extends ArrayAdapter<clsPartExam> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         return initView(position, convertView, parent);
     }
 
-    public adtSpinerPart(@NonNull Context context, ArrayList<clsPartExam>clsPartExams) {
+    public AdtSpinerPart(@NonNull Context context, ArrayList<clsPartExam>clsPartExams) {
         super(context, 0,clsPartExams);
 
     }

@@ -155,7 +155,7 @@ public class DescP1Fragment extends Fragment implements AdtDescP1.OnNextQuestion
         // Instantiate a ViewPager and a PagerAdapter.
         // init event
         clsPartP1s = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Cauhoi_Ques1").child(keyExam);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("List_Ques1").child(keyExam);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:id="@+id/txtFilePathAudio1"
+                android:id="@+id/txtFilePathAudioP1"
                 android:textStyle="italic"
                 android:text="filepath"/>
             <Button
@@ -106,7 +106,7 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recViewListQuestEdit"
+            android:id="@+id/recViewListQuestEditP1"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

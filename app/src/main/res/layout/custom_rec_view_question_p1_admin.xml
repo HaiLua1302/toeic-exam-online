@@ -39,7 +39,7 @@
         android:textSize="18dp"
         android:textStyle="bold" />
     <ImageView
-        android:id="@+id/imgRecSelectEditQuesP1"
+        android:id="@+id/imgRecSelectAdminP1"
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
