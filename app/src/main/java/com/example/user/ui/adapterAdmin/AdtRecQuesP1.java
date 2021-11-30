@@ -1,65 +1,115 @@
 package com.example.user.ui.adapterAdmin;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
+import com.example.user.ui.admin.part1.EditListQuesP1Activity;
+import com.example.user.ui.admin.part2.EditListQuesP2Activity;
 import com.example.user.ui.classExam.ClsPartP1;
+import com.example.user.ui.classExam.ClsPartP2;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class AdtRecQuesP1 extends RecyclerView.Adapter<AdtRecQuesP1.RecViewQuestionP1Holder> {
+public class AdtRecQuesP1 extends FirebaseRecyclerAdapter<ClsPartP1,AdtRecQuesP1.RecQuesP1Holder> {
+    private String nameExam;
+    private Context context;
 
-    private List<ClsPartP1> clsPartP1s;
-
-    public AdtRecQuesP1() {
+    public AdtRecQuesP1(@NonNull FirebaseRecyclerOptions<ClsPartP1> options, String nameExam, Context context) {
+        super(options);
+        this.nameExam = nameExam;
+        this.context = context;
     }
 
-    public AdtRecQuesP1(List<ClsPartP1> clsPartP1s) {
-        this.clsPartP1s = clsPartP1s;
+    public AdtRecQuesP1(@NonNull FirebaseRecyclerOptions<ClsPartP1> options) {
+        super(options);
+    }
+
+    @Override
+    protected void onBindViewHolder(@NonNull RecQuesP1Holder holder,final int position,final @NonNull ClsPartP1 model) {
+        holder.setData(model,position);
+        holder.imgDelHolder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.delQuestion(model);
+                //notifyDataSetChanged();
+            }
+        });
+        holder.imgEditAQuesHolder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.sendDatatoDetail(model,position);
+            }
+        });
     }
 
     @NonNull
     @Override
-    public AdtRecQuesP1.RecViewQuestionP1Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecQuesP1Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_rec_view_question_p1_admin,parent,false);
-        return new  AdtRecQuesP1.RecViewQuestionP1Holder(view);
+        return new  RecQuesP1Holder(view);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull AdtRecQuesP1.RecViewQuestionP1Holder holder, int position) {
-        holder.setData(position);
-    }
-
-    @Override
-    public int getItemCount() {
-        return clsPartP1s.size();
-    }
-
-    public class RecViewQuestionP1Holder extends RecyclerView.ViewHolder {
+    public class RecQuesP1Holder extends RecyclerView.ViewHolder {
         private TextView nounHolder,resultHolder;
-        private ImageView imgQuesHolder,imgEditAQuesHolder;
-
-        public RecViewQuestionP1Holder(@NonNull View itemView) {
+        private ImageView imgQuesHolder,imgEditAQuesHolder,imgDelHolder;
+        public RecQuesP1Holder(@NonNull View itemView) {
             super(itemView);
             nounHolder = itemView.findViewById(R.id.txtNounRecQuesP1);
             resultHolder = itemView.findViewById(R.id.txtRecResultAdminP1);
             imgQuesHolder = itemView.findViewById(R.id.imgRecViewAdminP1);
-            imgEditAQuesHolder = itemView.findViewById(R.id.imgRecSelectAdminP1);
+            imgEditAQuesHolder = itemView.findViewById(R.id.imgRecSelectEditAdminP1);
+            imgDelHolder = itemView.findViewById(R.id.imgRecDelEditAdminP1);
         }
-
-        private void setData(int pos){
-            Picasso.get().load(clsPartP1s.get(pos).getUrl_img()).into(imgQuesHolder);
+        private void setData(ClsPartP1 model,int pos){
+            Picasso.get().load(model.getUrl_img()).into(imgQuesHolder);
             nounHolder.setText(String.valueOf(pos+1));
-            resultHolder.setText(clsPartP1s.get(pos).getResult());
+            resultHolder.setText(model.getResult());
+        }
+        private void sendDatatoDetail(ClsPartP1 model,int pos){
+            Intent intent = new Intent(itemView.getContext(), EditListQuesP1Activity.class);
+            String result = model.getResult().toString();
+            String id_ques = model.getId_ques().toString();
+            String urlImg = model.getUrl_img().toString();
+            int numQues = pos+1;
+            intent.putExtra("idExam",nameExam);
+            intent.putExtra("numQues",numQues);
+            intent.putExtra("result",result);
+            intent.putExtra("idQues",id_ques);
+            intent.putExtra("urlImg",urlImg);
+            itemView.getContext().startActivity(intent);
+        }
+        private void delQuestion(ClsPartP1 model){
+            String child = nameExam +"/"+ model.getId_ques();
+            FirebaseDatabase.getInstance().getReference()
+                    .child("List_Ques1")
+                    .child(child)
+                    .setValue(null)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Toast.makeText(itemView.getContext(), "Xóa câu hỏi thành công ", Toast.LENGTH_SHORT).show();
+                        }
+                    });
         }
     }
+
 
 }

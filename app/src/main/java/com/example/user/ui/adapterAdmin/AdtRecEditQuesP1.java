@@ -1,6 +1,7 @@
 package com.example.user.ui.adapterAdmin;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.user.R;
 import com.example.user.ui.admin.part1.EditListQuesP1Activity;
 import com.example.user.ui.classExam.ClsPartP1;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -25,53 +28,50 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class AdtRecEditQuesP1 extends RecyclerView.Adapter<AdtRecEditQuesP1.EditQuesP1Holder> {
-    private List<ClsPartP1> clsPartP1List;
+public class AdtRecEditQuesP1 extends FirebaseRecyclerAdapter<ClsPartP1,AdtRecEditQuesP1.RecEditQuesP1Holder> {
+    private Context context;
     private String idExam;
 
-    public AdtRecEditQuesP1() {
-    }
-
-    public AdtRecEditQuesP1(List<ClsPartP1> clsPartP1List, String idExam) {
-        this.clsPartP1List = clsPartP1List;
+    public AdtRecEditQuesP1(@NonNull FirebaseRecyclerOptions<ClsPartP1> options, Context context, String idExam) {
+        super(options);
+        this.context = context;
         this.idExam = idExam;
     }
 
-    @Override
-    public EditQuesP1Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_rec_edit_p1,parent,false);
-        return new EditQuesP1Holder(view);
+    public AdtRecEditQuesP1(@NonNull FirebaseRecyclerOptions<ClsPartP1> options) {
+        super(options);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EditQuesP1Holder holder, int position) {
-        holder.setData(position);
+    protected void onBindViewHolder(@NonNull RecEditQuesP1Holder holder, int position, @NonNull ClsPartP1 model) {
+        holder.setData(model,position);
         holder.imgEditAQuesHolder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.sendDatatoDetail(position);
+                holder.sendDatatoDetail(model,position);
             }
         });
         holder.imgDelHolder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.delQuestion(position);
+                holder.delQuestion(model,position);
             }
         });
     }
 
+    @NonNull
     @Override
-    public int getItemCount() {
-        return clsPartP1List.size();
+    public RecEditQuesP1Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_rec_edit_p1,parent,false);
+        return new RecEditQuesP1Holder(view);
     }
 
-    public class EditQuesP1Holder extends RecyclerView.ViewHolder {
+    public class RecEditQuesP1Holder extends RecyclerView.ViewHolder {
         private TextView nounHolder,resultHolder;
         private ImageView imgQuesHolder,imgEditAQuesHolder,imgDelHolder;
         private StorageReference storageReference;
         private FirebaseStorage storage;
-
-        public EditQuesP1Holder(@NonNull View itemView) {
+        public RecEditQuesP1Holder(@NonNull View itemView) {
             super(itemView);
             nounHolder = itemView.findViewById(R.id.txtNounRecEditAdminP1);
             resultHolder = itemView.findViewById(R.id.txtRecResultEditAdminP1);
@@ -81,17 +81,17 @@ public class AdtRecEditQuesP1 extends RecyclerView.Adapter<AdtRecEditQuesP1.Edit
             storage = FirebaseStorage.getInstance();
             storageReference = storage.getReference();
         }
-        private void setData(int pos){
-            Picasso.get().load(clsPartP1List.get(pos).getUrl_img()).into(imgQuesHolder);
+        private void setData(ClsPartP1 model,int pos){
+            Picasso.get().load(model.getUrl_img()).into(imgQuesHolder);
             nounHolder.setText(String.valueOf(pos+1));
-            resultHolder.setText(clsPartP1List.get(pos).getResult());
+            resultHolder.setText(model.getResult());
         }
 
-        private void sendDatatoDetail(int pos){
+        private void sendDatatoDetail(ClsPartP1 model,int pos){
             Intent intent = new Intent(itemView.getContext(), EditListQuesP1Activity.class);
-            String urlImg = clsPartP1List.get(pos).getUrl_img().toString();
-            String result = clsPartP1List.get(pos).getResult().toString();
-            String id_ques = clsPartP1List.get(pos).getId_ques().toString();
+            String urlImg = model.getUrl_img().toString();
+            String result = model.getResult().toString();
+            String id_ques = model.getId_ques().toString();
             int numQues = pos+1;
             intent.putExtra("idExam",idExam);
             intent.putExtra("numQues",numQues);
@@ -100,13 +100,13 @@ public class AdtRecEditQuesP1 extends RecyclerView.Adapter<AdtRecEditQuesP1.Edit
             intent.putExtra("idQues",id_ques);
             itemView.getContext().startActivity(intent);
         }
-        private void delQuestion(int pos){
+        private void delQuestion(ClsPartP1 model,int pos){
             final ProgressDialog progressDialog = new ProgressDialog(itemView.getContext());
             progressDialog.setTitle("Delete Question...");
             progressDialog.show();
-            storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(clsPartP1List.get(pos).getUrl_img());
+            storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(model.getUrl_img());
             String link = storageReference.getName();
-            String child = idExam +"/"+clsPartP1List.get(pos).getId_ques();
+            String child = idExam +"/"+model.getId_ques();
             StorageReference removeImg = storage.getReference("images_exam").child(link);
             removeImg.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override

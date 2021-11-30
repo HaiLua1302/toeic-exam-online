@@ -1,7 +1,7 @@
 package com.example.user.ui.adapterAdmin;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,63 +15,62 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.user.R;
 import com.example.user.ui.admin.part1.EditQuesP1Activity;
 import com.example.user.ui.admin.part2.EditQuesP2Activity;
+import com.example.user.ui.classAdmin.clsViewExamByPart;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
-public class AdtRecExamByPart extends RecyclerView.Adapter<AdtRecExamByPart.RecPartExamHolder> {
-    private List<String> getKey;
-    private List<Integer> countTotal;
+public class test extends FirebaseRecyclerAdapter<clsViewExamByPart,test.testHolder> {
     private String keyExam;
+    private Context context;
 
-    public AdtRecExamByPart() {
+    public test(@NonNull FirebaseRecyclerOptions<clsViewExamByPart> options, String keyExam, Context context) {
+        super(options);
+        this.keyExam = keyExam;
+        this.context = context;
     }
 
-    public AdtRecExamByPart(List<String> getKey, List<Integer> countTotal, String child) {
-        this.getKey = getKey;
-        this.countTotal = countTotal;
-        this.keyExam = child;
+    public test(@NonNull FirebaseRecyclerOptions<clsViewExamByPart> options) {
+        super(options);
     }
+
 
     @NonNull
     @Override
-    public RecPartExamHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_rec_view_manage_admin,parent,false);
-        return new RecPartExamHolder(view);
+    public testHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_rec_view_question_admin,parent,false);
+        return new testHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecPartExamHolder holder, int position) {
-        holder.setData(position);
+    protected void onBindViewHolder(@NonNull testHolder holder, int position, @NonNull clsViewExamByPart model) {
+        holder.setData(model,position);
         holder.imgEdt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.sendDataEdit(position);
+                holder.sendDataEdit(model,position);
             }
         });
     }
 
-    @Override
-    public int getItemCount() {
-        return getKey.size();
-    }
-
-    public class RecPartExamHolder extends RecyclerView.ViewHolder {
+    public class testHolder extends RecyclerView.ViewHolder {
         TextView txtNoun,txtNameExam,txtTotalQuest;
         ImageView imgEdt;
-        Intent Intent;
-        public RecPartExamHolder(@NonNull View itemView) {
+        android.content.Intent Intent;
+        public testHolder(@NonNull View itemView) {
             super(itemView);
-            txtNoun = itemView.findViewById(R.id.txtNounManageAdmin);
-            txtNameExam = itemView.findViewById(R.id.txtNameExamManageAdmin);
-            txtTotalQuest = itemView.findViewById(R.id.txtTotalQuestionManageAdmin);
-            imgEdt = itemView.findViewById(R.id.imgRecSelectEditManageAdmin);
+            txtNoun = itemView.findViewById(R.id.txtNounAdmin);
+            txtNameExam = itemView.findViewById(R.id.txtNameExamAdmin);
+            txtTotalQuest = itemView.findViewById(R.id.txtTotalQuestionAdmin);
+            imgEdt = itemView.findViewById(R.id.imgRecSelectEditAdmin);
         }
-
         @SuppressLint("SetTextI18n")
-        private void setData(int pos){
+        private void setData(clsViewExamByPart model,int pos){
             txtNoun.setText(""+(pos+1));
-            txtNameExam.setText(getKey.get(pos));
-            txtTotalQuest.setText(countTotal.get(pos).toString());
+            txtNameExam.setText(model.getNameExam());
+            txtTotalQuest.setText(String.valueOf(model.getTotalQues()));
             imgEdt.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -79,12 +78,11 @@ public class AdtRecExamByPart extends RecyclerView.Adapter<AdtRecExamByPart.RecP
                 }
             });
         }
-
-        private void sendDataEdit(int pos){
-            final ProgressDialog progressDialog = new ProgressDialog(itemView.getContext());
+        private void sendDataEdit(clsViewExamByPart model,int pos){
+          /*  final ProgressDialog progressDialog = new ProgressDialog(itemView.getContext());
             progressDialog.setTitle("Wait...");
-            progressDialog.show();
-            String idExam = getKey.get(pos).toString().trim();
+            progressDialog.show();*/
+            String idExam = model.getNameExam().toString().trim();
             int numberQues = pos+1;
            /* if (idExam.equals("Ques_1")){
                 Intent = new Intent(itemView.getContext(), EditQuesP1Activity.class);
@@ -100,7 +98,7 @@ public class AdtRecExamByPart extends RecyclerView.Adapter<AdtRecExamByPart.RecP
             }*/
             switch(keyExam) {
                 case "Ques_2":
-                    progressDialog.dismiss();
+                    //progressDialog.dismiss();
                     Intent = new Intent(itemView.getContext(), EditQuesP2Activity.class);
                     Intent.putExtra("idExam",idExam);
                     Intent.putExtra("numQues",numberQues);
@@ -119,11 +117,11 @@ public class AdtRecExamByPart extends RecyclerView.Adapter<AdtRecExamByPart.RecP
                     // getDataFirebase("List_Ques6","Ques_6");
                     break;
                 case "Ques_7":
-                // getDataFirebase("List_Ques6","Ques_6");
+                    // getDataFirebase("List_Ques6","Ques_6");
                     break;
                 case "Ques_1":
                 default:
-                    progressDialog.dismiss();
+                    //progressDialog.dismiss();
                     Intent = new Intent(itemView.getContext(), EditQuesP1Activity.class);
                     Intent.putExtra("idExam",idExam);
                     Intent.putExtra("numQues",numberQues);

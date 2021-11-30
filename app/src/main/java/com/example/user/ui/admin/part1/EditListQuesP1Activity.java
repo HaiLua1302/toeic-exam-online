@@ -25,8 +25,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -44,7 +47,7 @@ public class EditListQuesP1Activity extends AppCompatActivity {
 
     private TextView txtNameExam,txtnameFileIMG,txtNumQues;
     private EditText edtResult;
-    private Button btnGetImg,btnSaveQuestion;
+    private Button btnGetImg, btnSaveEdit;
     private ImageView imgQues;
     private final int PICK_IMAGE_REQUEST = 22;
     private Uri filePath_IMG;
@@ -71,11 +74,11 @@ public class EditListQuesP1Activity extends AppCompatActivity {
 
         txtNameExam = findViewById(R.id.txtContentQuestionEditAdminTitleP1);
         txtNumQues = findViewById(R.id.txtNumEditAdminP1);
-        edtResult = findViewById(R.id.edtResultEditP1);
+        edtResult = findViewById(R.id.edtEditResultP1);
         txtnameFileIMG = findViewById(R.id.txtFilePathAudioEditAdmin1);
 
         btnGetImg = findViewById(R.id.btnGetImgEditAdminP1);
-        btnSaveQuestion = findViewById(R.id.btnSaveEditAdminP1);
+        btnSaveEdit = findViewById(R.id.btnSaveEditAQuestionP1);
         imgQues = findViewById(R.id.imgViewEditAdminP1);
 
         idExam = bundle.getString("idExam");
@@ -91,7 +94,7 @@ public class EditListQuesP1Activity extends AppCompatActivity {
         txtNumQues.setText(String.valueOf(iNumQues));
         Picasso.get().load(urlImg).into(imgQues);
         edtResult.setText(result);
-        txtnameFileIMG.setText(urlImg);
+        getNameAudioFromUrl();
 
         btnGetImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +103,7 @@ public class EditListQuesP1Activity extends AppCompatActivity {
             }
         });
 
-        btnSaveQuestion.setOnClickListener(new View.OnClickListener() {
+        btnSaveEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                saveEditQues();
@@ -172,27 +175,6 @@ public class EditListQuesP1Activity extends AppCompatActivity {
         });
     }
 
-    private void delete(){
-       //String link = String.valueOf(Pattern.compile("%2..*%2F(.*?)\\?alt").matcher(urlImg).matches());
-        /*link =  link.split("/")[7];
-        link = link.split("%2F\\?alt");*/
-
-        storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(urlImg);
-        String link = storageReference.getName();
-
-        Toast.makeText(EditListQuesP1Activity.this, link, Toast.LENGTH_SHORT).show();
-       /* removeImg.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-
-            }
-        });*/
-    }
     private void saveEditQues()
     {
 
@@ -258,6 +240,25 @@ public class EditListQuesP1Activity extends AppCompatActivity {
         else {
             editAQues();
         }
+    }
+
+    private void getNameAudioFromUrl(){
+       DatabaseReference ref = FirebaseDatabase.getInstance().getReference("List_Ques1/"+idExam).child(idQues);
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                urlImg = snapshot.child("url_img").getValue().toString();
+                storage = FirebaseStorage.getInstance();
+                storageReference = storage.getReference();
+                storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(urlImg);
+                String nameImg = storageReference.getName();
+                txtnameFileIMG.setText(nameImg);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private String getTime(){

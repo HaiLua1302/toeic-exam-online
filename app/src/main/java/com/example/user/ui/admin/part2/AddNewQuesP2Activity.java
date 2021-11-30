@@ -22,8 +22,12 @@ import android.widget.Toast;
 
 import com.example.user.R;
 import com.example.user.ui.adapterAdmin.AdtRecQuesP2;
+import com.example.user.ui.admin.AdminHomeActivity;
+import com.example.user.ui.admin.ManagerQuestionActivity;
+import com.example.user.ui.admin.part1.AddNewQuesP1Activity;
 import com.example.user.ui.classExam.ClsPartP2;
 import com.example.user.ui.classExam.ClsRecExamP2;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -60,7 +64,8 @@ public class AddNewQuesP2Activity extends AppCompatActivity {
     private List<ClsPartP2> clsPartP2s;
     private String urlAud,idExam;
 
-    private com.example.user.ui.adapterAdmin.AdtRecQuesP2 AdtRecQuesP2;
+
+    private AdtRecQuesP2 AdtRecQuesP2;
 
     //our database reference object
     private DatabaseReference databaseQuest_P2;
@@ -91,13 +96,15 @@ public class AddNewQuesP2Activity extends AppCompatActivity {
         txtFilePathAudio = findViewById(R.id.txtFilePathAudioP2);
         recyclerView = findViewById(R.id.recViewListQuestEditP2);;
         imgRefresh = findViewById(R.id.imgRefreshP2);;
-
+        setDataToRecViewDefault();
         imgRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setDataToRecView();
+                //setDataToRecView();
+                setDataToRecViewDefault();
 
             }
+
         });
 
         btnGetUrl.setOnClickListener(new View.OnClickListener() {
@@ -257,35 +264,21 @@ public class AddNewQuesP2Activity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void setDataToRecView(){
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        clsPartP2s = new ArrayList<>();
+
+    private void setDataToRecViewDefault(){
         String nameExam = edtNameExam.getText().toString().trim();
         if (nameExam.isEmpty()){
-            edtNameExam.setError("Tên đề không được để trống!");
-            edtNameExam.requestFocus();
             return;
-        }
+        }else{
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        FirebaseRecyclerOptions<ClsPartP2> options =
+                new FirebaseRecyclerOptions.Builder<ClsPartP2>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference("List_Ques2").child(nameExam), ClsPartP2.class)
+                        .build();
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("List_Ques2").child(nameExam);
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                    for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                        ClsPartP2 clsPartP2 = dataSnapshot.getValue(ClsPartP2.class);
-                        clsPartP2s.add(clsPartP2);
-                    }
-                    AdtRecQuesP2 = new AdtRecQuesP2(clsPartP2s,nameExam);
-                    recyclerView.setAdapter(AdtRecQuesP2);
-                    Toast.makeText(AddNewQuesP2Activity.this, "Cập nhật dữ liệu thành công", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
+        AdtRecQuesP2 = new AdtRecQuesP2(options,nameExam,this);
+        recyclerView.setAdapter(AdtRecQuesP2);
+        AdtRecQuesP2.startListening();}
     }
 
     // this event will enable the back
@@ -294,9 +287,14 @@ public class AddNewQuesP2Activity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                this.finish();
+                Intent intent = new Intent(AddNewQuesP2Activity.this, ManagerQuestionActivity.class);
+                startActivity(intent);
+            case R.id.home_bar_admin:
+                Intent intent2 = new Intent(AddNewQuesP2Activity.this, AdminHomeActivity.class);
+                startActivity(intent2);
                 return true;
         }
         return super.onOptionsItemSelected(item);
     };
+
 }

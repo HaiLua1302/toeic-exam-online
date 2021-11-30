@@ -15,11 +15,16 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.example.user.R;
+import com.example.user.ui.adapterAdmin.AdtRecEditQuesP1;
 import com.example.user.ui.adapterAdmin.AdtRecExamByPart;
 import com.example.user.ui.adapterAdmin.AdtSpinerPart;
+import com.example.user.ui.adapterAdmin.test;
 import com.example.user.ui.admin.part1.AddNewQuesP1Activity;
 import com.example.user.ui.admin.part2.AddNewQuesP2Activity;
 import com.example.user.ui.classAdmin.clsPartExam;
+import com.example.user.ui.classAdmin.clsViewExamByPart;
+import com.example.user.ui.classExam.ClsPartP1;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,7 +45,7 @@ public class ManagerQuestionActivity extends AppCompatActivity implements Bottom
     private ArrayList<clsPartExam> clsPartExams;
     private AdtSpinerPart adtSpinerPart;
     private AdtRecExamByPart recPartExam;
-    private String clickPartName;
+    private String clickPartName , idkey;
     private int posSpinner;
 
     @Override
@@ -92,7 +97,7 @@ public class ManagerQuestionActivity extends AppCompatActivity implements Bottom
                         getDataFirebase("List_Ques4","Ques_4");
                         break;
                     case 4:
-                        getDataFirebase2("List_Ques5","Ques_5");
+//                        getDataFirebase2("List_Ques5","Ques_5");
                         break;
                     case 5:
                         getDataFirebase("List_Ques6","Ques_6");
@@ -106,7 +111,12 @@ public class ManagerQuestionActivity extends AppCompatActivity implements Bottom
                 }
             }
         });
-
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                btnFilter.performClick();
+            }
+        });
         btnAddNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -161,12 +171,12 @@ public class ManagerQuestionActivity extends AppCompatActivity implements Bottom
         clsPartExams.add(new clsPartExam("Part 7"));
     }
 
-    private void getDataFirebase(String reference,String child){
+    private void getDataFirebase(String ListQues_id,String Ques_id){
         List<String> getKey = new ArrayList<>();
         List<Integer> countTotal = new ArrayList<>();
         recViewQuestion.setLayoutManager(new LinearLayoutManager(this));
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(child);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Ques_id);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -174,7 +184,7 @@ public class ManagerQuestionActivity extends AppCompatActivity implements Bottom
                     String key = dataSnapshot.getKey();
                     getKey.add(key);
                 }
-                DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference(reference);
+                DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference(ListQues_id);
                 ref1.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot2) {
@@ -182,7 +192,7 @@ public class ManagerQuestionActivity extends AppCompatActivity implements Bottom
                             long count = snapshot3.getChildrenCount();
                             countTotal.add((int) count);
                         }
-                        recPartExam = new AdtRecExamByPart(getKey,countTotal,child);
+                        recPartExam = new AdtRecExamByPart(getKey,countTotal,Ques_id);
                         recViewQuestion.setAdapter(recPartExam);
                     }
                     @Override
@@ -195,7 +205,9 @@ public class ManagerQuestionActivity extends AppCompatActivity implements Bottom
 
             }
         });
+
     }
+
     private void getDataFirebase2(String reference,String child){
         List<String> getKey = new ArrayList<>();
         List<Integer> countTotal = new ArrayList<>();

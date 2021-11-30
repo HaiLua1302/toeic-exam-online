@@ -23,8 +23,12 @@ import android.widget.Toast;
 
 import com.example.user.R;
 import com.example.user.ui.adapterAdmin.AdtRecQuesP1;
+import com.example.user.ui.admin.AdminHomeActivity;
+import com.example.user.ui.admin.ManagerQuestionActivity;
+import com.example.user.ui.admin.part2.AddNewQuesP2Activity;
 import com.example.user.ui.classExam.ClsPartP1;
 import com.example.user.ui.classExam.ClsRecExamP1;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -94,17 +98,12 @@ public class AddNewQuesP1Activity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recViewListQuestEditP1);;
         imgRefresh = findViewById(R.id.imgRefreshP1);;
 
+        setDataToRecViewDefault();
         imgRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setDataToRecView();
-
-            }
-        });
-        new Handler().post(new Runnable() {
-            @Override
-            public void run() {
-                imgRefresh.performClick();
+                setDataToRecViewDefault();
+                Toast.makeText(AddNewQuesP1Activity.this, "Cập nhật dữ liêu thành công ",Toast.LENGTH_SHORT).show();
             }
         });
         btnGetUrl.setOnClickListener(new View.OnClickListener() {
@@ -117,6 +116,7 @@ public class AddNewQuesP1Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkDuplicate();
+
             }
         });
 
@@ -174,6 +174,7 @@ public class AddNewQuesP1Activity extends AppCompatActivity {
                 }
                 else {
                     saveAudio();
+                    setDataToRecViewDefault();
                 }
             }
 
@@ -268,43 +269,36 @@ public class AddNewQuesP1Activity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void setDataToRecView(){
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        clsPartP1s = new ArrayList<>();
+
+    private void setDataToRecViewDefault(){
         String nameExam = edtNameExam.getText().toString().trim();
         if (nameExam.isEmpty()){
-            edtNameExam.setError("Tên đề không được để trống!");
-            edtNameExam.requestFocus();
             return;
+        }else{
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            FirebaseRecyclerOptions<ClsPartP1> options =
+                    new FirebaseRecyclerOptions.Builder<ClsPartP1>()
+                            .setQuery(FirebaseDatabase.getInstance().getReference("List_Ques1").child(nameExam), ClsPartP1.class)
+                            .build();
+
+            AdtRecQuesP1 = new AdtRecQuesP1(options,nameExam,this);
+            recyclerView.setAdapter(AdtRecQuesP1);
+            AdtRecQuesP1.startListening();
         }
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("List_Ques1").child(nameExam);
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                    for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                        ClsPartP1 clsPartP1 = dataSnapshot.getValue(ClsPartP1.class);
-                        clsPartP1s.add(clsPartP1);
-                    }
-                    AdtRecQuesP1 = new AdtRecQuesP1(clsPartP1s);
-                    recyclerView.setAdapter(AdtRecQuesP1);
-                    Toast.makeText(AddNewQuesP1Activity.this, "Cập nhật dữ liệu thành công", Toast.LENGTH_SHORT).show();
-                }else {
-                    return;
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                this.finish();
+                /*this.finish();
+                return true;*/
+                Intent intent = new Intent(AddNewQuesP1Activity.this, ManagerQuestionActivity.class);
+                startActivity(intent);
+            case R.id.home_bar_admin:
+                Intent intent2 = new Intent(AddNewQuesP1Activity.this, AdminHomeActivity.class);
+                startActivity(intent2);
                 return true;
         }
         return super.onOptionsItemSelected(item);

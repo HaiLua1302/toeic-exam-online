@@ -178,7 +178,17 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recViewListQuestEditP1"
             android:layout_width="match_parent"
-            android:layout_height="530dp" />
-
+            android:layout_height="490dp" />
+        <Button
+            android:id="@+id/btnDelExamP1"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:textColor="#fff"
+            android:background="@drawable/mybtn2"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="Xóa"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
