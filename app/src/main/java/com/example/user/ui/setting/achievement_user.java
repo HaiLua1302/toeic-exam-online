@@ -50,6 +50,7 @@ public class achievement_user extends AppCompatActivity {
     private Spinner spnFilter;
     BarChart mBarChart;
     private String selected;
+    private long aa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +70,6 @@ public class achievement_user extends AppCompatActivity {
         spnFilter = findViewById(R.id.spn_part);
 
         mBarChart = (BarChart) findViewById(R.id.btn_achievement);
-        //reference = FirebaseDatabase.getInstance().getReference().child("Achievement").child(userID);
         filterDataChart();
 //        reference.addValueEventListener(new ValueEventListener() {
 //            @Override
@@ -165,7 +165,7 @@ public class achievement_user extends AppCompatActivity {
         spnFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                reference = FirebaseDatabase.getInstance().getReference().child("Achievement").child(userID);
+                reference = FirebaseDatabase.getInstance().getReference().child("Achievement").child(userID);//+"/Exam"
                 if (spnFilter.getSelectedItemPosition() == i) {
                     Toast.makeText(achievement_user.this,"Exam",Toast.LENGTH_LONG).show();
                     reference.addValueEventListener(new ValueEventListener() {
@@ -175,7 +175,9 @@ public class achievement_user extends AppCompatActivity {
                             if (snapshot.hasChildren()) {
                                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                                     cls_achievement achie = dataSnapshot.getValue(cls_achievement.class);
-                                    visitor.add(new BarEntry(0, achie.getScore()));
+                                    //float timee = Float.parseFloat(achie.getTime());
+
+                                    visitor.add(new BarEntry(0,achie.getScore()));
                                 }
 
                             } else {

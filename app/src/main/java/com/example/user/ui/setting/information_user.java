@@ -102,7 +102,7 @@ public class information_user extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 cls_user_info user = snapshot.getValue(cls_user_info.class);
                 if (user == null) {
-                    return;
+                    Glide.with(information_user.this).load(getDrawable(R.drawable.a1)).into(image);
                 }
                 String nameUser = user.name_user;
                 String emailUser = user.mail_user;
