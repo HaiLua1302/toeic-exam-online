@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.user.R;
-import com.example.user.ui.adapter.AdtExamListP1;
+import com.example.user.ui.adapterUser.AdtExamListP1;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -76,7 +76,24 @@ public class RecP1Fragment extends Fragment {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Ques_1");
         List<String> Key = new ArrayList<>();
 
-        ref.addValueEventListener(new ValueEventListener() {
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    String keyValue = dataSnapshot.getKey().toString();
+                    Key.add(keyValue);
+                    adapterExamListP1 = new AdtExamListP1(Key);
+                    recyclerView_list.setAdapter(adapterExamListP1);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+       /* ref.a(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
@@ -91,7 +108,7 @@ public class RecP1Fragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });*/
 
         return view;
     }

@@ -25,10 +25,7 @@ import android.widget.Toast;
 
 import com.example.user.R;
 import com.example.user.ui.adapterAdmin.AdtRecEditQuesP2;
-import com.example.user.ui.adapterAdmin.AdtRecEditQuesP2;
-import com.example.user.ui.admin.ManagerQuestionActivity;
-import com.example.user.ui.admin.part1.EditQuesP1Activity;
-import com.example.user.ui.classExam.ClsPartP2;
+import com.example.user.ui.admin.ManagerExamActivity;
 import com.example.user.ui.classExam.ClsPartP2;
 import com.example.user.ui.classExam.ClsRecExamP2;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -47,7 +44,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -409,7 +405,7 @@ public class EditQuesP2Activity extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         Toast.makeText(EditQuesP2Activity.this, "Xóa câu hỏi thành công ", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(EditQuesP2Activity.this, ManagerQuestionActivity.class);
+                                        Intent intent = new Intent(EditQuesP2Activity.this, ManagerExamActivity.class);
                                         startActivity(intent);
                                     }
                                 });

@@ -5,7 +5,7 @@
     android:background="#B0F8F1"
     android:orientation="vertical">
     <TextView
-        android:id="@+id/txtNumberQuestion"
+        android:id="@+id/txtNumberQuestionP3"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"

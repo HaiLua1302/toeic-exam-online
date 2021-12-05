@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.InputType;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,9 +22,8 @@ import android.widget.Toast;
 
 import com.example.user.R;
 import com.example.user.ui.adapterAdmin.AdtRecQuesP1;
-import com.example.user.ui.admin.AdminHomeActivity;
-import com.example.user.ui.admin.ManagerQuestionActivity;
-import com.example.user.ui.admin.part2.AddNewQuesP2Activity;
+import com.example.user.ui.admin.AdminHome;
+import com.example.user.ui.admin.ManagerExamActivity;
 import com.example.user.ui.classExam.ClsPartP1;
 import com.example.user.ui.classExam.ClsRecExamP1;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -294,10 +292,10 @@ public class AddNewQuesP1Activity extends AppCompatActivity {
             case android.R.id.home:
                 /*this.finish();
                 return true;*/
-                Intent intent = new Intent(AddNewQuesP1Activity.this, ManagerQuestionActivity.class);
+                Intent intent = new Intent(AddNewQuesP1Activity.this, ManagerExamActivity.class);
                 startActivity(intent);
             case R.id.home_bar_admin:
-                Intent intent2 = new Intent(AddNewQuesP1Activity.this, AdminHomeActivity.class);
+                Intent intent2 = new Intent(AddNewQuesP1Activity.this, AdminHome.class);
                 startActivity(intent2);
                 return true;
         }

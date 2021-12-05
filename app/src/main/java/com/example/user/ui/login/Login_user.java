@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.user.R;
-import com.example.user.ui.home.Main_home;
+import com.example.user.ui.home.UserHome;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -95,7 +95,7 @@ public class Login_user extends AppCompatActivity {
         txt_skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Login_user.this, Main_home.class);
+                Intent intent = new Intent(Login_user.this, UserHome.class);
                 startActivity(intent);
 
             }
@@ -155,7 +155,7 @@ public class Login_user extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         Toast.makeText(Login_user.this, "Successful", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(Login_user.this, Main_home.class);
+                        Intent intent = new Intent(Login_user.this, UserHome.class);
                         startActivity(intent);
                         FirebaseUser user = mAuth.getCurrentUser();
                         updateUI(user);
@@ -215,7 +215,7 @@ public class Login_user extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     process_loading.setVisibility(View.INVISIBLE);
                     Toast.makeText(getApplicationContext(), "Đăng nhập thành công !", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Login_user.this, Main_home.class);
+                    Intent intent = new Intent(Login_user.this, UserHome.class);
                     startActivity(intent);
                 } else {
                     process_loading.setVisibility(View.INVISIBLE);

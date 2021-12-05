@@ -54,6 +54,7 @@
                     android:layout_width="230dp"
                     android:layout_height="match_parent"
                     android:gravity="left"
+                    android:layout_gravity="center"
                     android:padding="5dp"
                     android:text="filepath"
                     android:textStyle="italic" />
@@ -88,7 +89,7 @@
             android:id="@+id/btnIntentToAddQuesP1"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_gravity="center"
+            android:layout_gravity="left"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="10dp"

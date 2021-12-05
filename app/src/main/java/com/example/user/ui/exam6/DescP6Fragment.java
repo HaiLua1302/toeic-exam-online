@@ -1,5 +1,6 @@
 package com.example.user.ui.exam6;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.user.R;
-import com.example.user.ui.adapter.AdtDescP6;
+import com.example.user.ui.adapterUser.AdtDescP6;
 import com.example.user.ui.classExam.ClsRecExamP6;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,7 +42,11 @@ public class DescP6Fragment extends Fragment {
     private List<ClsRecExamP6> clsRecP6s;
 
     String getKey6;
+    private DescP6Fragment.OnFragmentInteractionListener mListener;
 
+    public DescP6Fragment(DescP6Fragment.OnFragmentInteractionListener mListener) {
+        this.mListener = mListener;
+    }
     public DescP6Fragment(String getKey6) {
         this.getKey6 = getKey6;
     }
@@ -74,7 +79,10 @@ public class DescP6Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_desc_p6, container, false);
-
+        if (mListener != null) {
+            mListener.onFragmentInteraction("Part VI : Text Completion");
+        }
+        
         clsRecP6s = new ArrayList<>();
         recyclerViewQuestionP6 = view.findViewById(R.id.decsListQuestionP6);
 
@@ -129,5 +137,24 @@ public class DescP6Fragment extends Fragment {
         });
         
         return view;
+    }
+    @SuppressWarnings("deprecation")
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mListener = (DescP6Fragment.OnFragmentInteractionListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+    public interface OnFragmentInteractionListener {
+        public void onFragmentInteraction(String title);
     }
 }

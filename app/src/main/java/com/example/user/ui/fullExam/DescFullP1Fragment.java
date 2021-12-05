@@ -20,7 +20,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.user.R;
-import com.example.user.ui.adapter.AdtDescFullP1;
+import com.example.user.ui.adapterUser.AdtDescFullP1;
 import com.example.user.ui.classExam.ClsPartP1;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

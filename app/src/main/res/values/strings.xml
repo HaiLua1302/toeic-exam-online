@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">user</string>
+    <string name="app_name">ToiceExam</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>

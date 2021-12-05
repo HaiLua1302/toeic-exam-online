@@ -12,8 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.user.R;
-import com.example.user.ui.adapter.AdtExamListP1;
-import com.example.user.ui.adapter.AdtExamListP2;
+import com.example.user.ui.adapterUser.AdtExamListP2;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -78,7 +77,24 @@ public class RecFragmentP2 extends Fragment {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Ques_2");
         List<String> Key = new ArrayList<>();
 
-        ref.addValueEventListener(new ValueEventListener() {
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    String key = dataSnapshot.getKey();
+                    Key.add(key);
+                    adtExamListP2 = new AdtExamListP2(Key);
+                    recyclerviewlist2.setAdapter(adtExamListP2);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        /*ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
@@ -93,7 +109,7 @@ public class RecFragmentP2 extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });*/
 
         return view;
     }

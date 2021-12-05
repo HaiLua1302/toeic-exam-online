@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.user.R;
-import com.example.user.ui.adapter.AdtDescFullP3;
+import com.example.user.ui.adapterUser.AdtDescFullP3;
 import com.example.user.ui.classExam.ClsRecExamP3;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

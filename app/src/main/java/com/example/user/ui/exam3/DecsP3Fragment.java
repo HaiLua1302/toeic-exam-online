@@ -1,7 +1,9 @@
 package com.example.user.ui.exam3;
 
+import android.app.Activity;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
@@ -12,10 +14,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.user.R;
-import com.example.user.ui.adapter.AdtDescP3;
+import com.example.user.ui.adapterUser.AdtDescP3;
 import com.example.user.ui.classExam.ClsRecExamP3;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.example.user.ui.exam1.DescP1Fragment;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DecsP3Fragment extends Fragment {
 
@@ -33,18 +42,23 @@ public class DecsP3Fragment extends Fragment {
 
 
     String id_exam;
-    int id_question;
+    String id_question;
     String url_audio;
+    String Key;
 
 
     public DecsP3Fragment() {
         // Required empty public constructor
     }
 
-    public DecsP3Fragment(String id_exam, int id_question, String url_audio) {
-        this.id_exam = id_exam;
-        this.id_question = id_question;
-        this.url_audio = url_audio;
+    public DecsP3Fragment(String key) {
+        Key = key;
+    }
+
+    private DecsP3Fragment.OnFragmentInteractionListener mListener;
+
+    public DecsP3Fragment(DecsP3Fragment.OnFragmentInteractionListener mListener) {
+        this.mListener = mListener;
     }
 
     // TODO: Rename and change types and number of parameters
@@ -71,6 +85,10 @@ public class DecsP3Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_desc_p3, container, false);
+
+        if (mListener != null) {
+            mListener.onFragmentInteraction("Part III : Short Conversations");
+        }
 
         recyclerViewQuestionP3 = view.findViewById(R.id.decsListQuestionP3);
         recyclerViewQuestionP3.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
@@ -105,24 +123,48 @@ public class DecsP3Fragment extends Fragment {
 
         snapHelper.attachToRecyclerView(recyclerViewQuestionP3);
 //        String child = id_exam + "/" + String.valueOf(id_question);
-        FirebaseRecyclerOptions<ClsRecExamP3> options = new FirebaseRecyclerOptions.Builder<ClsRecExamP3>()
+        /*FirebaseRecyclerOptions<ClsRecExamP3> options = new FirebaseRecyclerOptions.Builder<ClsRecExamP3>()
                 .setQuery(FirebaseDatabase.getInstance().getReference("Ques_3").child(id_exam), ClsRecExamP3.class)
-                .build();
+                .build();*/
+        List<ClsRecExamP3> clsRecExamP3List = new ArrayList<>();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Ques_3").child(Key);
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    ClsRecExamP3 clsRecExamP3 = dataSnapshot.getValue(ClsRecExamP3.class);
+                    clsRecExamP3List.add(clsRecExamP3);
+                }
+                adtDescP3 = new AdtDescP3(clsRecExamP3List);
+                recyclerViewQuestionP3.setAdapter(adtDescP3);
+            }
 
-        adtDescP3 = new AdtDescP3(options);
-        recyclerViewQuestionP3.setAdapter(adtDescP3);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         return view;
     }
-
+    @SuppressWarnings("deprecation")
     @Override
-    public void onStart() {
-        super.onStart();
-        adtDescP3.startListening();
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mListener = (DecsP3Fragment.OnFragmentInteractionListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
-        adtDescP3.stopListening();
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+    public interface OnFragmentInteractionListener {
+        public void onFragmentInteraction(String title);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.user.ui.exam4;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.user.R;
-import com.example.user.ui.adapter.AdtDescP4;
+import com.example.user.ui.adapterUser.AdtDescP4;
 import com.example.user.ui.classExam.ClsRecExamP4;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
@@ -38,15 +39,19 @@ public class DecsP4Fragment extends Fragment {
 
 
     String id_exam;
-    int id_question;
+    String id_question;
     String url_audio;
+    private DecsP4Fragment.OnFragmentInteractionListener mListener;
 
+    public DecsP4Fragment(DecsP4Fragment.OnFragmentInteractionListener mListener) {
+        this.mListener = mListener;
+    }
 
     public DecsP4Fragment() {
         // Required empty public constructor
     }
 
-    public DecsP4Fragment(String id_exam, int id_question, String url_audio) {
+    public DecsP4Fragment(String id_exam, String id_question, String url_audio) {
         this.id_exam = id_exam;
         this.id_question = id_question;
         this.url_audio = url_audio;
@@ -76,6 +81,9 @@ public class DecsP4Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_decs_p4, container, false);
+        if (mListener != null) {
+            mListener.onFragmentInteraction("Part IV : Short Talks");
+        }
         recyclerViewQuestionP4 = view.findViewById(R.id.decsListQuestionP4);
         recyclerViewQuestionP4.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         LinearSnapHelper snapHelper = new LinearSnapHelper(){
@@ -127,5 +135,25 @@ public class DecsP4Fragment extends Fragment {
     public void onStop() {
         super.onStop();
         adtDescP4.stopListening();
+    }
+    @SuppressWarnings("deprecation")
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mListener = (DecsP4Fragment.OnFragmentInteractionListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+    public interface OnFragmentInteractionListener {
+        public void onFragmentInteraction(String title);
     }
 }

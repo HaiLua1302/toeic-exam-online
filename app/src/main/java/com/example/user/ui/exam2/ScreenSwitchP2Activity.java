@@ -15,7 +15,6 @@ public class ScreenSwitchP2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_switch_p2);
-
         getSupportActionBar().setTitle("Danh sách đề thi");
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportFragmentManager().beginTransaction().replace(R.id.wrapper2,new RecFragmentP2()).commit();

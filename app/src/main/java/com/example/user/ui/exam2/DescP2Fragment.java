@@ -1,6 +1,7 @@
 package com.example.user.ui.exam2;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -20,8 +21,9 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.user.R;
-import com.example.user.ui.adapter.AdtDescP2;
+import com.example.user.ui.adapterUser.AdtDescP2;
 import com.example.user.ui.classExam.ClsPartP2;
+import com.example.user.ui.exam1.DescP1Fragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -60,10 +62,14 @@ public class DescP2Fragment extends Fragment implements AdtDescP2.OnNextQuestion
 
     private List<ClsPartP2>clsPartP2s;
     RecyclerView recDecsP2;
-
+    private DescP2Fragment.OnFragmentInteractionListener mListener;
 
     public DescP2Fragment() {
         // Required empty public constructor
+    }
+
+    public DescP2Fragment(DescP2Fragment.OnFragmentInteractionListener mListener) {
+        this.mListener = mListener;
     }
 
     public DescP2Fragment(String keyExam) {
@@ -95,7 +101,9 @@ public class DescP2Fragment extends Fragment implements AdtDescP2.OnNextQuestion
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_desc_p2, container, false);
-
+        if (mListener != null) {
+            mListener.onFragmentInteraction("Part II : Question - Response");
+        }
         imageViewPlayPaus2 = view.findViewById(R.id.imgPlayP2);
         seekBarPlayer2 = view.findViewById(R.id.playerSeekBar2);
         txtCurrentTime2 = view.findViewById(R.id.txtCurrentTime2);
@@ -142,7 +150,7 @@ public class DescP2Fragment extends Fragment implements AdtDescP2.OnNextQuestion
         // Instantiate a ViewPager and a PagerAdapter.
         // init event
         clsPartP2s = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Cauhoi_Ques1").child(keyExam);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("List_Ques2").child(keyExam);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -265,5 +273,28 @@ public class DescP2Fragment extends Fragment implements AdtDescP2.OnNextQuestion
     public void shouldNextQuestions(int currentPostion) {
         //next question
         recDecsP2.smoothScrollToPosition(currentPostion + 1);
+    }
+
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mListener = (DescP2Fragment.OnFragmentInteractionListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    public interface OnFragmentInteractionListener {
+        public void onFragmentInteraction(String title);
     }
 }

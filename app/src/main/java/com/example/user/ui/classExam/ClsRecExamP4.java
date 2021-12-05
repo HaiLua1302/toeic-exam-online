@@ -1,13 +1,12 @@
 package com.example.user.ui.classExam;
 
 public class ClsRecExamP4 {
-    String id_exam,url_audio;
-    int id_question;
+    String id_exam,url_audio,id_question;
 
     public ClsRecExamP4() {
     }
 
-    public ClsRecExamP4(String id_exam, String url_audio, int id_question) {
+    public ClsRecExamP4(String id_exam, String url_audio, String id_question) {
         this.id_exam = id_exam;
         this.url_audio = url_audio;
         this.id_question = id_question;
@@ -29,11 +28,11 @@ public class ClsRecExamP4 {
         this.url_audio = url_audio;
     }
 
-    public int getId_question() {
+    public String getId_question() {
         return id_question;
     }
 
-    public void setId_question(int id_question) {
+    public void setId_question(String id_question) {
         this.id_question = id_question;
     }
 }

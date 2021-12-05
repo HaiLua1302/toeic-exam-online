@@ -25,7 +25,7 @@ import android.widget.Toast;
 import com.example.user.R;
 import com.example.user.ui.classUser.cls_achievement;
 import com.example.user.ui.classUser.cls_user_info;
-import com.example.user.ui.home.Main_home;
+import com.example.user.ui.home.UserHome;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -95,7 +95,7 @@ public class Register_user extends AppCompatActivity {
         txt_skip_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Register_user.this, Main_home.class);
+                Intent intent = new Intent(Register_user.this, UserHome.class);
                 startActivity(intent);
 
             }

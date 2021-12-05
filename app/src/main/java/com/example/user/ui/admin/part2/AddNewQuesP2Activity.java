@@ -22,9 +22,8 @@ import android.widget.Toast;
 
 import com.example.user.R;
 import com.example.user.ui.adapterAdmin.AdtRecQuesP2;
-import com.example.user.ui.admin.AdminHomeActivity;
-import com.example.user.ui.admin.ManagerQuestionActivity;
-import com.example.user.ui.admin.part1.AddNewQuesP1Activity;
+import com.example.user.ui.admin.AdminHome;
+import com.example.user.ui.admin.ManagerExamActivity;
 import com.example.user.ui.classExam.ClsPartP2;
 import com.example.user.ui.classExam.ClsRecExamP2;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -287,10 +286,10 @@ public class AddNewQuesP2Activity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                Intent intent = new Intent(AddNewQuesP2Activity.this, ManagerQuestionActivity.class);
+                Intent intent = new Intent(AddNewQuesP2Activity.this, ManagerExamActivity.class);
                 startActivity(intent);
             case R.id.home_bar_admin:
-                Intent intent2 = new Intent(AddNewQuesP2Activity.this, AdminHomeActivity.class);
+                Intent intent2 = new Intent(AddNewQuesP2Activity.this, AdminHome.class);
                 startActivity(intent2);
                 return true;
         }

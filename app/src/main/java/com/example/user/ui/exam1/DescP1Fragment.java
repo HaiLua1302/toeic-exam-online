@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
-import com.example.user.ui.adapter.AdtDescP1;
+import com.example.user.ui.adapterUser.AdtDescP1;
 import com.example.user.ui.classExam.ClsPartP1;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -102,7 +102,6 @@ public class DescP1Fragment extends Fragment implements AdtDescP1.OnNextQuestion
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_desc_p1, container, false);
 
-        //  getActivity().getActionBar().setTitle("Part I : Picture Description");
         if (mListener != null) {
             mListener.onFragmentInteraction("Part I : Picture Description");
         }
@@ -172,17 +171,7 @@ public class DescP1Fragment extends Fragment implements AdtDescP1.OnNextQuestion
 
             }
         });
-       /* FirebaseRecyclerOptions<ClsPartP1> options =
-                new FirebaseRecyclerOptions.Builder<ClsPartP1>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference("Cauhoi_Ques1").child(keyExam), ClsPartP1.class)
-                        .build();
 
-        adapterExamP1 = new AdtDescP1(options);*/
-
-      /*  //next question
-        adtDescP1.setOnNextQuestionListener(currentQuestion -> {
-
-        });*/
       this.adtDescP1Next.setOnItemClickListener(this::shouldNextQuestion);
 
         imageViewPlayPause.setOnClickListener(new View.OnClickListener() {

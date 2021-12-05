@@ -50,19 +50,21 @@
             </RelativeLayout>
         </ScrollView>
     </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recViewListQuestionP6"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="310dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout11" />
 
     <Button
         android:id="@+id/btnSubmitP6"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:background="@drawable/mybtn2"
         android:text="SUBMIT"
@@ -70,6 +72,6 @@
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.971"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recViewListQuestionP6" />
 </androidx.constraintlayout.widget.ConstraintLayout>

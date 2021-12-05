@@ -1,6 +1,7 @@
 package com.example.user.ui.adapterAdmin;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -15,6 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.user.R;
 import com.example.user.ui.admin.part1.EditQuesP1Activity;
 import com.example.user.ui.admin.part2.EditQuesP2Activity;
+import com.example.user.ui.admin.part3.AddNewQues1P3;
+import com.example.user.ui.admin.part4.AddNewQues1P4;
+import com.example.user.ui.admin.part5.AddNewQuesP5;
+import com.example.user.ui.admin.part6.AddNewQues1P6;
+import com.example.user.ui.admin.part7.AddNewQues1P7;
 
 import java.util.List;
 
@@ -45,7 +51,11 @@ public class AdtRecExamByPart extends RecyclerView.Adapter<AdtRecExamByPart.RecP
         holder.imgEdt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final ProgressDialog progressDialog = new ProgressDialog(v.getContext());
+                progressDialog.setTitle("Wait...");
+                progressDialog.show();
                 holder.sendDataEdit(position);
+                progressDialog.dismiss();
             }
         });
     }
@@ -67,63 +77,50 @@ public class AdtRecExamByPart extends RecyclerView.Adapter<AdtRecExamByPart.RecP
             imgEdt = itemView.findViewById(R.id.imgRecSelectEditManageAdmin);
         }
 
-        @SuppressLint("SetTextI18n")
         private void setData(int pos){
-            txtNoun.setText(""+(pos+1));
+            txtNoun.setText(String.valueOf(pos+1));
             txtNameExam.setText(getKey.get(pos));
             txtTotalQuest.setText(countTotal.get(pos).toString());
-            imgEdt.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
         }
 
         private void sendDataEdit(int pos){
-            final ProgressDialog progressDialog = new ProgressDialog(itemView.getContext());
-            progressDialog.setTitle("Wait...");
-            progressDialog.show();
             String idExam = getKey.get(pos).toString().trim();
             int numberQues = pos+1;
-           /* if (idExam.equals("Ques_1")){
-                Intent = new Intent(itemView.getContext(), EditQuesP1Activity.class);
-                Intent.putExtra("idExam",idExam);
-                Intent.putExtra("numQues",numberQues);
-                itemView.getContext().startActivity(Intent);
-            }
-            else if (idExam.equals("Ques_2")){
-                Intent = new Intent(itemView.getContext(), EditQuesP2Activity.class);
-                Intent.putExtra("idExam",idExam);
-                Intent.putExtra("numQues",numberQues);
-                itemView.getContext().startActivity(Intent);
-            }*/
             switch(keyExam) {
                 case "Ques_2":
-                    progressDialog.dismiss();
                     Intent = new Intent(itemView.getContext(), EditQuesP2Activity.class);
                     Intent.putExtra("idExam",idExam);
                     Intent.putExtra("numQues",numberQues);
                     itemView.getContext().startActivity(Intent);
                     break;
                 case "Ques_3":
-                    //getDataFirebase("List_Ques3","Ques_3");
+                    Intent = new Intent(itemView.getContext(), AddNewQues1P3.class);
+                    Intent.putExtra("idExam",idExam);
+                    itemView.getContext().startActivity(Intent);
                     break;
                 case "Ques_4":
-                    // getDataFirebase("List_Ques4","Ques_4");
+                    Intent = new Intent(itemView.getContext(), AddNewQues1P4.class);
+                    Intent.putExtra("idExam",idExam);
+                    itemView.getContext().startActivity(Intent);
                     break;
                 case "Ques_5":
-                    // getDataFirebase2("List_Ques5","Ques_5");
+                    Intent = new Intent(itemView.getContext(), AddNewQuesP5.class);
+                    Intent.putExtra("idExam",idExam);
+                    itemView.getContext().startActivity(Intent);
+
                     break;
                 case "Ques_6":
-                    // getDataFirebase("List_Ques6","Ques_6");
+                    Intent = new Intent(itemView.getContext(), AddNewQues1P6.class);
+                    Intent.putExtra("idExam",idExam);
+                    itemView.getContext().startActivity(Intent);
                     break;
                 case "Ques_7":
-                // getDataFirebase("List_Ques6","Ques_6");
+                    Intent = new Intent(itemView.getContext(), AddNewQues1P7.class);
+                    Intent.putExtra("idExam",idExam);
+                    itemView.getContext().startActivity(Intent);
                     break;
                 case "Ques_1":
                 default:
-                    progressDialog.dismiss();
                     Intent = new Intent(itemView.getContext(), EditQuesP1Activity.class);
                     Intent.putExtra("idExam",idExam);
                     Intent.putExtra("numQues",numberQues);

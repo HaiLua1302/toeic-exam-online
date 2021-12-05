@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.user.R;
-import com.example.user.ui.adapter.AdtExamListP3;
+import com.example.user.ui.adapterUser.AdtExamListP3;
 import com.example.user.ui.classExam.ClsRecExamP3;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -73,7 +73,7 @@ public class RecP3Fragment extends Fragment {
         recyclerViewList3.setLayoutManager(new LinearLayoutManager(getContext()));
 
         ClsRecExamP3s = new ArrayList<>();
-
+        List<String> key = new ArrayList<>();
         DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("Ques_3");
 
         ref1.addValueEventListener(new ValueEventListener() {
@@ -85,8 +85,24 @@ public class RecP3Fragment extends Fragment {
                         ClsRecExamP3s.add(recP3);
                     }
                 }
-                adapterExamList3 = new AdtExamListP3(ClsRecExamP3s);
-                recyclerViewList3.setAdapter(adapterExamList3);
+                DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference().child("Ques_3");
+                ref2.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                            String keyExam = dataSnapshot.getKey();
+                            key.add(keyExam);
+                            adapterExamList3 = new AdtExamListP3(ClsRecExamP3s,key);
+                            recyclerViewList3.setAdapter(adapterExamList3);
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

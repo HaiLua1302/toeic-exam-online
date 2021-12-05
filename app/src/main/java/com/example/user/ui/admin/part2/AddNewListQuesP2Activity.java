@@ -16,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.R;
-import com.example.user.ui.admin.part1.AddNewListQuesP1Activity;
 import com.example.user.ui.classExam.ClsPartP2;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,7 +29,7 @@ public class AddNewListQuesP2Activity extends AppCompatActivity {
 
     private int countNumQues = 1;
     private String idExam;
-    private TextView txtxNameExam,txtNumQues;
+    private TextView txtNameExam,txtNumQues;
     private EditText edtResult;
     private Button btnSaveQuestion;
 
@@ -52,13 +51,13 @@ public class AddNewListQuesP2Activity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         idExam = bundle.getString("idExam");
 
-        txtxNameExam = findViewById(R.id.txtContentQuestionAdminTitleP2);
+        txtNameExam = findViewById(R.id.txtContentQuestionAdminTitleP2);
         txtNumQues = findViewById(R.id.txtNumAddQuestP2);
         edtResult = findViewById(R.id.edtResultP2);
         btnSaveQuestion = findViewById(R.id.btnAddAQuestionP2);
 
 
-        txtxNameExam.setText(idExam);
+        txtNameExam.setText(idExam);
         txtNumQues.setText(String.valueOf(countNumQues));
 
         btnSaveQuestion.setOnClickListener(new View.OnClickListener() {

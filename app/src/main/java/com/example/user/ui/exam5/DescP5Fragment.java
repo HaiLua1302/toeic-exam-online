@@ -1,5 +1,7 @@
 package com.example.user.ui.exam5;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,9 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.SearchView;
 
 import com.example.user.R;
-import com.example.user.ui.adapter.AdtDescP5;
+import com.example.user.ui.adapterUser.AdtDescP5;
 import com.example.user.ui.classExam.ClsPartP5;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,9 +46,14 @@ public class DescP5Fragment extends Fragment {
     private RecyclerView recyclerViewQuestionP5;
     private AdtDescP5 adtDescP5;
     private List<ClsPartP5> clsRecP5s;
+    private Button btnSubmit;
 
     String keyExam;
+    private DescP5Fragment.OnFragmentInteractionListener mListener;
 
+    public DescP5Fragment(DescP5Fragment.OnFragmentInteractionListener mListener) {
+        this.mListener = mListener;
+    }
     public DescP5Fragment(String keyExam) {
         this.keyExam = keyExam;
     }
@@ -78,9 +87,12 @@ public class DescP5Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_desc_p5, container, false);
+        if (mListener != null) {
+            mListener.onFragmentInteraction("Part V : Incomplete Sentences");
+        }
         clsRecP5s = new ArrayList<>();
         recyclerViewQuestionP5 = view.findViewById(R.id.decsListQuestionP5);
-        recyclerViewQuestionP5.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        recyclerViewQuestionP5.setLayoutManager(new LinearLayoutManager(getContext()));
         LinearSnapHelper snapHelper = new LinearSnapHelper(){
             @Override
             public int findTargetSnapPosition(RecyclerView.LayoutManager lm, int velocityX, int velocityY){
@@ -132,11 +144,39 @@ public class DescP5Fragment extends Fragment {
             }
         });
 
+        btnSubmit = view.findViewById(R.id.btnSubmitP5_1);
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(view.getContext(),ResultP5Activity.class);
+                view.getContext().startActivity(intent);
+            }
+        });
+
      /*   adtDescP5 = new AdtDescP5(options);
         recyclerViewQuestionP5.setAdapter(adtDescP5);*/
 
         return view ;
     }
 
+    @SuppressWarnings("deprecation")
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mListener = (DescP5Fragment.OnFragmentInteractionListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+    public interface OnFragmentInteractionListener {
+        public void onFragmentInteraction(String title);
+    }
 }

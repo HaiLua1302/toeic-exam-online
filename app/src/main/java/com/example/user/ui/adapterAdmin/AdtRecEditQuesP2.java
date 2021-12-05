@@ -83,8 +83,8 @@ public class AdtRecEditQuesP2 extends FirebaseRecyclerAdapter<ClsPartP2,AdtRecEd
         }
         private void setData(ClsPartP2 model,int pos){
             nounHolder.setText(String.valueOf(pos+1));
-            idQuesHolder.setText(model.getId_ques());
-            resultHolder.setText(model.getResult());
+            resultHolder.setText(model.getId_ques());
+            idQuesHolder.setText(model.getResult());
         }
         private void sendDatatoDetail(ClsPartP2 model,int pos){
             Intent intent = new Intent(itemView.getContext(), EditListQuesP2Activity.class);

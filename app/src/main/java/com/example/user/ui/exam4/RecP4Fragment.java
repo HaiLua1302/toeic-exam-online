@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.user.R;
-import com.example.user.ui.adapter.AdtExamListP4;
+import com.example.user.ui.adapterUser.AdtExamListP4;
 import com.example.user.ui.classExam.ClsRecExamP4;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -71,24 +71,31 @@ public class RecP4Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_rec_p4, container, false);
+
         recyclerViewList4 = view.findViewById(R.id.recViewListP4);
         recyclerViewList4.setLayoutManager(new LinearLayoutManager(getContext()));
 
         clsRecP4s = new ArrayList<>();
-
+        List<String> getKey = new ArrayList<>();
+        List<Integer> countTotal = new ArrayList<>();
         DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("Ques_4");
 
         ref1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot locationSnapshot: snapshot.getChildren()){
+                    String key = locationSnapshot.getKey();
+                    long count = locationSnapshot.getChildrenCount();
+                     getKey.add(key);
+                     countTotal.add((int)count);
                     for (DataSnapshot dataSnapshot : locationSnapshot.getChildren()){
                         ClsRecExamP4 recP4 = dataSnapshot.getValue(ClsRecExamP4.class);
                         clsRecP4s.add(recP4);
                     }
+                    adapterExamList4 = new AdtExamListP4(getKey,countTotal,clsRecP4s);
+                    recyclerViewList4.setAdapter(adapterExamList4);
                 }
-                adapterExamList4 = new AdtExamListP4(clsRecP4s);
-                recyclerViewList4.setAdapter(adapterExamList4);
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

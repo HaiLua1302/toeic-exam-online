@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_app"
-    tools:context=".ui.admin.ManagerQuestionActivity">
+    tools:context=".ui.admin.ManagerExamActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout14"

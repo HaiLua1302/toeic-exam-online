@@ -53,6 +53,7 @@
                     android:layout_width="230dp"
                     android:layout_height="match_parent"
                     android:gravity="left"
+                    android:layout_gravity="center"
                     android:padding="5dp"
                     android:text="filepath"
                     android:textStyle="italic" />
