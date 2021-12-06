@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mybutton"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_nameExam"
+            style="@style/txtMaDe"
+            android:text="Đề 1" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dashed_underline"
+            android:layout_marginRight="5dp"
+            android:paddingBottom="5dp"
+            android:gravity="center"
+            style="@style/txtMaDe"
+            android:text="Thời gian : 120 phút | Câu hỏi : 200" />
+
+        <Button
+            android:id="@+id/btn_start_list_full"
+            style="@style/Btnbatdau"
+            android:layout_gravity="center"
+            android:text="Bắt Đầu" />
+    </LinearLayout>
+
+</LinearLayout>

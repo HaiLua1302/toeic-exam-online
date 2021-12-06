@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#B0F8F1"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/txtNumberQuestionP5"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        style="@style/txtMaDe"
+        android:background="@drawable/dashed_underline"
+        android:text="Question 1" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mybutton"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtContentQuestionP5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/txtCauhoi"
+            android:paddingBottom="10dp"
+            android:background="@drawable/dashed_underline"
+            android:text="1 .What is the purpose of notice ?" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
+
+            <Button
+                android:id="@+id/btnA5"
+                android:layout_width="45dp"
+                android:layout_height="43dp"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/bnt_answer"
+                android:text="A"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/txtA5"
+                style="@style/txtdapan"
+                android:layout_width="314dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="left"
+                android:text="To announce a sale of artwork" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
+            <Button
+                android:id="@+id/btnB5"
+                android:layout_width="45dp"
+                android:layout_height="43dp"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/bnt_answer"
+                android:text="B"
+                android:textSize="20dp" />
+            <TextView
+                android:id="@+id/txtB5"
+                style="@style/txtdapan"
+                android:layout_width="314dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="left"
+                android:text="To announce a sale of artwork" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
+            <Button
+                android:id="@+id/btnC5"
+                android:layout_width="45dp"
+                android:layout_height="43dp"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/bnt_answer"
+                android:text="C"
+                android:textSize="20dp" />
+            <TextView
+                android:id="@+id/txtC5"
+                android:layout_width="314dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="left"
+                style="@style/txtdapan"
+                android:text="To announce a sale of artwork" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <Button
+                android:id="@+id/btnD5"
+                android:layout_width="45dp"
+                android:layout_height="43dp"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/bnt_answer"
+                android:text="D"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/txtD5"
+                android:layout_width="314dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="left"
+                style="@style/txtdapan"
+                android:text="To announce a sale of artwork" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnSubmitP5"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/mybtn2"
+        android:text="SUBMIT"
+        android:textColor="#FFF"
+        android:textSize="16dp" />
+</LinearLayout>

@@ -1,6 +1,60 @@
 <resources>
-    <string name="app_name">user</string>
+    <string name="app_name">ToiceExam</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string-array name="theme">
+        <item>Default</item>
+        <item>Dark</item>
+    </string-array>
+
+    <string name="rules">Tài khoản khách hàng được tạo ra trên App, sau lần đầu tiên đăng nhập vào tài khoản,
+        khách hàng tự chịu trách nhiệm về năng lực hành vi trong việc thay đổi thông tin cá nhân và sử dụng.
+        Việc thu thập dữ liệu chủ yếu trên App bao gồm: email, điện thoại, tên đăng nhập, mật khẩu đăng nhập, địa chỉ khách hàng.
+        Đây là các thông tin mà App cần khách hàng bắt buộc khi đăng ký sử dụng dịch vụ y tế và để App liên hệ xác nhận khi khách hàng
+        đăng ký sử dụng dịch vụ trên app nhằm đảm bảo quyền lợi cho cho khách hàng.Trong quá trình sử dụng dịch vụ y tế trên App,
+        chúng tôi lưu giữ thông tin chi tiết về lịch sử đặt lịch hẹn, bệnh án điện tử, đơn thuốc (nếu có), tiểu sử bệnh lý.
+        Các khách hàng sẽ tự chịu trách nhiệm về bảo mật và lưu giữ mọi hoạt động sử dụng dịch vụ y tế dưới tên đăng ký, mật khẩu của mình.
+        Ngoài ra, khách hàng có trách nhiệm thông báo kịp thời về App về những hành vi sử dụng trái phép, lạm dụng, vi phạm bảo mật,
+        lưu giữ tên đăng ký và mật khẩu của bên thứ ba để có biện pháp giải quyết phù hợp.</string>
+
+    //navagation bar bottom
+    <string name="title_exam">Exam</string>
+    <string name="title_home_bar">home</string>
+    <string name="title_setting">setting</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="paragraph">"Just a reminder that the charity barbecue is happening this Friday! It is for a good cause;
+        we're __(1)__ money for the children's charity Future Horizons to buy computers for community centers in disadvantaged neighborhoods,
+        so please come along and help out!  It will be at 7:30 at Oak Park, next to the gazebo by the west gate. Dinner will be 15 dollars
+        and there will be hamburgers, hotdogs, or veggie burgers, and of course a lots of salads and desserts! Bring your family and friends;
+        everyone __(2)__ welcome. Please get tickets from me or from Sophia Johnson.  I hope __(3)__ you there!  Jane Anderson "</string>
+
+    <string name="P1">For each question, you will see a picture and you will hear four short statements.
+        The statements will be spoken just one time. They will not be printed in your test book so you must listen carefully
+        to understand what the speaker says. When you hear the four statements, look at the picture and choose the statement
+        that best describes what you see in the picture. Choose the best answer A, B, C or D</string>
+
+    <string name="P2">In this part of the test, you will hear a question or statement spoken in English, followed by three responses,
+        also spoken in English. The question or statement and the responses will be spoken just one time. They will not be printed in your test book,
+        so you must listen carefully. You are to choose the best response to each question or statement. Now listen to a sample question.</string>
+
+    <string name="P3">You will hear some conversations between two people. You will be asked to answer three questions about what the speakers
+        say in each conversation. Select the best response to each question and mark the letter A, B, C or D on your answer sheet.
+        The conversations will not be printed in your test book and will be spoken only one time.</string>
+
+    <string name="P4">You will hear some talks given by a single speaker. You will be asked to answer three questions about what
+        the speaker says in each talk. Select the best response to each question and mark the letter A, B, C or D on your answer sheet.
+        The talks will not be printed in your test book and will be spoken only one time.</string>
+
+    <string name="P5">You will hear some conversations between two people. You will be asked to answer three questions about what the
+        speakers say in each conversation. Select the best response to each question and mark the letter A, B , C or D on your answer sheet.
+        The conversations will not be printed in your test book and will be spoken only one time.</string>
+
+    <string name="P6">Read the texts that follow. A word or pharse is missing in some of the sentences. Four answer choices are given below
+        each of the sentences. Select the best answer to complete the text. Then mark the letter A, B, C or D on your answer sheet.</string>
+
+    <string name="P7">In this part you will read a selection of texts, such as magezine and newspaper articles, letters, and advertisements.
+        Each text is followed by several questions. Select the best answer for each question and mark the letter A, B, C or D on your answer sheet.</string>
 </resources>

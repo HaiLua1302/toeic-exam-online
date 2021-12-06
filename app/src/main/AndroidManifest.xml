@@ -4,20 +4,99 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_logo_foreground"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_logo_foreground"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.dialog.dialog_notification"></activity>
-        <activity android:name=".ui.home.Main_home" />
-        <activity android:name=".ui.login.Forgot_pass_user" />
+        <activity android:name=".ui.user.fullExam.RecListExamFull" />
+        <activity android:name=".ui.user.exam7.ResultP7Activity" />
+        <activity android:name=".ui.user.exam6.ResultP6Activity" />
+        <activity android:name=".ui.user.exam5.ResultP5Activity" />
+        <activity android:name=".ui.admin.fullExam.ChooseAPart3" />
+        <activity android:name=".ui.admin.fullExam.ChooseAPart2" />
+        <activity android:name=".ui.admin.fullExam.ChooseAPart1" />
+        <activity android:name=".ui.admin.fullExam.AddNewAPart" />
+        <activity android:name=".ui.admin.fullExam.AddNewExam" />
+        <activity android:name=".ui.admin.part7.EditParagraphP7" />
+        <activity android:name=".ui.admin.part7.AddNewQues2P7" />
+        <activity android:name=".ui.admin.part7.AddNewQues1P7" />
+        <activity android:name=".ui.admin.part7.AddNewAQuesP7" />
+        <activity android:name=".ui.admin.part6.EditParagraphP6" />
+        <activity android:name=".ui.admin.part6.AddNewAQuesP6" />
+        <activity android:name=".ui.admin.part6.AddNewQues2P6" />
+        <activity android:name=".ui.admin.part6.AddNewQues1P6" />
+        <activity android:name=".ui.admin.part5.AddNewQuesP5" />
+        <activity android:name=".ui.admin.part5.AddNewAQuesP5" />
+        <activity android:name=".ui.admin.part4.RecViewExamP4" />
+        <activity android:name=".ui.admin.part4.EditAQuesP4" />
+        <activity android:name=".ui.admin.part4.AddNewQues2P4" />
+        <activity android:name=".ui.admin.part4.AddNewQues1P4" />
+        <activity android:name=".ui.admin.part4.AddNewAQuesP4" />
+        <activity android:name=".ui.user.exam4.ResultP4Activity" />
+        <activity android:name=".ui.user.exam3.ResultP3Activity" />
+        <activity android:name=".ui.admin.LoginAdmin" />
+        <activity android:name=".ui.admin.part3.EditAQuesP3" />
+        <activity android:name=".ui.admin.part3.RecViewExamP3" />
+        <activity android:name=".ui.admin.part3.AddNewAQuesP3" />
+        <activity android:name=".ui.admin.part3.AddNewQues2P3" />
+        <activity android:name=".ui.admin.part3.AddNewQues1P3" />
+        <activity android:name=".ui.admin.part2.EditListQuesP2Activity" />
+        <activity android:name=".ui.admin.part2.EditQuesP2Activity" />
+        <activity android:name=".ui.admin.part2.AddNewListQuesP2Activity" />
+        <activity android:name=".ui.admin.part2.AddNewQuesP2Activity" />
+        <activity android:name=".ui.admin.part1.EditListQuesP1Activity" />
+        <activity android:name=".ui.admin.part1.EditQuesP1Activity" />
+        <activity android:name=".ui.admin.part1.AddNewListQuesP1Activity" />
+        <activity android:name=".ui.admin.part1.AddNewQuesP1Activity" />
+        <activity android:name=".ui.admin.ManagerExamActivity" />
+        <activity android:name=".ui.admin.AdminHome" />
+        <activity android:name=".ui.user.fullExam.ResultFullActivity" />
+        <activity android:name=".ui.user.fullExam.TutorialFullExamP4Activity" />
+        <activity android:name=".ui.user.fullExam.ScreenSwitchFullExamP7Activity" />
+        <activity android:name=".ui.user.fullExam.ScreenSwitchFullExamP6Activity" />
+        <activity android:name=".ui.user.fullExam.ScreenSwitchFullExamP5Activity" />
+        <activity android:name=".ui.user.fullExam.ScreenSwitchFullExamP4Activity" />
+        <activity android:name=".ui.user.fullExam.ScreenSwitchFullExamP3Activity" />
+        <activity android:name=".ui.user.fullExam.TutorialFullExamP7Activity" />
+        <activity android:name=".ui.user.fullExam.TutorialFullExamP6Activity" />
+        <activity android:name=".ui.user.fullExam.TutorialFullExamP5Activity" />
+        <activity android:name=".ui.user.fullExam.TutorialFullExamP3Activity" />
+        <activity android:name=".ui.user.fullExam.ScreenSwitchFullExamP2Activity" />
+        <activity android:name=".ui.user.fullExam.TutorialFullExamP2Activity" />
+        <activity android:name=".ui.user.exam6.ScreenSwitchP6Activity" />
+        <activity android:name=".ui.user.exam6.TutorialP6Activity" />
+        <activity android:name=".ui.user.fullExam.ScreenSwitchFullExamP1Activity" />
+        <activity android:name=".ui.user.fullExam.TutorialFullExamP1Activity" />
+        <activity android:name=".ui.user.exam7.ScreenSwitchP7Activity" />
+        <activity android:name=".ui.user.exam7.TutorialP7Activity" />
+        <activity android:name=".ui.user.exam5.ScreenSwitchP5Activity" />
+        <activity android:name=".ui.user.exam5.TutorialP5Activity" />
+        <activity android:name=".ui.user.exam4.ScreenSwitchP4Activity" />
+        <activity android:name=".ui.user.exam4.TutorialP4Activity" />
+        <activity android:name=".ui.user.exam3.ScreenSwitchP3Activity" />
+        <activity android:name=".ui.user.exam3.TutorialP3Activity" />
+        <activity android:name=".ui.user.exam2.ResultP2Activity" />
+        <activity android:name=".ui.user.exam1.ResultP1Activity" />
+        <activity android:name=".ui.user.exam2.ScreenSwitchP2Activity" />
+        <activity android:name=".ui.user.exam2.TutorialP2Activity" />
+        <activity android:name=".ui.user.exam1.ScreenSwitchP1Activity" />
+        <activity android:name=".ui.user.exam1.TutorialP1Activity" />
+        <activity android:name=".ui.home.UserHome" />
         <activity android:name=".ui.login.Register_user" />
-        <activity android:name=".ui.login.Login_user" />
         <activity android:name=".ui.login.Begin_user" />
+        <activity android:name=".ui.login.Forgot_pass_user" />
+        <activity android:name=".ui.login.Login_user" /> <!-- activity for setting -->
+        <activity android:name=".ui.setting.Changelanguage_user" />
+        <activity android:name=".ui.setting.Tutorial_user" />
+        <activity android:name=".ui.setting.Changelayout_user" />
+        <activity android:name=".ui.setting.Rule_user" />
+        <activity android:name=".ui.setting.Achievement_user" />
+        <activity android:name=".ui.setting.Feedback_user" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +104,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.setting.achievement_user" />
     </application>
 
 </manifest>
