@@ -1,10 +1,14 @@
 package com.example.user.ui.adapterAdmin;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +21,7 @@ import com.example.user.ui.admin.part1.EditListQuesP1Activity;
 import com.example.user.ui.admin.part2.EditListQuesP2Activity;
 import com.example.user.ui.classExam.ClsPartP1;
 import com.example.user.ui.classExam.ClsPartP2;
+import com.example.user.ui.classExam.ClsPartP1;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -48,7 +53,7 @@ public class AdtRecQuesP1 extends FirebaseRecyclerAdapter<ClsPartP1,AdtRecQuesP1
         holder.imgDelHolder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.delQuestion(model);
+                holder.clickDel(model);
                 //notifyDataSetChanged();
             }
         });
@@ -95,6 +100,39 @@ public class AdtRecQuesP1 extends FirebaseRecyclerAdapter<ClsPartP1,AdtRecQuesP1
             intent.putExtra("idQues",id_ques);
             intent.putExtra("urlImg",urlImg);
             itemView.getContext().startActivity(intent);
+        }
+        public void clickDel(ClsPartP1 model){
+            ViewDialog dialog = new ViewDialog();
+            dialog.showDialog((Activity) itemView.getContext(),"Bạn Có Chắc Là Muốn Xóa Nó Chứ ? ",model);
+        }
+        //show dialog login success message
+        public class ViewDialog {
+            public void showDialog(Activity activity, String msg,ClsPartP1 model) {
+                final Dialog dialog = new Dialog(activity);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setCancelable(false);
+                dialog.setContentView(R.layout.dialog_delete);
+
+                TextView text = (TextView) dialog.findViewById(R.id.txtTitleDel);
+                text.setText(msg);
+
+                Button dialogButtonYes = (Button) dialog.findViewById(R.id.btnYesDel);
+                Button dialogButtonNo = (Button) dialog.findViewById(R.id.btnNoDel);
+                dialogButtonYes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        delQuestion(model);
+                        dialog.dismiss();
+                    }
+                });
+                dialogButtonNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+            }
         }
         private void delQuestion(ClsPartP1 model){
             String child = nameExam +"/"+ model.getId_ques();

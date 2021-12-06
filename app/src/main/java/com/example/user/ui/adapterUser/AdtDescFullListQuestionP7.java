@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
 import com.example.user.ui.classExam.ClsListQuestionP7;
-import com.example.user.ui.fullExam.ResultFullActivity;
+import com.example.user.ui.user.fullExam.ResultFullActivity;
 
 import java.util.List;
 

@@ -10,14 +10,15 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.user.R;
-import com.example.user.ui.exam1.TutorialP1Activity;
-import com.example.user.ui.exam2.TutorialP2Activity;
-import com.example.user.ui.exam3.TutorialP3Activity;
-import com.example.user.ui.exam4.TutorialP4Activity;
-import com.example.user.ui.exam5.TutorialP5Activity;
-import com.example.user.ui.exam6.TutorialP6Activity;
-import com.example.user.ui.exam7.TutorialP7Activity;
-import com.example.user.ui.fullExam.TutorialFullExamP1Activity;
+import com.example.user.ui.user.exam1.TutorialP1Activity;
+import com.example.user.ui.user.exam2.TutorialP2Activity;
+import com.example.user.ui.user.exam3.TutorialP3Activity;
+import com.example.user.ui.user.exam4.TutorialP4Activity;
+import com.example.user.ui.user.exam5.TutorialP5Activity;
+import com.example.user.ui.user.exam6.TutorialP6Activity;
+import com.example.user.ui.user.exam7.TutorialP7Activity;
+import com.example.user.ui.user.fullExam.RecListExamFull;
+import com.example.user.ui.user.fullExam.TutorialFullExamP1Activity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 @SuppressWarnings("ALL")
@@ -93,7 +94,7 @@ public class UserHome extends AppCompatActivity implements BottomNavigationView.
         full_exam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UserHome.this, TutorialFullExamP1Activity.class);
+                Intent intent = new Intent(UserHome.this, RecListExamFull.class);
                 startActivity(intent);
             }
         });

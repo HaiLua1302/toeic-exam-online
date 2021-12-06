@@ -20,7 +20,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.user.R;
 import com.example.user.ui.classExam.ClsListQuestionP3;
 import com.example.user.ui.classExam.ClsRecExamP3;
-import com.example.user.ui.fullExam.TutorialFullExamP4Activity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -87,8 +86,8 @@ public class AdtDescFullP3 extends RecyclerView.Adapter<AdtDescFullP3.DescFullP3
             btnSubmitHolder.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(itemView.getContext(), TutorialFullExamP4Activity.class);
-                    itemView.getContext().startActivity(intent);
+                   /* Intent intent = new Intent(itemView.getContext(), TutorialFullExamP4Activity.class);
+                    itemView.getContext().startActivity(intent);*/
                 }
             });
 

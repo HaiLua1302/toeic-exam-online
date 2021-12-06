@@ -1,10 +1,14 @@
 package com.example.user.ui.adapterAdmin;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
 import com.example.user.ui.admin.part4.EditAQuesP4;
+import com.example.user.ui.classExam.ClsListQuestionP4;
 import com.example.user.ui.classExam.ClsListQuestionP4;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -41,7 +46,7 @@ public class AdtAddNewAQuesP4 extends FirebaseRecyclerAdapter<ClsListQuestionP4,
         holder.imgDelHolder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.delQuestion(model);
+                holder.clickDel(model);
             }
         });
         holder.imgEditAQuesHolder.setOnClickListener(new View.OnClickListener() {
@@ -94,9 +99,42 @@ public class AdtAddNewAQuesP4 extends FirebaseRecyclerAdapter<ClsListQuestionP4,
             intent.putExtra("ansD",ansD);
             itemView.getContext().startActivity(intent);
         }
+        public void clickDel(ClsListQuestionP4 model){
+            ViewDialog dialog = new ViewDialog();
+            dialog.showDialog((Activity) itemView.getContext(),"Bạn Có Chắc Là Muốn Xóa Nó Chứ ? ",model);
+        }
+        //show dialog login success message
+        public class ViewDialog {
+            public void showDialog(Activity activity, String msg,ClsListQuestionP4 model) {
+                final Dialog dialog = new Dialog(activity);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setCancelable(false);
+                dialog.setContentView(R.layout.dialog_delete);
+
+                TextView text = (TextView) dialog.findViewById(R.id.txtTitleDel);
+                text.setText(msg);
+
+                Button dialogButtonYes = (Button) dialog.findViewById(R.id.btnYesDel);
+                Button dialogButtonNo = (Button) dialog.findViewById(R.id.btnNoDel);
+                dialogButtonYes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        delQuestion(model);
+                        dialog.dismiss();
+                    }
+                });
+                dialogButtonNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+            }
+        }
         private void delQuestion(ClsListQuestionP4 model){
             String child2 = child +"/"+ model.getId_ques();
-            FirebaseDatabase.getInstance().getReference("List_Ques3")
+            FirebaseDatabase.getInstance().getReference("List_Ques4")
                     .child(child2)
                     .setValue(null)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -5,6 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/wraperfullp1"
-    tools:context=".ui.fullExam.ScreenSwitchFullExamP1Activity">
+    tools:context=".ui.user.fullExam.ScreenSwitchFullExamP1Activity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

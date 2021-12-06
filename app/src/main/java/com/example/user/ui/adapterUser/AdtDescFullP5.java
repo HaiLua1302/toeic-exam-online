@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
 import com.example.user.ui.classExam.ClsPartP5;
-import com.example.user.ui.fullExam.TutorialFullExamP6Activity;
+
 
 import java.util.List;
 
@@ -67,8 +67,8 @@ public class AdtDescFullP5 extends RecyclerView.Adapter<AdtDescFullP5.DescFullP5
             btnSubmitP5Holder.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(itemView.getContext(), TutorialFullExamP6Activity.class);
-                    itemView.getContext().startActivity(intent);
+                    /*Intent intent = new Intent(itemView.getContext(), TutorialFullExamP6Activity.class);
+                    itemView.getContext().startActivity(intent);*/
                 }
             });
 

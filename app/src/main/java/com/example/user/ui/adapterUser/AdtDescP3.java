@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.user.R;
 import com.example.user.ui.classExam.ClsListQuestionP3;
 import com.example.user.ui.classExam.ClsRecExamP3;
-import com.example.user.ui.exam3.ResultP3Activity;
+import com.example.user.ui.user.exam3.ResultP3Activity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

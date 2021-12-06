@@ -6,6 +6,6 @@
     android:layout_height="match_parent"
     android:id="@+id/wrapper"
     android:background="@drawable/background_app"
-    tools:context=".ui.exam1.ScreenSwitchP1Activity">
+    tools:context=".ui.user.exam1.ScreenSwitchP1Activity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

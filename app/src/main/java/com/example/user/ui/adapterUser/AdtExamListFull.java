@@ -1,5 +1,6 @@
 package com.example.user.ui.adapterUser;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
-import com.example.user.ui.fullExam.DescFullP1Fragment;
+import com.example.user.ui.user.fullExam.DescFullP1Fragment;
+import com.example.user.ui.user.fullExam.TutorialFullExamP1Activity;
 
 import java.util.List;
 
@@ -35,6 +37,12 @@ public class AdtExamListFull extends RecyclerView.Adapter<AdtExamListFull.ExamLi
     @Override
     public void onBindViewHolder(@NonNull ExamListFullHolder holder, int position) {
         holder.SetData(position);
+        holder.getToDataExamHolder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.sendDataToPart1(position);
+            }
+        });
     }
 
     @Override
@@ -50,18 +58,14 @@ public class AdtExamListFull extends RecyclerView.Adapter<AdtExamListFull.ExamLi
             idExamHolder = itemView.findViewById(R.id.txt_nameExam);
             getToDataExamHolder = itemView.findViewById(R.id.btn_start_list_full);
         }
-        public void SetData(int Pos){
+        private void SetData(int Pos){
             idExamHolder.setText(getKeyFull.get(Pos).toString());
-            getToDataExamHolder.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                    activity.getSupportFragmentManager().beginTransaction().
-                            replace(R.id.wraperfullp1,
-                                    new DescFullP1Fragment(getKeyFull.get(Pos).toString()))
-                            .addToBackStack(null).commit();
-                }
-            });
+        }
+        private void sendDataToPart1(int pos){
+            String idExam = getKeyFull.get(pos).toString();
+            Intent intent = new Intent(itemView.getContext(), TutorialFullExamP1Activity.class);
+            intent.putExtra("idExam",idExam);
+            itemView.getContext().startActivity(intent);
         }
     }
 }

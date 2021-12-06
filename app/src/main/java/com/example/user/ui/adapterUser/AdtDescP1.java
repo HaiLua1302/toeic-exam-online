@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.user.R;
 import com.example.user.ui.classExam.ClsPartP1;
 import com.example.user.ui.classUser.cls_achievement;
-import com.example.user.ui.exam1.ResultP1Activity;
+import com.example.user.ui.user.exam1.ResultP1Activity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -150,6 +150,7 @@ public class AdtDescP1 extends RecyclerView.Adapter<AdtDescP1.DescP1Holder> {
                 public void onClick(View v) {
                     if (B1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())) {
                         B1Holder.setBackgroundResource(R.drawable.chosse_answer);
+                        B1Holder.setTextColor(Color.WHITE);
                         //cong 1 diem dung
 //                        correctAnswer();
                         correct++;
@@ -161,16 +162,19 @@ public class AdtDescP1 extends RecyclerView.Adapter<AdtDescP1.DescP1Holder> {
 
                         if (A1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())){
                             A1Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            A1Holder.setTextColor(Color.WHITE);
                             C1Holder.setBackgroundResource(R.drawable.bnt_answer);
                             D1Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else if(C1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())){
                             C1Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            C1Holder.setTextColor(Color.WHITE);
                             A1Holder.setBackgroundResource(R.drawable.bnt_answer);
                             D1Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else if (D1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())){
                             D1Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            D1Holder.setTextColor(Color.WHITE);
                             C1Holder.setBackgroundResource(R.drawable.bnt_answer);
                             A1Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
@@ -190,6 +194,7 @@ public class AdtDescP1 extends RecyclerView.Adapter<AdtDescP1.DescP1Holder> {
                 public void onClick(View v) {
                     if (C1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())) {
                         C1Holder.setBackgroundResource(R.drawable.chosse_answer);
+                        C1Holder.setTextColor(Color.WHITE);
 //                        correctAnswer();
                         correct++;
                     }
@@ -198,16 +203,19 @@ public class AdtDescP1 extends RecyclerView.Adapter<AdtDescP1.DescP1Holder> {
                         C1Holder.setBackgroundResource(R.drawable.wrong_answer);
                         if (B1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())){
                             B1Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            B1Holder.setTextColor(Color.WHITE);
                             A1Holder.setBackgroundResource(R.drawable.bnt_answer);
                             D1Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else if(A1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())){
                             A1Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            A1Holder.setTextColor(Color.WHITE);
                             B1Holder.setBackgroundResource(R.drawable.bnt_answer);
                             D1Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else if (D1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())){
                             D1Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            D1Holder.setTextColor(Color.WHITE);
                             A1Holder.setBackgroundResource(R.drawable.bnt_answer);
                             B1Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
@@ -238,16 +246,19 @@ public class AdtDescP1 extends RecyclerView.Adapter<AdtDescP1.DescP1Holder> {
                         D1Holder.setBackgroundResource(R.drawable.wrong_answer);
                         if (B1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())){
                             B1Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            B1Holder.setTextColor(Color.WHITE);
                             C1Holder.setBackgroundResource(R.drawable.bnt_answer);
                             A1Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else if(C1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())){
                             C1Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            C1Holder.setTextColor(Color.WHITE);
                             B1Holder.setBackgroundResource(R.drawable.bnt_answer);
                             A1Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else if (A1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())){
                             A1Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            A1Holder.setTextColor(Color.WHITE);
                             C1Holder.setBackgroundResource(R.drawable.bnt_answer);
                             B1Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }

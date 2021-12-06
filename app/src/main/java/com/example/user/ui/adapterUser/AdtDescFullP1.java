@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
 import com.example.user.ui.classExam.ClsPartP1;
-import com.example.user.ui.fullExam.TutorialFullExamP2Activity;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -252,11 +251,11 @@ public class AdtDescFullP1 extends RecyclerView.Adapter<AdtDescFullP1.DescFullP1
             SubmitHolder.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(itemView.getContext(), TutorialFullExamP2Activity.class);
+                    //Intent intent = new Intent(itemView.getContext(), TutorialFullExamP2Activity.class);
                    /* Intent intent2 = new Intent("custom-message");
                     intent2.putExtra("keyExam",getKey);
                     LocalBroadcastManager.getInstance(itemView.getContext()).sendBroadcast(intent);*/
-                    itemView.getContext().startActivity(intent);
+                    //itemView.getContext().startActivity(intent);
 
                 }
             });

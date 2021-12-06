@@ -2,6 +2,7 @@ package com.example.user.ui.adapterUser;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.user.R;
 import com.example.user.ui.classExam.ClsPartP2;
 import com.example.user.ui.classUser.cls_achievement;
-import com.example.user.ui.exam1.ResultP1Activity;
+import com.example.user.ui.user.exam1.ResultP1Activity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -105,15 +106,18 @@ public class AdtDescP2 extends RecyclerView.Adapter<AdtDescP2.DescP2Holder> {
                 public void onClick(View v) {
                     if (a2Holder.getText().toString().equals(clsPartP2List.get(pos).getResult())){
                         a2Holder.setBackgroundResource(R.drawable.chosse_answer);
+                        a2Holder.setTextColor(Color.WHITE);
                         correct++;
                     }else {
                         a2Holder.setBackgroundResource(R.drawable.wrong_answer);
                         if (b2Holder.getText().toString().equals(clsPartP2List.get(pos).getResult())){
                             b2Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            b2Holder.setTextColor(Color.WHITE);
                             c2Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else {
                             c2Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            c2Holder.setTextColor(Color.WHITE);
                             b2Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                     }
@@ -131,15 +135,18 @@ public class AdtDescP2 extends RecyclerView.Adapter<AdtDescP2.DescP2Holder> {
                 public void onClick(View v) {
                     if (b2Holder.getText().toString().equals(clsPartP2List.get(pos).getResult())){
                         b2Holder.setBackgroundResource(R.drawable.chosse_answer);
+                        b2Holder.setTextColor(Color.WHITE);
                         correct++;
                     }else {
                         b2Holder.setBackgroundResource(R.drawable.wrong_answer);
                         if (a2Holder.getText().toString().equals(clsPartP2List.get(pos).getResult())){
                             a2Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            a2Holder.setTextColor(Color.WHITE);
                             c2Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else {
                             c2Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            c2Holder.setTextColor(Color.WHITE);
                             a2Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                     }
@@ -159,15 +166,18 @@ public class AdtDescP2 extends RecyclerView.Adapter<AdtDescP2.DescP2Holder> {
                 public void onClick(View v) {
                     if (c2Holder.getText().toString().equals(clsPartP2List.get(pos).getResult())){
                         c2Holder.setBackgroundResource(R.drawable.chosse_answer);
+                        c2Holder.setTextColor(Color.WHITE);
                         correct++;
                     }else {
                         c2Holder.setBackgroundResource(R.drawable.wrong_answer);
                         if (a2Holder.getText().toString().equals(clsPartP2List.get(pos).getResult())){
                             a2Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            a2Holder.setTextColor(Color.WHITE);
                             b2Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else {
                             b2Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            b2Holder.setTextColor(Color.WHITE);
                             a2Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                     }

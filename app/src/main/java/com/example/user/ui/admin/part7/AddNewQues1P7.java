@@ -37,15 +37,16 @@ import java.util.Locale;
 
 public class AddNewQues1P7 extends AppCompatActivity {
 
-    private EditText edtNameExam,edtParagraph;
+    private EditText edtNameExam, edtParagraph;
     private ImageView imgRefresh;
-    private Button btnSaveParagraph,btnDelExam;
+    private Button btnSaveParagraph;
     private RecyclerView recyclerView;
     private DatabaseReference ref;
-    private String getExam,id_Exam;
+    private String getExam, id_Exam;
     private Intent intent;
 
     private AdtAddNew1P7 adtAddNew1P7;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +63,6 @@ public class AddNewQues1P7 extends AppCompatActivity {
         edtParagraph = findViewById(R.id.edtAddParagraphP7);
         imgRefresh = findViewById(R.id.imgRefresh1P7);
         btnSaveParagraph = findViewById(R.id.btnAddParagraph1P7);
-        btnDelExam = findViewById(R.id.btnDelExamP7);
         recyclerView = findViewById(R.id.recViewListQuest1P7);
 
         intent = getIntent();
@@ -71,7 +71,7 @@ public class AddNewQues1P7 extends AppCompatActivity {
         edtNameExam.setText(getExam);
         id_Exam = edtNameExam.getText().toString();
 
-        if (!getExam.isEmpty()){
+        if (!getExam.isEmpty()) {
             getSupportActionBar().setTitle("Edit Ques Part 6");
         }
         setDataToRecViewDefault();
@@ -88,14 +88,9 @@ public class AddNewQues1P7 extends AppCompatActivity {
                 setDataToRecViewDefault();
             }
         });
-        btnDelExam.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AddNewQues1P7.ViewDialog alert = new AddNewQues1P7.ViewDialog();
-                alert.showDialog(AddNewQues1P7.this,"Bạn Có Chắc Là Muốn Xóa Nó Chứ ? ");
-            }
-        });
+
     }
+
     private void addQues() {
         //create id question
         final ProgressDialog progressDialog_audio = new ProgressDialog(this);
@@ -103,9 +98,9 @@ public class AddNewQues1P7 extends AppCompatActivity {
         progressDialog_audio.show();
         String paragraph = edtParagraph.getText().toString();
         String idExam = edtNameExam.getText().toString();
-        String ID_Quest = "QuesP7_"+ getTime();
+        String ID_Quest = "QuesP7_" + getTime();
         ref = FirebaseDatabase.getInstance().getReference("Ques_7").child(idExam);
-        ClsRecExamP7 clsRecExamP7 = new ClsRecExamP7(idExam,ID_Quest,paragraph);
+        ClsRecExamP7 clsRecExamP7 = new ClsRecExamP7(idExam, ID_Quest, paragraph);
         ref.child(ID_Quest).setValue(clsRecExamP7).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -113,23 +108,23 @@ public class AddNewQues1P7 extends AppCompatActivity {
                     Toast.makeText(AddNewQues1P7.this, "Thêm bộ đề thành công", Toast.LENGTH_SHORT).show();
                     progressDialog_audio.dismiss();
                     Intent intent = new Intent(AddNewQues1P7.this, AddNewQues2P7.class);
-                    intent.putExtra("idExam",idExam);
-                    intent.putExtra("idQues",ID_Quest);
-                    intent.putExtra("paragraph",paragraph);
+                    intent.putExtra("idExam", idExam);
+                    intent.putExtra("idQues", ID_Quest);
+                    intent.putExtra("paragraph", paragraph);
                     startActivity(intent);
-                }
-                else {
+                } else {
                     Toast.makeText(AddNewQues1P7.this, "Đã xảy ra lỗi vui lòng thử lại", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
-    private void setDataToRecViewDefault(){
+
+    private void setDataToRecViewDefault() {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         id_Exam = edtNameExam.getText().toString();
-        if (id_Exam.isEmpty()){
+        if (id_Exam.isEmpty()) {
             return;
-        }else {
+        } else {
             final ProgressDialog progressDialog = new ProgressDialog(AddNewQues1P7.this);
             progressDialog.setTitle("Wait...");
             progressDialog.show();
@@ -139,19 +134,20 @@ public class AddNewQues1P7 extends AppCompatActivity {
                             .setQuery(FirebaseDatabase.getInstance().getReference("Ques_7").child(id_Exam), ClsRecExamP7.class)
                             .build();
 
-            adtAddNew1P7 = new AdtAddNew1P7(options,id_Exam,this);
+            adtAddNew1P7 = new AdtAddNew1P7(options, id_Exam, this);
             recyclerView.setAdapter(adtAddNew1P7);
             progressDialog.dismiss();
             adtAddNew1P7.startListening();
         }
     }
+
     /*
    gettime current
    * */
-    private String getTime(){
+    private String getTime() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
         String currentDateandTime = sdf.format(new Date());
-        return  currentDateandTime;
+        return currentDateandTime;
     }
 
     // this event will enable the back
@@ -160,7 +156,7 @@ public class AddNewQues1P7 extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-               this.finish();
+                this.finish();
                 return true;
             case R.id.home_bar_admin:
                 Intent intent2 = new Intent(AddNewQues1P7.this, AdminHome.class);
@@ -168,57 +164,7 @@ public class AddNewQues1P7 extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    };
-    private void delQuestion(){
-        String getIdExam = edtNameExam.getText().toString();
-        FirebaseDatabase.getInstance().getReference("List_Ques6")
-                .child(getIdExam)
-                .setValue(null)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        FirebaseDatabase.getInstance().getReference()
-                                .child("Ques_6")
-                                .child(getIdExam)
-                                .setValue(null)
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        Toast.makeText(AddNewQues1P7.this, "Xóa câu hỏi thành công ", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(AddNewQues1P7.this, ManagerExamActivity.class);
-                                        startActivity(intent);
-                                    }
-                                });
-                    }
-                });
     }
-    //show dialog login success message
-    public class ViewDialog {
-        public void showDialog(Activity activity, String msg) {
-            final Dialog dialog = new Dialog(activity);
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.setCancelable(false);
-            dialog.setContentView(R.layout.dialog_delete);
 
-            TextView text = (TextView) dialog.findViewById(R.id.txtTitleDel);
-            text.setText(msg);
-
-            Button dialogButtonYes = (Button) dialog.findViewById(R.id.btnYesDel);
-            Button dialogButtonNo = (Button) dialog.findViewById(R.id.btnNoDel);
-            dialogButtonYes.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    delQuestion();
-                    dialog.dismiss();
-                }
-            });
-            dialogButtonNo.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                }
-            });
-            dialog.show();
-        }
-    }
+    ;
 }

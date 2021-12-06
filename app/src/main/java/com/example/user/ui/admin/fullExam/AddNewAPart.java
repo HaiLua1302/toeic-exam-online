@@ -1,10 +1,15 @@
 package com.example.user.ui.admin.fullExam;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -89,23 +94,21 @@ public class AddNewAPart extends AppCompatActivity {
                 intent = new Intent(AddNewAPart.this, ChooseAPart1.class);
                 intent.putExtra("idExam",idExam);
                 intent.putExtra("idPart",2);
-                startActivity(intent);
+                someActivityResultLauncher.launch(intent);
             }
         });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 2){
-            if(data != null){
-                String idPart = data.getStringExtra("idPart");
-                txtNamePart1.setText(idPart);
-            }
-        }
-
-
-    }
+    ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    if(result.getData() != null){
+                        String idPart = result.getData().getStringExtra("idPart");
+                        txtNamePart1.setText(idPart);
+                    }
+                }
+            });
 
     // this event will enable the back
     // function to the button on press

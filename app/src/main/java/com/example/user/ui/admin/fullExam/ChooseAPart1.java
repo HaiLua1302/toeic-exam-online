@@ -35,10 +35,15 @@ public class ChooseAPart1 extends AppCompatActivity implements AdtRecChoosePart.
     private RecyclerView recyclerView;
     private Intent intent;
     private String idExam;
+
+    //dacord mat mang
     private DatabaseReference ref;
 
     private AdtRecChoosePart adtRecChoosePart;
-    private AdtRecChoosePart setIdPart = new AdtRecChoosePart();
+
+
+    private String keyExam;
+    private List<String> dataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +59,10 @@ public class ChooseAPart1 extends AppCompatActivity implements AdtRecChoosePart.
         intent = getIntent();
         Bundle bundle = intent.getExtras();
         idExam = bundle.getString("idExam");
+        initRecyclerView();
         getDataFirebase();
         txtIdExam.setText(idExam);
 
-        setIdPart.setOnShareClickedListener(this::ShareClicked);
 
         btnSavePart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,28 +70,38 @@ public class ChooseAPart1 extends AppCompatActivity implements AdtRecChoosePart.
                 String idPart = txtIdPart.getText().toString();
                 intent = new Intent();
                 intent.putExtra("idPart",idPart);
-                setResult(2,intent);
+                setResult(RESULT_OK,intent);
                 finish();
             }
         });
 
     }
-    private void getDataFirebase(){
-        String keyExam = txtIdExam.getText().toString();
+
+    private void initRecyclerView() {
+        // khoi tao recyclerview & dapter
+        // dai y la nhung ghi lien quan den recycdfsdf..
+
+        keyExam = "";
+        dataSource = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        List<String> getKey = new ArrayList<>();
+        adtRecChoosePart = new AdtRecChoosePart(keyExam,dataSource);
+        adtRecChoosePart.setOnShareClickedListener(ChooseAPart1.this::ShareClicked);
+        recyclerView.setAdapter(adtRecChoosePart);
+    }
+
+    private void getDataFirebase(){
+        keyExam = txtIdExam.getText().toString();
         ref = FirebaseDatabase.getInstance().getReference("Ques_1");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
+                    dataSource.clear();
                     for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                         String key = snapshot1.getKey();
-                        getKey.add(key);
+                        dataSource.add(key);
                     }
-                    adtRecChoosePart = new AdtRecChoosePart(keyExam,getKey);
-                    recyclerView.setAdapter(adtRecChoosePart);
-
+                    adtRecChoosePart.notifyDataSetChanged();
                 }else {
                     Toast.makeText(ChooseAPart1.this,"Dữ liệu lôi vui lòng kiểm tra Firebase!",Toast.LENGTH_SHORT).show();
                 }

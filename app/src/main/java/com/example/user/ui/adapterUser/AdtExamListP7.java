@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
-import com.example.user.ui.exam7.DescP7Fragment;
+import com.example.user.ui.user.exam7.DescP7Fragment;
 
 import java.util.List;
 

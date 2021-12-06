@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_app"
-    tools:context=".ui.fullExam.RecFullExamP1Fragment">
+    tools:context=".ui.user.fullExam.RecFullExamP1Fragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recViewListFull"

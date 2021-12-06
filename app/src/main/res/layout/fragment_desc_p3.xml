@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#B0F8F1"
-    tools:context=".ui.exam3.DecsP3Fragment">
+    tools:context=".ui.user.exam3.DecsP3Fragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/decsListQuestionP3"

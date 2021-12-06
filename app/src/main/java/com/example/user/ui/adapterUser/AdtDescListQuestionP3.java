@@ -1,5 +1,6 @@
 package com.example.user.ui.adapterUser;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,20 +76,24 @@ public class AdtDescListQuestionP3 extends RecyclerView.Adapter<AdtDescListQuest
                 public void onClick(View v) {
                     if (btnA3Holder.getText().toString().equals(clsListQuestionP3List.get(pos).getResult())){
                         btnA3Holder.setBackgroundResource(R.drawable.chosse_answer);
+                        btnA3Holder.setTextColor(Color.WHITE);
                     }else{
                         btnA3Holder.setBackgroundResource(R.drawable.wrong_answer);
                         if (btnB3Holder.getText().toString().equals(clsListQuestionP3List.get(pos).getResult())){
                             btnB3Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnB3Holder.setTextColor(Color.WHITE);
                             btnD3Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnC3Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else if (btnC3Holder.getText().toString().equals(clsListQuestionP3List.get(pos).getResult())){
                             btnC3Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnC3Holder.setTextColor(Color.WHITE);
                             btnB3Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnD3Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else {
                             btnD3Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnD3Holder.setTextColor(Color.WHITE);
                             btnB3Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnC3Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
@@ -102,20 +107,24 @@ public class AdtDescListQuestionP3 extends RecyclerView.Adapter<AdtDescListQuest
                 public void onClick(View v) {
                     if (btnB3Holder.getText().toString().equals(clsListQuestionP3List.get(pos).getResult())){
                         btnB3Holder.setBackgroundResource(R.drawable.chosse_answer);
+                        btnB3Holder.setTextColor(Color.WHITE);
                     }else{
                         btnB3Holder.setBackgroundResource(R.drawable.wrong_answer);
                         if (btnA3Holder.getText().toString().equals(clsListQuestionP3List.get(pos).getResult())){
                             btnA3Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnA3Holder.setTextColor(Color.WHITE);
                             btnD3Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnC3Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else if (btnC3Holder.getText().toString().equals(clsListQuestionP3List.get(pos).getResult())){
                             btnC3Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnC3Holder.setTextColor(Color.WHITE);
                             btnA3Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnD3Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else {
                             btnD3Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnD3Holder.setTextColor(Color.WHITE);
                             btnA3Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnC3Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
@@ -129,20 +138,24 @@ public class AdtDescListQuestionP3 extends RecyclerView.Adapter<AdtDescListQuest
                 public void onClick(View v) {
                     if (btnC3Holder.getText().toString().equals(clsListQuestionP3List.get(pos).getResult())){
                         btnC3Holder.setBackgroundResource(R.drawable.chosse_answer);
+                        btnC3Holder.setTextColor(Color.WHITE);
                     }else{
                         btnC3Holder.setBackgroundResource(R.drawable.wrong_answer);
                         if (btnA3Holder.getText().toString().equals(clsListQuestionP3List.get(pos).getResult())){
                             btnA3Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnA3Holder.setTextColor(Color.WHITE);
                             btnD3Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnB3Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else if (btnB3Holder.getText().toString().equals(clsListQuestionP3List.get(pos).getResult())){
                             btnB3Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnB3Holder.setTextColor(Color.WHITE);
                             btnA3Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnD3Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else {
                             btnD3Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnD3Holder.setTextColor(Color.WHITE);
                             btnA3Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnB3Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
@@ -156,20 +169,24 @@ public class AdtDescListQuestionP3 extends RecyclerView.Adapter<AdtDescListQuest
                 public void onClick(View v) {
                     if (btnD3Holder.getText().toString().equals(clsListQuestionP3List.get(pos).getResult())){
                         btnD3Holder.setBackgroundResource(R.drawable.chosse_answer);
+                        btnD3Holder.setTextColor(Color.WHITE);
                     }else{
                         btnD3Holder.setBackgroundResource(R.drawable.wrong_answer);
                         if (btnA3Holder.getText().toString().equals(clsListQuestionP3List.get(pos).getResult())){
                             btnA3Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnA3Holder.setTextColor(Color.WHITE);
                             btnB3Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnC3Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else if (btnB3Holder.getText().toString().equals(clsListQuestionP3List.get(pos).getResult())){
                             btnB3Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnB3Holder.setTextColor(Color.WHITE);
                             btnA3Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnC3Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else {
                             btnC3Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnC3Holder.setTextColor(Color.WHITE);
                             btnA3Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnB3Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }

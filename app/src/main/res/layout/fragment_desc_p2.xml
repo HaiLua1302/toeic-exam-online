@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#B0F8F1"
-    tools:context=".ui.exam1.DescP1Fragment">
+    tools:context=".ui.user.exam1.DescP1Fragment">
 
     <LinearLayout
         android:layout_width="match_parent"

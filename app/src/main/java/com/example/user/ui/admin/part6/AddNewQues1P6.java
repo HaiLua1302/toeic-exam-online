@@ -76,7 +76,6 @@ public class AddNewQues1P6 extends AppCompatActivity {
         edtParagraph = findViewById(R.id.edtAddParagraphP6);
         imgRefresh = findViewById(R.id.imgRefresh1P6);
         btnSaveParagraph = findViewById(R.id.btnAddParagraph1P6);
-        btnDelExam = findViewById(R.id.btnDelExamP6);
         recyclerView = findViewById(R.id.recViewListQuest1P6);
 
         intent = getIntent();
@@ -102,19 +101,7 @@ public class AddNewQues1P6 extends AppCompatActivity {
                 setDataToRecViewDefault();
             }
         });
-        btnDelExam.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
-        btnDelExam.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ViewDialog alert = new ViewDialog();
-                alert.showDialog(AddNewQues1P6.this,"Bạn Có Chắc Là Muốn Xóa Nó Chứ ? ");
-            }
-        });
     }
     private void checkDuplicate(){
         ref = FirebaseDatabase.getInstance().getReference();
@@ -182,29 +169,6 @@ public class AddNewQues1P6 extends AppCompatActivity {
             adtAddNew1P6.startListening();
         }
     }
-    private void delQuestion(){
-        String getIdExam = edtNameExam.getText().toString();
-        FirebaseDatabase.getInstance().getReference("List_Ques6")
-                .child(getIdExam)
-                .setValue(null)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        FirebaseDatabase.getInstance().getReference()
-                                .child("Ques_6")
-                                .child(getIdExam)
-                                .setValue(null)
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        Toast.makeText(AddNewQues1P6.this, "Xóa câu hỏi thành công ", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(AddNewQues1P6.this, ManagerExamActivity.class);
-                                        startActivity(intent);
-                                    }
-                                });
-                    }
-                });
-    }
     /*
    gettime current
    * */
@@ -229,33 +193,4 @@ public class AddNewQues1P6 extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     };
-    //show dialog login success message
-    public class ViewDialog {
-        public void showDialog(Activity activity, String msg) {
-            final Dialog dialog = new Dialog(activity);
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.setCancelable(false);
-            dialog.setContentView(R.layout.dialog_delete);
-
-            TextView text = (TextView) dialog.findViewById(R.id.txtTitleDel);
-            text.setText(msg);
-
-            Button dialogButtonYes = (Button) dialog.findViewById(R.id.btnYesDel);
-            Button dialogButtonNo = (Button) dialog.findViewById(R.id.btnNoDel);
-            dialogButtonYes.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    delQuestion();
-                    dialog.dismiss();
-                }
-            });
-            dialogButtonNo.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                }
-            });
-            dialog.show();
-        }
-    }
 }

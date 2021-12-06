@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_app"
-    tools:context=".ui.exam7.TutorialP7Activity">
+    tools:context=".ui.user.exam7.TutorialP7Activity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="400dp"

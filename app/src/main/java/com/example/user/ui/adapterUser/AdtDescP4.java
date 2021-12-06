@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.user.R;
 import com.example.user.ui.classExam.ClsListQuestionP4;
 import com.example.user.ui.classExam.ClsRecExamP4;
-import com.example.user.ui.exam4.ResultP4Activity;
+import com.example.user.ui.user.exam4.ResultP4Activity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;

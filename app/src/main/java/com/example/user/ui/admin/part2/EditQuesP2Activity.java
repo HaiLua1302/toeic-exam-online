@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
@@ -17,6 +19,7 @@ import android.os.Handler;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -26,6 +29,7 @@ import android.widget.Toast;
 import com.example.user.R;
 import com.example.user.ui.adapterAdmin.AdtRecEditQuesP2;
 import com.example.user.ui.admin.ManagerExamActivity;
+import com.example.user.ui.admin.part6.AddNewQues1P6;
 import com.example.user.ui.classExam.ClsPartP2;
 import com.example.user.ui.classExam.ClsRecExamP2;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -178,7 +182,8 @@ public class EditQuesP2Activity extends AppCompatActivity {
         btnDelExam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                delExam();
+             ViewDialog alert = new ViewDialog();
+                alert.showDialog(EditQuesP2Activity.this,"Bạn Có Chắc Là Muốn Xóa Nó Chứ ? ");
             }
         });
     }
@@ -411,6 +416,35 @@ public class EditQuesP2Activity extends AppCompatActivity {
                                 });
                     }
                 });
+    }
+    //show dialog login success message
+    public class ViewDialog {
+        public void showDialog(Activity activity, String msg) {
+            final Dialog dialog = new Dialog(activity);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(false);
+            dialog.setContentView(R.layout.dialog_delete);
+
+            TextView text = (TextView) dialog.findViewById(R.id.txtTitleDel);
+            text.setText(msg);
+
+            Button dialogButtonYes = (Button) dialog.findViewById(R.id.btnYesDel);
+            Button dialogButtonNo = (Button) dialog.findViewById(R.id.btnNoDel);
+            dialogButtonYes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    delExam();
+                    dialog.dismiss();
+                }
+            });
+            dialogButtonNo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+            dialog.show();
+        }
     }
     /*
      gettime current

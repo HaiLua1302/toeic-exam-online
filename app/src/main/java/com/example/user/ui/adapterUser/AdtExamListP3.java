@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
 import com.example.user.ui.classExam.ClsRecExamP3;
-import com.example.user.ui.exam3.DecsP3Fragment;
+import com.example.user.ui.user.exam3.DecsP3Fragment;
 
 import java.util.List;
 

@@ -1,7 +1,5 @@
 package com.example.user.ui.adapterAdmin;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -21,7 +19,6 @@ import com.example.user.ui.admin.part4.AddNewQues1P4;
 import com.example.user.ui.admin.part5.AddNewQuesP5;
 import com.example.user.ui.admin.part6.AddNewQues1P6;
 import com.example.user.ui.admin.part7.AddNewQues1P7;
-import com.example.user.ui.exam1.DescP1Fragment;
 
 import java.util.List;
 

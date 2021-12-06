@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -88,6 +91,13 @@ public class AddNewQues2P7 extends AppCompatActivity {
                 setDataToRecViewDefault(idExam, idQues);
             }
         });
+        btnDelExam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ViewDialog dialog = new ViewDialog();
+                dialog.showDialog(AddNewQues2P7.this,"Bạn Có Chắc Là Muốn Xóa Nó Chứ ? ");
+            }
+        });
     }
     private void sendDataAddAQues(String getIdExam,String getIdQues){
         intent = new Intent(AddNewQues2P7.this, AddNewAQuesP7.class);
@@ -116,7 +126,9 @@ public class AddNewQues2P7 extends AppCompatActivity {
         adtNewQues2P7.startListening();
     }
 
-    private void delQuestion(String getIdExam,String getIdQues){
+    private void delQuestion(){
+        String getIdExam = txtNameExam.getText().toString();
+        String getIdQues = txtNameQues.getText().toString();
         String child = getIdExam +"/"+getIdQues;
         FirebaseDatabase.getInstance().getReference("List_Ques7")
                 .child(child)
@@ -138,6 +150,35 @@ public class AddNewQues2P7 extends AppCompatActivity {
                                 });
                     }
                 });
+    }
+    //show dialog login success message
+    public class ViewDialog {
+        public void showDialog(Activity activity, String msg) {
+            final Dialog dialog = new Dialog(activity);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(false);
+            dialog.setContentView(R.layout.dialog_delete);
+
+            TextView text = (TextView) dialog.findViewById(R.id.txtTitleDel);
+            text.setText(msg);
+
+            Button dialogButtonYes = (Button) dialog.findViewById(R.id.btnYesDel);
+            Button dialogButtonNo = (Button) dialog.findViewById(R.id.btnNoDel);
+            dialogButtonYes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    delQuestion();
+                    dialog.dismiss();
+                }
+            });
+            dialogButtonNo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+            dialog.show();
+        }
     }
     // this event will enable the back
     // function to the button on press

@@ -44,8 +44,7 @@ public class AdtSpinerPart extends ArrayAdapter<clsPartExam> {
         if (clsPartExam != null){
             textView.setText(clsPartExam.getPart());
         }
-
-
+        
         return partView;
     }
 }

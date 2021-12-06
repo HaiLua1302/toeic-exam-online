@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    tools:context=".ui.exam2.RecFragmentP2">
+    tools:context=".ui.user.exam2.RecFragmentP2">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recView_list_p2"

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_app"
     android:layout_gravity="center"
-    tools:context=".ui.exam3.RecP3Fragment">
+    tools:context=".ui.user.exam3.RecP3Fragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recViewListP3"

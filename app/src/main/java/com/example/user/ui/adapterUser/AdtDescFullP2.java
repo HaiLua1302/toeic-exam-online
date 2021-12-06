@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
 import com.example.user.ui.classExam.ClsPartP2;
-import com.example.user.ui.fullExam.TutorialFullExamP3Activity;
+
 
 import java.util.List;
 
@@ -57,8 +57,8 @@ public class AdtDescFullP2 extends RecyclerView.Adapter<AdtDescFullP2.DescFullP2
             SubmitHolder2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(itemView.getContext(), TutorialFullExamP3Activity.class);
-                    itemView.getContext().startActivity(intent);
+                   /* Intent intent = new Intent(itemView.getContext(), TutorialFullExamP3Activity.class);
+                    itemView.getContext().startActivity(intent);*/
                 }
             });
         }

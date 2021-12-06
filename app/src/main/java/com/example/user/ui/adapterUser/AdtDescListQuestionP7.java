@@ -1,6 +1,7 @@
 package com.example.user.ui.adapterUser;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
 import com.example.user.ui.classExam.ClsListQuestionP7;
-import com.example.user.ui.exam1.ResultP1Activity;
-import com.example.user.ui.exam7.ResultP7Activity;
+import com.example.user.ui.user.exam7.ResultP7Activity;
 
 import java.util.List;
 
@@ -84,20 +84,24 @@ public class AdtDescListQuestionP7 extends RecyclerView.Adapter<AdtDescListQuest
                 public void onClick(View v) {
                     if (btnA7Holder.getText().toString().equals(clsListQuestionP7List.get(pos).getResult())){
                         btnA7Holder.setBackgroundResource(R.drawable.chosse_answer);
+                        btnA7Holder.setTextColor(Color.WHITE);
                     }else{
                         btnA7Holder.setBackgroundResource(R.drawable.wrong_answer);
                         if (btnB7Holder.getText().toString().equals(clsListQuestionP7List.get(pos).getResult())){
                             btnB7Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnB7Holder.setTextColor(Color.WHITE);
                             btnD7Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnC7Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else if (btnC7Holder.getText().toString().equals(clsListQuestionP7List.get(pos).getResult())){
                             btnC7Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnC7Holder.setTextColor(Color.WHITE);
                             btnB7Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnD7Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else {
                             btnD7Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnD7Holder.setTextColor(Color.WHITE);
                             btnB7Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnC7Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
@@ -111,20 +115,24 @@ public class AdtDescListQuestionP7 extends RecyclerView.Adapter<AdtDescListQuest
                 public void onClick(View v) {
                     if (btnB7Holder.getText().toString().equals(clsListQuestionP7List.get(pos).getResult())){
                         btnB7Holder.setBackgroundResource(R.drawable.chosse_answer);
+                        btnB7Holder.setTextColor(Color.WHITE);
                     }else{
                         btnB7Holder.setBackgroundResource(R.drawable.wrong_answer);
                         if (btnA7Holder.getText().toString().equals(clsListQuestionP7List.get(pos).getResult())){
                             btnA7Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnA7Holder.setTextColor(Color.WHITE);
                             btnD7Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnC7Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else if (btnC7Holder.getText().toString().equals(clsListQuestionP7List.get(pos).getResult())){
                             btnC7Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnC7Holder.setTextColor(Color.WHITE);
                             btnA7Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnD7Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else {
                             btnD7Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnD7Holder.setTextColor(Color.WHITE);
                             btnA7Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnC7Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
@@ -138,20 +146,24 @@ public class AdtDescListQuestionP7 extends RecyclerView.Adapter<AdtDescListQuest
                 public void onClick(View v) {
                     if (btnC7Holder.getText().toString().equals(clsListQuestionP7List.get(pos).getResult())){
                         btnC7Holder.setBackgroundResource(R.drawable.chosse_answer);
+                        btnC7Holder.setTextColor(Color.WHITE);
                     }else{
                         btnC7Holder.setBackgroundResource(R.drawable.wrong_answer);
                         if (btnA7Holder.getText().toString().equals(clsListQuestionP7List.get(pos).getResult())){
                             btnA7Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnA7Holder.setTextColor(Color.WHITE);
                             btnD7Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnB7Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else if (btnB7Holder.getText().toString().equals(clsListQuestionP7List.get(pos).getResult())){
                             btnB7Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnB7Holder.setTextColor(Color.WHITE);
                             btnA7Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnD7Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else {
                             btnD7Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnD7Holder.setTextColor(Color.WHITE);
                             btnA7Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnB7Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
@@ -165,20 +177,24 @@ public class AdtDescListQuestionP7 extends RecyclerView.Adapter<AdtDescListQuest
                 public void onClick(View v) {
                     if (btnD7Holder.getText().toString().equals(clsListQuestionP7List.get(pos).getResult())){
                         btnD7Holder.setBackgroundResource(R.drawable.chosse_answer);
+                        btnD7Holder.setTextColor(Color.WHITE);
                     }else{
                         btnD7Holder.setBackgroundResource(R.drawable.wrong_answer);
                         if (btnA7Holder.getText().toString().equals(clsListQuestionP7List.get(pos).getResult())){
                             btnA7Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnA7Holder.setTextColor(Color.WHITE);
                             btnB7Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnC7Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else if (btnB7Holder.getText().toString().equals(clsListQuestionP7List.get(pos).getResult())){
                             btnB7Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnB7Holder.setTextColor(Color.WHITE);
                             btnA7Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnC7Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
                         else {
                             btnC7Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            btnC7Holder.setTextColor(Color.WHITE);
                             btnA7Holder.setBackgroundResource(R.drawable.bnt_answer);
                             btnB7Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
