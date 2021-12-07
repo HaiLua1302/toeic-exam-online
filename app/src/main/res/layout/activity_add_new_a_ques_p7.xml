@@ -31,7 +31,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <TextView
-                android:id="@+id/txtNameExamAQuesP6"
+                android:id="@+id/txtNameExamQuesP7"
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -43,7 +43,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txtNameAQuesP6"
+                android:id="@+id/txtNameQuesP7"
                 android:layout_width="230dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -67,7 +67,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txtNumAddQuesP6"
+                android:id="@+id/txtNumAddQuesP7"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -80,7 +80,7 @@
 
         </LinearLayout>
         <Button
-            android:id="@+id/btnClearP6"
+            android:id="@+id/btnClearP7"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_gravity="left"
@@ -90,7 +90,7 @@
             android:text="Clear"
             android:textColor="#fff" />
         <EditText
-            android:id="@+id/edtQuesContentP6"
+            android:id="@+id/edtQuesContentP7"
             android:layout_width="match_parent"
             android:paddingTop="10dp"
             android:gravity="top"
@@ -102,7 +102,7 @@
             android:inputType="textMultiLine"
             android:paddingLeft="10dp" />
         <EditText
-            android:id="@+id/edtAnsAP6"
+            android:id="@+id/edtAnsAP7"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
@@ -112,7 +112,7 @@
             android:inputType="textPersonName"
             android:paddingLeft="10dp" />
         <EditText
-            android:id="@+id/edtAnsBP6"
+            android:id="@+id/edtAnsBP7"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
@@ -122,7 +122,7 @@
             android:inputType="textPersonName"
             android:paddingLeft="10dp" />
         <EditText
-            android:id="@+id/edtAnsCP6"
+            android:id="@+id/edtAnsCP7"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
@@ -133,7 +133,7 @@
             android:paddingLeft="10dp" />
 
         <EditText
-            android:id="@+id/edtAnsDP6"
+            android:id="@+id/edtAnsDP7"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
@@ -144,7 +144,7 @@
             android:paddingLeft="10dp" />
 
         <EditText
-            android:id="@+id/edtResultP6"
+            android:id="@+id/edtResultP7"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
@@ -155,14 +155,14 @@
             android:paddingLeft="10dp" />
 
         <Button
-            android:id="@+id/btnAddAQuestionP6"
+            android:id="@+id/btnAddAQuestionP7"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/mybtn2"
-            android:text="Thêm"
+            android:text="Lưu"
             android:textColor="#fff" />
     </LinearLayout>
 

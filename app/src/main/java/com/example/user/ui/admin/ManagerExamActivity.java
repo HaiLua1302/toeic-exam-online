@@ -8,27 +8,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.user.R;
-import com.example.user.ui.adapterAdmin.AdtRecExamByPart;
-import com.example.user.ui.adapterAdmin.AdtSpinerPart;
+import com.example.user.ui.adapterAdmin.RecExamByPartAdapter;
+import com.example.user.ui.adapterAdmin.SpinerPartAdapter;
 import com.example.user.ui.admin.part1.AddNewQuesP1Activity;
 import com.example.user.ui.admin.part2.AddNewQuesP2Activity;
-import com.example.user.ui.admin.part3.AddNewQues1P3;
-import com.example.user.ui.admin.part4.AddNewQues1P4;
-import com.example.user.ui.admin.part5.AddNewQuesP5;
-import com.example.user.ui.admin.part6.AddNewQues1P6;
-import com.example.user.ui.admin.part7.AddNewQues1P7;
+import com.example.user.ui.admin.part3.AddNewQues1P3Activity;
+import com.example.user.ui.admin.part4.AddNewQues1P4Activity;
+import com.example.user.ui.admin.part5.AddNewQuesP5Activity;
+import com.example.user.ui.admin.part6.AddNewQues1P6Activity;
+import com.example.user.ui.admin.part7.AddNewQues1P7Activity;
 import com.example.user.ui.classAdmin.clsPartExam;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -46,11 +43,16 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
     private BottomNavigationView bottomNavigationView;
     private RecyclerView recViewQuestion;
     private ArrayList<clsPartExam> clsPartExams;
-    private AdtSpinerPart adtSpinerPart;
-    private AdtRecExamByPart recPartExam;
-    private String clickPartName , idkey;
+    private SpinerPartAdapter spinerPartAdapter;
+    private RecExamByPartAdapter recExamByPartAdapter;
+    private String clickPartName , idkey , idQuesInit;
     private int posSpinner;
     private Intent intent;
+    private DatabaseReference ref;
+    private DatabaseReference ref1;
+
+    private List<String> getKeyList;
+    private List<Integer> countTotalList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,9 +70,9 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
         recViewQuestion = findViewById(R.id.recViewQuestionAdmin);
 
         initListPart();
-
-        adtSpinerPart = new AdtSpinerPart(this,clsPartExams);
-        spnFilter.setAdapter(adtSpinerPart);
+        initRecyclerView();
+        spinerPartAdapter = new SpinerPartAdapter(this,clsPartExams);
+        spnFilter.setAdapter(spinerPartAdapter);
 
         spnFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -112,7 +114,6 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
             }
         });
 
-
         btnFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,12 +146,13 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
                 }
             }
         });
-        new Handler().post(new Runnable() {
+        /*new Handler().post(new Runnable() {
             @Override
             public void run() {
                 btnFilter.performClick();
             }
-        });
+        });*/
+
         btnAddNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -164,27 +166,27 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
                         intent = new Intent(ManagerExamActivity.this, AddNewQuesP2Activity.class);
                         startActivity(intent);
                     case 2:
-                        intent = new Intent(ManagerExamActivity.this, AddNewQues1P3.class);
+                        intent = new Intent(ManagerExamActivity.this, AddNewQues1P3Activity.class);
                         intent.putExtra("idExam","");
                         startActivity(intent);
                         break;
                     case 3:
-                        intent = new Intent(ManagerExamActivity.this, AddNewQues1P4.class);
+                        intent = new Intent(ManagerExamActivity.this, AddNewQues1P4Activity.class);
                         intent.putExtra("idExam","");
                         startActivity(intent);
                         break;
                     case 4:
-                        intent = new Intent(ManagerExamActivity.this, AddNewQuesP5.class);
+                        intent = new Intent(ManagerExamActivity.this, AddNewQuesP5Activity.class);
                         intent.putExtra("idExam","");
                         startActivity(intent);
                         break;
                     case 5:
-                        intent = new Intent(ManagerExamActivity.this, AddNewQues1P6.class);
+                        intent = new Intent(ManagerExamActivity.this, AddNewQues1P6Activity.class);
                         intent.putExtra("idExam","");
                         startActivity(intent);
                         break;
                     case 6:
-                        intent = new Intent(ManagerExamActivity.this, AddNewQues1P7.class);
+                        intent = new Intent(ManagerExamActivity.this, AddNewQues1P7Activity.class);
                         intent.putExtra("idExam","");
                         startActivity(intent);
                         break;
@@ -195,12 +197,12 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
                 }
             }
         });
-        new Handler().post(new Runnable() {
+        /*new Handler().post(new Runnable() {
             @Override
             public void run() {
                 btnFilter.performClick();
             }
-        });
+        });*/
     }
 
     @Override
@@ -219,21 +221,29 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
         clsPartExams.add(new clsPartExam("Part 7"));
     }
 
-    private void getDataFirebase(String ListQues_id,String Ques_id){
-        List<String> getKey = new ArrayList<>();
-        List<Integer> countTotal = new ArrayList<>();
+    private void initRecyclerView(){
+        idQuesInit = "";
+        getKeyList = new ArrayList<>();
+        countTotalList = new ArrayList<>();
         recViewQuestion.setLayoutManager(new LinearLayoutManager(this));
+        recExamByPartAdapter = new RecExamByPartAdapter(getKeyList, countTotalList,idQuesInit);
+        recViewQuestion.setAdapter(recExamByPartAdapter);
+    }
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Ques_id);
+    private void getDataFirebase(String ListQues_id,String Ques_id){
+        idQuesInit = Ques_id ;
+        ref = FirebaseDatabase.getInstance().getReference(Ques_id);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
+                    getKeyList.clear();
+                    countTotalList.clear();
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                         String key = dataSnapshot.getKey();
-                        getKey.add(key);
+                        getKeyList.add(key);
                     }
-                    DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference(ListQues_id);
+                    ref1 = FirebaseDatabase.getInstance().getReference(ListQues_id);
                     ref1.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot2) {
@@ -241,15 +251,13 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
                                 for (DataSnapshot snapshot3 : snapshot2.getChildren()){
                                     long count = snapshot3.getChildrenCount();
                                     if(count == 0){
-                                        countTotal.add(0);
+                                        countTotalList.add(0);
                                     }else {
-                                        countTotal.add((int) count);
+                                        countTotalList.add((int) count);
                                     }
 
                                 }
-
-                                recPartExam = new AdtRecExamByPart(getKey,countTotal,Ques_id);
-                                recViewQuestion.setAdapter(recPartExam);
+                                recExamByPartAdapter.notifyDataSetChanged();
                             }
 
                         }
@@ -268,25 +276,23 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
 
     }
 
-    private void getDataFirebase2(String child){
-        List<String> getKey = new ArrayList<>();
-        List<Integer> countTotal = new ArrayList<>();
-        recViewQuestion.setLayoutManager(new LinearLayoutManager(this));
-
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(child);
+    private void getDataFirebase2(String Ques_id){
+        idQuesInit = Ques_id ;
+        ref = FirebaseDatabase.getInstance().getReference(Ques_id);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
+                    getKeyList.clear();
+                    countTotalList.clear();
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                         String key = dataSnapshot.getKey();
-                        getKey.add(key);
+                        getKeyList.add(key);
                         long count = dataSnapshot.getChildrenCount();
-                        countTotal.add((int) count);
+                        countTotalList.add((int) count);
                         // Toast.makeText(ManagerQuestionActivity.this, countTotal.toString(),Toast.LENGTH_LONG).show();
                     }
-                    recPartExam = new AdtRecExamByPart(getKey,countTotal,child);
-                    recViewQuestion.setAdapter(recPartExam);
+                    recExamByPartAdapter.notifyDataSetChanged();
                 }
 
             }
@@ -298,25 +304,23 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
     }
 
     private void getDataFirebase3(String ListQues_id,String Ques_id){
-        List<String> getKey = new ArrayList<>();
-        List<Integer> countTotal = new ArrayList<>();
-        recViewQuestion.setLayoutManager(new LinearLayoutManager(this));
-
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Ques_id);
+        idQuesInit = Ques_id ;
+        ref = FirebaseDatabase.getInstance().getReference(Ques_id);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
+                    getKeyList.clear();
+                    countTotalList.clear();
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                         String key = dataSnapshot.getKey();
-                        getKey.add(key);
+                        getKeyList.add(key);
                         for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                             long count = dataSnapshot1.getChildrenCount();
-                            countTotal.add((int) count);
+                            countTotalList.add((int) count);
                         }
                     }
-                    recPartExam = new AdtRecExamByPart(getKey,countTotal,Ques_id);
-                    recViewQuestion.setAdapter(recPartExam);
+                    recExamByPartAdapter.notifyDataSetChanged();
                 }
 
             }
@@ -327,7 +331,7 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
         });
 
     }
-
+/*
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.home:
@@ -353,5 +357,14 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
                 break;
         }
         return false;
-    }
+    }*/
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    };
 }

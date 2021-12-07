@@ -31,7 +31,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <TextView
-                android:id="@+id/txtNameExamAQuesP6"
+                android:id="@+id/txtNameExamAQuesEditP6"
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -43,7 +43,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txtNameAQuesP6"
+                android:id="@+id/txtNameAQuesEditP6"
                 android:layout_width="230dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -54,33 +54,9 @@
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/txtNumTilte"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:lines="3"
-                android:paddingLeft="5dp"
-                android:text="| Câu :"
-                android:textColor="#009688"
-                android:textSize="18dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txtNumAddQuesP6"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:lines="3"
-                android:paddingLeft="5dp"
-                android:text="1"
-                android:textColor="#009688"
-                android:textSize="18dp"
-                android:textStyle="bold" />
-
         </LinearLayout>
         <Button
-            android:id="@+id/btnClearP6"
+            android:id="@+id/btnClearAQuesEditP6"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_gravity="left"
@@ -90,7 +66,7 @@
             android:text="Clear"
             android:textColor="#fff" />
         <EditText
-            android:id="@+id/edtQuesContentP6"
+            android:id="@+id/edtQuesContentAQuesEditP6"
             android:layout_width="match_parent"
             android:paddingTop="10dp"
             android:gravity="top"
@@ -102,7 +78,7 @@
             android:inputType="textMultiLine"
             android:paddingLeft="10dp" />
         <EditText
-            android:id="@+id/edtAnsAP6"
+            android:id="@+id/edtAnsAAQuesEditP6"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
@@ -112,7 +88,7 @@
             android:inputType="textPersonName"
             android:paddingLeft="10dp" />
         <EditText
-            android:id="@+id/edtAnsBP6"
+            android:id="@+id/edtAnsBAQuesEditP6"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
@@ -122,7 +98,7 @@
             android:inputType="textPersonName"
             android:paddingLeft="10dp" />
         <EditText
-            android:id="@+id/edtAnsCP6"
+            android:id="@+id/edtAnsCAQuesEditP6"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
@@ -133,7 +109,7 @@
             android:paddingLeft="10dp" />
 
         <EditText
-            android:id="@+id/edtAnsDP6"
+            android:id="@+id/edtAnsDAQuesEditP6"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
@@ -144,7 +120,7 @@
             android:paddingLeft="10dp" />
 
         <EditText
-            android:id="@+id/edtResultP6"
+            android:id="@+id/edtResultAQuesEditP6"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
@@ -155,14 +131,14 @@
             android:paddingLeft="10dp" />
 
         <Button
-            android:id="@+id/btnAddAQuestionP6"
+            android:id="@+id/btnAddAQuestionAQuesEditP6"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/mybtn2"
-            android:text="Thêm"
+            android:text="Lưu"
             android:textColor="#fff" />
     </LinearLayout>
 

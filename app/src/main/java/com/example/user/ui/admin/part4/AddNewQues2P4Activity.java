@@ -1,4 +1,4 @@
-package com.example.user.ui.admin.part2;
+package com.example.user.ui.admin.part4;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -27,10 +27,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.R;
-import com.example.user.ui.adapterAdmin.RecEditQuesP2Adapter;
-import com.example.user.ui.admin.ManagerExamActivity;
-import com.example.user.ui.classExam.ClsPartP2;
-import com.example.user.ui.classExam.ClsRecExamP2;
+import com.example.user.ui.adapterAdmin.AddNewAQuesP4Adapter;
+import com.example.user.ui.classExam.ClsListQuestionP4;
+import com.example.user.ui.classExam.ClsRecExamP4;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -48,12 +47,11 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
-public class EditQuesP2Activity extends AppCompatActivity {
+public class AddNewQues2P4Activity extends AppCompatActivity {
 
-    private TextView txtNameExam, txtNumQues, txtUrlAudio, txtTimeCurrent, txtTimeTotal;
+    private TextView txtNameExam, txtNameQues, txtUrlAudio, txtTimeCurrent, txtTimeTotal;
     private ImageView imgRefesh,imgPlayPause;
     private SeekBar seekBar;
     private MediaPlayer mediaPlayer;
@@ -64,23 +62,21 @@ public class EditQuesP2Activity extends AppCompatActivity {
     private final int PICK_AUDIO_REQUEST = 1;
 
     private RecyclerView recyclerView;
-    private Button btnChooseAudio,btnSaveFileAudio,btnDelExam;
-
-    private List<ClsPartP2> clsPartP2List;
-    private RecEditQuesP2Adapter adtRecViewQuetionP2;
+    private Button btnChooseAudio,btnSaveFileAudio,btnAddNew,btnDelExam;
 
     private StorageReference storageReference;
     private FirebaseStorage storage;
+    private AddNewAQuesP4Adapter addNewAQuesP4Adapter;
 
-    private String idExam,urlAudio;
-    private int iNumQues = 0;
+    private String idExam,idQues,urlAudio;
     
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_desc_exam_edit_p2);
-        getSupportActionBar().setTitle("Edit Question Part 2");
+        setContentView(R.layout.activity_add_new_ques2_p4);
+        getSupportActionBar().setTitle("Question Part 4 Manager");
+
         // calling the action bar
         ActionBar actionBar = getSupportActionBar();
         // Customize the back button
@@ -91,33 +87,36 @@ public class EditQuesP2Activity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         idExam = bundle.getString("idExam");
-        iNumQues = bundle.getInt("numQues");
+        idQues = bundle.getString("idQues");
+        urlAudio = bundle.getString("urlAudio");
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        txtNameExam = findViewById(R.id.txtNameExamEditP2);
-        //numQues = findViewById(R.id.txtNumEditQuestP2);
-        txtUrlAudio = findViewById(R.id.txtFilePathEditAudioP2);
-        txtTimeCurrent = findViewById(R.id.txtCurrentTimeEditP2);
-        txtTimeTotal = findViewById(R.id.txtTimeTotalEditP2);
+        //numQues = findViewById(R.id.txtNumEditQuest2P4);
+        txtUrlAudio = findViewById(R.id.txtFilePathEditAudio2P4);
+        txtTimeCurrent = findViewById(R.id.txtCurrentTimeEdit2P4);
+        txtTimeTotal = findViewById(R.id.txtTimeTotalEdit2P4);
+        txtNameExam = findViewById(R.id.txtNameExam2P4);
+        txtNameQues = findViewById(R.id.txtNameQues2P4);
 
-        imgRefesh = findViewById(R.id.imgRefreshEditP2);
-        imgPlayPause = findViewById(R.id.imgPlayAudEditP2);
+        imgRefesh = findViewById(R.id.imgRefreshEdit2P4);
+        imgPlayPause = findViewById(R.id.imgPlayAudEdit2P4);
 
-        seekBar = findViewById(R.id.playerSeekBarEditP2);
+        seekBar = findViewById(R.id.playerSeekBarEdit2P4);
         seekBar.setMax(100);
 
         mediaPlayer = new MediaPlayer();
 
-        recyclerView = findViewById(R.id.recViewListQuestEditP2);
+        recyclerView = findViewById(R.id.recViewListQuestEdit2P4);
 
-        btnChooseAudio = findViewById(R.id.btnEditAudioP2);
-        btnSaveFileAudio = findViewById(R.id.btnSaveEditAudioP2);
-        btnDelExam = findViewById(R.id.btnDelExamP2);
+        btnChooseAudio = findViewById(R.id.btnEditAudio2P4);
+        btnSaveFileAudio = findViewById(R.id.btnSaveEditAudio2P4);
+        btnDelExam = findViewById(R.id.btnDelExam2P4);
+        btnAddNew = findViewById(R.id.btnAddNewQues2P4);
 
         txtNameExam.setText(idExam);
-        //numQues.setText(String.valueOf(iNumQues));
+        txtNameQues.setText(idQues);
         setDataToRecViewDefault();
         imgRefesh.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +124,15 @@ public class EditQuesP2Activity extends AppCompatActivity {
                 setDataToRecViewDefault();
             }
         });
-
+        btnAddNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(AddNewQues2P4Activity.this, AddNewAQuesP4Activity.class);
+                intent1.putExtra("idExam",idExam);
+                intent1.putExtra("idQues",idQues);
+                startActivity(intent1);
+            }
+        });
         imgPlayPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,12 +148,7 @@ public class EditQuesP2Activity extends AppCompatActivity {
                 }
             }
         });
-        new Handler().post(new Runnable() {
-            @Override
-            public void run() {
-                imgPlayPause.performClick();
-            }
-        });
+
         prepareMediaPlayer();
         seekBar.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -181,26 +183,16 @@ public class EditQuesP2Activity extends AppCompatActivity {
         btnDelExam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             ViewDialog alert = new ViewDialog();
-                alert.showDialog(EditQuesP2Activity.this,"Bạn Có Chắc Là Muốn Xóa Nó Chứ ? ");
+                ViewDialog dialog = new ViewDialog();
+                dialog.showDialog(AddNewQues2P4Activity.this,"Bạn Có Chắc Là Muốn Xóa Nó Chứ ? ");
             }
         });
     }
-
-    private void setDataToRecViewDefault(){
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        FirebaseRecyclerOptions<ClsPartP2> options =
-                new FirebaseRecyclerOptions.Builder<ClsPartP2>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference("List_Ques2").child(idExam), ClsPartP2.class)
-                        .build();
-
-        adtRecViewQuetionP2 = new RecEditQuesP2Adapter(options,this,idExam);
-        recyclerView.setAdapter(adtRecViewQuetionP2);
-        adtRecViewQuetionP2.startListening();
-    }
-
     private void getNameAudioFromUrl(){
-        ref = FirebaseDatabase.getInstance().getReference("Ques_2").child(idExam);
+        String nameExam = txtNameExam.getText().toString().trim();
+        String idQues = txtNameQues.getText().toString().trim();
+        String child = nameExam + "/" + idQues ;
+        ref = FirebaseDatabase.getInstance().getReference("Ques_4").child(child);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -217,32 +209,18 @@ public class EditQuesP2Activity extends AppCompatActivity {
             }
         });
     }
-
-
     private void prepareMediaPlayer(){
-        ref = FirebaseDatabase.getInstance().getReference("Ques_2").child(idExam);
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                urlAudio = snapshot.child("url_audio").getValue().toString();
-                try {
-                    mediaPlayer.setDataSource(urlAudio);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    mediaPlayer.prepare();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                txtTimeTotal.setText(milliSecondsToTimer(mediaPlayer.getDuration()));
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-
-        });
+        try {
+            mediaPlayer.setDataSource(urlAudio);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            mediaPlayer.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        txtTimeTotal.setText(milliSecondsToTimer(mediaPlayer.getDuration()));
     }
     private Runnable runnable = new Runnable() {
         @Override
@@ -297,11 +275,15 @@ public class EditQuesP2Activity extends AppCompatActivity {
             txtUrlAudio.setText(filePath_AUD.toString());
         }
     };
+
     private void editAQuesAudio(String url_audio){
         //getting the reference of question part 1 node
-        ref = FirebaseDatabase.getInstance().getReference().child("Ques_2");
-        ClsRecExamP2 clsPartP2 = new ClsRecExamP2(idExam,url_audio);
-        ref.child(idExam).setValue(clsPartP2).addOnCompleteListener(new OnCompleteListener<Void>() {
+        String nameExam = txtNameExam.getText().toString().trim();
+        String idQues = txtNameQues.getText().toString().trim();
+        String child = nameExam + "/" + idQues ;
+        ref = FirebaseDatabase.getInstance().getReference("Ques_4");
+        ClsRecExamP4 clsPartP4 = new ClsRecExamP4(nameExam,url_audio,idQues);
+        ref.child(child).setValue(clsPartP4).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
@@ -332,7 +314,7 @@ public class EditQuesP2Activity extends AppCompatActivity {
                                 public void onSuccess(Uri uri) {
                                     String url_IMG = uri.toString();
                                     editAQuesAudio(url_IMG);
-                                    Toast.makeText(EditQuesP2Activity.this, "Đã lưu thay đổi thành công ", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(AddNewQues2P4Activity.this, "Đã lưu thay đổi thành công ", Toast.LENGTH_SHORT).show();
                                     storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(url_IMG);
                                     String link = storageReference.getName();
                                     txtUrlAudio.setText(link);
@@ -346,7 +328,7 @@ public class EditQuesP2Activity extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             progressDialog.dismiss();
-                            Toast.makeText(EditQuesP2Activity.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddNewQues2P4Activity.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -359,11 +341,29 @@ public class EditQuesP2Activity extends AppCompatActivity {
                     });
         }
         else {
-            Toast.makeText(EditQuesP2Activity.this, "Chưa chọn file Audio ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AddNewQues2P4Activity.this, "Chưa chọn file Audio ", Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void setDataToRecViewDefault(){
+        String nameExam = txtNameExam.getText().toString().trim();
+        String idQues = txtNameQues.getText().toString().trim();
+        String child = nameExam + "/" + idQues + "/Question";
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        FirebaseRecyclerOptions<ClsListQuestionP4> options =
+                new FirebaseRecyclerOptions.Builder<ClsListQuestionP4>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference("List_Ques4").child(child), ClsListQuestionP4.class)
+                        .build();
+        addNewAQuesP4Adapter = new AddNewAQuesP4Adapter(options,child,this);
+        recyclerView.setAdapter(addNewAQuesP4Adapter);
+        addNewAQuesP4Adapter.startListening();}
+
+
     private void delAudioCurrent(){
-        ref = FirebaseDatabase.getInstance().getReference("Ques_2").child(idExam);
+        String nameExam = txtNameExam.getText().toString();
+        String nameQues = txtNameQues.getText().toString();
+        String child = nameExam +"/"+nameQues;
+        ref = FirebaseDatabase.getInstance().getReference("Ques_4").child(child);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -392,25 +392,28 @@ public class EditQuesP2Activity extends AppCompatActivity {
         });
     }
     private void delExam(){
-        String idExam = txtNameExam.getText().toString();
-        FirebaseDatabase.getInstance().getReference()
-                .child("List_Ques2")
-                .child(idExam)
+        String nameExam = txtNameExam.getText().toString();
+        String nameQues = txtNameQues.getText().toString();
+        String child = nameExam +"/"+nameQues;
+        FirebaseDatabase.getInstance().getReference("List_Ques4")
+                .child(child)
                 .setValue(null)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         delAudioCurrent();
                         FirebaseDatabase.getInstance().getReference()
-                                .child("Ques_2")
-                                .child(idExam)
+                                .child("Ques_4")
+                                .child(child)
                                 .setValue(null)
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
-                                        Toast.makeText(EditQuesP2Activity.this, "Xóa câu hỏi thành công ", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(EditQuesP2Activity.this, ManagerExamActivity.class);
-                                        startActivity(intent);
+                                        Toast.makeText(AddNewQues2P4Activity.this, "Xóa câu hỏi thành công ", Toast.LENGTH_SHORT).show();
+                                       /* Intent intent = new Intent(AddNewQues2P4.this, ManagerExamActivity.class);
+                                        startActivity(intent);*/
+                                       finish();
+                                       return;
                                     }
                                 });
                     }
@@ -446,8 +449,8 @@ public class EditQuesP2Activity extends AppCompatActivity {
         }
     }
     /*
-     gettime current
-     * */
+   gettime current
+   * */
     private String getTime(){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
         String currentDateandTime = sdf.format(new Date());

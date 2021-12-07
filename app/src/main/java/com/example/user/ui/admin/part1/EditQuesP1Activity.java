@@ -27,7 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.R;
-import com.example.user.ui.adapterAdmin.AdtRecEditQuesP1;
+import com.example.user.ui.adapterAdmin.RecEditQuesP1Adapter;
 import com.example.user.ui.admin.ManagerExamActivity;
 import com.example.user.ui.classExam.ClsPartP1;
 import com.example.user.ui.classExam.ClsRecExamP1;
@@ -66,7 +66,7 @@ public class EditQuesP1Activity extends AppCompatActivity {
     private Button btnChooseAudio,btnSaveFileAudio,btnDelExam;
 
     private List<ClsPartP1> clsPartP1List;
-    private AdtRecEditQuesP1 adtRecViewQuetionP1;
+    private RecEditQuesP1Adapter adtRecViewQuetionP1;
 
     private StorageReference storageReference;
     private FirebaseStorage storage;
@@ -194,7 +194,7 @@ public class EditQuesP1Activity extends AppCompatActivity {
                         .setQuery(FirebaseDatabase.getInstance().getReference("List_Ques1").child(idExam), ClsPartP1.class)
                         .build();
 
-        adtRecViewQuetionP1 = new AdtRecEditQuesP1(options,this,idExam);
+        adtRecViewQuetionP1 = new RecEditQuesP1Adapter(options,this,idExam);
         recyclerView.setAdapter(adtRecViewQuetionP1);
         adtRecViewQuetionP1.startListening();
     }

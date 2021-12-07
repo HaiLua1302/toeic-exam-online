@@ -36,6 +36,16 @@
                 android:paddingLeft="8dp"
                 android:src="@drawable/ic_baseline_refresh_24" />
         </LinearLayout>
+        <Button
+            android:id="@+id/btnClear1P7"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/mybtn2"
+            android:text="Clear"
+            android:textColor="#fff" />
         <EditText
             android:id="@+id/edtAddParagraphP7"
             android:layout_width="match_parent"

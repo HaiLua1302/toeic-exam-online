@@ -21,8 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.R;
-import com.example.user.ui.adapterAdmin.AdtRecQuesP1;
-import com.example.user.ui.admin.AdminHome;
+import com.example.user.ui.adapterAdmin.RecQuesP1Adapter;
+import com.example.user.ui.admin.AdminHomeActivity;
 import com.example.user.ui.admin.ManagerExamActivity;
 import com.example.user.ui.classExam.ClsPartP1;
 import com.example.user.ui.classExam.ClsRecExamP1;
@@ -62,7 +62,7 @@ public class AddNewQuesP1Activity extends AppCompatActivity {
     private List<ClsPartP1> clsPartP1s;
     private String urlAud,idExam;
 
-    private AdtRecQuesP1 AdtRecQuesP1;
+    private RecQuesP1Adapter RecQuesP1Adapter;
 
     //our database reference object
     private DatabaseReference databaseQuest_p1;
@@ -279,9 +279,9 @@ public class AddNewQuesP1Activity extends AppCompatActivity {
                             .setQuery(FirebaseDatabase.getInstance().getReference("List_Ques1").child(nameExam), ClsPartP1.class)
                             .build();
 
-            AdtRecQuesP1 = new AdtRecQuesP1(options,nameExam,this);
-            recyclerView.setAdapter(AdtRecQuesP1);
-            AdtRecQuesP1.startListening();
+            RecQuesP1Adapter = new RecQuesP1Adapter(options,nameExam,this);
+            recyclerView.setAdapter(RecQuesP1Adapter);
+            RecQuesP1Adapter.startListening();
         }
 
     }
@@ -295,7 +295,7 @@ public class AddNewQuesP1Activity extends AppCompatActivity {
                 Intent intent = new Intent(AddNewQuesP1Activity.this, ManagerExamActivity.class);
                 startActivity(intent);
             case R.id.home_bar_admin:
-                Intent intent2 = new Intent(AddNewQuesP1Activity.this, AdminHome.class);
+                Intent intent2 = new Intent(AddNewQuesP1Activity.this, AdminHomeActivity.class);
                 startActivity(intent2);
                 return true;
         }
