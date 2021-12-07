@@ -110,6 +110,7 @@ public class AdtDescP2 extends RecyclerView.Adapter<AdtDescP2.DescP2Holder> {
                         correct++;
                     }else {
                         a2Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        a2Holder.setTextColor(Color.WHITE);
                         if (b2Holder.getText().toString().equals(clsPartP2List.get(pos).getResult())){
                             b2Holder.setBackgroundResource(R.drawable.chosse_answer);
                             b2Holder.setTextColor(Color.WHITE);
@@ -139,6 +140,7 @@ public class AdtDescP2 extends RecyclerView.Adapter<AdtDescP2.DescP2Holder> {
                         correct++;
                     }else {
                         b2Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        b2Holder.setTextColor(Color.WHITE);
                         if (a2Holder.getText().toString().equals(clsPartP2List.get(pos).getResult())){
                             a2Holder.setBackgroundResource(R.drawable.chosse_answer);
                             a2Holder.setTextColor(Color.WHITE);
@@ -170,6 +172,7 @@ public class AdtDescP2 extends RecyclerView.Adapter<AdtDescP2.DescP2Holder> {
                         correct++;
                     }else {
                         c2Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        c2Holder.setTextColor(Color.WHITE);
                         if (a2Holder.getText().toString().equals(clsPartP2List.get(pos).getResult())){
                             a2Holder.setBackgroundResource(R.drawable.chosse_answer);
                             a2Holder.setTextColor(Color.WHITE);

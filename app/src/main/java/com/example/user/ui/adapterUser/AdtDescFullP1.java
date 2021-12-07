@@ -1,6 +1,7 @@
 package com.example.user.ui.adapterUser;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -182,20 +183,25 @@ public class AdtDescFullP1 extends RecyclerView.Adapter<AdtDescFullP1.DescFullP1
                 public void onClick(View v) {
                     if (C1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())) {
                         C1Holder.setBackgroundResource(R.drawable.chosse_answer);
+                        C1Holder.setTextColor(Color.WHITE);
 //                        correctAnswer();
                         correct++;
                     } else {
                         C1Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        C1Holder.setTextColor(Color.WHITE);
                         if (B1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())) {
                             B1Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            B1Holder.setTextColor(Color.WHITE);
                             A1Holder.setBackgroundResource(R.drawable.bnt_answer);
                             D1Holder.setBackgroundResource(R.drawable.bnt_answer);
                         } else if (A1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())) {
                             A1Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            A1Holder.setTextColor(Color.WHITE);
                             B1Holder.setBackgroundResource(R.drawable.bnt_answer);
                             D1Holder.setBackgroundResource(R.drawable.bnt_answer);
                         } else if (D1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())) {
                             D1Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            D1Holder.setTextColor(Color.WHITE);
                             A1Holder.setBackgroundResource(R.drawable.bnt_answer);
                             B1Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }
@@ -217,21 +223,26 @@ public class AdtDescFullP1 extends RecyclerView.Adapter<AdtDescFullP1.DescFullP1
                 public void onClick(View v) {
                     if (D1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())) {
                         D1Holder.setBackgroundResource(R.drawable.chosse_answer);
+                        D1Holder.setTextColor(Color.WHITE);
 //                        correctAnswer();
                         correct++;
                     } else {
 
                         D1Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        D1Holder.setTextColor(Color.WHITE);
                         if (B1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())) {
                             B1Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            B1Holder.setTextColor(Color.WHITE);
                             C1Holder.setBackgroundResource(R.drawable.bnt_answer);
                             A1Holder.setBackgroundResource(R.drawable.bnt_answer);
                         } else if (C1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())) {
                             C1Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            C1Holder.setTextColor(Color.WHITE);
                             B1Holder.setBackgroundResource(R.drawable.bnt_answer);
                             A1Holder.setBackgroundResource(R.drawable.bnt_answer);
                         } else if (A1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())) {
                             A1Holder.setBackgroundResource(R.drawable.chosse_answer);
+                            A1Holder.setTextColor(Color.WHITE);
                             C1Holder.setBackgroundResource(R.drawable.bnt_answer);
                             B1Holder.setBackgroundResource(R.drawable.bnt_answer);
                         }

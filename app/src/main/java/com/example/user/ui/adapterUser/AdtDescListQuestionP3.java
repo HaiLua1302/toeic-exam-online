@@ -79,6 +79,7 @@ public class AdtDescListQuestionP3 extends RecyclerView.Adapter<AdtDescListQuest
                         btnA3Holder.setTextColor(Color.WHITE);
                     }else{
                         btnA3Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        btnA3Holder.setTextColor(Color.WHITE);
                         if (btnB3Holder.getText().toString().equals(clsListQuestionP3List.get(pos).getResult())){
                             btnB3Holder.setBackgroundResource(R.drawable.chosse_answer);
                             btnB3Holder.setTextColor(Color.WHITE);
@@ -110,6 +111,7 @@ public class AdtDescListQuestionP3 extends RecyclerView.Adapter<AdtDescListQuest
                         btnB3Holder.setTextColor(Color.WHITE);
                     }else{
                         btnB3Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        btnB3Holder.setTextColor(Color.WHITE);
                         if (btnA3Holder.getText().toString().equals(clsListQuestionP3List.get(pos).getResult())){
                             btnA3Holder.setBackgroundResource(R.drawable.chosse_answer);
                             btnA3Holder.setTextColor(Color.WHITE);
@@ -141,6 +143,7 @@ public class AdtDescListQuestionP3 extends RecyclerView.Adapter<AdtDescListQuest
                         btnC3Holder.setTextColor(Color.WHITE);
                     }else{
                         btnC3Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        btnC3Holder.setTextColor(Color.WHITE);
                         if (btnA3Holder.getText().toString().equals(clsListQuestionP3List.get(pos).getResult())){
                             btnA3Holder.setBackgroundResource(R.drawable.chosse_answer);
                             btnA3Holder.setTextColor(Color.WHITE);
@@ -172,6 +175,7 @@ public class AdtDescListQuestionP3 extends RecyclerView.Adapter<AdtDescListQuest
                         btnD3Holder.setTextColor(Color.WHITE);
                     }else{
                         btnD3Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        btnD3Holder.setTextColor(Color.WHITE);
                         if (btnA3Holder.getText().toString().equals(clsListQuestionP3List.get(pos).getResult())){
                             btnA3Holder.setBackgroundResource(R.drawable.chosse_answer);
                             btnA3Holder.setTextColor(Color.WHITE);

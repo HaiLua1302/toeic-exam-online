@@ -95,6 +95,7 @@ public class AdtDescListQuestionP6  extends RecyclerView.Adapter<AdtDescListQues
                         btnA6Holder.setTextColor(Color.WHITE);
                     }else{
                         btnA6Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        btnA6Holder.setTextColor(Color.WHITE);
                         if (btnB6Holder.getText().toString().equals(clsListQuestionP6List.get(pos).getResult())){
                             btnB6Holder.setBackgroundResource(R.drawable.chosse_answer);
                             btnB6Holder.setTextColor(Color.WHITE);
@@ -126,6 +127,7 @@ public class AdtDescListQuestionP6  extends RecyclerView.Adapter<AdtDescListQues
                         btnB6Holder.setTextColor(Color.WHITE);
                     }else{
                         btnB6Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        btnB6Holder.setTextColor(Color.WHITE);
                         if (btnA6Holder.getText().toString().equals(clsListQuestionP6List.get(pos).getResult())){
                             btnA6Holder.setBackgroundResource(R.drawable.chosse_answer);
                             btnA6Holder.setTextColor(Color.WHITE);
@@ -157,6 +159,7 @@ public class AdtDescListQuestionP6  extends RecyclerView.Adapter<AdtDescListQues
                         btnC6Holder.setTextColor(Color.WHITE);
                     }else{
                         btnC6Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        btnC6Holder.setTextColor(Color.WHITE);
                         if (btnA6Holder.getText().toString().equals(clsListQuestionP6List.get(pos).getResult())){
                             btnA6Holder.setBackgroundResource(R.drawable.chosse_answer);
                             btnA6Holder.setTextColor(Color.WHITE);
@@ -188,6 +191,7 @@ public class AdtDescListQuestionP6  extends RecyclerView.Adapter<AdtDescListQues
                         btnD6Holder.setTextColor(Color.WHITE);
                     }else{
                         btnD6Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        btnD6Holder.setTextColor(Color.WHITE);
                         if (btnA6Holder.getText().toString().equals(clsListQuestionP6List.get(pos).getResult())){
                             btnA6Holder.setBackgroundResource(R.drawable.chosse_answer);
                             btnA6Holder.setTextColor(Color.WHITE);

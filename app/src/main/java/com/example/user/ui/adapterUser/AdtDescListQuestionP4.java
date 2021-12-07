@@ -75,6 +75,7 @@ public class AdtDescListQuestionP4 extends RecyclerView.Adapter<AdtDescListQuest
                         btnA4Holder.setTextColor(Color.WHITE);
                     }else{
                         btnA4Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        btnA4Holder.setTextColor(Color.WHITE);
                         if (btnB4Holder.getText().toString().equals(clsListQuestionP4List.get(pos).getResult())){
                             btnB4Holder.setBackgroundResource(R.drawable.chosse_answer);
                             btnB4Holder.setTextColor(Color.WHITE);
@@ -106,6 +107,7 @@ public class AdtDescListQuestionP4 extends RecyclerView.Adapter<AdtDescListQuest
                         btnB4Holder.setTextColor(Color.WHITE);
                     }else{
                         btnB4Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        btnB4Holder.setTextColor(Color.WHITE);
                         if (btnA4Holder.getText().toString().equals(clsListQuestionP4List.get(pos).getResult())){
                             btnA4Holder.setBackgroundResource(R.drawable.chosse_answer);
                             btnA4Holder.setTextColor(Color.WHITE);
@@ -137,6 +139,7 @@ public class AdtDescListQuestionP4 extends RecyclerView.Adapter<AdtDescListQuest
                         btnC4Holder.setTextColor(Color.WHITE);
                     }else{
                         btnC4Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        btnC4Holder.setTextColor(Color.WHITE);
                         if (btnA4Holder.getText().toString().equals(clsListQuestionP4List.get(pos).getResult())){
                             btnA4Holder.setBackgroundResource(R.drawable.chosse_answer);
                             btnA4Holder.setTextColor(Color.WHITE);
@@ -168,6 +171,7 @@ public class AdtDescListQuestionP4 extends RecyclerView.Adapter<AdtDescListQuest
                         btnD4Holder.setTextColor(Color.WHITE);
                     }else{
                         btnD4Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        btnD4Holder.setTextColor(Color.WHITE);
                         if (btnA4Holder.getText().toString().equals(clsListQuestionP4List.get(pos).getResult())){
                             btnA4Holder.setBackgroundResource(R.drawable.chosse_answer);
                             btnA4Holder.setTextColor(Color.WHITE);

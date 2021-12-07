@@ -87,6 +87,7 @@ public class AdtDescListQuestionP7 extends RecyclerView.Adapter<AdtDescListQuest
                         btnA7Holder.setTextColor(Color.WHITE);
                     }else{
                         btnA7Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        btnA7Holder.setTextColor(Color.WHITE);
                         if (btnB7Holder.getText().toString().equals(clsListQuestionP7List.get(pos).getResult())){
                             btnB7Holder.setBackgroundResource(R.drawable.chosse_answer);
                             btnB7Holder.setTextColor(Color.WHITE);
@@ -118,6 +119,7 @@ public class AdtDescListQuestionP7 extends RecyclerView.Adapter<AdtDescListQuest
                         btnB7Holder.setTextColor(Color.WHITE);
                     }else{
                         btnB7Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        btnB7Holder.setTextColor(Color.WHITE);
                         if (btnA7Holder.getText().toString().equals(clsListQuestionP7List.get(pos).getResult())){
                             btnA7Holder.setBackgroundResource(R.drawable.chosse_answer);
                             btnA7Holder.setTextColor(Color.WHITE);
@@ -149,6 +151,7 @@ public class AdtDescListQuestionP7 extends RecyclerView.Adapter<AdtDescListQuest
                         btnC7Holder.setTextColor(Color.WHITE);
                     }else{
                         btnC7Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        btnC7Holder.setTextColor(Color.WHITE);
                         if (btnA7Holder.getText().toString().equals(clsListQuestionP7List.get(pos).getResult())){
                             btnA7Holder.setBackgroundResource(R.drawable.chosse_answer);
                             btnA7Holder.setTextColor(Color.WHITE);
@@ -180,6 +183,7 @@ public class AdtDescListQuestionP7 extends RecyclerView.Adapter<AdtDescListQuest
                         btnD7Holder.setTextColor(Color.WHITE);
                     }else{
                         btnD7Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        btnD7Holder.setTextColor(Color.WHITE);
                         if (btnA7Holder.getText().toString().equals(clsListQuestionP7List.get(pos).getResult())){
                             btnA7Holder.setBackgroundResource(R.drawable.chosse_answer);
                             btnA7Holder.setTextColor(Color.WHITE);

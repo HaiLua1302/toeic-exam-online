@@ -159,6 +159,7 @@ public class AdtDescP1 extends RecyclerView.Adapter<AdtDescP1.DescP1Holder> {
                     {
 
                         B1Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        B1Holder.setTextColor(Color.WHITE);
 
                         if (A1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())){
                             A1Holder.setBackgroundResource(R.drawable.chosse_answer);
@@ -201,6 +202,7 @@ public class AdtDescP1 extends RecyclerView.Adapter<AdtDescP1.DescP1Holder> {
                     else
                     {
                         C1Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        C1Holder.setTextColor(Color.WHITE);
                         if (B1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())){
                             B1Holder.setBackgroundResource(R.drawable.chosse_answer);
                             B1Holder.setTextColor(Color.WHITE);
@@ -244,6 +246,7 @@ public class AdtDescP1 extends RecyclerView.Adapter<AdtDescP1.DescP1Holder> {
                     {
 
                         D1Holder.setBackgroundResource(R.drawable.wrong_answer);
+                        D1Holder.setTextColor(Color.WHITE);
                         if (B1Holder.getText().toString().equals(clsPartP1s.get(pos).getResult())){
                             B1Holder.setBackgroundResource(R.drawable.chosse_answer);
                             B1Holder.setTextColor(Color.WHITE);
