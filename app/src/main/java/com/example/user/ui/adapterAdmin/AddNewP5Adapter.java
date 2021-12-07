@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.user.R;
 import com.example.user.ui.admin.part4.EditAQuesP4Activity;
+import com.example.user.ui.admin.part5.EditAQuesP5Activity;
 import com.example.user.ui.classExam.ClsPartP5;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -75,12 +76,12 @@ public class AddNewP5Adapter extends FirebaseRecyclerAdapter<ClsPartP5, AddNewP5
             imgDelHolder = itemView.findViewById(R.id.imgRecDelEditAdmin);
         }
         private void setData(ClsPartP5 model, int pos){
-            idQuesHolder.setText(model.getId_ques());
+            idQuesHolder.setText(model.getQues_content());
             nounHolder.setText(String.valueOf(pos+1));
             resultHolder.setText(model.getResult());
         }
         private void sendDatatoDetail(ClsPartP5 model,int pos){
-            Intent intent = new Intent(itemView.getContext(), EditAQuesP4Activity.class);
+            Intent intent = new Intent(itemView.getContext(), EditAQuesP5Activity.class);
             String result = model.getResult().toString();
             String id_ques = model.getId_ques().toString();
             String quesContent = model.getQues_content().toString();
@@ -88,6 +89,7 @@ public class AddNewP5Adapter extends FirebaseRecyclerAdapter<ClsPartP5, AddNewP5
             String ansB = model.getAns_b().toString();
             String ansC = model.getAns_c().toString();
             String ansD = model.getAns_d().toString();
+            String noun = String.valueOf(pos+1);
             intent.putExtra("idExam",nameExam);
             intent.putExtra("result",result);
             intent.putExtra("idQues",id_ques);
@@ -96,6 +98,7 @@ public class AddNewP5Adapter extends FirebaseRecyclerAdapter<ClsPartP5, AddNewP5
             intent.putExtra("ansB",ansB);
             intent.putExtra("ansC",ansC);
             intent.putExtra("ansD",ansD);
+            intent.putExtra("noun",noun);
             itemView.getContext().startActivity(intent);
         }
         public void clickDel(ClsPartP5 model){

@@ -75,7 +75,7 @@ public class AddNewListQuesP2Activity extends AppCompatActivity {
             databaseQuest_p2 = FirebaseDatabase.getInstance().getReference("List_Ques2").child(idExam);
             String Result = edtResult.getText().toString();
             String child = idExam + "_" + getTime();
-            ClsPartP2 clsPartP2 = new ClsPartP2(Result,child);
+            ClsPartP2 clsPartP2 = new ClsPartP2(child,Result);
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading Question...");
             progressDialog.show();

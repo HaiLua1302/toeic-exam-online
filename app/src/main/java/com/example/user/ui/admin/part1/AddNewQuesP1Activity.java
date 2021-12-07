@@ -290,10 +290,10 @@ public class AddNewQuesP1Activity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                /*this.finish();
-                return true;*/
-                Intent intent = new Intent(AddNewQuesP1Activity.this, ManagerExamActivity.class);
-                startActivity(intent);
+                this.finish();
+                return true;
+               /* Intent intent = new Intent(AddNewQuesP1Activity.this, ManagerExamActivity.class);
+                startActivity(intent);*/
             case R.id.home_bar_admin:
                 Intent intent2 = new Intent(AddNewQuesP1Activity.this, AdminHomeActivity.class);
                 startActivity(intent2);

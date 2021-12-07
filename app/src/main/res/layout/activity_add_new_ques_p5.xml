@@ -80,7 +80,7 @@
                 android:gravity="center"
                 android:lines="3"
                 android:paddingLeft="5dp"
-                android:text="Id Câu Hỏi"
+                android:text="Câu Hỏi"
                 android:textColor="#009688"
                 android:textSize="18dp"
                 android:textStyle="bold" />

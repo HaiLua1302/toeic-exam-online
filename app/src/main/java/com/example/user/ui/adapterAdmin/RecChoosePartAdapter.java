@@ -25,7 +25,7 @@ import java.util.List;
 public class RecChoosePartAdapter extends RecyclerView.Adapter<RecChoosePartAdapter.RecChoosePartHolder> {
     private String keyExam;
     private List<String> getKey;
-
+    private String part;
     public OnShareClickedListener mCallback;
 
     public RecChoosePartAdapter() {
@@ -35,9 +35,10 @@ public class RecChoosePartAdapter extends RecyclerView.Adapter<RecChoosePartAdap
         this.mCallback = mCallback;
     }
 
-    public RecChoosePartAdapter(String keyExam, List<String> getKey) {
+    public RecChoosePartAdapter(String keyExam, List<String> getKey, String part) {
         this.keyExam = keyExam;
         this.getKey = getKey;
+        this.part = part;
     }
 
     @NonNull
@@ -98,7 +99,7 @@ public class RecChoosePartAdapter extends RecyclerView.Adapter<RecChoosePartAdap
         private void sendDataEdit(int pos){
             String idExam = getKey.get(pos).toString().trim();
             int numberQues = pos+1;
-            switch(keyExam) {
+            switch(part) {
                 case "Ques_2":
                     Intent = new Intent(itemView.getContext(), EditQuesP2Activity.class);
                     Intent.putExtra("idExam",idExam);

@@ -146,25 +146,17 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
                 }
             }
         });
-        /*new Handler().post(new Runnable() {
-            @Override
-            public void run() {
-                btnFilter.performClick();
-            }
-        });*/
+
 
         btnAddNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 posSpinner = spnFilter.getSelectedItemPosition();
                 switch(posSpinner) {
-                    case 0:
-                        intent = new Intent(ManagerExamActivity.this, AddNewQuesP1Activity.class);
-                        startActivity(intent);
-                        break;
                     case 1:
                         intent = new Intent(ManagerExamActivity.this, AddNewQuesP2Activity.class);
                         startActivity(intent);
+                        break;
                     case 2:
                         intent = new Intent(ManagerExamActivity.this, AddNewQues1P3Activity.class);
                         intent.putExtra("idExam","");
@@ -190,6 +182,7 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
                         intent.putExtra("idExam","");
                         startActivity(intent);
                         break;
+                    case 0:
                     default:
                         intent = new Intent(ManagerExamActivity.this, AddNewQuesP1Activity.class);
                         startActivity(intent);
@@ -222,16 +215,12 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
     }
 
     private void initRecyclerView(){
-        idQuesInit = "";
         getKeyList = new ArrayList<>();
         countTotalList = new ArrayList<>();
         recViewQuestion.setLayoutManager(new LinearLayoutManager(this));
-        recExamByPartAdapter = new RecExamByPartAdapter(getKeyList, countTotalList,idQuesInit);
-        recViewQuestion.setAdapter(recExamByPartAdapter);
     }
 
     private void getDataFirebase(String ListQues_id,String Ques_id){
-        idQuesInit = Ques_id ;
         ref = FirebaseDatabase.getInstance().getReference(Ques_id);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -257,6 +246,8 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
                                     }
 
                                 }
+                                recExamByPartAdapter = new RecExamByPartAdapter(getKeyList, countTotalList,Ques_id);
+                                recViewQuestion.setAdapter(recExamByPartAdapter);
                                 recExamByPartAdapter.notifyDataSetChanged();
                             }
 
@@ -277,7 +268,6 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
     }
 
     private void getDataFirebase2(String Ques_id){
-        idQuesInit = Ques_id ;
         ref = FirebaseDatabase.getInstance().getReference(Ques_id);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -292,6 +282,8 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
                         countTotalList.add((int) count);
                         // Toast.makeText(ManagerQuestionActivity.this, countTotal.toString(),Toast.LENGTH_LONG).show();
                     }
+                    recExamByPartAdapter = new RecExamByPartAdapter(getKeyList, countTotalList,Ques_id);
+                    recViewQuestion.setAdapter(recExamByPartAdapter);
                     recExamByPartAdapter.notifyDataSetChanged();
                 }
 
@@ -304,7 +296,6 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
     }
 
     private void getDataFirebase3(String ListQues_id,String Ques_id){
-        idQuesInit = Ques_id ;
         ref = FirebaseDatabase.getInstance().getReference(Ques_id);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -320,6 +311,8 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
                             countTotalList.add((int) count);
                         }
                     }
+                    recExamByPartAdapter = new RecExamByPartAdapter(getKeyList, countTotalList,Ques_id);
+                    recViewQuestion.setAdapter(recExamByPartAdapter);
                     recExamByPartAdapter.notifyDataSetChanged();
                 }
 

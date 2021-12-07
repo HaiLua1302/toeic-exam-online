@@ -32,7 +32,6 @@ public class AddNewQuesP5Activity extends AppCompatActivity {
     private AddNewP5Adapter addNewP5Adapter;
     private Intent intent;
     private String idExam;
-    private DatabaseReference ref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,8 +139,8 @@ public class AddNewQuesP5Activity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
              case android.R.id.home:
-                intent = new Intent(AddNewQuesP5Activity.this, ManagerExamActivity.class);
-                startActivity(intent);
+                 finish();
+                 return true;
             case R.id.home_bar_admin:
                 intent = new Intent(AddNewQuesP5Activity.this, AdminHomeActivity.class);
                 startActivity(intent);

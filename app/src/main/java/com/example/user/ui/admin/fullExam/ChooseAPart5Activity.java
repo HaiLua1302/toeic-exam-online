@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import com.example.user.R;
 import com.example.user.ui.adapterAdmin.RecChoosePartAdapter;
-import com.example.user.ui.admin.AdminHomeActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,8 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChooseAPart1Activity extends AppCompatActivity implements RecChoosePartAdapter.OnShareClickedListener{
-
+public class ChooseAPart5Activity extends AppCompatActivity  implements RecChoosePartAdapter.OnShareClickedListener{
     private TextView txtIdExam,txtIdPart;
     private Button btnSavePart;
     private RecyclerView recyclerView;
@@ -41,12 +39,11 @@ public class ChooseAPart1Activity extends AppCompatActivity implements RecChoose
 
     private String keyExam;
     private List<String> dataSource;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_a_part);
-        getSupportActionBar().setTitle("Select Part 1");
+        setContentView(R.layout.activity_choose_a_part5);
+        getSupportActionBar().setTitle("Select Part 5");
 
         // calling the action bar
         ActionBar actionBar = getSupportActionBar();
@@ -55,11 +52,11 @@ public class ChooseAPart1Activity extends AppCompatActivity implements RecChoose
         // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        txtIdExam = findViewById(R.id.txtIdExamFullP1);
-        txtIdPart = findViewById(R.id.txtNameExamChooseP1);
-        txtIdExam = findViewById(R.id.txtIdExamFullP1);
-        recyclerView = findViewById(R.id.recViewExamP1);
-        btnSavePart = findViewById(R.id.btnSavaP1);
+        txtIdExam = findViewById(R.id.txtIdExamFullP5);
+        txtIdPart = findViewById(R.id.txtNameExamChooseP5);
+        txtIdExam = findViewById(R.id.txtIdExamFullP5);
+        recyclerView = findViewById(R.id.recViewExamP5);
+        btnSavePart = findViewById(R.id.btnSavaP5);
 
         intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -88,29 +85,30 @@ public class ChooseAPart1Activity extends AppCompatActivity implements RecChoose
         // dai y la nhung ghi lien quan den recycdfsdf..
 
         keyExam = "";
-        String part = "Ques_1";
+        String part = "Ques_5";
         dataSource = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recChoosePartAdapter = new RecChoosePartAdapter(keyExam,dataSource,part);
-        recChoosePartAdapter.setOnShareClickedListener(ChooseAPart1Activity.this::ShareClicked);
+        recChoosePartAdapter.setOnShareClickedListener(ChooseAPart5Activity.this::ShareClicked);
         recyclerView.setAdapter(recChoosePartAdapter);
     }
 
     private void getDataFirebase(){
         keyExam = txtIdExam.getText().toString();
-        ref = FirebaseDatabase.getInstance().getReference("Ques_1");
+        ref = FirebaseDatabase.getInstance().getReference("Ques_5");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
                     dataSource.clear();
-                    for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                    for (DataSnapshot snapshot1 : snapshot.getChildren()){
                         String key = snapshot1.getKey();
                         dataSource.add(key);
                     }
+                    
                     recChoosePartAdapter.notifyDataSetChanged();
                 }else {
-                    Toast.makeText(ChooseAPart1Activity.this,"Dữ liệu lôi vui lòng kiểm tra Firebase!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChooseAPart5Activity.this,"Dữ liệu lôi vui lòng kiểm tra Firebase!",Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -122,6 +120,7 @@ public class ChooseAPart1Activity extends AppCompatActivity implements RecChoose
         });
 
     }
+
     // this event will enable the back
     // function to the button on press
     @Override

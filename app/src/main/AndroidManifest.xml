@@ -13,7 +13,13 @@
         android:roundIcon="@mipmap/ic_logo_foreground"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.admin.part6.EditAQuesP6Activity"></activity>
+        <activity android:name=".ui.admin.fullExam.EditAPartActivity"></activity>
+        <activity android:name=".ui.admin.fullExam.ChooseAPart7Activity" />
+        <activity android:name=".ui.admin.fullExam.ChooseAPart6Activity" />
+        <activity android:name=".ui.admin.fullExam.ChooseAPart5Activity" />
+        <activity android:name=".ui.admin.fullExam.ChooseAPart4Activity" />
+        <activity android:name=".ui.admin.part5.EditAQuesP5Activity" />
+        <activity android:name=".ui.admin.part6.EditAQuesP6Activity" />
         <activity android:name=".ui.admin.part7.EditAQuesP7Activity" />
         <activity android:name=".ui.user.fullExam.RecListExamFull" />
         <activity android:name=".ui.user.exam7.ResultP7Activity" />

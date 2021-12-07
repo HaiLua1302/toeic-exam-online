@@ -14,9 +14,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.user.R;
 import com.example.user.ui.admin.AdminHomeActivity;
+import com.example.user.ui.admin.part5.AddNewAQuesP5Activity;
+import com.example.user.ui.classExam.ClsRecExamFull;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class AddNewAPartActivity extends AppCompatActivity {
 
@@ -25,6 +33,7 @@ public class AddNewAPartActivity extends AppCompatActivity {
     private Button btnAddNewExam;
     private String idExam,nameP1,nameP2,nameP3,nameP4,nameP5,nameP6,nameP7,idQues1,idQues2,idQues3,idQues4,idQues5,idQues6,idQues7;
     private Intent intent;
+    private DatabaseReference ref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,8 +99,61 @@ public class AddNewAPartActivity extends AppCompatActivity {
             public void onClick(View v) {
                 intent = new Intent(AddNewAPartActivity.this, ChooseAPart1Activity.class);
                 intent.putExtra("idExam",idExam);
-                intent.putExtra("idPart",2);
                 someActivityResultLauncher.launch(intent);
+            }
+        });
+        imgEditPart2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(AddNewAPartActivity.this, ChooseAPart2Activity.class);
+                intent.putExtra("idExam",idExam);
+                someActivityResultLauncher2.launch(intent);
+            }
+        });
+        imgEditPart3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(AddNewAPartActivity.this, ChooseAPart3Activity.class);
+                intent.putExtra("idExam",idExam);
+                someActivityResultLauncher3.launch(intent);
+            }
+        });
+        imgEditPart4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(AddNewAPartActivity.this, ChooseAPart4Activity.class);
+                intent.putExtra("idExam",idExam);
+                someActivityResultLauncher4.launch(intent);
+            }
+        });
+        imgEditPart5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(AddNewAPartActivity.this, ChooseAPart5Activity.class);
+                intent.putExtra("idExam",idExam);
+                someActivityResultLauncher5.launch(intent);
+            }
+        });
+        imgEditPart6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(AddNewAPartActivity.this, ChooseAPart6Activity.class);
+                intent.putExtra("idExam",idExam);
+                someActivityResultLauncher6.launch(intent);
+            }
+        });
+        imgEditPart7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(AddNewAPartActivity.this, ChooseAPart7Activity.class);
+                intent.putExtra("idExam",idExam);
+                someActivityResultLauncher7.launch(intent);
+            }
+        });
+        btnAddNewExam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveNew();
             }
         });
     }
@@ -106,7 +168,95 @@ public class AddNewAPartActivity extends AppCompatActivity {
                     }
                 }
             });
+    ActivityResultLauncher<Intent> someActivityResultLauncher2 = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    if(result.getData() != null){
+                        String idPart = result.getData().getStringExtra("idPart");
+                        txtNamePart2.setText(idPart);
+                    }
+                }
+            });
+    ActivityResultLauncher<Intent> someActivityResultLauncher3 = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    if(result.getData() != null){
+                        String idPart = result.getData().getStringExtra("idPart");
+                        txtNamePart3.setText(idPart);
+                    }
+                }
+            });
+    ActivityResultLauncher<Intent> someActivityResultLauncher4 = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    if(result.getData() != null){
+                        String idPart = result.getData().getStringExtra("idPart");
+                        txtNamePart4.setText(idPart);
+                    }
+                }
+            });
+    ActivityResultLauncher<Intent> someActivityResultLauncher5 = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    if(result.getData() != null){
+                        String idPart = result.getData().getStringExtra("idPart");
+                        txtNamePart5.setText(idPart);
+                    }
+                }
+            });
+    ActivityResultLauncher<Intent> someActivityResultLauncher6 = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    if(result.getData() != null){
+                        String idPart = result.getData().getStringExtra("idPart");
+                        txtNamePart6.setText(idPart);
+                    }
+                }
+            });
+    ActivityResultLauncher<Intent> someActivityResultLauncher7 = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    if(result.getData() != null){
+                        String idPart = result.getData().getStringExtra("idPart");
+                        txtNamePart7.setText(idPart);
+                    }
+                }
+            });
 
+    private void saveNew(){
+        nameP1 = txtNamePart1.getText().toString();
+        nameP2 = txtNamePart2.getText().toString();
+        nameP3 = txtNamePart3.getText().toString();
+        nameP4 = txtNamePart4.getText().toString();
+        nameP5 = txtNamePart5.getText().toString();
+        nameP6 = txtNamePart6.getText().toString();
+        nameP7 = txtNamePart7.getText().toString();
+        if (nameP1.equals("...")||nameP2.equals("...")||nameP3.equals("...")||nameP4.equals("...")||nameP5.equals("...")||nameP6.equals("...")||nameP7.equals("...")){
+            Toast.makeText(AddNewAPartActivity.this, "Lôi! Vui lòng kiểm tra lại các phần thi đã chọn!", Toast.LENGTH_SHORT).show();
+        }else {
+            ref = FirebaseDatabase.getInstance().getReference("Exam");
+            ClsRecExamFull examFull = new ClsRecExamFull(idExam,nameP1,nameP2,nameP3,nameP4,nameP5,nameP6,nameP7);
+            ref.child(idExam).setValue(examFull).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    Toast.makeText(AddNewAPartActivity.this, "Thêm bộ đề thành công!", Toast.LENGTH_SHORT).show();
+                    finish();
+                    return;
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(AddNewAPartActivity.this, "Thêm bộ đề thất bài vui lòng kiểm tra lại!", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
     // this event will enable the back
     // function to the button on press
     @Override
@@ -114,10 +264,6 @@ public class AddNewAPartActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 this.finish();
-                return true;
-            case R.id.home_bar_admin:
-                Intent intent2 = new Intent(AddNewAPartActivity.this, AdminHomeActivity.class);
-                startActivity(intent2);
                 return true;
         }
         return super.onOptionsItemSelected(item);

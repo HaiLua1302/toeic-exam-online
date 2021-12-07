@@ -31,7 +31,7 @@
             app:layout_constraintStart_toStartOf="parent ">
 
             <TextView
-                android:id="@+id/txtNameP1"
+                android:id="@+id/txtNameP6"
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -43,7 +43,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txtIdExamFullP1"
+                android:id="@+id/txtIdExamFullP6"
                 android:layout_width="230dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -70,7 +70,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <TextView
-                android:id="@+id/txtNameExamChooseP1"
+                android:id="@+id/txtNameExamChooseP6"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -126,7 +126,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnSavaP1"
+        android:id="@+id/btnSavaP6"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_gravity="center"
@@ -139,7 +139,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recViewExamP1"
+        android:id="@+id/recViewExamP6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/btnAddAQuestionP3"

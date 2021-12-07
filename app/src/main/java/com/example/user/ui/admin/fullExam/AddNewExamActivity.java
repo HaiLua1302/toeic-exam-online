@@ -17,13 +17,16 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.user.R;
+import com.example.user.ui.adapterAdmin.RecChoosePartAdapter;
 import com.example.user.ui.adapterAdmin.RecExamFullAdapter;
 import com.example.user.ui.admin.AdminHomeActivity;
+import com.example.user.ui.admin.part1.AddNewQuesP1Activity;
 import com.example.user.ui.classExam.ClsRecExamFull;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -40,6 +43,7 @@ public class AddNewExamActivity extends AppCompatActivity {
     private RecExamFullAdapter recExamFullAdapter;
     private DatabaseReference ref;
     private List<ClsRecExamFull> clsRecExamFullList;
+    private List<String> getKey;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +60,7 @@ public class AddNewExamActivity extends AppCompatActivity {
         imgRefresh = findViewById(R.id.imgRefreshFull);
         btnAddNewExam = findViewById(R.id.btnIntentToAddQuesFull);
         recyclerView = findViewById(R.id.recViewListQuestEditFull);
+        initRecyclerView();
         getDataFirebase();
 
         imgRefresh.setOnClickListener(new View.OnClickListener() {
@@ -67,59 +72,88 @@ public class AddNewExamActivity extends AppCompatActivity {
         btnAddNewExam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String idExam = edtNameExam.getText().toString();
-                Intent intent = new Intent(AddNewExamActivity.this, AddNewAPartActivity.class);
-                intent.putExtra("idExam",idExam);
-                intent.putExtra("idExam1","...");
-                intent.putExtra("idQues1","...");
-                intent.putExtra("idExam2","...");
-                intent.putExtra("idQues2","...");
-                intent.putExtra("idExam3","...");
-                intent.putExtra("idQues3","...");
-                intent.putExtra("idExam4","...");
-                intent.putExtra("idQues4","...");
-                intent.putExtra("idExam5","...");
-                intent.putExtra("idQues5","...");
-                intent.putExtra("idExam6","...");
-                intent.putExtra("idQues6","...");
-                intent.putExtra("idExam7","...");
-                intent.putExtra("idQues7","...");
-                startActivity(intent);
+                checkDuplicate();
             }
         });
     }
 
+    private void checkDuplicate(){
+        String id_Exam = edtNameExam.getText().toString();
+        ref = FirebaseDatabase.getInstance().getReference();
+        Query query = ref.child("Exam").orderByChild("id_exam").equalTo(id_Exam);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    Toast.makeText(AddNewExamActivity.this, "Tên bộ đề đã có ",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    String edt = edtNameExam.getText().toString();
+                    if (edt.isEmpty()){
+                        edtNameExam.setError("Vui lòng điền tên bộ đề");
+                        edtNameExam.requestFocus();
+                    }else{
+                        String idExam = edtNameExam.getText().toString();
+                        Intent intent = new Intent(AddNewExamActivity.this, AddNewAPartActivity.class);
+                        intent.putExtra("idExam",idExam);
+                        intent.putExtra("idExam1","...");
+                        intent.putExtra("idQues1","...");
+                        intent.putExtra("idExam2","...");
+                        intent.putExtra("idQues2","...");
+                        intent.putExtra("idExam3","...");
+                        intent.putExtra("idQues3","...");
+                        intent.putExtra("idExam4","...");
+                        intent.putExtra("idQues4","...");
+                        intent.putExtra("idExam5","...");
+                        intent.putExtra("idQues5","...");
+                        intent.putExtra("idExam6","...");
+                        intent.putExtra("idQues6","...");
+                        intent.putExtra("idExam7","...");
+                        intent.putExtra("idQues7","...");
+                        startActivity(intent);}
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+    private void initRecyclerView() {
+        getKey = new ArrayList<>();
+        clsRecExamFullList = new ArrayList<>();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recExamFullAdapter = new RecExamFullAdapter(getKey, clsRecExamFullList);
+        recyclerView.setAdapter(recExamFullAdapter);
+    }
+
     private void getDataFirebase(){
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            clsRecExamFullList = new ArrayList<>();
-            List<String> getKey = new ArrayList<>();
             ref = FirebaseDatabase.getInstance().getReference("Exam");
             ref.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (snapshot.exists()){
+                        getKey.clear();
+                        clsRecExamFullList.clear();
                         for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                             String key = snapshot1.getKey();
                             getKey.add(key);
                             ClsRecExamFull examFull = snapshot1.getValue(ClsRecExamFull.class);
                             clsRecExamFullList.add(examFull);
-
                         }
-                        recExamFullAdapter = new RecExamFullAdapter(getKey, clsRecExamFullList);
-                        recyclerView.setAdapter(recExamFullAdapter);
+                        recExamFullAdapter.notifyDataSetChanged();
                     }else {
                         Toast.makeText(AddNewExamActivity.this,"Dữ liệu lôi vui lòng kiểm tra Firebase!",Toast.LENGTH_SHORT).show();
                     }
-
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
                 }
             });
 
     }
+
 
     /*
   gettime current
