@@ -133,7 +133,7 @@ public class AddNewAQuesP4Activity extends AppCompatActivity {
             case android.R.id.home:
                 this.finish();
                 return true;
-            case R.id.home_bar_admin:
+            case R.id.nav_bottom_home:
                 Intent intent2 = new Intent(AddNewAQuesP4Activity.this, AdminHomeActivity.class);
                 startActivity(intent2);
                 return true;

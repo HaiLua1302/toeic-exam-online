@@ -92,7 +92,7 @@ public class RecViewExamP3Activity extends AppCompatActivity {
             case android.R.id.home:
                 Intent intent = new Intent(RecViewExamP3Activity.this, ManagerExamActivity.class);
                 startActivity(intent);
-            case R.id.home_bar_admin:
+            case R.id.nav_bottom_home:
                 Intent intent2 = new Intent(RecViewExamP3Activity.this, AdminHomeActivity.class);
                 startActivity(intent2);
                 return true;

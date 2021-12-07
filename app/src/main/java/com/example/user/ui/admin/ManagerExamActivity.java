@@ -3,6 +3,7 @@ package com.example.user.ui.admin;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.user.R;
 import com.example.user.ui.adapterAdmin.RecExamByPartAdapter;
@@ -26,6 +28,7 @@ import com.example.user.ui.admin.part6.AddNewQues1P6Activity;
 import com.example.user.ui.admin.part7.AddNewQues1P7Activity;
 import com.example.user.ui.classAdmin.clsPartExam;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +40,8 @@ import java.util.List;
 
 @SuppressWarnings("ALL")
 public class ManagerExamActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemReselectedListener{
+
+    private ActionBar actionBar;
 
     private Button btnFilter,btnAddNew;
     private Spinner spnFilter;
@@ -60,9 +65,13 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
         setContentView(R.layout.activity_admin_manager_question);
         getSupportActionBar().setTitle("Exam Manager");
         // calling the action bar
-        ActionBar actionBar = getSupportActionBar();
+        actionBar = getSupportActionBar();
         // showing the back button in action bar
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_bottom_admin);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+//        actionBar.setDisplayHomeAsUpEnabled(true);
+
         bottomNavigationView = findViewById(R.id.navigation_bottom_admin);
         btnFilter = findViewById(R.id.btnFilter);
         btnAddNew = findViewById(R.id.btnAddNewQuestion);
@@ -324,6 +333,29 @@ public class ManagerExamActivity extends AppCompatActivity implements BottomNavi
         });
 
     }
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.nav_bottom_home:
+                    intent = new Intent(ManagerExamActivity.this, AdminHomeActivity.class);
+                    startActivity(intent);
+                    return true;
+                case R.id.nav_bottom_logout:
+                    try {
+                        FirebaseAuth.getInstance().signOut();
+                        Toast.makeText(ManagerExamActivity.this, "Đăng xuất thành công ",Toast.LENGTH_SHORT).show();
+                        intent = new Intent(ManagerExamActivity.this, LoginAdminActivity.class);
+                        startActivity(intent);
+                    }catch (Exception e){
+                        Toast.makeText(ManagerExamActivity.this, e.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                    return true;
+            }
+            return false;
+        }
+    };
 /*
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {

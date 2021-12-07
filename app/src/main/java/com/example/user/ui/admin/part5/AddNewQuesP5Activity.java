@@ -17,10 +17,8 @@ import android.widget.ImageView;
 import com.example.user.R;
 import com.example.user.ui.adapterAdmin.AddNewP5Adapter;
 import com.example.user.ui.admin.AdminHomeActivity;
-import com.example.user.ui.admin.ManagerExamActivity;
 import com.example.user.ui.classExam.ClsPartP5;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class AddNewQuesP5Activity extends AppCompatActivity {
@@ -141,7 +139,7 @@ public class AddNewQuesP5Activity extends AppCompatActivity {
              case android.R.id.home:
                  finish();
                  return true;
-            case R.id.home_bar_admin:
+            case R.id.nav_bottom_home:
                 intent = new Intent(AddNewQuesP5Activity.this, AdminHomeActivity.class);
                 startActivity(intent);
                 return true;

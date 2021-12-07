@@ -144,7 +144,7 @@ public class AddNewAQuesP6Activity extends AppCompatActivity {
             case android.R.id.home:
                 this.finish();
                 return true;
-            case R.id.home_bar_admin:
+            case R.id.nav_bottom_home:
                 Intent intent2 = new Intent(AddNewAQuesP6Activity.this, AddNewQues2P6Activity.class);
                 startActivity(intent2);
                 return true;

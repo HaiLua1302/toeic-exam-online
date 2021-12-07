@@ -22,7 +22,6 @@ import android.widget.Toast;
 import com.example.user.R;
 import com.example.user.ui.adapterAdmin.AddNew1P4Adapter;
 import com.example.user.ui.admin.AdminHomeActivity;
-import com.example.user.ui.admin.ManagerExamActivity;
 import com.example.user.ui.classExam.ClsRecExamP4;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -280,7 +279,7 @@ public class AddNewQues1P4Activity extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 return true;
-            case R.id.home_bar_admin:
+            case R.id.nav_bottom_home:
                 Intent intent2 = new Intent(AddNewQues1P4Activity.this, AdminHomeActivity.class);
                 startActivity(intent2);
                 return true;

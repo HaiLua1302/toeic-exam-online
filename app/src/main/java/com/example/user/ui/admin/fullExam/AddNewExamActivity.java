@@ -17,10 +17,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.user.R;
-import com.example.user.ui.adapterAdmin.RecChoosePartAdapter;
 import com.example.user.ui.adapterAdmin.RecExamFullAdapter;
 import com.example.user.ui.admin.AdminHomeActivity;
-import com.example.user.ui.admin.part1.AddNewQuesP1Activity;
 import com.example.user.ui.classExam.ClsRecExamFull;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -172,7 +170,7 @@ public class AddNewExamActivity extends AppCompatActivity {
             case android.R.id.home:
                this.finish();
                return true;
-            case R.id.home_bar_admin:
+            case R.id.nav_bottom_home:
                 Intent intent2 = new Intent(AddNewExamActivity.this, AdminHomeActivity.class);
                 startActivity(intent2);
                 return true;

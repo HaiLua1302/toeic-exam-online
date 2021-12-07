@@ -167,7 +167,7 @@ public class AddNewQues1P7Activity extends AppCompatActivity {
             case android.R.id.home:
                 this.finish();
                 return true;
-            case R.id.home_bar_admin:
+            case R.id.nav_bottom_home:
                 Intent intent2 = new Intent(AddNewQues1P7Activity.this, AdminHomeActivity.class);
                 startActivity(intent2);
                 return true;

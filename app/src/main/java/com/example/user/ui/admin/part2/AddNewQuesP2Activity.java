@@ -23,7 +23,6 @@ import android.widget.Toast;
 import com.example.user.R;
 import com.example.user.ui.adapterAdmin.RecQuesP2Adapter;
 import com.example.user.ui.admin.AdminHomeActivity;
-import com.example.user.ui.admin.ManagerExamActivity;
 import com.example.user.ui.classExam.ClsPartP2;
 import com.example.user.ui.classExam.ClsRecExamP2;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -288,7 +287,7 @@ public class AddNewQuesP2Activity extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 return true;
-            case R.id.home_bar_admin:
+            case R.id.nav_bottom_home:
                 Intent intent2 = new Intent(AddNewQuesP2Activity.this, AdminHomeActivity.class);
                 startActivity(intent2);
                 return true;

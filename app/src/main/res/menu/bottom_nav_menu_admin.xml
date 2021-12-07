@@ -4,11 +4,11 @@
         android:id="@+id/home_bar_1"
         android:title="" />
     <item
-        android:id="@+id/home_bar_admin"
+        android:id="@+id/nav_bottom_home"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="@string/title_home" />
     <item
-        android:id="@+id/exam_logout"
+        android:id="@+id/nav_bottom_logout"
         android:icon="@drawable/ic_baseline_exit_to_app_24"
         android:title="Logout" />
 </menu>

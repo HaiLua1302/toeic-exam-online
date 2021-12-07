@@ -10,6 +10,7 @@ import android.widget.Button;
 
 
 import com.example.user.ui.admin.AdminHomeActivity;
+import com.example.user.ui.admin.LoginAdminActivity;
 import com.example.user.ui.classExam.ClsPartP1;
 
 import com.google.firebase.database.DatabaseReference;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AdminHomeActivity.class);
+                Intent intent = new Intent(MainActivity.this, LoginAdminActivity.class);
                 startActivity(intent);
             }
         });
